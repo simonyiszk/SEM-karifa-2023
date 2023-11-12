@@ -6,7 +6,7 @@
     (property "Value" "PY32F002AF15P6TU" (at 5.08 16.51 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "sajat:TSSOP20" (at 2.54 13.97 0)
+    (property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" (at 2.54 13.97 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 7.62 6.35 0)
