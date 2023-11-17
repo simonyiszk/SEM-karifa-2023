@@ -1,43 +1,10 @@
 {
   "board": {
-    "active_layer": 0,
+    "active_layer": 37,
     "active_layer_preset": "",
     "auto_track_width": false,
-    "hidden_netclasses": [
-      "Default"
-    ],
-    "hidden_nets": [
-      "",
-      "VCC",
-      "GND",
-      "/MPX2",
-      "Net-(D1-BK)",
-      "/MPX1",
-      "Net-(D1-GK)",
-      "Net-(D1-RK)",
-      "Net-(D2-A)",
-      "Net-(D4-A)",
-      "Net-(D6-A)",
-      "Net-(D8-A)",
-      "Net-(D10-A)",
-      "Net-(D12-A)",
-      "/SWC",
-      "/SWD",
-      "/nRST",
-      "/B",
-      "/R",
-      "/G",
-      "/L1",
-      "/L2",
-      "/L3",
-      "/L4",
-      "/L5",
-      "/L6",
-      "Net-(U1-PB6{slash}PF4-BOOT0)",
-      "Net-(SW1A-A)",
-      "unconnected-(U1-PF0-OSCIN-Pad8)",
-      "unconnected-(U1-PF1-OSCOUT-Pad9)"
-    ],
+    "hidden_netclasses": [],
+    "hidden_nets": [],
     "high_contrast_mode": 0,
     "net_color_mode": 1,
     "opacity": {
@@ -68,6 +35,7 @@
       3,
       4,
       5,
+      7,
       8,
       9,
       10,
@@ -95,14 +63,15 @@
       34,
       35,
       36,
+      37,
       39,
       40
     ],
-    "visible_layers": "0001020_ffffffff",
+    "visible_layers": "7fcffff_ffffffff",
     "zone_display_mode": 0
   },
   "meta": {
-    "filename": "karifa.kicad_prl",
+    "filename": "hopehely.kicad_prl",
     "version": 3
   },
   "project": {
