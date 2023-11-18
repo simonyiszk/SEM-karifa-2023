@@ -237,57 +237,6 @@
         )
       )
     )
-    (symbol "Device:L" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
-      (property "Reference" "L" (at -1.27 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "L" (at 1.905 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "~" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "inductor choke coil reactor magnetic" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Inductor" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "Choke_* *Coil* Inductor_* L_*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "L_0_1"
-        (arc (start 0 -2.54) (mid 0.6323 -1.905) (end 0 -1.27)
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (arc (start 0 -1.27) (mid 0.6323 -0.635) (end 0 0)
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (arc (start 0 0) (mid 0.6323 0.635) (end 0 1.27)
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (arc (start 0 1.27) (mid 0.6323 1.905) (end 0 2.54)
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "L_1_1"
-        (pin passive line (at 0 3.81 270) (length 1.27)
-          (name "1" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 0 -3.81 90) (length 1.27)
-          (name "2" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
     (symbol "Device:LED" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
       (property "Reference" "D" (at 0 2.54 0)
         (effects (font (size 1.27 1.27)))
@@ -368,288 +317,6 @@
         (pin passive line (at 3.81 0 180) (length 2.54)
           (name "A" (effects (font (size 1.27 1.27))))
           (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "Device:LED_ARGB" (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
-      (property "Reference" "D" (at 0 9.398 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "LED_ARGB" (at 0 -8.89 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "" (at 0 -1.27 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "~" (at 0 -1.27 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "LED RGB diode" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "RGB LED, anode/red/green/blue" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "LED_ARGB_0_0"
-        (text "B" (at -1.905 -6.35 0)
-          (effects (font (size 1.27 1.27)))
-        )
-        (text "G" (at -1.905 -1.27 0)
-          (effects (font (size 1.27 1.27)))
-        )
-        (text "R" (at -1.905 3.81 0)
-          (effects (font (size 1.27 1.27)))
-        )
-      )
-      (symbol "LED_ARGB_0_1"
-        (polyline
-          (pts
-            (xy -1.27 -5.08)
-            (xy -2.54 -5.08)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.27 -5.08)
-            (xy 1.27 -5.08)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.27 -3.81)
-            (xy -1.27 -6.35)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.27 0)
-            (xy -2.54 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.27 1.27)
-            (xy -1.27 -1.27)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.27 5.08)
-            (xy -2.54 5.08)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.27 5.08)
-            (xy 1.27 5.08)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.27 6.35)
-            (xy -1.27 3.81)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 1.27 0)
-            (xy -1.27 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 1.27 0)
-            (xy 2.54 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.27 1.27)
-            (xy -1.27 -1.27)
-            (xy -1.27 -1.27)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.27 6.35)
-            (xy -1.27 3.81)
-            (xy -1.27 3.81)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 1.27 -5.08)
-            (xy 2.032 -5.08)
-            (xy 2.032 5.08)
-            (xy 1.27 5.08)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 1.27 -3.81)
-            (xy 1.27 -6.35)
-            (xy -1.27 -5.08)
-            (xy 1.27 -3.81)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 1.27 1.27)
-            (xy 1.27 -1.27)
-            (xy -1.27 0)
-            (xy 1.27 1.27)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 1.27 6.35)
-            (xy 1.27 3.81)
-            (xy -1.27 5.08)
-            (xy 1.27 6.35)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.016 -3.81)
-            (xy 0.508 -2.286)
-            (xy -0.254 -2.286)
-            (xy 0.508 -2.286)
-            (xy 0.508 -3.048)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.016 1.27)
-            (xy 0.508 2.794)
-            (xy -0.254 2.794)
-            (xy 0.508 2.794)
-            (xy 0.508 2.032)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.016 6.35)
-            (xy 0.508 7.874)
-            (xy -0.254 7.874)
-            (xy 0.508 7.874)
-            (xy 0.508 7.112)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0 -3.81)
-            (xy 1.524 -2.286)
-            (xy 0.762 -2.286)
-            (xy 1.524 -2.286)
-            (xy 1.524 -3.048)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0 1.27)
-            (xy 1.524 2.794)
-            (xy 0.762 2.794)
-            (xy 1.524 2.794)
-            (xy 1.524 2.032)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0 6.35)
-            (xy 1.524 7.874)
-            (xy 0.762 7.874)
-            (xy 1.524 7.874)
-            (xy 1.524 7.112)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (rectangle (start 1.27 -1.27) (end 1.27 1.27)
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (rectangle (start 1.27 1.27) (end 1.27 1.27)
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (rectangle (start 1.27 3.81) (end 1.27 6.35)
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (rectangle (start 1.27 6.35) (end 1.27 6.35)
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (circle (center 2.032 0) (radius 0.254)
-          (stroke (width 0) (type default))
-          (fill (type outline))
-        )
-        (rectangle (start 2.794 8.382) (end -2.794 -7.62)
-          (stroke (width 0.254) (type default))
-          (fill (type background))
-        )
-      )
-      (symbol "LED_ARGB_1_1"
-        (pin passive line (at 5.08 0 180) (length 2.54)
-          (name "A" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at -5.08 5.08 0) (length 2.54)
-          (name "RK" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at -5.08 0 0) (length 2.54)
-          (name "GK" (effects (font (size 1.27 1.27))))
-          (number "3" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at -5.08 -5.08 0) (length 2.54)
-          (name "BK" (effects (font (size 1.27 1.27))))
-          (number "4" (effects (font (size 1.27 1.27))))
         )
       )
     )
@@ -849,154 +516,6 @@
         (pin passive line (at 5.08 0 180) (length 2.54)
           (name "B" (effects (font (size 1.27 1.27))))
           (number "4" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "Transistor_FET:AO3401A" (pin_names hide) (in_bom yes) (on_board yes)
-      (property "Reference" "Q" (at 5.08 1.905 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Value" "AO3401A" (at 5.08 0 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 5.08 -1.905 0)
-        (effects (font (size 1.27 1.27) italic) (justify left) hide)
-      )
-      (property "Datasheet" "http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) (justify left) hide)
-      )
-      (property "ki_keywords" "P-Channel MOSFET" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "-4.0A Id, -30V Vds, P-Channel MOSFET, SOT-23" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "SOT?23*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "AO3401A_0_1"
-        (polyline
-          (pts
-            (xy 0.254 0)
-            (xy -2.54 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0.254 1.905)
-            (xy 0.254 -1.905)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0.762 -1.27)
-            (xy 0.762 -2.286)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0.762 0.508)
-            (xy 0.762 -0.508)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0.762 2.286)
-            (xy 0.762 1.27)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 2.54 2.54)
-            (xy 2.54 1.778)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 2.54 -2.54)
-            (xy 2.54 0)
-            (xy 0.762 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0.762 1.778)
-            (xy 3.302 1.778)
-            (xy 3.302 -1.778)
-            (xy 0.762 -1.778)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 2.286 0)
-            (xy 1.27 0.381)
-            (xy 1.27 -0.381)
-            (xy 2.286 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type outline))
-        )
-        (polyline
-          (pts
-            (xy 2.794 -0.508)
-            (xy 2.921 -0.381)
-            (xy 3.683 -0.381)
-            (xy 3.81 -0.254)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 3.302 -0.381)
-            (xy 2.921 0.254)
-            (xy 3.683 0.254)
-            (xy 3.302 -0.381)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (circle (center 1.651 0) (radius 2.794)
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (circle (center 2.54 -1.778) (radius 0.254)
-          (stroke (width 0) (type default))
-          (fill (type outline))
-        )
-        (circle (center 2.54 1.778) (radius 0.254)
-          (stroke (width 0) (type default))
-          (fill (type outline))
-        )
-      )
-      (symbol "AO3401A_1_1"
-        (pin input line (at -5.08 0 0) (length 2.54)
-          (name "G" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 2.54 -5.08 90) (length 2.54)
-          (name "S" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 2.54 5.08 270) (length 2.54)
-          (name "D" (effects (font (size 1.27 1.27))))
-          (number "3" (effects (font (size 1.27 1.27))))
         )
       )
     )
@@ -1202,23 +721,14 @@
     )
   )
 
-  (junction (at 36.83 95.25) (diameter 0) (color 0 0 0 0)
-    (uuid 024d8987-b4eb-4552-9b46-ca33d9ab96bf)
-  )
   (junction (at 168.91 38.1) (diameter 0) (color 0 0 0 0)
     (uuid 1252180a-4f7c-4aa6-8299-4cded122d0e3)
   )
   (junction (at 245.11 21.59) (diameter 0) (color 0 0 0 0)
     (uuid 14b08142-48b6-4186-9ca1-c6dbea0d56a5)
   )
-  (junction (at 39.37 45.72) (diameter 0) (color 0 0 0 0)
-    (uuid 1807d8ca-b0d1-4b5d-b261-be176e32ad00)
-  )
   (junction (at 245.11 53.34) (diameter 0) (color 0 0 0 0)
     (uuid 370c54dc-cead-4ab4-8f63-b486ffd88d52)
-  )
-  (junction (at 50.8 95.25) (diameter 0) (color 0 0 0 0)
-    (uuid 44ec6212-e957-462d-9eb1-d3c99975e0a1)
   )
   (junction (at 207.01 53.34) (diameter 0) (color 0 0 0 0)
     (uuid 4a21163f-3afc-4f5c-917c-1928b3138d87)
@@ -1226,35 +736,20 @@
   (junction (at 264.16 38.1) (diameter 0) (color 0 0 0 0)
     (uuid 62f9c241-3feb-4c19-9cfc-3d34b2b1a257)
   )
-  (junction (at 44.45 80.01) (diameter 0) (color 0 0 0 0)
-    (uuid 63c98c3e-6fb4-4ac4-af5e-aa1aa1ce7813)
-  )
   (junction (at 207.01 38.1) (diameter 0) (color 0 0 0 0)
     (uuid 6588c3b6-8fc9-4bb4-9608-40cb0d5ecfd8)
   )
   (junction (at 226.06 38.1) (diameter 0) (color 0 0 0 0)
     (uuid 7bd12db3-5b29-4cf6-94b5-bc1659faf6c0)
   )
-  (junction (at 39.37 69.85) (diameter 0) (color 0 0 0 0)
-    (uuid 7c125852-1ff6-41fd-b720-66c197ed56de)
-  )
-  (junction (at 44.45 55.88) (diameter 0) (color 0 0 0 0)
-    (uuid 8a3f3ddc-f270-4658-b164-e421757ed4de)
-  )
   (junction (at 168.91 21.59) (diameter 0) (color 0 0 0 0)
     (uuid 8afb3181-66f6-47e1-ab52-7b056b12b06c)
-  )
-  (junction (at 53.34 45.72) (diameter 0) (color 0 0 0 0)
-    (uuid 944aa6b6-6271-4d3b-bde5-3d6c5f6f5168)
   )
   (junction (at 139.7 114.3) (diameter 0) (color 0 0 0 0)
     (uuid ad923e2a-5866-4ded-bcc9-70dc4fdbc5bf)
   )
   (junction (at 226.06 21.59) (diameter 0) (color 0 0 0 0)
     (uuid b22b87cd-593a-46cf-9d8c-3676faac6bc2)
-  )
-  (junction (at 41.91 105.41) (diameter 0) (color 0 0 0 0)
-    (uuid bd0b1b10-fcd8-4919-b625-1c2508901418)
   )
   (junction (at 187.96 38.1) (diameter 0) (color 0 0 0 0)
     (uuid c3a9b275-e2c9-434d-8359-841f44a5e740)
@@ -1267,9 +762,6 @@
   )
   (junction (at 226.06 53.34) (diameter 0) (color 0 0 0 0)
     (uuid e0f8869b-4aaa-4222-b79e-ddd0e37169ce)
-  )
-  (junction (at 53.34 69.85) (diameter 0) (color 0 0 0 0)
-    (uuid e5b25da6-745e-4df3-8b20-5af8d507d195)
   )
   (junction (at 187.96 53.34) (diameter 0) (color 0 0 0 0)
     (uuid efc968ec-8995-4f27-a36a-e6300cbe74fb)
@@ -1305,10 +797,6 @@
     (stroke (width 0) (type default))
     (uuid 06287394-39f6-4953-8b70-ef16b4534f8c)
   )
-  (wire (pts (xy 44.45 55.88) (xy 44.45 60.96))
-    (stroke (width 0) (type default))
-    (uuid 062f2986-b39f-4684-bf3a-cc4263c64cd8)
-  )
   (wire (pts (xy 226.06 33.02) (xy 226.06 38.1))
     (stroke (width 0) (type default))
     (uuid 099154d7-66fc-41b2-9312-507b0c74224f)
@@ -1317,17 +805,9 @@
     (stroke (width 0) (type default))
     (uuid 0d4003f7-b829-4121-afd9-b6d67f4f5f21)
   )
-  (wire (pts (xy 44.45 55.88) (xy 44.45 53.34))
-    (stroke (width 0) (type default))
-    (uuid 111dceb0-8f71-48cc-a25f-30a0d2dd2f12)
-  )
   (wire (pts (xy 32.385 144.145) (xy 35.56 144.145))
     (stroke (width 0) (type default))
     (uuid 1358d4cf-4ecb-4b50-a325-c6607cfdf0fa)
-  )
-  (wire (pts (xy 36.83 105.41) (xy 41.91 105.41))
-    (stroke (width 0) (type default))
-    (uuid 146787c6-cfc0-4682-905c-f9b0e1066cc4)
   )
   (wire (pts (xy 207.01 25.4) (xy 207.01 21.59))
     (stroke (width 0) (type default))
@@ -1341,18 +821,6 @@
     (stroke (width 0) (type default))
     (uuid 21e9f56b-8266-45f0-9fed-71f92c37dcce)
   )
-  (wire (pts (xy 53.34 69.85) (xy 53.34 72.39))
-    (stroke (width 0) (type default))
-    (uuid 238fce11-2d4a-4211-8aed-cf1ccfb9acbc)
-  )
-  (wire (pts (xy 39.37 80.01) (xy 44.45 80.01))
-    (stroke (width 0) (type default))
-    (uuid 255648dc-d391-4d69-8270-577a01c400ed)
-  )
-  (wire (pts (xy 49.53 45.72) (xy 53.34 45.72))
-    (stroke (width 0) (type default))
-    (uuid 25d12455-2b71-4138-b63f-74df8c758bd0)
-  )
   (wire (pts (xy 205.74 124.46) (xy 199.39 124.46))
     (stroke (width 0) (type default))
     (uuid 26dd39e4-e40d-4abf-b537-2b043dc8ac51)
@@ -1364,10 +832,6 @@
   (wire (pts (xy 245.11 50.8) (xy 245.11 53.34))
     (stroke (width 0) (type default))
     (uuid 2aa9bd72-0bd0-4bfb-ba29-825872041a11)
-  )
-  (wire (pts (xy 53.34 69.85) (xy 67.31 69.85))
-    (stroke (width 0) (type default))
-    (uuid 2ab1da12-9c20-48c5-8407-08036faf72e9)
   )
   (wire (pts (xy 31.75 144.78) (xy 32.385 144.78))
     (stroke (width 0) (type default))
@@ -1389,10 +853,6 @@
     (stroke (width 0) (type default))
     (uuid 3a136671-d620-45a0-8f81-fb0005b15996)
   )
-  (wire (pts (xy 44.45 80.01) (xy 44.45 85.09))
-    (stroke (width 0) (type default))
-    (uuid 3cdc52fd-3f98-42c7-81d1-3e0cadfa544f)
-  )
   (wire (pts (xy 226.06 25.4) (xy 226.06 21.59))
     (stroke (width 0) (type default))
     (uuid 3ce71cd4-3fbd-4f5d-91ef-55ae63bb5473)
@@ -1400,10 +860,6 @@
   (wire (pts (xy 245.11 25.4) (xy 245.11 21.59))
     (stroke (width 0) (type default))
     (uuid 4483ad04-afc7-4c83-91c6-0539e43528a9)
-  )
-  (wire (pts (xy 36.83 95.25) (xy 36.83 97.79))
-    (stroke (width 0) (type default))
-    (uuid 485e29be-e2a8-4a31-9034-610b7b4dc014)
   )
   (wire (pts (xy 199.39 109.22) (xy 203.2 109.22))
     (stroke (width 0) (type default))
@@ -1413,29 +869,13 @@
     (stroke (width 0) (type default))
     (uuid 52ab201c-7876-4a4c-a974-d74f93a024f5)
   )
-  (wire (pts (xy 39.37 69.85) (xy 39.37 72.39))
-    (stroke (width 0) (type default))
-    (uuid 5348d046-3b4d-4abc-a19b-ae5f306ac904)
-  )
   (wire (pts (xy 181.61 38.1) (xy 187.96 38.1))
     (stroke (width 0) (type default))
     (uuid 5397fa57-de91-492f-a80b-06ec053c89dd)
   )
-  (wire (pts (xy 41.91 105.41) (xy 41.91 102.87))
-    (stroke (width 0) (type default))
-    (uuid 5795701f-fb1e-4dc7-a960-37c1840f99f1)
-  )
-  (wire (pts (xy 30.48 60.96) (xy 44.45 60.96))
-    (stroke (width 0) (type default))
-    (uuid 5a72b1b5-21fd-4c20-9c4a-dacdd6288cba)
-  )
   (wire (pts (xy 160.02 132.08) (xy 170.18 132.08))
     (stroke (width 0) (type default))
     (uuid 5b4c05d1-99fd-49a7-b05e-fcfb8624660a)
-  )
-  (wire (pts (xy 50.8 95.25) (xy 50.8 97.79))
-    (stroke (width 0) (type default))
-    (uuid 62b76fc7-afb0-4ea4-8cef-4e7669917c2f)
   )
   (wire (pts (xy 168.91 53.34) (xy 187.96 53.34))
     (stroke (width 0) (type default))
@@ -1453,25 +893,13 @@
     (stroke (width 0) (type default))
     (uuid 6ba1db22-44ce-425c-b0fe-e74a5cde5a91)
   )
-  (wire (pts (xy 39.37 55.88) (xy 44.45 55.88))
-    (stroke (width 0) (type default))
-    (uuid 6d8c51f3-b4e3-4eca-b6d3-b9ca7313918f)
-  )
   (wire (pts (xy 205.74 114.3) (xy 199.39 114.3))
     (stroke (width 0) (type default))
     (uuid 6d939cb0-54fe-42bb-aaf5-2a3494f5c3d5)
   )
-  (wire (pts (xy 27.94 110.49) (xy 41.91 110.49))
-    (stroke (width 0) (type default))
-    (uuid 6e0097c7-5075-40af-bbd5-191196d365a1)
-  )
   (wire (pts (xy 51.435 145.415) (xy 50.8 145.415))
     (stroke (width 0) (type default))
     (uuid 70486980-7140-478c-abb0-f144a9d41e71)
-  )
-  (wire (pts (xy 46.99 95.25) (xy 50.8 95.25))
-    (stroke (width 0) (type default))
-    (uuid 74460407-1b28-4936-b7aa-4c798299fbb5)
   )
   (wire (pts (xy 162.56 114.3) (xy 162.56 116.84))
     (stroke (width 0) (type default))
@@ -1485,10 +913,6 @@
     (stroke (width 0) (type default))
     (uuid 82c42502-67a6-4bbf-92a0-c61063d19411)
   )
-  (wire (pts (xy 72.39 45.72) (xy 72.39 96.52))
-    (stroke (width 0) (type default))
-    (uuid 83e6f8bc-a06b-489b-9202-f9a7d6d061a4)
-  )
   (wire (pts (xy 207.01 53.34) (xy 226.06 53.34))
     (stroke (width 0) (type default))
     (uuid 8659b870-f4a2-4693-be2f-feb54f121637)
@@ -1496,10 +920,6 @@
   (wire (pts (xy 152.4 109.22) (xy 170.18 109.22))
     (stroke (width 0) (type default))
     (uuid 868f0f73-688b-4cc9-a454-324694feaaa7)
-  )
-  (wire (pts (xy 53.34 45.72) (xy 72.39 45.72))
-    (stroke (width 0) (type default))
-    (uuid 89c3f118-f089-488f-8a32-277ca49eb4c4)
   )
   (wire (pts (xy 187.96 53.34) (xy 207.01 53.34))
     (stroke (width 0) (type default))
@@ -1512,10 +932,6 @@
   (wire (pts (xy 207.01 21.59) (xy 187.96 21.59))
     (stroke (width 0) (type default))
     (uuid 91c66e57-435f-4aa0-a6b5-285e15cdeb09)
-  )
-  (wire (pts (xy 49.53 69.85) (xy 53.34 69.85))
-    (stroke (width 0) (type default))
-    (uuid 926fcd63-3b6f-42d2-a50a-674610b5631c)
   )
   (wire (pts (xy 123.19 114.3) (xy 123.19 116.84))
     (stroke (width 0) (type default))
@@ -1537,14 +953,6 @@
     (stroke (width 0) (type default))
     (uuid a079f7a3-04ca-4a0d-b188-10dbc263218b)
   )
-  (wire (pts (xy 62.23 95.25) (xy 50.8 95.25))
-    (stroke (width 0) (type default))
-    (uuid a122c8ee-a01a-425f-9499-3adc9d18f42e)
-  )
-  (wire (pts (xy 41.91 105.41) (xy 41.91 110.49))
-    (stroke (width 0) (type default))
-    (uuid a6276575-df1d-4b51-b9db-4bd866cdb043)
-  )
   (wire (pts (xy 160.02 119.38) (xy 170.18 119.38))
     (stroke (width 0) (type default))
     (uuid ad08efda-f2d1-42a2-9d88-e2a1825366ab)
@@ -1557,17 +965,9 @@
     (stroke (width 0) (type default))
     (uuid af15d6b9-8812-4021-9885-25fbfe8dd321)
   )
-  (wire (pts (xy 62.23 96.52) (xy 62.23 95.25))
-    (stroke (width 0) (type default))
-    (uuid b2eb039b-f89a-4997-aca4-d26d0180f8de)
-  )
   (wire (pts (xy 264.16 33.02) (xy 264.16 38.1))
     (stroke (width 0) (type default))
     (uuid b352af81-2a84-4488-9023-908ef0d99b82)
-  )
-  (wire (pts (xy 30.48 85.09) (xy 44.45 85.09))
-    (stroke (width 0) (type default))
-    (uuid b662531a-ac33-4e2f-a8bc-4ade7e2a2091)
   )
   (wire (pts (xy 245.11 53.34) (xy 264.16 53.34))
     (stroke (width 0) (type default))
@@ -1580,10 +980,6 @@
   (wire (pts (xy 205.74 127) (xy 199.39 127))
     (stroke (width 0) (type default))
     (uuid bc123cfd-2f59-4bbd-bf9a-ad2b2a297999)
-  )
-  (wire (pts (xy 53.34 45.72) (xy 53.34 48.26))
-    (stroke (width 0) (type default))
-    (uuid bce8eb2d-1cba-4bbd-872c-7a6a27cc7dcf)
   )
   (wire (pts (xy 187.96 33.02) (xy 187.96 38.1))
     (stroke (width 0) (type default))
@@ -1601,10 +997,6 @@
     (stroke (width 0) (type default))
     (uuid ca01e487-8ac8-4f40-b666-1667444d2633)
   )
-  (wire (pts (xy 39.37 45.72) (xy 39.37 48.26))
-    (stroke (width 0) (type default))
-    (uuid cc9ff24f-afbf-48ac-a722-42e2904d4bc3)
-  )
   (wire (pts (xy 200.66 38.1) (xy 207.01 38.1))
     (stroke (width 0) (type default))
     (uuid cdb28e72-376c-4b47-bb3e-59e5dfa4abf7)
@@ -1620,10 +1012,6 @@
   (wire (pts (xy 168.91 25.4) (xy 168.91 21.59))
     (stroke (width 0) (type default))
     (uuid d495c8ba-62be-4c4c-9798-b9764e79ac4b)
-  )
-  (wire (pts (xy 67.31 69.85) (xy 67.31 96.52))
-    (stroke (width 0) (type default))
-    (uuid d5a2a734-edd3-41bf-aee3-15040eca6ee2)
   )
   (wire (pts (xy 205.74 111.76) (xy 199.39 111.76))
     (stroke (width 0) (type default))
@@ -1649,17 +1037,9 @@
     (stroke (width 0) (type default))
     (uuid ebc7f2d1-5112-4cbd-804c-54e2282923d0)
   )
-  (wire (pts (xy 44.45 80.01) (xy 44.45 77.47))
-    (stroke (width 0) (type default))
-    (uuid ed0599d2-a5c5-44bc-8eb2-66e14713ae17)
-  )
   (wire (pts (xy 139.7 114.3) (xy 162.56 114.3))
     (stroke (width 0) (type default))
     (uuid edb77df1-9879-4955-afe5-1e32a6f38f86)
-  )
-  (wire (pts (xy 62.23 106.68) (xy 67.31 106.68))
-    (stroke (width 0) (type default))
-    (uuid eddb310f-56ac-410c-848a-0f3417601bb6)
   )
   (wire (pts (xy 168.91 33.02) (xy 168.91 38.1))
     (stroke (width 0) (type default))
@@ -1689,14 +1069,6 @@
   (label "L2" (at 205.74 121.92 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 356b9a41-8d8e-423a-b38c-3c52668e8431)
-  )
-  (label "B" (at 27.94 110.49 0) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 37778746-0297-44c1-8b59-b27b77adf211)
-  )
-  (label "R" (at 30.48 60.96 0) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 47d6bd83-1572-44ce-b339-38cd9e48d495)
   )
   (label "L4" (at 212.09 38.1 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right bottom))
@@ -1778,10 +1150,6 @@
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid fe55aad7-3654-4b12-a192-b51ada46bf12)
   )
-  (label "G" (at 30.48 85.09 0) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid ff3a82d8-713c-494d-8a70-4e7c285d9e25)
-  )
 
   (symbol (lib_id "Device:LED") (at 245.11 46.99 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
@@ -1801,35 +1169,9 @@
     (pin "1" (uuid cd938812-a533-4a97-a22e-fb609bcb0ee2))
     (pin "2" (uuid d4e09bfe-1300-42fd-9c5c-4935fec443f3))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D11") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:R") (at 39.37 76.2 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 03ac0537-5fad-4fe0-8997-14536903b58f)
-    (property "Reference" "R3" (at 39.37 76.2 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "100k" (at 41.275 76.835 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 37.592 76.2 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 39.37 76.2 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid f6456935-5835-4dd1-b7f3-b4ea2cec6910))
-    (pin "2" (uuid 7233fc63-65e9-490d-adcd-47c64a65256d))
-    (instances
-      (project "hoember"
-        (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-          (reference "R3") (unit 1)
         )
       )
     )
@@ -1853,7 +1195,7 @@
     (pin "1" (uuid b9e5b236-8b9e-4d85-8e2f-2bbbfc972da4))
     (pin "2" (uuid ca6e1707-7bd4-478b-b9f4-793d6cfb2389))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R9") (unit 1)
         )
@@ -1882,7 +1224,7 @@
     (pin "4" (uuid 7da60a9b-bab6-43e1-a174-b594d175039f))
     (pin "5" (uuid 04927a9e-af96-46bc-9e89-c208bcb73f05))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "J1") (unit 1)
         )
@@ -1911,35 +1253,9 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "T1") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:L") (at 53.34 52.07 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 0d567f5a-c321-4bfd-a6ac-c19446d1f78a)
-    (property "Reference" "L2" (at 54.61 50.7999 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "L" (at 54.61 53.3399 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Inductor_SMD:L_1008_2520Metric" (at 53.34 52.07 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 53.34 52.07 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid ce1853fe-99b9-4811-a316-bb984f5c62ce))
-    (pin "2" (uuid d4ecfe83-740e-4507-b916-619a29ce009f))
-    (instances
-      (project "hoember"
-        (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-          (reference "L2") (unit 1)
         )
       )
     )
@@ -1963,7 +1279,7 @@
     (pin "1" (uuid 6363778f-16f1-4035-b06c-1cd6e541de2f))
     (pin "2" (uuid 26d5f371-05f3-4c9c-851e-a72be507c3af))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "C3") (unit 1)
         )
@@ -1989,62 +1305,9 @@
     (pin "1" (uuid f20478d9-6290-43bb-9d46-147fff5ae2c4))
     (pin "2" (uuid 40a8531f-c45a-4b93-88ad-0adf1c0ce9eb))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D6") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Transistor_FET:AO3401A") (at 44.45 72.39 270) (mirror x) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 17a5f37d-34c8-4ccd-b3cd-7b199e521964)
-    (property "Reference" "Q3" (at 44.45 62.23 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "AO3401A" (at 44.45 64.77 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "karifa:SOT-23" (at 42.545 67.31 0)
-      (effects (font (size 1.27 1.27) italic) (justify left) hide)
-    )
-    (property "Datasheet" "http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf" (at 44.45 72.39 0)
-      (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-    (pin "1" (uuid b39bf867-5dd2-465d-8852-894a904fe24b))
-    (pin "2" (uuid 87861226-8838-4b69-83d2-45c9a05a23f5))
-    (pin "3" (uuid 9ae4ca2e-966c-44eb-abaa-be52d792338e))
-    (instances
-      (project "hoember"
-        (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-          (reference "Q3") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:R") (at 36.83 101.6 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 23172657-7dcf-40a6-be57-7a2d6a0ef71d)
-    (property "Reference" "R1" (at 36.83 101.6 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "100k" (at 38.735 102.235 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 35.052 101.6 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 36.83 101.6 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid a26a1351-ff8d-4842-b9d4-a2f09566ff9b))
-    (pin "2" (uuid af57b723-3dce-4dee-b8a4-a5edc4da8170))
-    (instances
-      (project "hoember"
-        (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-          (reference "R1") (unit 1)
         )
       )
     )
@@ -2068,7 +1331,7 @@
     (pin "1" (uuid ff25e27b-9ff1-4956-9af4-821a9ed85dde))
     (pin "2" (uuid e30140bf-d6ee-4ba7-a502-3eadcccdf0ab))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D2") (unit 1)
         )
@@ -2093,7 +1356,7 @@
     )
     (pin "1" (uuid 9a24ae8e-26ba-42f5-84ad-6a6b35cf8d40))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0120") (unit 1)
         )
@@ -2119,35 +1382,9 @@
     (pin "1" (uuid 3941818f-9c92-4b48-9561-54bf9274be32))
     (pin "2" (uuid 51387a79-83f0-4b33-8a05-8d95590dadef))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D4") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:L") (at 53.34 76.2 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 3f616360-728e-42dc-8ff8-bc85e19138ce)
-    (property "Reference" "L3" (at 54.61 74.9299 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "L" (at 54.61 77.4699 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Inductor_SMD:L_1008_2520Metric" (at 53.34 76.2 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 53.34 76.2 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid b54d3980-7227-4f40-ab87-f2a332990438))
-    (pin "2" (uuid 46a60297-0fcf-4ec6-8451-446723f21345))
-    (instances
-      (project "hoember"
-        (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-          (reference "L3") (unit 1)
         )
       )
     )
@@ -2171,7 +1408,7 @@
     (pin "1" (uuid e39c5047-f5e2-4d5b-a08c-a4dd5dc100bc))
     (pin "2" (uuid 67490307-c4c7-405d-bff6-a4c991bb9300))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R7") (unit 1)
         )
@@ -2197,7 +1434,7 @@
     (pin "1" (uuid 9ac0fbf5-cd1b-44c7-adeb-85721ac72a8e))
     (pin "2" (uuid 4f003f27-c88c-47b2-af7e-ee3bfac78469))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "BT1") (unit 1)
         )
@@ -2223,34 +1460,9 @@
     (pin "1" (uuid 0edf27d3-f493-4fd5-93e6-7cde20b94c81))
     (pin "2" (uuid ad6f1583-8a53-46a4-ba33-48fcd9f77d1c))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D13") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:VCC") (at 39.37 69.85 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 4a6d6fe3-0e5a-46b7-844f-8270f3d8762e)
-    (property "Reference" "#PWR0116" (at 39.37 73.66 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "VCC" (at 39.37 64.77 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 39.37 69.85 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 39.37 69.85 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 37529be7-0df5-4776-aae9-7c0f4f7b7668))
-    (instances
-      (project "hoember"
-        (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-          (reference "#PWR0116") (unit 1)
         )
       )
     )
@@ -2274,34 +1486,9 @@
     (pin "1" (uuid 91641769-3a9d-406c-8df1-f64621c43e8f))
     (pin "2" (uuid 7bcdded5-708a-4db2-9960-d9a3eab06054))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D10") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 62.23 106.68 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 4cb10f09-3a93-401e-aaaa-19a5dcffee99)
-    (property "Reference" "#PWR0107" (at 62.23 113.03 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 64.77 107.9499 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "" (at 62.23 106.68 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 62.23 106.68 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 0422277c-fa20-414c-a5a1-110a6733df03))
-    (instances
-      (project "hoember"
-        (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-          (reference "#PWR0107") (unit 1)
         )
       )
     )
@@ -2325,7 +1512,7 @@
     (pin "1" (uuid 78c5648d-3ece-470d-a8c3-bf16eabd3de8))
     (pin "2" (uuid d661f740-1cb1-47a4-8505-f1343b240101))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D12") (unit 1)
         )
@@ -2350,7 +1537,7 @@
     )
     (pin "1" (uuid 3cbbd6de-db59-4355-a6fd-df954fa55644))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR01") (unit 1)
         )
@@ -2380,7 +1567,7 @@
     )
     (pin "1" (uuid 099be4f3-2d7d-4290-b87c-d7ea50a66e22))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0117") (unit 1)
         )
@@ -2424,59 +1611,9 @@
     (pin "8" (uuid 47245906-1192-480e-a013-a607c2b30baf))
     (pin "9" (uuid e57cea30-d505-4bc5-b229-c4375d2f5761))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "U1") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:VCC") (at 39.37 45.72 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 5fe4a978-b8ea-459d-b803-8326751a8846)
-    (property "Reference" "#PWR0115" (at 39.37 49.53 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "VCC" (at 39.37 40.64 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 39.37 45.72 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 39.37 45.72 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 0abb58f2-c77f-4c91-893b-4cb07057296e))
-    (instances
-      (project "hoember"
-        (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-          (reference "#PWR0115") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 53.34 55.88 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 6669a058-59cb-4f62-a885-97416b6fcc65)
-    (property "Reference" "#PWR0114" (at 53.34 62.23 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 55.88 57.1499 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "" (at 53.34 55.88 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 53.34 55.88 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid c0efa3fa-f7f7-4790-98b6-be7b8a515831))
-    (instances
-      (project "hoember"
-        (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-          (reference "#PWR0114") (unit 1)
         )
       )
     )
@@ -2500,7 +1637,7 @@
     (pin "1" (uuid 97a12543-9aad-4bdf-b087-fa60f239bb59))
     (pin "2" (uuid cb35c741-b592-43a5-8c80-73393c20e20d))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R6") (unit 1)
         )
@@ -2525,7 +1662,7 @@
     )
     (pin "1" (uuid c30077b7-5b15-4365-8523-375c4d74c0b6))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0105") (unit 1)
         )
@@ -2551,7 +1688,7 @@
     (pin "1" (uuid 91922c86-0fbf-4e90-a424-35b80b7daece))
     (pin "2" (uuid a671dc8a-f409-4d51-acc8-345792a82102))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R4") (unit 1)
         )
@@ -2577,34 +1714,9 @@
     (pin "1" (uuid f90cc00e-84ff-4606-9a5d-d8f73c400d2b))
     (pin "2" (uuid 52969d6e-e566-4049-9200-ee7f5a4d83bf))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D5") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 53.34 80.01 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 77602ea1-10a9-4347-b0f0-07092c67a272)
-    (property "Reference" "#PWR0113" (at 53.34 86.36 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 55.88 81.2799 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "" (at 53.34 80.01 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 53.34 80.01 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 75c4dd47-c8c8-4263-8ab1-b590f90473b7))
-    (instances
-      (project "hoember"
-        (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-          (reference "#PWR0113") (unit 1)
         )
       )
     )
@@ -2628,7 +1740,7 @@
     (pin "1" (uuid c8e1ad5f-18ce-4c01-88b9-00d018e551fb))
     (pin "2" (uuid b2535d23-ce82-4b20-952c-054861daed96))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R12") (unit 1)
         )
@@ -2654,7 +1766,7 @@
     (pin "1" (uuid 9830da42-1180-46d0-8342-be66f7f9d67e))
     (pin "2" (uuid d9e004a9-eacd-4df6-843e-22f1ea747918))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R11") (unit 1)
         )
@@ -2680,64 +1792,9 @@
     (pin "1" (uuid 5e250d05-c48c-4c29-90c0-9ac960527556))
     (pin "2" (uuid 7c1e1dc6-685a-411e-b06d-15b631b52d46))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R5") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:LED_ARGB") (at 67.31 101.6 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 893b9570-7c84-4c0c-8f54-863bfa12ea9a)
-    (property "Reference" "D1" (at 77.47 100.3299 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "LED_ARGB" (at 77.47 102.8699 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "LED_SMD:LED_RGB_Wuerth-PLCC4_3.2x2.8mm_150141M173100" (at 66.04 101.6 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 66.04 101.6 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 544526d0-c337-44c7-894c-ac7cc7cde313))
-    (pin "2" (uuid e4df2961-59ca-4c2f-a0c4-3112e10350c1))
-    (pin "3" (uuid ca9b3776-2ae0-4282-84f9-7505abf86fd1))
-    (pin "4" (uuid a00b4152-3485-43da-be16-32253f11f518))
-    (instances
-      (project "hoember"
-        (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-          (reference "D1") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Transistor_FET:AO3401A") (at 44.45 48.26 270) (mirror x) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 8ad2b27f-56c4-4507-95fe-ff61e05d0e5d)
-    (property "Reference" "Q2" (at 44.45 38.1 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "AO3401A" (at 44.45 40.64 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "karifa:SOT-23" (at 42.545 43.18 0)
-      (effects (font (size 1.27 1.27) italic) (justify left) hide)
-    )
-    (property "Datasheet" "http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf" (at 44.45 48.26 0)
-      (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-    (pin "1" (uuid 17811ecc-0744-4023-844c-18c0d1452b75))
-    (pin "2" (uuid 7ef29fc3-8ab9-44f9-83e8-9f849c9a7cee))
-    (pin "3" (uuid 5045b0f0-0330-45dc-94ae-58611e717a17))
-    (instances
-      (project "hoember"
-        (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-          (reference "Q2") (unit 1)
         )
       )
     )
@@ -2761,7 +1818,7 @@
     (pin "1" (uuid 5946d435-f718-4cbf-b7ae-f616314273c2))
     (pin "2" (uuid 990670d1-b050-41ce-a1bb-c9e2017d6490))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D9") (unit 1)
         )
@@ -2787,7 +1844,7 @@
     (pin "1" (uuid 6a3bc108-adc8-490f-a851-f5fe2895326f))
     (pin "2" (uuid 92d1d1cc-763e-48f2-b50f-b1860502a4c5))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "C2") (unit 1)
         )
@@ -2812,7 +1869,7 @@
     )
     (pin "1" (uuid 2afe5c9b-4e24-4553-809a-421f47b899a8))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0119") (unit 1)
         )
@@ -2837,7 +1894,7 @@
     )
     (pin "1" (uuid b30ae3f2-c0ad-40db-8d30-4dd27beb64cb))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0104") (unit 1)
         )
@@ -2863,59 +1920,9 @@
     (pin "1" (uuid ed55764e-ef13-41e1-9329-56392e48ad37))
     (pin "2" (uuid 1a371558-bc22-45b7-8396-a22ea4771ceb))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R8") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 50.8 105.41 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid b05f27b6-e2f9-41f7-9ba9-2a938ef2d6c2)
-    (property "Reference" "#PWR0108" (at 50.8 111.76 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 53.34 106.6799 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "" (at 50.8 105.41 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 50.8 105.41 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 8c74cf7b-aff5-4fe9-948d-7b0cf2ee4d5e))
-    (instances
-      (project "hoember"
-        (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-          (reference "#PWR0108") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:VCC") (at 36.83 95.25 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid b0e9eb59-0c55-4f8c-a9f0-dd35e1dd8be3)
-    (property "Reference" "#PWR0109" (at 36.83 99.06 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "VCC" (at 36.83 90.17 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 36.83 95.25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 36.83 95.25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 643d9524-dbc5-4faa-85c7-2d32e4914b3c))
-    (instances
-      (project "hoember"
-        (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-          (reference "#PWR0109") (unit 1)
         )
       )
     )
@@ -2939,7 +1946,7 @@
     (pin "1" (uuid 80957706-93e0-46e9-8a48-d06394c7a841))
     (pin "2" (uuid 9782f838-c357-424d-b114-47ae163262c9))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "C1") (unit 1)
         )
@@ -2965,7 +1972,7 @@
     (pin "1" (uuid dc2a9f4b-a603-445b-b0c0-be9bfc021268))
     (pin "2" (uuid 4a24fa85-5991-4943-867f-7b6cf0aa4d73))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R10") (unit 1)
         )
@@ -2990,7 +1997,7 @@
     )
     (pin "1" (uuid 7363b08f-9133-40fd-8f0b-bb800e6ce284))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0111") (unit 1)
         )
@@ -3015,7 +2022,7 @@
     )
     (pin "1" (uuid 775056d5-73dc-4e66-8ce2-0ef6311f37e3))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR04") (unit 1)
         )
@@ -3040,7 +2047,7 @@
     )
     (pin "1" (uuid 58103d5a-697b-44a2-9a1d-9e68e412dd64))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR03") (unit 1)
         )
@@ -3066,7 +2073,7 @@
     (pin "1" (uuid 8c4a2bb1-2ab1-488d-9cc3-95720b5e8901))
     (pin "2" (uuid 91166675-27b3-492f-ab45-f88d772269a2))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D7") (unit 1)
         )
@@ -3091,7 +2098,7 @@
     )
     (pin "1" (uuid fb292cda-75ae-4e6e-9999-5816259ef73b))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR05") (unit 1)
         )
@@ -3116,7 +2123,7 @@
     )
     (pin "1" (uuid 60ba66f2-6352-4164-a18b-eaed306f0e91))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0106") (unit 1)
         )
@@ -3142,7 +2149,7 @@
     (pin "1" (uuid fc097511-54de-412e-8b58-2526e17e8db0))
     (pin "2" (uuid bfe7cdd2-cd95-4b69-b9a2-4fd33f55ebb7))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D3") (unit 1)
         )
@@ -3167,35 +2174,9 @@
     )
     (pin "1" (uuid 50fdb0bd-f721-4478-9ee9-d6ad1ee49050))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0103") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:L") (at 50.8 101.6 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid d8f2b68b-84cb-40a4-9f57-74c8292c05d9)
-    (property "Reference" "L1" (at 52.07 100.3299 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "L" (at 52.07 102.8699 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Inductor_SMD:L_1008_2520Metric" (at 50.8 101.6 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 50.8 101.6 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 3ac88b3b-82d9-49e7-8b72-4c041e27b037))
-    (pin "2" (uuid 9ca3148c-d6ed-478c-b1d3-4945c2e81657))
-    (instances
-      (project "hoember"
-        (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-          (reference "L1") (unit 1)
         )
       )
     )
@@ -3218,7 +2199,7 @@
     )
     (pin "1" (uuid a2ccbfc2-7927-4a73-ba56-978f0e606dbc))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR02") (unit 1)
         )
@@ -3251,35 +2232,9 @@
     (pin "3" (uuid 92961f72-1b8d-4776-ad1f-a5a39d5a0a2d))
     (pin "4" (uuid 9affceab-6348-475f-8438-be07fd22dda0))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "SW1") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:R") (at 39.37 52.07 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid ec23271e-55f2-4dfd-b3bd-335cce308402)
-    (property "Reference" "R2" (at 39.37 52.07 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "100k" (at 41.275 52.705 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 37.592 52.07 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 39.37 52.07 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid b10ba4c7-89da-47e6-be31-436ca1f73a71))
-    (pin "2" (uuid e01b791b-5839-42f3-a956-870c375437b3))
-    (instances
-      (project "hoember"
-        (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-          (reference "R2") (unit 1)
         )
       )
     )
@@ -3303,7 +2258,7 @@
     (pin "1" (uuid 79d55edb-dd4f-43f3-8fbc-73359742ba30))
     (pin "2" (uuid 26d3a7f2-282d-4b83-a059-2ae484be6e4c))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D8") (unit 1)
         )
@@ -3328,7 +2283,7 @@
     )
     (pin "1" (uuid 6dae6269-9e9f-4439-8186-90b224e20b83))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR07") (unit 1)
         )
@@ -3353,36 +2308,9 @@
     )
     (pin "1" (uuid b94aefca-a765-44ac-b1b2-d2a581361474))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR06") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Transistor_FET:AO3401A") (at 41.91 97.79 270) (mirror x) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid fc90615f-14ab-4e28-a4dd-78e4c9052225)
-    (property "Reference" "Q1" (at 41.91 87.63 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "AO3401A" (at 41.91 90.17 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "karifa:SOT-23" (at 40.005 92.71 0)
-      (effects (font (size 1.27 1.27) italic) (justify left) hide)
-    )
-    (property "Datasheet" "http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf" (at 41.91 97.79 0)
-      (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-    (pin "1" (uuid f68b2b59-c8f9-4959-8145-37da90ca894d))
-    (pin "2" (uuid c4a08790-4647-4a29-9e47-9998eeb07abf))
-    (pin "3" (uuid 92362261-a78b-440e-9c0e-a076eac4f95b))
-    (instances
-      (project "hoember"
-        (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-          (reference "Q1") (unit 1)
         )
       )
     )
@@ -3405,7 +2333,7 @@
     )
     (pin "1" (uuid 7f505830-8f89-475e-bbc9-20fd9d09aeab))
     (instances
-      (project "hoember"
+      (project "mezi"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0118") (unit 1)
         )
