@@ -1584,7 +1584,7 @@
     (property "Value" "PY32F002AF15P6TU" (at 184.785 105.41 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" (at 187.96 104.14 0)
+    (property "Footprint" "karifa:TSSOP-20_4.4x6.5mm_P0.65mm" (at 187.96 104.14 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 193.04 111.76 0)
