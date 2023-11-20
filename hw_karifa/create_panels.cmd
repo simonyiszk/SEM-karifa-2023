@@ -1,7 +1,7 @@
 @echo off
 
 kikit panelize ^
---layout "grid; rows:3; cols:7; vspace:5mm; hspace:-9mm; alternation:rowsCols; rotation:0deg; hbackbone:5mm;" ^
+--layout "grid; rows:3; cols:4; vspace:5mm; hspace:-9mm; alternation:cols; rotation:0deg; hbackbone:5mm;" ^
 --tabs "annotation" ^
 --framing "frame; width:5mm; space:3mm; cuts:h" ^
 --cuts "mousebites; drill:0.5mm; spacing: 1mm; offset:-0.5mm; prolong:0.5mm" ^

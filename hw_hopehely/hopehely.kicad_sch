@@ -1801,7 +1801,7 @@
     (pin "1" (uuid cd938812-a533-4a97-a22e-fb609bcb0ee2))
     (pin "2" (uuid d4e09bfe-1300-42fd-9c5c-4935fec443f3))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D11") (unit 1)
         )
@@ -1827,7 +1827,7 @@
     (pin "1" (uuid f6456935-5835-4dd1-b7f3-b4ea2cec6910))
     (pin "2" (uuid 7233fc63-65e9-490d-adcd-47c64a65256d))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R3") (unit 1)
         )
@@ -1853,7 +1853,7 @@
     (pin "1" (uuid b9e5b236-8b9e-4d85-8e2f-2bbbfc972da4))
     (pin "2" (uuid ca6e1707-7bd4-478b-b9f4-793d6cfb2389))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R9") (unit 1)
         )
@@ -1882,7 +1882,7 @@
     (pin "4" (uuid 7da60a9b-bab6-43e1-a174-b594d175039f))
     (pin "5" (uuid 04927a9e-af96-46bc-9e89-c208bcb73f05))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "J1") (unit 1)
         )
@@ -1911,7 +1911,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "T1") (unit 1)
         )
@@ -1937,7 +1937,7 @@
     (pin "1" (uuid ce1853fe-99b9-4811-a316-bb984f5c62ce))
     (pin "2" (uuid d4ecfe83-740e-4507-b916-619a29ce009f))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "L2") (unit 1)
         )
@@ -1963,7 +1963,7 @@
     (pin "1" (uuid 6363778f-16f1-4035-b06c-1cd6e541de2f))
     (pin "2" (uuid 26d5f371-05f3-4c9c-851e-a72be507c3af))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "C3") (unit 1)
         )
@@ -1989,7 +1989,7 @@
     (pin "1" (uuid f20478d9-6290-43bb-9d46-147fff5ae2c4))
     (pin "2" (uuid 40a8531f-c45a-4b93-88ad-0adf1c0ce9eb))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D6") (unit 1)
         )
@@ -2016,7 +2016,7 @@
     (pin "2" (uuid 87861226-8838-4b69-83d2-45c9a05a23f5))
     (pin "3" (uuid 9ae4ca2e-966c-44eb-abaa-be52d792338e))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "Q3") (unit 1)
         )
@@ -2042,7 +2042,7 @@
     (pin "1" (uuid a26a1351-ff8d-4842-b9d4-a2f09566ff9b))
     (pin "2" (uuid af57b723-3dce-4dee-b8a4-a5edc4da8170))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R1") (unit 1)
         )
@@ -2068,7 +2068,7 @@
     (pin "1" (uuid ff25e27b-9ff1-4956-9af4-821a9ed85dde))
     (pin "2" (uuid e30140bf-d6ee-4ba7-a502-3eadcccdf0ab))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D2") (unit 1)
         )
@@ -2093,7 +2093,7 @@
     )
     (pin "1" (uuid 9a24ae8e-26ba-42f5-84ad-6a6b35cf8d40))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0120") (unit 1)
         )
@@ -2119,7 +2119,7 @@
     (pin "1" (uuid 3941818f-9c92-4b48-9561-54bf9274be32))
     (pin "2" (uuid 51387a79-83f0-4b33-8a05-8d95590dadef))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D4") (unit 1)
         )
@@ -2145,7 +2145,7 @@
     (pin "1" (uuid b54d3980-7227-4f40-ab87-f2a332990438))
     (pin "2" (uuid 46a60297-0fcf-4ec6-8451-446723f21345))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "L3") (unit 1)
         )
@@ -2171,7 +2171,7 @@
     (pin "1" (uuid e39c5047-f5e2-4d5b-a08c-a4dd5dc100bc))
     (pin "2" (uuid 67490307-c4c7-405d-bff6-a4c991bb9300))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R7") (unit 1)
         )
@@ -2197,7 +2197,7 @@
     (pin "1" (uuid 9ac0fbf5-cd1b-44c7-adeb-85721ac72a8e))
     (pin "2" (uuid 4f003f27-c88c-47b2-af7e-ee3bfac78469))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "BT1") (unit 1)
         )
@@ -2223,7 +2223,7 @@
     (pin "1" (uuid 0edf27d3-f493-4fd5-93e6-7cde20b94c81))
     (pin "2" (uuid ad6f1583-8a53-46a4-ba33-48fcd9f77d1c))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D13") (unit 1)
         )
@@ -2248,7 +2248,7 @@
     )
     (pin "1" (uuid 37529be7-0df5-4776-aae9-7c0f4f7b7668))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0116") (unit 1)
         )
@@ -2274,7 +2274,7 @@
     (pin "1" (uuid 91641769-3a9d-406c-8df1-f64621c43e8f))
     (pin "2" (uuid 7bcdded5-708a-4db2-9960-d9a3eab06054))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D10") (unit 1)
         )
@@ -2299,7 +2299,7 @@
     )
     (pin "1" (uuid 0422277c-fa20-414c-a5a1-110a6733df03))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0107") (unit 1)
         )
@@ -2325,7 +2325,7 @@
     (pin "1" (uuid 78c5648d-3ece-470d-a8c3-bf16eabd3de8))
     (pin "2" (uuid d661f740-1cb1-47a4-8505-f1343b240101))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D12") (unit 1)
         )
@@ -2350,7 +2350,7 @@
     )
     (pin "1" (uuid 3cbbd6de-db59-4355-a6fd-df954fa55644))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR01") (unit 1)
         )
@@ -2380,7 +2380,7 @@
     )
     (pin "1" (uuid 099be4f3-2d7d-4290-b87c-d7ea50a66e22))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0117") (unit 1)
         )
@@ -2397,7 +2397,7 @@
     (property "Value" "PY32F002AF15P6TU" (at 184.785 105.41 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" (at 187.96 104.14 0)
+    (property "Footprint" "karifa:TSSOP-20_4.4x6.5mm_P0.65mm" (at 187.96 104.14 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 193.04 111.76 0)
@@ -2424,7 +2424,7 @@
     (pin "8" (uuid 47245906-1192-480e-a013-a607c2b30baf))
     (pin "9" (uuid e57cea30-d505-4bc5-b229-c4375d2f5761))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "U1") (unit 1)
         )
@@ -2449,7 +2449,7 @@
     )
     (pin "1" (uuid 0abb58f2-c77f-4c91-893b-4cb07057296e))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0115") (unit 1)
         )
@@ -2474,7 +2474,7 @@
     )
     (pin "1" (uuid c0efa3fa-f7f7-4790-98b6-be7b8a515831))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0114") (unit 1)
         )
@@ -2500,7 +2500,7 @@
     (pin "1" (uuid 97a12543-9aad-4bdf-b087-fa60f239bb59))
     (pin "2" (uuid cb35c741-b592-43a5-8c80-73393c20e20d))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R6") (unit 1)
         )
@@ -2525,7 +2525,7 @@
     )
     (pin "1" (uuid c30077b7-5b15-4365-8523-375c4d74c0b6))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0105") (unit 1)
         )
@@ -2551,7 +2551,7 @@
     (pin "1" (uuid 91922c86-0fbf-4e90-a424-35b80b7daece))
     (pin "2" (uuid a671dc8a-f409-4d51-acc8-345792a82102))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R4") (unit 1)
         )
@@ -2577,7 +2577,7 @@
     (pin "1" (uuid f90cc00e-84ff-4606-9a5d-d8f73c400d2b))
     (pin "2" (uuid 52969d6e-e566-4049-9200-ee7f5a4d83bf))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D5") (unit 1)
         )
@@ -2602,7 +2602,7 @@
     )
     (pin "1" (uuid 75c4dd47-c8c8-4263-8ab1-b590f90473b7))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0113") (unit 1)
         )
@@ -2628,7 +2628,7 @@
     (pin "1" (uuid c8e1ad5f-18ce-4c01-88b9-00d018e551fb))
     (pin "2" (uuid b2535d23-ce82-4b20-952c-054861daed96))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R12") (unit 1)
         )
@@ -2654,7 +2654,7 @@
     (pin "1" (uuid 9830da42-1180-46d0-8342-be66f7f9d67e))
     (pin "2" (uuid d9e004a9-eacd-4df6-843e-22f1ea747918))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R11") (unit 1)
         )
@@ -2680,7 +2680,7 @@
     (pin "1" (uuid 5e250d05-c48c-4c29-90c0-9ac960527556))
     (pin "2" (uuid 7c1e1dc6-685a-411e-b06d-15b631b52d46))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R5") (unit 1)
         )
@@ -2697,7 +2697,7 @@
     (property "Value" "LED_ARGB" (at 77.47 102.8699 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "LED_SMD:LED_RGB_Wuerth-PLCC4_3.2x2.8mm_150141M173100" (at 66.04 101.6 0)
+    (property "Footprint" "karifa:LED_RGB_Wuerth-PLCC4_3.2x2.8mm_150141M173100" (at 66.04 101.6 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 66.04 101.6 0)
@@ -2708,7 +2708,7 @@
     (pin "3" (uuid ca9b3776-2ae0-4282-84f9-7505abf86fd1))
     (pin "4" (uuid a00b4152-3485-43da-be16-32253f11f518))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D1") (unit 1)
         )
@@ -2735,7 +2735,7 @@
     (pin "2" (uuid 7ef29fc3-8ab9-44f9-83e8-9f849c9a7cee))
     (pin "3" (uuid 5045b0f0-0330-45dc-94ae-58611e717a17))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "Q2") (unit 1)
         )
@@ -2761,7 +2761,7 @@
     (pin "1" (uuid 5946d435-f718-4cbf-b7ae-f616314273c2))
     (pin "2" (uuid 990670d1-b050-41ce-a1bb-c9e2017d6490))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D9") (unit 1)
         )
@@ -2787,7 +2787,7 @@
     (pin "1" (uuid 6a3bc108-adc8-490f-a851-f5fe2895326f))
     (pin "2" (uuid 92d1d1cc-763e-48f2-b50f-b1860502a4c5))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "C2") (unit 1)
         )
@@ -2812,7 +2812,7 @@
     )
     (pin "1" (uuid 2afe5c9b-4e24-4553-809a-421f47b899a8))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0119") (unit 1)
         )
@@ -2837,7 +2837,7 @@
     )
     (pin "1" (uuid b30ae3f2-c0ad-40db-8d30-4dd27beb64cb))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0104") (unit 1)
         )
@@ -2863,7 +2863,7 @@
     (pin "1" (uuid ed55764e-ef13-41e1-9329-56392e48ad37))
     (pin "2" (uuid 1a371558-bc22-45b7-8396-a22ea4771ceb))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R8") (unit 1)
         )
@@ -2888,7 +2888,7 @@
     )
     (pin "1" (uuid 8c74cf7b-aff5-4fe9-948d-7b0cf2ee4d5e))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0108") (unit 1)
         )
@@ -2913,7 +2913,7 @@
     )
     (pin "1" (uuid 643d9524-dbc5-4faa-85c7-2d32e4914b3c))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0109") (unit 1)
         )
@@ -2939,7 +2939,7 @@
     (pin "1" (uuid 80957706-93e0-46e9-8a48-d06394c7a841))
     (pin "2" (uuid 9782f838-c357-424d-b114-47ae163262c9))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "C1") (unit 1)
         )
@@ -2965,7 +2965,7 @@
     (pin "1" (uuid dc2a9f4b-a603-445b-b0c0-be9bfc021268))
     (pin "2" (uuid 4a24fa85-5991-4943-867f-7b6cf0aa4d73))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R10") (unit 1)
         )
@@ -2990,7 +2990,7 @@
     )
     (pin "1" (uuid 7363b08f-9133-40fd-8f0b-bb800e6ce284))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0111") (unit 1)
         )
@@ -3015,7 +3015,7 @@
     )
     (pin "1" (uuid 775056d5-73dc-4e66-8ce2-0ef6311f37e3))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR04") (unit 1)
         )
@@ -3040,7 +3040,7 @@
     )
     (pin "1" (uuid 58103d5a-697b-44a2-9a1d-9e68e412dd64))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR03") (unit 1)
         )
@@ -3066,7 +3066,7 @@
     (pin "1" (uuid 8c4a2bb1-2ab1-488d-9cc3-95720b5e8901))
     (pin "2" (uuid 91166675-27b3-492f-ab45-f88d772269a2))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D7") (unit 1)
         )
@@ -3091,7 +3091,7 @@
     )
     (pin "1" (uuid fb292cda-75ae-4e6e-9999-5816259ef73b))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR05") (unit 1)
         )
@@ -3116,7 +3116,7 @@
     )
     (pin "1" (uuid 60ba66f2-6352-4164-a18b-eaed306f0e91))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0106") (unit 1)
         )
@@ -3142,7 +3142,7 @@
     (pin "1" (uuid fc097511-54de-412e-8b58-2526e17e8db0))
     (pin "2" (uuid bfe7cdd2-cd95-4b69-b9a2-4fd33f55ebb7))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D3") (unit 1)
         )
@@ -3167,7 +3167,7 @@
     )
     (pin "1" (uuid 50fdb0bd-f721-4478-9ee9-d6ad1ee49050))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0103") (unit 1)
         )
@@ -3193,7 +3193,7 @@
     (pin "1" (uuid 3ac88b3b-82d9-49e7-8b72-4c041e27b037))
     (pin "2" (uuid 9ca3148c-d6ed-478c-b1d3-4945c2e81657))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "L1") (unit 1)
         )
@@ -3218,7 +3218,7 @@
     )
     (pin "1" (uuid a2ccbfc2-7927-4a73-ba56-978f0e606dbc))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR02") (unit 1)
         )
@@ -3251,7 +3251,7 @@
     (pin "3" (uuid 92961f72-1b8d-4776-ad1f-a5a39d5a0a2d))
     (pin "4" (uuid 9affceab-6348-475f-8438-be07fd22dda0))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "SW1") (unit 1)
         )
@@ -3277,7 +3277,7 @@
     (pin "1" (uuid b10ba4c7-89da-47e6-be31-436ca1f73a71))
     (pin "2" (uuid e01b791b-5839-42f3-a956-870c375437b3))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "R2") (unit 1)
         )
@@ -3303,7 +3303,7 @@
     (pin "1" (uuid 79d55edb-dd4f-43f3-8fbc-73359742ba30))
     (pin "2" (uuid 26d3a7f2-282d-4b83-a059-2ae484be6e4c))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "D8") (unit 1)
         )
@@ -3328,7 +3328,7 @@
     )
     (pin "1" (uuid 6dae6269-9e9f-4439-8186-90b224e20b83))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR07") (unit 1)
         )
@@ -3353,7 +3353,7 @@
     )
     (pin "1" (uuid b94aefca-a765-44ac-b1b2-d2a581361474))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR06") (unit 1)
         )
@@ -3380,7 +3380,7 @@
     (pin "2" (uuid c4a08790-4647-4a29-9e47-9998eeb07abf))
     (pin "3" (uuid 92362261-a78b-440e-9c0e-a076eac4f95b))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "Q1") (unit 1)
         )
@@ -3405,7 +3405,7 @@
     )
     (pin "1" (uuid 7f505830-8f89-475e-bbc9-20fd9d09aeab))
     (instances
-      (project "hoember"
+      (project "hopehely"
         (path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
           (reference "#PWR0118") (unit 1)
         )
