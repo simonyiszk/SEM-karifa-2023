@@ -3,4 +3,6 @@
 /fw_py32/EWARM/Project.dep
 /hw_*/fp-info-cache
 /hw_*/*-backups
+/#PANEL/*/fp-info-cache
+/#PANEL/*/*-backups
 

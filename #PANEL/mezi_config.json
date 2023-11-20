@@ -1,0 +1,36 @@
+{
+    "layout": {
+        "alternation": "rows",
+        "hspace": "-1mm",
+        "vspace": "3mm",
+        "hbackbone": "5mm",
+        "rotation": "90deg",
+        "rows": "3",
+        "cols": "4",
+        "vbonecut": "False"
+    },
+    "source": {
+        "tolerance": "20mm"
+    },
+    "tabs": {
+        "type": "annotation"
+    },
+    "cuts": {
+        "type": "mousebites",
+        "spacing": "1mm",
+        "offset": "-0.5mm",
+        "prolong": "0.5mm"
+    },
+    "framing": {
+        "type": "frame",
+        "hspace": "3mm",
+        "vspace": "3mm",
+        "cuts": "h"
+    },
+    "copperfill": {
+        "type": "solid"
+    },
+    "post": {
+        "copperfill": "True"
+    }
+}
