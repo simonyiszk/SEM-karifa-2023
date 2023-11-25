@@ -56,7 +56,7 @@ typedef enum
 typedef struct
 {
   U16 u16TimingMs;                               //!< How long the machine should stay in this state
-  U8  au8LEDBrightness[ LEDS_NUM ];              //!< Brightness of each LED
+  I8  ai8LEDBrightness[ LEDS_NUM ];              //!< Brightness of each LED
   U8  u8AnimationOpcode;                         //!< Opcode (E_ANIMATION_OPCODE)
   U8  u8AnimationOperand;                        //!< Opcode-specific operand
 } S_ANIMATION_INSTRUCTION_NORMAL;
@@ -65,7 +65,7 @@ typedef struct
 typedef struct
 {
   U16 u16TimingMs;                               //!< How long the machine should stay in this state
-  U8  au8RGBLEDBrightness[ NUM_RGBLED_COLORS ];  //!< Brightness of each color
+  I8  ai8RGBLEDBrightness[ NUM_RGBLED_COLORS ];  //!< Brightness of each color
   U8  u8AnimationOpcode;                         //!< Opcode (E_ANIMATION_OPCODE)
   U8  u8AnimationOperand;                        //!< Opcode-specific operand
 } S_ANIMATION_INSTRUCTION_RGB;
@@ -714,7 +714,7 @@ void Animation_Cycle( void )
       // Just a load instruction, nothing more
       if( LOAD == u8OpCode )
       {
-        memcpy( gau8LEDBrightness, (void*)gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].au8LEDBrightness, LEDS_NUM );
+        memcpy( gau8LEDBrightness, (void*)gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].ai8LEDBrightness, LEDS_NUM );
         u8LastState = u8AnimationState;
       }
       else  // Other opcodes -- IMPORTANT: the order of operations are fixed!
@@ -724,7 +724,7 @@ void Animation_Cycle( void )
         {
           for( u8Index = 0u; u8Index < LEDS_NUM; u8Index++ )
           {
-            gau8LEDBrightness[ u8Index ] += gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].au8LEDBrightness[ u8Index ];
+            gau8LEDBrightness[ u8Index ] += gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].ai8LEDBrightness[ u8Index ];
             if( gau8LEDBrightness[ u8Index ] > 15u )  // overflow/underflow happened
             {
               gau8LEDBrightness[ u8Index ] = 0u;
@@ -840,27 +840,27 @@ void Animation_Cycle( void )
           // Left side
           for( u8Index = 0u; u8Index < (RIGHT_LEDS_START - 1u); u8Index++ )
           {
-            i8Change = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].au8LEDBrightness[ u8Index ];
+            i8Change = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].ai8LEDBrightness[ u8Index ];
             gau8LEDBrightness[ u8Index ] += i8Change;
             for( u8InnerIndex = u8Index; u8InnerIndex < (RIGHT_LEDS_START - 1u); u8InnerIndex++ )
             {
               gau8LEDBrightness[ u8InnerIndex + 1u ] += SaturateBrightness( &gau8LEDBrightness[ u8InnerIndex ] );
             }
           }
-          i8Change = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].au8LEDBrightness[ RIGHT_LEDS_START - 1u ];
+          i8Change = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].ai8LEDBrightness[ RIGHT_LEDS_START - 1u ];
           gau8LEDBrightness[ RIGHT_LEDS_START - 1u ] += i8Change;
           SaturateBrightness( &gau8LEDBrightness[ RIGHT_LEDS_START - 1u ] );
           // Right side
           for( u8Index = LEDS_NUM - 1u; u8Index > RIGHT_LEDS_START; u8Index-- )
           {
-            i8Change = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].au8LEDBrightness[ u8Index ];
+            i8Change = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].ai8LEDBrightness[ u8Index ];
             gau8LEDBrightness[ u8Index ] += i8Change;
             for( u8InnerIndex = LEDS_NUM - 1u; u8InnerIndex > RIGHT_LEDS_START; u8InnerIndex-- )
             {
               gau8LEDBrightness[ u8InnerIndex - 1u ] += SaturateBrightness( &gau8LEDBrightness[ u8InnerIndex ] );
             }
           }
-          i8Change = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].au8LEDBrightness[ RIGHT_LEDS_START ];
+          i8Change = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].ai8LEDBrightness[ RIGHT_LEDS_START ];
           gau8LEDBrightness[ RIGHT_LEDS_START ] += i8Change;
           SaturateBrightness( &gau8LEDBrightness[ RIGHT_LEDS_START ] );
         }
@@ -870,27 +870,27 @@ void Animation_Cycle( void )
           // Left side
           for( u8Index = (RIGHT_LEDS_START - 1u); u8Index > 0u; u8Index-- )
           {
-            i8Change = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].au8LEDBrightness[ u8Index ];
+            i8Change = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].ai8LEDBrightness[ u8Index ];
             gau8LEDBrightness[ u8Index ] += i8Change;
             for( u8InnerIndex = u8Index; u8InnerIndex > 0u; u8InnerIndex-- )
             {
               gau8LEDBrightness[ u8InnerIndex - 1u ] += SaturateBrightness( &gau8LEDBrightness[ u8InnerIndex ] );
             }
           }
-          i8Change = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].au8LEDBrightness[ 0u ];
+          i8Change = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].ai8LEDBrightness[ 0u ];
           gau8LEDBrightness[ 0u ] += i8Change;
           SaturateBrightness( &gau8LEDBrightness[ 0u ] );
           // Right side
           for( u8Index = RIGHT_LEDS_START; u8Index < (LEDS_NUM - 1u); u8Index++ )
           {
-            i8Change = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].au8LEDBrightness[ u8Index ];
+            i8Change = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].ai8LEDBrightness[ u8Index ];
             gau8LEDBrightness[ u8Index ] += i8Change;
             for( u8InnerIndex = RIGHT_LEDS_START; u8InnerIndex < (LEDS_NUM - 1u); u8InnerIndex++ )
             {
               gau8LEDBrightness[ u8InnerIndex + 1u ] += SaturateBrightness( &gau8LEDBrightness[ u8InnerIndex ] );
             }
           }
-          i8Change = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].au8LEDBrightness[ LEDS_NUM - 1u ];
+          i8Change = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].ai8LEDBrightness[ LEDS_NUM - 1u ];
           gau8LEDBrightness[ LEDS_NUM - 1u ] += i8Change;
           SaturateBrightness( &gau8LEDBrightness[ LEDS_NUM - 1u ] );
         }
@@ -899,7 +899,7 @@ void Animation_Cycle( void )
         {
           for( u8Index = 0u; u8Index < LEDS_NUM; u8Index++ )
           {
-            u8Temp = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].au8LEDBrightness[ u8Index ];
+            u8Temp = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].ai8LEDBrightness[ u8Index ];
             if( u8Temp != 0u )
             {
               gau8LEDBrightness[ u8Index ] /= u8Temp;
@@ -964,7 +964,7 @@ void Animation_Cycle( void )
       // Just a load instruction, nothing more
       if( LOAD == u8OpCode )
       {
-        memcpy( (U8*)gau8RGBLEDs, (void*)gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsRGB[ u8AnimationState ].au8RGBLEDBrightness, NUM_RGBLED_COLORS );
+        memcpy( (U8*)gau8RGBLEDs, (void*)gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsRGB[ u8AnimationState ].ai8RGBLEDBrightness, NUM_RGBLED_COLORS );
         u8LastStateRGB = u8AnimationState;
       }
       else  // Other opcodes -- IMPORTANT: the order of operations are fixed!
@@ -974,7 +974,7 @@ void Animation_Cycle( void )
         {
           for( u8Index = 0u; u8Index < NUM_RGBLED_COLORS; u8Index++ )
           {
-            gau8RGBLEDs[ u8Index ] += gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsRGB[ u8AnimationState ].au8RGBLEDBrightness[ u8Index ];
+            gau8RGBLEDs[ u8Index ] += gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsRGB[ u8AnimationState ].ai8RGBLEDBrightness[ u8Index ];
             if( gau8RGBLEDs[ u8Index ] > 15u )  // overflow/underflow happened
             {
               gau8RGBLEDs[ u8Index ] = 0u;
@@ -1015,7 +1015,7 @@ void Animation_Cycle( void )
         {
           for( u8Index = 0u; u8Index < NUM_RGBLED_COLORS; u8Index++ )
           {
-            u8Temp = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsRGB[ u8AnimationState ].au8RGBLEDBrightness[ u8Index ];
+            u8Temp = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsRGB[ u8AnimationState ].ai8RGBLEDBrightness[ u8Index ];
             if( u8Temp != 0u )
             {
               gau8RGBLEDs[ u8Index ] /= u8Temp;

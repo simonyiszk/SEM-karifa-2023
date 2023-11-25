@@ -60,13 +60,25 @@ void Delay( U16 u16DelayMs )
 //-----------------------------------------------------------------------------
 void BatteryLevel_Init( void )
 {
-#warning "Port to PY32F002!"
-  /*
-  ADCTIM = 0x3Fu;      // 32 clock sampling time, 2 clocks channel selection hold time
-  ADCCFG = 0x2Fu;      // Right-aligned results registers, slowest conversion
-  ADC_CONTR = 0x80u;   // Enable ADC
-  ADC_CONTR |= 0x0Fu;  // Select internal 1.19V reference
-*/
+  // Configure ADC
+  LL_ADC_Reset(ADC1);
+  LL_APB1_GRP2_EnableClock( LL_APB1_GRP2_PERIPH_ADC1 );
+  LL_ADC_SetCommonPathInternalCh( __LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_PATH_INTERNAL_VREFINT );
+  LL_ADC_SetClock( ADC1, LL_ADC_CLOCK_SYNC_PCLK_DIV2 );
+  LL_ADC_SetResolution( ADC1, LL_ADC_RESOLUTION_12B );
+  LL_ADC_SetResolution( ADC1, LL_ADC_DATA_ALIGN_RIGHT );
+  LL_ADC_SetLowPowerMode( ADC1, LL_ADC_LP_AUTOWAIT );
+  LL_ADC_SetSamplingTimeCommonChannels( ADC1, LL_ADC_SAMPLINGTIME_239CYCLES_5 );
+  LL_ADC_REG_SetTriggerSource( ADC1, LL_ADC_REG_TRIG_SOFTWARE );
+  //LL_ADC_REG_SetTriggerEdge(ADC1, LL_ADC_REG_TRIG_EXT_RISING);
+  LL_ADC_REG_SetContinuousMode( ADC1, LL_ADC_REG_CONV_SINGLE );
+  LL_ADC_REG_SetOverrun( ADC1, LL_ADC_REG_OVR_DATA_OVERWRITTEN );
+  LL_ADC_REG_SetSequencerDiscont( ADC1, LL_ADC_REG_SEQ_DISCONT_DISABLE );
+  LL_ADC_REG_SetSequencerChannels( ADC1, LL_ADC_CHANNEL_VREFINT );
+  //LL_ADC_SetAnalogWDMonitChannels(ADC1, LL_ADC_AWD_ALL_CHANNELS_REG);
+  //LL_ADC_ConfigAnalogWDThresholds(ADC1, __LL_ADC_DIGITAL_SCALE(LL_ADC_RESOLUTION_12B)/2, 0x000);
+  LL_ADC_StartCalibration( ADC1 );
+  while( ADC1->CR & ADC_CR_ADCAL );  // Wait for calibration to finish
 }
 
 //----------------------------------------------------------------------------
@@ -82,6 +94,9 @@ void BatteryLevel_Show( void )
   U8  u8ChargeLevel;
   U8  u8Index;
   
+  // Enable ADC
+  LL_ADC_Enable( ADC1 );
+
   // Startup animation
   // After it, all LED brightness will be set to maximum, to ensure a significant current draw during measurement
   for( u8Index = 0u; u8Index < LEDS_NUM/2u; u8Index++ )
@@ -92,34 +107,34 @@ void BatteryLevel_Show( void )
   }
   gau8RGBLEDs[ 0u ] = 15u;
   Delay( 100u );
-#warning "Port to PY32F002!"  
-  /*
   // Measure battery voltage
-  ADC_CONTR |= 0x40u;  // Start conversion
-  _nop_();
-  _nop_();
-  while( !( ADC_CONTR & 0x20u ) );  // Wait for completion flag
-  u16MeasuredLevel = ADC_RES<<8u | ADC_RESL;
+  LL_ADC_REG_StartConversion( ADC1 );  // Start (regular) conversion
+  while( LL_ADC_REG_IsConversionOngoing( ADC1 ) );  // Wait for conversion to completed
+  u16MeasuredLevel = LL_ADC_REG_ReadConversionData12( ADC1 );
   // Disable ADC to save power
-  ADC_CONTR = 0x00u;
-  // Calculate battery voltage
-  // The voltage can be calculated using this formula: BatteryVoltage = 1.19/( u16MeasuredLevel / ADC_MAX_VALUE )
-  // So the floating-point implementation would be: f32BatteryVoltage = 1.19f/( (float)u16MeasuredLevel/1024.0f );
+  LL_ADC_Disable( ADC1 );
+  LL_APB1_GRP2_DisableClock( LL_APB1_GRP2_PERIPH_ADC1 );
+  
+  // How to calculate battery voltage?
+  // The MCU has 1.2 V internal voltage reference that we have just measured.
+  // The voltage can be calculated using this formula: BatteryVoltage = 1.2/( u16MeasuredLevel / ADC_MAX_VALUE )
+  // So a floating-point implementation would be: f32BatteryVoltage = 1.2f/( (float)u16MeasuredLevel/4096.0f );
   // But since floating point calculations are expensive in terms of program memory(!), here we use fixed-point arithmetic...
+  //
   // Charge level formula:
   // As CR2032 batteries quickly drop to 2.8V under load, we assume that 2.8V means full charge
   // And since at 2.0V our LEDs can be barely seen, at 2.0V we assume that our battery is completely depleted
   // As we have 6 + 1 LED levels, we divide this range to 7 levels
   // A floating-point based implementation would be: u8ChargeLevel = round( 7.0f*( f32BatteryVoltage - 2.0f )/0.8f );
-  // After simplification, the formula for charge level would be: u8ChargeLevel = round( ( 10662.4f / u16MeasuredLevel ) - 17.5f )
-*/
-  if( u16MeasuredLevel >= 610u )  // If the voltage is below 2.0V
+  // After simplification, the formula for charge level would be: u8ChargeLevel = round( ( 42649.6f / u16MeasuredLevel ) - 17.5f )
+  if( u16MeasuredLevel >= 2457u )  // If the voltage is below 2.0V
   {
     u8ChargeLevel = 0u;
   }
   else
   {
-    u8ChargeLevel = ( ( 42650u / u16MeasuredLevel ) - 70u )>>2u;
+    // 
+    u8ChargeLevel = ( ( 170600u / u16MeasuredLevel ) - 70u )>>2u;
   }
   // Display the charge level on the LEDs
   for( u8Index = 0u; u8Index < LEDS_NUM/2u; u8Index++ )

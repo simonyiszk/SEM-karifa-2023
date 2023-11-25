@@ -296,7 +296,7 @@
                 <option>
                     <name>CMSISDAPResetList</name>
                     <version>1</version>
-                    <state>2</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>CMSISDAPHWResetDuration</name>
@@ -333,7 +333,7 @@
                 <option>
                     <name>CMSISDAPJtagSpeedList</name>
                     <version>0</version>
-                    <state>11</state>
+                    <state>13</state>
                 </option>
                 <option>
                     <name>CMSISDAPBreakpointRadio</name>

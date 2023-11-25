@@ -22,12 +22,12 @@
 // Pin definitions
 #define MPX1            GPIOB,LL_GPIO_PIN_0  //!< Pin of MPX1 multiplexer pin
 #define MPX2            GPIOB,LL_GPIO_PIN_1  //!< Pin of MPX2 multiplexer pin
-#define LED0            GPIOA,LL_GPIO_PIN_7  //!< Pin of LED0 common pin
-#define LED1            GPIOA,LL_GPIO_PIN_6  //!< Pin of LED1 common pin
-#define LED2            GPIOA,LL_GPIO_PIN_3  //!< Pin of LED2 common pin
-#define LED3            GPIOA,LL_GPIO_PIN_2  //!< Pin of LED3 common pin
-#define LED4            GPIOF,LL_GPIO_PIN_1  //!< Pin of LED4 common pin
-#define LED5            GPIOF,LL_GPIO_PIN_0  //!< Pin of LED5 common pin
+#define LED0            GPIOF,LL_GPIO_PIN_1  //!< Pin of LED0 common pin
+#define LED1            GPIOF,LL_GPIO_PIN_0  //!< Pin of LED1 common pin
+#define LED2            GPIOA,LL_GPIO_PIN_2  //!< Pin of LED2 common pin
+#define LED3            GPIOA,LL_GPIO_PIN_3  //!< Pin of LED3 common pin
+#define LED4            GPIOA,LL_GPIO_PIN_6  //!< Pin of LED4 common pin
+#define LED5            GPIOA,LL_GPIO_PIN_7  //!< Pin of LED5 common pin
 
 
 /***************************************< Types >**************************************/
@@ -122,7 +122,7 @@ void LED_Interrupt( void )
   //NOTE: unfortunately SFRs cannot be put in an array, so this cannot be implented as a for cycle
   if( gbitSide )  // left side
   {
-    if( gau8LEDBrightness[ 0u ] > gu8PWMCounter )  // D12
+    if( gau8LEDBrightness[ 0u ] > gu8PWMCounter )
     {
       LL_GPIO_SetOutputPin( LED0 );
     }
@@ -130,7 +130,7 @@ void LED_Interrupt( void )
     {
       LL_GPIO_ResetOutputPin( LED0 );
     }
-    if( gau8LEDBrightness[ 1u ] > gu8PWMCounter )  // D4
+    if( gau8LEDBrightness[ 1u ] > gu8PWMCounter )
     {
       LL_GPIO_SetOutputPin( LED1 );
     }
@@ -138,7 +138,7 @@ void LED_Interrupt( void )
     {
       LL_GPIO_ResetOutputPin( LED1 );
     }
-    if( gau8LEDBrightness[ 2u ] > gu8PWMCounter )  // D6
+    if( gau8LEDBrightness[ 2u ] > gu8PWMCounter )
     {
       LL_GPIO_SetOutputPin( LED2 );
     }
@@ -146,7 +146,7 @@ void LED_Interrupt( void )
     {
       LL_GPIO_ResetOutputPin( LED2 );
     }
-    if( gau8LEDBrightness[ 3u ] > gu8PWMCounter )  // D10
+    if( gau8LEDBrightness[ 3u ] > gu8PWMCounter )
     {
       LL_GPIO_SetOutputPin( LED3 );
     }
@@ -154,7 +154,7 @@ void LED_Interrupt( void )
     {
       LL_GPIO_ResetOutputPin( LED3 );
     }
-    if( gau8LEDBrightness[ 4u ] > gu8PWMCounter )  // D8
+    if( gau8LEDBrightness[ 4u ] > gu8PWMCounter )
     {
       LL_GPIO_SetOutputPin( LED4 );
     }
@@ -162,7 +162,7 @@ void LED_Interrupt( void )
     {
       LL_GPIO_ResetOutputPin( LED4 );
     }
-    if( gau8LEDBrightness[ 5u ] > gu8PWMCounter )  // D2
+    if( gau8LEDBrightness[ 5u ] > gu8PWMCounter )
     {
       LL_GPIO_SetOutputPin( LED5 );
     }
@@ -173,7 +173,7 @@ void LED_Interrupt( void )
   }
   else  // right side
   {
-    if( gau8LEDBrightness[ 6u ] > gu8PWMCounter )  // D3
+    if( gau8LEDBrightness[ 6u ] > gu8PWMCounter )
     {
       LL_GPIO_SetOutputPin( LED5 );
     }
@@ -181,7 +181,7 @@ void LED_Interrupt( void )
     {
       LL_GPIO_ResetOutputPin( LED5 );
     }
-    if( gau8LEDBrightness[ 7u ] > gu8PWMCounter )  // D9
+    if( gau8LEDBrightness[ 7u ] > gu8PWMCounter )
     {
       LL_GPIO_SetOutputPin( LED4 );
     }
@@ -189,7 +189,7 @@ void LED_Interrupt( void )
     {
       LL_GPIO_ResetOutputPin( LED4 );
     }
-    if( gau8LEDBrightness[ 8u ] > gu8PWMCounter )  // D11
+    if( gau8LEDBrightness[ 8u ] > gu8PWMCounter )
     {
       LL_GPIO_SetOutputPin( LED3 );
     }
@@ -197,7 +197,7 @@ void LED_Interrupt( void )
     {
       LL_GPIO_ResetOutputPin( LED3 );
     }
-    if( gau8LEDBrightness[ 9u ] > gu8PWMCounter )  // D7
+    if( gau8LEDBrightness[ 9u ] > gu8PWMCounter )
     {
       LL_GPIO_SetOutputPin( LED2 );
     }
@@ -205,7 +205,7 @@ void LED_Interrupt( void )
     {
       LL_GPIO_ResetOutputPin( LED2 );
     }
-    if( gau8LEDBrightness[ 10u ] > gu8PWMCounter )  // D5
+    if( gau8LEDBrightness[ 10u ] > gu8PWMCounter )
     {
       LL_GPIO_SetOutputPin( LED1 );
     }
@@ -213,7 +213,7 @@ void LED_Interrupt( void )
     {
       LL_GPIO_ResetOutputPin( LED1 );
     }
-    if( gau8LEDBrightness[ 11u ] > gu8PWMCounter )  // D13
+    if( gau8LEDBrightness[ 11u ] > gu8PWMCounter )
     {
       LL_GPIO_SetOutputPin( LED0 );
     }
