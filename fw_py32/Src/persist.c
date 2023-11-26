@@ -164,6 +164,10 @@ static void Flash_Write( U32 u32Address, U8* pu8Data, U8 u8DataLength )
   // Wait for operation to finish
   while( FLASH->SR & FLASH_SR_BSY );
   
+  // Clear operation mode
+  CLEAR_BIT( FLASH->CR, FLASH_CR_PG );
+  CLEAR_BIT( FLASH->SR, FLASH_SR_EOP );
+  
   // Re-lock flash
   SET_BIT(FLASH->CR, FLASH_CR_LOCK);
   
@@ -187,12 +191,20 @@ static void Flash_EraseSector( U32 u32Address )
     WRITE_REG(FLASH->KEYR, FLASH_KEY1);
     WRITE_REG(FLASH->KEYR, FLASH_KEY2);
   }
+
+  // Wait for previous operation to finish
+  while( FLASH->SR & FLASH_SR_BSY );
   
+  // Trigger sector erase
   SET_BIT( FLASH->CR, FLASH_CR_SER );
-  *(U32*)u32Address = 0xFFu;
+  *(U32*)u32Address = 0xFFFFFFFFu;
   
   // Wait for operation to finish
   while( FLASH->SR & FLASH_SR_BSY );
+  
+  // Clear operation mode bit
+  CLEAR_BIT(FLASH->CR, FLASH_CR_SER);
+  CLEAR_BIT( FLASH->SR, FLASH_SR_EOP );
   
   // Re-lock flash
   SET_BIT(FLASH->CR, FLASH_CR_LOCK);
