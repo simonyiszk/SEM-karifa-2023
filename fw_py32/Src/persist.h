@@ -23,6 +23,7 @@
 typedef PACKED struct
 {
   U8  u8AnimationIndex;             //!< Index of the last played animation
+  U8  au8Padding[ 1u ];             //!< Padding so the struct size will be a multiply of 4
   U16 u16CRC;                       //!< CRC for protecting structure against bit errors
 } S_PERSIST;
 
