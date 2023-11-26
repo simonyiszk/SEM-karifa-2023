@@ -1,5 +1,5 @@
 /*! *******************************************************************************************************
-* Copyright (c) 2022 Hekk_Elek
+* Copyright (c) 2022-2023 Hekk_Elek
 *
 * \file main.c
 *
@@ -25,8 +25,9 @@
 
 
 /***************************************< Definitions >**************************************/
-#warning "Port to PY32F002!"
 #define BUTTON_PIN     (u8ButtonPin)  //!< Button for selecting animation and turning it off and on
+//#define BUTTON_PIN     LL_GPIO_IsInputPinSet(GPIOB,LL_GPIO_PIN_3)  //!< Button for selecting animation and turning it off and on
+#warning "^^Uncomment on real hardware!"
 
 
 /***************************************< Types >**************************************/
@@ -62,28 +63,23 @@ static void PowerDown( void );
 //-----------------------------------------------------------------------------
 static void APP_SystemClockConfig( void )
 {
-  /* 使能HSI */
+  // Initialize HSI clock
   LL_RCC_HSI_Enable();
-  LL_RCC_HSI_SetCalibFreq(LL_RCC_HSICALIBRATION_24MHz);
-  while(LL_RCC_HSI_IsReady() != 1)
-  {
-  }
+  LL_RCC_HSI_SetCalibFreq( LL_RCC_HSICALIBRATION_24MHz );
+  while( !LL_RCC_HSI_IsReady() );
 
-  /* 设置 AHB 分频*/
-  LL_RCC_SetAHBPrescaler(LL_RCC_SYSCLK_DIV_1);
+  // Set AHB prescaler
+  LL_RCC_SetAHBPrescaler( LL_RCC_SYSCLK_DIV_1 );
 
-  /* 配置HSISYS作为系统时钟源 */
-  LL_RCC_SetSysClkSource(LL_RCC_SYS_CLKSOURCE_HSISYS);
-  while(LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_HSISYS)
-  {
-  }
+  // Set system clock source
+  LL_RCC_SetSysClkSource( LL_RCC_SYS_CLKSOURCE_HSISYS );
+  while( LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_HSISYS );
 
-  /* 设置 APB1 分频*/
-  LL_RCC_SetAPB1Prescaler(LL_RCC_APB1_DIV_1);
-  //LL_Init1msTick(24000000);
+  // Set APB1 prescaler
+  LL_RCC_SetAPB1Prescaler( LL_RCC_APB1_DIV_1 );
   
-  /* 更新系统时钟全局变量SystemCoreClock(也可以通过调用SystemCoreClockUpdate函数更新) */
-  LL_SetSystemCoreClock(24000000);
+  // Store current system clock
+  LL_SetSystemCoreClock( 24000000u );
 }
 
 //----------------------------------------------------------------------------
@@ -103,10 +99,12 @@ static void PowerDown( void )
   LL_GPIO_DeInit( GPIOA );
   LL_GPIO_DeInit( GPIOB );
   LL_GPIO_DeInit( GPIOF );
-//  LL_GPIO_SetPinPull( GPIOA, LL_GPIO_PIN_ALL, LL_GPIO_PULL_DOWN );
-//  LL_GPIO_SetPinPull( GPIOB, LL_GPIO_PIN_ALL, LL_GPIO_PULL_DOWN );
-//  LL_GPIO_SetPinPull( GPIOF, LL_GPIO_PIN_ALL, LL_GPIO_PULL_DOWN );
-#warning "Enable EXTI on button line!"
+//  LL_GPIO_SetPinPull( GPIOA, LL_GPIO_PIN_ALL, LL_GPIO_PULL_UP );
+//  LL_GPIO_SetPinPull( GPIOB, LL_GPIO_PIN_ALL, LL_GPIO_PULL_UP );
+//  LL_GPIO_SetPinPull( GPIOF, LL_GPIO_PIN_ALL, LL_GPIO_PULL_UP );
+  LL_EXTI_EnableFallingTrig( LL_EXTI_LINE_3 );
+  LL_EXTI_EnableIT( LL_EXTI_LINE_3 );
+  
   LL_IOP_GRP1_DisableClock( LL_IOP_GRP1_PERIPH_GPIOA );
   LL_IOP_GRP1_DisableClock( LL_IOP_GRP1_PERIPH_GPIOB );
   LL_IOP_GRP1_DisableClock( LL_IOP_GRP1_PERIPH_GPIOF );
@@ -147,14 +145,13 @@ void main( void )
   Persist_Init();
   BatteryLevel_Init();
 
-  // Pushbutton @ P3.2 --> bidirectional with pullup
-  // NOTE: this might not the best in terms of power consumption, but the input mode with pullup was not enough
-#warning "Port to PY32F002!"
-  /*
-  P3M0 &= ~(1u<<2u);  // 0
-  P3M1 &= ~(1u<<2u);  // 0
-  P3PU |= 1u<<2u;
-  */
+#warning "ˇˇUncomment on real hardware!"
+/*
+  // Pushbutton @ PB3 --> input with pullup
+  LL_IOP_GRP1_EnableClock( LL_IOP_GRP1_PERIPH_GPIOB );
+  LL_GPIO_SetPinMode( GPIOB, LL_GPIO_PIN_3, LL_GPIO_MODE_INPUT );
+  LL_GPIO_SetPinPull( GPIOB, LL_GPIO_PIN_3, LL_GPIO_PULL_UP );
+*/
   U8 u8ButtonPin = 1u;
   
   // Init global variables in this module

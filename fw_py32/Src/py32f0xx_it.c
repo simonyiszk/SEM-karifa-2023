@@ -52,6 +52,8 @@
   */
 void NMI_Handler(void)
 {
+  // This should not happen
+  NVIC_SystemReset();
 }
 
 /**
@@ -59,8 +61,10 @@ void NMI_Handler(void)
   */
 void HardFault_Handler(void)
 {
+  // This should not happen
   while (1)
   {
+    NVIC_SystemReset();
   }
 }
 
@@ -69,6 +73,8 @@ void HardFault_Handler(void)
   */
 void SVC_Handler(void)
 {
+  // This should not happen
+  NVIC_SystemReset();
 }
 
 /**
@@ -76,6 +82,8 @@ void SVC_Handler(void)
   */
 void PendSV_Handler(void)
 {
+  // This should not happen
+  NVIC_SystemReset();
 }
 
 /**
@@ -83,7 +91,10 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
+  // This should not happen
+  NVIC_SystemReset();
 }
+
 
 /******************************************************************************/
 /* PY32F0xx Peripheral Interrupt Handlers                                     */
