@@ -20,14 +20,14 @@
 #define PWM_LEVELS      (16u)  //!< PWM levels implemented: [0; PWM_LEVELS)
 
 // Pin definitions
-#define MPX1            GPIOB,LL_GPIO_PIN_0  //!< Pin of MPX1 multiplexer pin
-#define MPX2            GPIOB,LL_GPIO_PIN_1  //!< Pin of MPX2 multiplexer pin
-#define LED0            GPIOF,LL_GPIO_PIN_1  //!< Pin of LED0 common pin
-#define LED1            GPIOF,LL_GPIO_PIN_0  //!< Pin of LED1 common pin
-#define LED2            GPIOA,LL_GPIO_PIN_2  //!< Pin of LED2 common pin
-#define LED3            GPIOA,LL_GPIO_PIN_3  //!< Pin of LED3 common pin
-#define LED4            GPIOA,LL_GPIO_PIN_6  //!< Pin of LED4 common pin
-#define LED5            GPIOA,LL_GPIO_PIN_7  //!< Pin of LED5 common pin
+#define MPX1            GPIOA,LL_GPIO_PIN_6  //!< Pin of MPX1 multiplexer pin
+#define MPX2            GPIOA,LL_GPIO_PIN_5  //!< Pin of MPX2 multiplexer pin
+#define LED0            GPIOB,LL_GPIO_PIN_1  //!< Pin of LED0 common pin
+#define LED1            GPIOA,LL_GPIO_PIN_4  //!< Pin of LED1 common pin
+#define LED2            GPIOA,LL_GPIO_PIN_7  //!< Pin of LED2 common pin
+#define LED3            GPIOB,LL_GPIO_PIN_2  //!< Pin of LED3 common pin
+#define LED4            GPIOB,LL_GPIO_PIN_0  //!< Pin of LED4 common pin
+#define LED5            GPIOA,LL_GPIO_PIN_2  //!< Pin of LED5 common pin
 
 
 /***************************************< Types >**************************************/
@@ -71,33 +71,26 @@ void LED_Init( void )
   // Enable clocks
   LL_IOP_GRP1_EnableClock( LL_IOP_GRP1_PERIPH_GPIOA );
   LL_IOP_GRP1_EnableClock( LL_IOP_GRP1_PERIPH_GPIOB );
-  LL_IOP_GRP1_EnableClock( LL_IOP_GRP1_PERIPH_GPIOF );
   
   // Initialize GPIO pins
   /* Default output states */
   LL_GPIO_WriteOutputPort( GPIOA, 0u );
-  LL_GPIO_WriteOutputPort( GPIOB, LL_GPIO_PIN_0 );  // MPX1 starts as 1
-  LL_GPIO_WriteOutputPort( GPIOF, 0u );
+  LL_GPIO_WriteOutputPort( GPIOB, 0u );
+  LL_GPIO_SetOutputPin( MPX1 );  // MPX1 starts as 1
+  
   /* GPIOA */
-  TIM1CH1MapInit.Pin        = LL_GPIO_PIN_7 | LL_GPIO_PIN_6 | LL_GPIO_PIN_3 | LL_GPIO_PIN_2;
+  TIM1CH1MapInit.Pin        = LL_GPIO_PIN_2 | LL_GPIO_PIN_4 | LL_GPIO_PIN_5 | LL_GPIO_PIN_6 | LL_GPIO_PIN_7;
   TIM1CH1MapInit.Mode       = LL_GPIO_MODE_OUTPUT;
   TIM1CH1MapInit.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
   TIM1CH1MapInit.Speed      = LL_GPIO_SPEED_FREQ_VERY_HIGH;
   LL_GPIO_Init( GPIOA, &TIM1CH1MapInit );
 
   /* GPIOB */
-  TIM1CH1MapInit.Pin        = LL_GPIO_PIN_0 | LL_GPIO_PIN_1;
+  TIM1CH1MapInit.Pin        = LL_GPIO_PIN_0 | LL_GPIO_PIN_1 | LL_GPIO_PIN_2;
   TIM1CH1MapInit.Mode       = LL_GPIO_MODE_OUTPUT;
   TIM1CH1MapInit.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
   TIM1CH1MapInit.Speed      = LL_GPIO_SPEED_FREQ_VERY_HIGH;
   LL_GPIO_Init( GPIOB, &TIM1CH1MapInit );
-
-  /* GPIOF */
-  TIM1CH1MapInit.Pin        = LL_GPIO_PIN_0 | LL_GPIO_PIN_1;
-  TIM1CH1MapInit.Mode       = LL_GPIO_MODE_OUTPUT;
-  TIM1CH1MapInit.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-  TIM1CH1MapInit.Speed      = LL_GPIO_SPEED_FREQ_VERY_HIGH;
-  LL_GPIO_Init( GPIOF, &TIM1CH1MapInit );
 }
 
 //----------------------------------------------------------------------------

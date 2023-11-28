@@ -63,26 +63,20 @@ void RGBLED_Init( void )
   LL_IOP_GRP1_EnableClock( LL_IOP_GRP1_PERIPH_GPIOA );
   
   // Initialize GPIO pins
-  /* Initialize PA0/PA1 as TIM1_CH3/TIM1_CH4 */
-  TIM1CH1MapInit.Pin        = LL_GPIO_PIN_0 | LL_GPIO_PIN_1;
+  /* Initialize PA0/PA1/PA3 as TIM1_CH3/TIM1_CH4/TIM1_CH1, respectively */
+  TIM1CH1MapInit.Pin        = LL_GPIO_PIN_0 | LL_GPIO_PIN_1 | LL_GPIO_PIN_3;
   TIM1CH1MapInit.Mode       = LL_GPIO_MODE_ALTERNATE;
-  TIM1CH1MapInit.Alternate  = LL_GPIO_AF_13; 
+  TIM1CH1MapInit.Alternate  = LL_GPIO_AF_13;
   LL_GPIO_Init( GPIOA, &TIM1CH1MapInit );
 
-  /* Initialize PA9 as TIM1_CH2 */
-  TIM1CH1MapInit.Pin        = LL_GPIO_PIN_9;
-  TIM1CH1MapInit.Mode       = LL_GPIO_MODE_ALTERNATE;
-  TIM1CH1MapInit.Alternate  = LL_GPIO_AF_2;
-  LL_GPIO_Init( GPIOA, &TIM1CH1MapInit );
-  
   // Configure PWM channels
   TIM_OC_Initstruct.OCMode        = LL_TIM_OCMODE_PWM1;
   TIM_OC_Initstruct.OCState       = LL_TIM_OCSTATE_ENABLE;
   TIM_OC_Initstruct.OCPolarity    = LL_TIM_OCPOLARITY_LOW;
   TIM_OC_Initstruct.OCIdleState   = LL_TIM_OCIDLESTATE_HIGH;
-  // Set CH2
+  // Set CH1
   TIM_OC_Initstruct.CompareValue  = PWM_DARK;
-  LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH2, &TIM_OC_Initstruct );
+  LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH1, &TIM_OC_Initstruct );
   // Set CH3
   TIM_OC_Initstruct.CompareValue  = PWM_DARK;
   LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH3, &TIM_OC_Initstruct );
@@ -120,24 +114,24 @@ void RGBLED_Interrupt( void )
   if( gau8RGBLEDs[ 0 ] > u8Cnt )
   {
     // Pulse for 1 usec
-    LL_TIM_OC_SetCompareCH2( TIM1, PWM_BRIGHT );
-  }
-  else
-  {
-    // No pulse
-    LL_TIM_OC_SetCompareCH2( TIM1, PWM_DARK );
-  }
-  
-  // Green
-  if( gau8RGBLEDs[ 1 ] > u8Cnt )
-  {
-    // Pulse for 1 usec
     LL_TIM_OC_SetCompareCH3( TIM1, PWM_BRIGHT );
   }
   else
   {
     // No pulse
     LL_TIM_OC_SetCompareCH3( TIM1, PWM_DARK );
+  }
+  
+  // Green
+  if( gau8RGBLEDs[ 1 ] > u8Cnt )
+  {
+    // Pulse for 1 usec
+    LL_TIM_OC_SetCompareCH1( TIM1, PWM_BRIGHT );
+  }
+  else
+  {
+    // No pulse
+    LL_TIM_OC_SetCompareCH1( TIM1, PWM_DARK );
   }
   
   // Blue

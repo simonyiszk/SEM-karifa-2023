@@ -116,5 +116,16 @@ void TIM1_BRK_UP_TRG_COM_IRQHandler( void )
   LL_TIM_ClearFlag_UPDATE( TIM1 );
 }
 
+//----------------------------------------------------------------------------
+//! \brief  EXTI 3 interrupt handler
+//! \param  -
+//! \return -
+//-----------------------------------------------------------------------------
+void EXTI2_3_IRQHandler( void )
+{
+  // We get here after waking up
+  NVIC_SystemReset();
+}
+
 
 /************************ (C) COPYRIGHT Puya *****END OF FILE****/

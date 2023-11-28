@@ -2,7 +2,7 @@
 <project>
     <fileVersion>3</fileVersion>
     <configuration>
-        <name>PY32F002-STK</name>
+        <name>karifa</name>
         <toolchain>
             <name>ARM</name>
         </toolchain>
@@ -16,19 +16,19 @@
                 <debug>1</debug>
                 <option>
                     <name>BrowseInfoPath</name>
-                    <state>PY32F002-STK\BrowseInfo</state>
+                    <state>karifa\BrowseInfo</state>
                 </option>
                 <option>
                     <name>ExePath</name>
-                    <state>PY32F002-STK\Exe</state>
+                    <state>karifa\Exe</state>
                 </option>
                 <option>
                     <name>ObjPath</name>
-                    <state>PY32F002-STK\Obj</state>
+                    <state>karifa\Obj</state>
                 </option>
                 <option>
                     <name>ListPath</name>
-                    <state>PY32F002-STK\List</state>
+                    <state>karifa\List</state>
                 </option>
                 <option>
                     <name>GEndianMode</name>
@@ -78,7 +78,7 @@
                 </option>
                 <option>
                     <name>GenLowLevelInterface</name>
-                    <state>1</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>GEndianModeBE</name>
@@ -201,7 +201,7 @@
                 </option>
                 <option>
                     <name>BuildFilesPath</name>
-                    <state>PY32F002-STK\</state>
+                    <state>karifa\</state>
                 </option>
                 <option>
                     <name>PointerAuthentication</name>
@@ -667,7 +667,7 @@
             <data>
                 <extensions></extensions>
                 <cmdline></cmdline>
-                <hasPrio>1</hasPrio>
+                <hasPrio>176</hasPrio>
                 <buildSequence>inputOutputBased</buildSequence>
             </data>
         </settings>

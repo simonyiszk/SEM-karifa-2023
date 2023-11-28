@@ -25,9 +25,7 @@
 
 
 /***************************************< Definitions >**************************************/
-#define BUTTON_PIN     (u8ButtonPin)  //!< Button for selecting animation and turning it off and on
-//#define BUTTON_PIN     LL_GPIO_IsInputPinSet(GPIOB,LL_GPIO_PIN_3)  //!< Button for selecting animation and turning it off and on
-#warning "^^Uncomment on real hardware!"
+#define BUTTON_PIN     LL_GPIO_IsInputPinSet(GPIOB,LL_GPIO_PIN_3)  //!< Button for selecting animation and turning it off and on
 
 
 /***************************************< Types >**************************************/
@@ -102,8 +100,10 @@ static void PowerDown( void )
 //  LL_GPIO_SetPinPull( GPIOA, LL_GPIO_PIN_ALL, LL_GPIO_PULL_UP );
 //  LL_GPIO_SetPinPull( GPIOB, LL_GPIO_PIN_ALL, LL_GPIO_PULL_UP );
 //  LL_GPIO_SetPinPull( GPIOF, LL_GPIO_PIN_ALL, LL_GPIO_PULL_UP );
-  LL_EXTI_EnableFallingTrig( LL_EXTI_LINE_3 );
-  LL_EXTI_EnableIT( LL_EXTI_LINE_3 );
+  LL_EXTI_SetEXTISource( LL_EXTI_CONFIG_PORTB, LL_EXTI_LINE_3 );  // PB3
+  LL_EXTI_EnableFallingTrig( LL_EXTI_LINE_3 );                    // Falling edge
+  LL_EXTI_EnableEvent( LL_EXTI_LINE_3 );                          // Wakes CPU
+  LL_EXTI_EnableIT( LL_EXTI_LINE_3 );                             // Generates interrupt
   
   LL_IOP_GRP1_DisableClock( LL_IOP_GRP1_PERIPH_GPIOA );
   LL_IOP_GRP1_DisableClock( LL_IOP_GRP1_PERIPH_GPIOB );
@@ -145,14 +145,10 @@ void main( void )
   Persist_Init();
   BatteryLevel_Init();
 
-#warning "ˇˇUncomment on real hardware!"
-/*
   // Pushbutton @ PB3 --> input with pullup
   LL_IOP_GRP1_EnableClock( LL_IOP_GRP1_PERIPH_GPIOB );
   LL_GPIO_SetPinMode( GPIOB, LL_GPIO_PIN_3, LL_GPIO_MODE_INPUT );
   LL_GPIO_SetPinPull( GPIOB, LL_GPIO_PIN_3, LL_GPIO_PULL_UP );
-*/
-  U8 u8ButtonPin = 1u;
   
   // Init global variables in this module
   geButtonState = BUTTON_UNPRESSED;
@@ -177,22 +173,6 @@ void main( void )
   // Main loop
   while( TRUE )
   {
-#warning "ˇˇFIXME: delete"
-    static U16 u16LastPushMs = 5000u;
-    if( Util_GetTimerMs() > u16LastPushMs )
-    {
-      if( Util_GetTimerMs() < u16LastPushMs + 100u )
-      {
-        u8ButtonPin = 0;
-      }
-      else
-      {
-        // release
-        u8ButtonPin = 1;
-        u16LastPushMs = Util_GetTimerMs() + 5000;
-      }
-    }
-    
     // Increment uptime counter
     if( Util_GetTimerMs() < u16LastCall )
     {
