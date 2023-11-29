@@ -89,7 +89,7 @@ static void PowerDown( void )
 {
   // Gradually disable stuff and enter deep sleep
   LL_APB1_GRP1_EnableClock( LL_APB1_GRP1_PERIPH_PWR );
-  DISABLE_IT;
+  //DISABLE_IT;
   NVIC_DisableIRQ( TIM1_BRK_UP_TRG_COM_IRQn );
   LL_TIM_DisableCounter( TIM1 );
   LL_TIM_DisableAllOutputs( TIM1 );
@@ -100,22 +100,25 @@ static void PowerDown( void )
 //  LL_GPIO_SetPinPull( GPIOA, LL_GPIO_PIN_ALL, LL_GPIO_PULL_UP );
 //  LL_GPIO_SetPinPull( GPIOB, LL_GPIO_PIN_ALL, LL_GPIO_PULL_UP );
 //  LL_GPIO_SetPinPull( GPIOF, LL_GPIO_PIN_ALL, LL_GPIO_PULL_UP );
-  LL_EXTI_SetEXTISource( LL_EXTI_CONFIG_PORTB, LL_EXTI_LINE_3 );  // PB3
-  LL_EXTI_EnableFallingTrig( LL_EXTI_LINE_3 );                    // Falling edge
-  LL_EXTI_EnableEvent( LL_EXTI_LINE_3 );                          // Wakes CPU
-  LL_EXTI_EnableIT( LL_EXTI_LINE_3 );                             // Generates interrupt
+  LL_IOP_GRP1_EnableClock( LL_IOP_GRP1_PERIPH_GPIOB );
+  LL_GPIO_SetPinMode( GPIOB, LL_GPIO_PIN_3, LL_GPIO_MODE_INPUT );       // PB3 input
+  LL_EXTI_SetEXTISource( LL_EXTI_CONFIG_PORTB, LL_EXTI_CONFIG_LINE3 );  // PB3
+  LL_EXTI_EnableFallingTrig( LL_EXTI_LINE_3 );                          // Falling edge
+  LL_EXTI_EnableEvent( LL_EXTI_LINE_3 );                                // Wakes CPU
+  LL_EXTI_EnableIT( LL_EXTI_LINE_3 );                                   // Generates interrupt
+  NVIC_SetPriority( EXTI2_3_IRQn, 1 );
+  NVIC_EnableIRQ( EXTI2_3_IRQn );
   
   LL_IOP_GRP1_DisableClock( LL_IOP_GRP1_PERIPH_GPIOA );
-  LL_IOP_GRP1_DisableClock( LL_IOP_GRP1_PERIPH_GPIOB );
+  //LL_IOP_GRP1_DisableClock( LL_IOP_GRP1_PERIPH_GPIOB );
   LL_IOP_GRP1_DisableClock( LL_IOP_GRP1_PERIPH_GPIOF );
   LL_PWR_EnableLowPowerRunMode();
   LL_PWR_SetRegulVoltageScaling( LL_PWR_REGU_VOLTAGE_SCALE2 );
   LL_PWR_SetSramRetentionVolt( LL_PWR_SRAM_RETENTION_VOLT_0p9 );
   LL_PWR_SetWakeUpFlashDelay( LL_PWR_WAKEUP_FLASH_DELAY_0US );
   LL_PWR_SetWakeUpLPToVRReadyTime( LL_PWR_WAKEUP_LP_TO_VR_READY_5US );
-  LL_LPM_DisableEventOnPend();
+  //LL_LPM_DisableEventOnPend();
   LL_LPM_EnableDeepSleep();
-  SET_BIT( SCB->SCR, SCB_SCR_SLEEPDEEP_Msk );
   __WFI();
   NVIC_SystemReset();  // This should not be reached...
 }

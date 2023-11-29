@@ -25,6 +25,7 @@ the following format:
 
 // Own includes
 #include "types.h"
+#include "config.h"
 #include "led.h"
 #include "rgbled.h"
 #include "util.h"

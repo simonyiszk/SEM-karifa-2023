@@ -13,21 +13,62 @@
 // Own includes
 #include "main.h"
 #include "types.h"
+#include "config.h"
 #include "led.h"
 
 
 /***************************************< Definitions >**************************************/
 #define PWM_LEVELS      (16u)  //!< PWM levels implemented: [0; PWM_LEVELS)
 
-// Pin definitions
-#define MPX1            GPIOA,LL_GPIO_PIN_6  //!< Pin of MPX1 multiplexer pin
-#define MPX2            GPIOA,LL_GPIO_PIN_5  //!< Pin of MPX2 multiplexer pin
-#define LED0            GPIOB,LL_GPIO_PIN_1  //!< Pin of LED0 common pin
-#define LED1            GPIOA,LL_GPIO_PIN_4  //!< Pin of LED1 common pin
-#define LED2            GPIOA,LL_GPIO_PIN_7  //!< Pin of LED2 common pin
-#define LED3            GPIOB,LL_GPIO_PIN_2  //!< Pin of LED3 common pin
-#define LED4            GPIOB,LL_GPIO_PIN_0  //!< Pin of LED4 common pin
-#define LED5            GPIOA,LL_GPIO_PIN_2  //!< Pin of LED5 common pin
+#ifdef KARIFA
+  // Pin definitions
+  #define MPX1            GPIOA,LL_GPIO_PIN_6  //!< Pin of MPX1 multiplexer pin
+  #define MPX2            GPIOA,LL_GPIO_PIN_5  //!< Pin of MPX2 multiplexer pin
+  #define LED0            GPIOB,LL_GPIO_PIN_1  //!< Pin of LED0 common pin
+  #define LED1            GPIOA,LL_GPIO_PIN_4  //!< Pin of LED1 common pin
+  #define LED2            GPIOA,LL_GPIO_PIN_7  //!< Pin of LED2 common pin
+  #define LED3            GPIOB,LL_GPIO_PIN_2  //!< Pin of LED3 common pin
+  #define LED4            GPIOB,LL_GPIO_PIN_0  //!< Pin of LED4 common pin
+  #define LED5            GPIOA,LL_GPIO_PIN_2  //!< Pin of LED5 common pin
+#endif
+#ifdef HOEMBER
+  // Pin definitions
+  #define MPX1            GPIOA,LL_GPIO_PIN_6  //!< Pin of MPX1 multiplexer pin
+  #define MPX2            GPIOA,LL_GPIO_PIN_5  //!< Pin of MPX2 multiplexer pin
+  #define LED0            GPIOB,LL_GPIO_PIN_1  //!< Pin of LED0 common pin
+  #define LED1            GPIOB,LL_GPIO_PIN_2  //!< Pin of LED1 common pin
+  #define LED2            GPIOA,LL_GPIO_PIN_2  //!< Pin of LED2 common pin
+  #define LED3            GPIOA,LL_GPIO_PIN_4  //!< Pin of LED3 common pin
+  #define LED4            GPIOA,LL_GPIO_PIN_7  //!< Pin of LED4 common pin
+  #define LED5            GPIOB,LL_GPIO_PIN_0  //!< Pin of LED5 common pin
+#endif
+/*
+#ifdef HOPEHELY
+  // Pin definitions
+  #define MPX1            GPIOA,LL_GPIO_PIN_6  //!< Pin of MPX1 multiplexer pin
+  #define MPX2            GPIOA,LL_GPIO_PIN_5  //!< Pin of MPX2 multiplexer pin
+  #define LED0            GPIOB,LL_GPIO_PIN_1  //!< Pin of LED0 common pin
+  #define LED1            GPIOA,LL_GPIO_PIN_4  //!< Pin of LED1 common pin
+  #define LED2            GPIOA,LL_GPIO_PIN_7  //!< Pin of LED2 common pin
+  #define LED3            GPIOB,LL_GPIO_PIN_2  //!< Pin of LED3 common pin
+  #define LED4            GPIOB,LL_GPIO_PIN_0  //!< Pin of LED4 common pin
+  #define LED5            GPIOA,LL_GPIO_PIN_2  //!< Pin of LED5 common pin
+#endif
+#ifdef MEZI
+  // Pin definitions
+  #define MPX1            GPIOA,LL_GPIO_PIN_6  //!< Pin of MPX1 multiplexer pin
+  #define MPX2            GPIOA,LL_GPIO_PIN_5  //!< Pin of MPX2 multiplexer pin
+  #define LED0            GPIOB,LL_GPIO_PIN_1  //!< Pin of LED0 common pin
+  #define LED1            GPIOA,LL_GPIO_PIN_4  //!< Pin of LED1 common pin
+  #define LED2            GPIOA,LL_GPIO_PIN_7  //!< Pin of LED2 common pin
+  #define LED3            GPIOB,LL_GPIO_PIN_2  //!< Pin of LED3 common pin
+  #define LED4            GPIOB,LL_GPIO_PIN_0  //!< Pin of LED4 common pin
+  #define LED5            GPIOA,LL_GPIO_PIN_2  //!< Pin of LED5 common pin
+#endif
+*/
+#ifndef MPX1
+  #error "Unknown hardware selected!"
+#endif
 
 
 /***************************************< Types >**************************************/

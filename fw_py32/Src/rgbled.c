@@ -114,18 +114,6 @@ void RGBLED_Interrupt( void )
   if( gau8RGBLEDs[ 0 ] > u8Cnt )
   {
     // Pulse for 1 usec
-    LL_TIM_OC_SetCompareCH3( TIM1, PWM_BRIGHT );
-  }
-  else
-  {
-    // No pulse
-    LL_TIM_OC_SetCompareCH3( TIM1, PWM_DARK );
-  }
-  
-  // Green
-  if( gau8RGBLEDs[ 1 ] > u8Cnt )
-  {
-    // Pulse for 1 usec
     LL_TIM_OC_SetCompareCH1( TIM1, PWM_BRIGHT );
   }
   else
@@ -134,8 +122,8 @@ void RGBLED_Interrupt( void )
     LL_TIM_OC_SetCompareCH1( TIM1, PWM_DARK );
   }
   
-  // Blue
-  if( gau8RGBLEDs[ 2 ] > u8Cnt )
+  // Green
+  if( gau8RGBLEDs[ 1 ] > u8Cnt )
   {
     // Pulse for 1 usec
     LL_TIM_OC_SetCompareCH4( TIM1, PWM_BRIGHT );
@@ -144,6 +132,18 @@ void RGBLED_Interrupt( void )
   {
     // No pulse
     LL_TIM_OC_SetCompareCH4( TIM1, PWM_DARK );
+  }
+  
+  // Blue
+  if( gau8RGBLEDs[ 2 ] > u8Cnt )
+  {
+    // Pulse for 1 usec
+    LL_TIM_OC_SetCompareCH3( TIM1, PWM_BRIGHT );
+  }
+  else
+  {
+    // No pulse
+    LL_TIM_OC_SetCompareCH3( TIM1, PWM_DARK );
   }
   u8Cnt++;
   if( COLOR_LEVELS <= u8Cnt )

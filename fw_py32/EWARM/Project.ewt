@@ -2,7 +2,7 @@
 <project>
     <fileVersion>3</fileVersion>
     <configuration>
-        <name>PY32F002-STK</name>
+        <name>karifa</name>
         <toolchain>
             <name>ARM</name>
         </toolchain>
@@ -18,11 +18,11 @@
                     <analyzeTimeoutEnabled>1</analyzeTimeoutEnabled>
                     <analyzeTimeout>600</analyzeTimeout>
                     <enableParallel>1</enableParallel>
-                    <parallelThreads>6</parallelThreads>
+                    <parallelThreads>8</parallelThreads>
                     <enableFalsePositives>0</enableFalsePositives>
                     <messagesLimitEnabled>1</messagesLimitEnabled>
                     <messagesLimit>100</messagesLimit>
-                    <outputDir>PY32F002-STK/C-STAT</outputDir>
+                    <outputDir>karifa/C-STAT</outputDir>
                 </cstatargs>
                 <cstat_settings>
                     <cstat_version>2.4.1</cstat_version>
@@ -1469,6 +1469,9 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Src\batterylevel.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Src\config.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Src\led.c</name>
