@@ -583,23 +583,22 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
   {sizeof(gasCrissCross)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasCrissCross,       sizeof(gasCrissCrossRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),       gasCrissCrossRGB },
   {sizeof(gasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),   gasGenericFlasher,   sizeof(gasGenericFlasherRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),   gasGenericFlasherRGB },
   {sizeof(gasKITT)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),             gasKITT,             sizeof(gasKITTRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),             gasKITTRGB },
-  {sizeof(gasPingpong)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasPingpong,     sizeof(gasPingpongRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasPingpongRGB },
+  {sizeof(gasPingpong)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasPingpong,         sizeof(gasPingpongRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasPingpongRGB },
   {sizeof(gasFadeRing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasFadeRing,         sizeof(gasFadeRingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasFadeRingRGB },
-  {sizeof(gasYingYang)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasYingYang,     sizeof(gasYingYangRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasYingYangRGB },
+  {sizeof(gasYingYang)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasYingYang,         sizeof(gasYingYangRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasYingYangRGB },
   {sizeof(gasPseudoRandomFade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasPseudoRandomFade, sizeof(gasPseudoRandomFadeRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasPseudoRandomFadeRGB },
 
-//  {sizeof(gasFadeout)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasFadeout,     sizeof(gasFadeoutRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasFadeoutRGB },
-  {sizeof(gasFlicker)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasFlicker,     sizeof(gasFlickerRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasFlickerRGB },
-  {sizeof(gasRace)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasRace,     sizeof(gasRaceRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasRaceRGB },
-  {sizeof(gasSparkle)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasSparkle,     sizeof(gasSparkleRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasSparkleRGB },
-  {sizeof(gasIce)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasIce,     sizeof(gasIceRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasIceRGB },
-  {sizeof(gasSplit2)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasSplit2,     sizeof(gasSplit2RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasSplit2RGB },
-//  {sizeof(gasSplit3fade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasSplit3fade,     sizeof(gasSplit3fadeRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasSplit3fadeRGB },
-  {sizeof(gasStepping)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasStepping,     sizeof(gasSteppingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasSteppingRGB },
+//  {sizeof(gasFadeout)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasFadeout,          sizeof(gasFadeoutRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasFadeoutRGB },
+  {sizeof(gasFlicker)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasFlicker,          sizeof(gasFlickerRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasFlickerRGB },
+  {sizeof(gasRace)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),             gasRace,             sizeof(gasRaceRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),             gasRaceRGB },
+  {sizeof(gasSparkle)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasSparkle,          sizeof(gasSparkleRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasSparkleRGB },
+  {sizeof(gasIce)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),              gasIce,              sizeof(gasIceRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),              gasIceRGB },
+  {sizeof(gasSplit2)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasSplit2,           sizeof(gasSplit2RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),           gasSplit2RGB },
+//  {sizeof(gasSplit3fade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasSplit3fade,       sizeof(gasSplit3fadeRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),       gasSplit3fadeRGB },
+  {sizeof(gasStepping)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasStepping,         sizeof(gasSteppingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasSteppingRGB },
 
   // Last animation, don't change its location
-  {sizeof(gasStepping)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasStepping,     sizeof(gasSteppingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasSteppingRGB },
-//  {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlackness }
+  {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB }
 };
 
 
