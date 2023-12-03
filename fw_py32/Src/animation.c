@@ -617,7 +617,7 @@ CODE const S_ANIMATION_INSTRUCTION_RGB gasStepping_hopehely_RGB[ 20u ] =
 
 //--------------------------------------------------------
 //! \brief One led going around for "hoember", not including eyes at 1001ms per cycle
-CODE const S_ANIMATION_INSTRUCTION_NORMAL gasStepping_hoember[ 2u ] = 
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasStepping_hoember[ 11u ] = 
 {
  //        0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11 
   {91u, { 15,  0,  0,  0,  0,  8,  8,  0,  0,  0,  0,  0}, LOAD,  0u },
@@ -664,7 +664,7 @@ CODE const S_ANIMATION_INSTRUCTION_RGB gasStepping_mezi_RGB[ 2u ] =
 
 //--------------------------------------------------------
 //! \brief Two leds going around on two sides in tandem bottom up - then from top to bottom for "Hopehely" at 1200ms per cycle
-CODE const S_ANIMATION_INSTRUCTION_NORMAL gasKITT_hopehely[ 11u ] = 
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasKITT_hopehely[ 12u ] = 
 {
   //        0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11
   {100u, { 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
@@ -712,7 +712,7 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasSplit2_fade_hopehely[ 11u ] =
   {200u, { 15,  0, 15,  0, 15,  0, 15,  0, 15,  0, 15,  0}, LOAD,  0u },
   {200u, { 12,  3, 12,  3, 12,  3, 12,  3, 12,  3, 12,  3}, LOAD,  0u },
   {200u, {  9,  6,  9,  6,  9,  6,  9,  6,  9,  6,  9,  6}, LOAD,  0u },
-  {200u, {  6,  9,  6,  9,  6   9,  6,  9,  6,  9,  6,  9}, LOAD,  0u },
+  {200u, {  6,  9,  6,  9,  6,  9,  6,  9,  6,  9,  6,  9}, LOAD,  0u },
   {200u, {  3, 12,  3, 12,  3, 12,  3, 12,  3, 12,  3, 12}, LOAD,  0u },
   {200u, {  0, 15,  0, 15,  0, 15,  0, 15,  0, 15,  0, 15}, LOAD,  0u },
   {200u, {  3, 12,  3, 12,  3, 12,  3, 12,  3, 12,  3, 12}, LOAD,  0u },
@@ -745,7 +745,7 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasSplit2_fade_ease_hopehely[ 11u ] =
   {200u, { 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0}, LOAD, 0u },
   {200u, { 13, 2, 13, 2, 13, 2, 13, 2, 13, 2, 13, 2}, LOAD, 0u },
   {200u, { 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5}, LOAD, 0u },
-  {200u, { 5, 10, 5, 10, 5  10, 5, 10, 5, 10, 5, 10}, LOAD, 0u },
+  {200u, { 5, 10, 5, 10, 5, 10, 5, 10, 5, 10, 5, 10}, LOAD, 0u },
   {200u, { 2, 13, 2, 13, 2, 13, 2, 13, 2, 13, 2, 13}, LOAD, 0u },
   {200u, { 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15}, LOAD, 0u },
   {200u, { 2, 13, 2, 13, 2, 13, 2, 13, 2, 13, 2, 13}, LOAD, 0u },
@@ -796,6 +796,105 @@ CODE const S_ANIMATION_INSTRUCTION_RGB gasFlasherNoEyes_mezi_RGB[ 2u ] =
 };
 
 // *******************************************************
+#ifdef KARIFA
+//! \brief Table of animations
+CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] = 
+{
+  {sizeof(gasRetroVersion)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasRetroVersion,     sizeof(gasRetroVersionRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasRetroVersionRGB },
+  {sizeof(gasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasSoftFlashing,     sizeof(gasSoftFlashingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasSoftFlashingRGB },
+  //  {sizeof(gasShootingStar)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasShootingStar,     sizeof(gasShootingStarRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasShootingStarRGB },
+  {sizeof(gasDisco)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),            gasDisco,            sizeof(gasDiscoRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),            gasDiscoRGB },
+  {sizeof(gasStarLaunch)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasStarLaunch,       sizeof(gasStarLaunchRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),       gasStarLaunchRGB },
+  {sizeof(gasCrissCross)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasCrissCross,       sizeof(gasCrissCrossRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),       gasCrissCrossRGB },
+  {sizeof(gasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),   gasGenericFlasher,   sizeof(gasGenericFlasherRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),   gasGenericFlasherRGB },
+  {sizeof(gasKITT)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),             gasKITT,             sizeof(gasKITTRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),             gasKITTRGB },
+  {sizeof(gasPingpong)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasPingpong,         sizeof(gasPingpongRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasPingpongRGB },
+  {sizeof(gasFadeRing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasFadeRing,         sizeof(gasFadeRingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasFadeRingRGB },
+  {sizeof(gasYingYang)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasYingYang,         sizeof(gasYingYangRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasYingYangRGB },
+  {sizeof(gasPseudoRandomFade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasPseudoRandomFade, sizeof(gasPseudoRandomFadeRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasPseudoRandomFadeRGB },
+  //  {sizeof(gasFadeout)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasFadeout,          sizeof(gasFadeoutRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasFadeoutRGB },
+  {sizeof(gasFlicker)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasFlicker,          sizeof(gasFlickerRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasFlickerRGB },
+  {sizeof(gasRace)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),             gasRace,             sizeof(gasRaceRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),             gasRaceRGB },
+  {sizeof(gasSparkle)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasSparkle,          sizeof(gasSparkleRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasSparkleRGB },
+  {sizeof(gasIce)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),              gasIce,              sizeof(gasIceRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),              gasIceRGB },
+  {sizeof(gasSplit2)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasSplit2,           sizeof(gasSplit2RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),           gasSplit2RGB },
+  //  {sizeof(gasSplit3fade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasSplit3fade,       sizeof(gasSplit3fadeRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),       gasSplit3fadeRGB },
+  {sizeof(gasStepping)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasStepping,         sizeof(gasSteppingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasSteppingRGB },
+  // Last animation, don't change its location
+  {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB }
+};
+#endif
+
+#ifdef HOEMBER
+//! \brief Table of animations
+CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] = 
+{
+  {sizeof(gasRetroVersion)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasRetroVersion,     sizeof(gasRetroVersionRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasRetroVersionRGB },
+  {sizeof(gasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasSoftFlashing,     sizeof(gasSoftFlashingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasSoftFlashingRGB },
+  //  {sizeof(gasShootingStar)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasShootingStar,     sizeof(gasShootingStarRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasShootingStarRGB },
+  {sizeof(gasDisco)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),            gasDisco,            sizeof(gasDiscoRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),            gasDiscoRGB },
+  {sizeof(gasCrissCross)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasCrissCross,       sizeof(gasCrissCrossRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),       gasCrissCrossRGB },
+  {sizeof(gasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),   gasGenericFlasher,   sizeof(gasGenericFlasherRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),   gasGenericFlasherRGB },
+  {sizeof(gasKITT)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),             gasKITT,             sizeof(gasKITTRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),             gasKITTRGB },
+  {sizeof(gasPingpong)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasPingpong,         sizeof(gasPingpongRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasPingpongRGB },
+  {sizeof(gasFadeRing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasFadeRing,         sizeof(gasFadeRingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasFadeRingRGB },
+  {sizeof(gasYingYang)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasYingYang,         sizeof(gasYingYangRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasYingYangRGB },
+  {sizeof(gasPseudoRandomFade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasPseudoRandomFade, sizeof(gasPseudoRandomFadeRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasPseudoRandomFadeRGB },
+  //  {sizeof(gasFadeout)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasFadeout,          sizeof(gasFadeoutRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasFadeoutRGB },
+  {sizeof(gasFlicker)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasFlicker,          sizeof(gasFlickerRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasFlickerRGB },
+  {sizeof(gasRace)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),             gasRace,             sizeof(gasRaceRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),             gasRaceRGB },
+  {sizeof(gasSparkle)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasSparkle,          sizeof(gasSparkleRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasSparkleRGB },
+  {sizeof(gasIce)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),              gasIce,              sizeof(gasIceRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),              gasIceRGB },
+  {sizeof(gasSplit2)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasSplit2,           sizeof(gasSplit2RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),           gasSplit2RGB },
+  //  {sizeof(gasSplit3fade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasSplit3fade,       sizeof(gasSplit3fadeRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),       gasSplit3fadeRGB },
+  {sizeof(gasStepping)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasStepping,         sizeof(gasSteppingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasSteppingRGB },
+/*
+  // NEW, TO BE TESTED
+  {sizeof(gasStepping_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasStepping_hopehely, sizeof(gasStepping_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasStepping_hopehely_RGB}, 
+  {sizeof(gasStepping_hoember)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasStepping_hoember, sizeof(gasStepping_hoember_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasStepping_hoember_RGB}, 
+  {sizeof(gasStepping_mezi)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasStepping_mezi, sizeof(gasStepping_mezi_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasStepping_mezi_RGB}, 
+  {sizeof(gasSplit2_fade_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasSplit2_fade_hopehely, sizeof(gasSplit2_fade_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasSplit2_fade_hopehely_RGB}, 
+  {sizeof(gasSplit2_fade_ease_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasSplit2_fade_ease_hopehely, sizeof(gasSplit2_fade_ease_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasSplit2_fade_ease_hopehely_RGB}, 
+  {sizeof(gasSplit2_mezi)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasSplit2_mezi, sizeof(gasSplit2_mezi_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasSplit2_mezi_RGB}, 
+  {sizeof(gasFlasherNoEyes_mezi)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasFlasherNoEyes_mezi, sizeof(gasFlasherNoEyes_mezi_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasFlasherNoEyes_mezi_RGB}, 
+  */
+  // Last animation, don't change its location
+  {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB }
+};
+#endif
+
+#ifdef HOPEHELY
+//! \brief Table of animations
+CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] = 
+{
+  {sizeof(gasRetroVersion)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasRetroVersion,     sizeof(gasRetroVersionRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasRetroVersionRGB },
+  {sizeof(gasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasSoftFlashing,     sizeof(gasSoftFlashingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasSoftFlashingRGB },
+  //  {sizeof(gasShootingStar)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasShootingStar,     sizeof(gasShootingStarRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasShootingStarRGB },
+  {sizeof(gasDisco)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),            gasDisco,            sizeof(gasDiscoRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),            gasDiscoRGB },
+  {sizeof(gasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),   gasGenericFlasher,   sizeof(gasGenericFlasherRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),   gasGenericFlasherRGB },
+
+  {sizeof(gasKITT_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),             gasKITT_hopehely,             sizeof(gasKITT_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),             gasKITT_hopehely_RGB },
+  {sizeof(gasKITT2_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),             gasKITT2_hopehely,             sizeof(gasKITT2_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),             gasKITT2_hopehely_RGB },
+  
+  {sizeof(gasFadeRing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasFadeRing,         sizeof(gasFadeRingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasFadeRingRGB },
+  {sizeof(gasYingYang)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasYingYang,         sizeof(gasYingYangRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasYingYangRGB },
+  {sizeof(gasPseudoRandomFade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasPseudoRandomFade, sizeof(gasPseudoRandomFadeRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasPseudoRandomFadeRGB },
+//  {sizeof(gasFadeout)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasFadeout,          sizeof(gasFadeoutRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasFadeoutRGB },
+  {sizeof(gasFlicker)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasFlicker,          sizeof(gasFlickerRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasFlickerRGB },
+  {sizeof(gasRace)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),             gasRace,             sizeof(gasRaceRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),             gasRaceRGB },
+  {sizeof(gasSparkle)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasSparkle,          sizeof(gasSparkleRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasSparkleRGB },
+  {sizeof(gasIce)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),              gasIce,              sizeof(gasIceRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),              gasIceRGB },
+  {sizeof(gasStepping)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasStepping,         sizeof(gasSteppingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasSteppingRGB },
+  // NEW, TO BE TESTED
+  {sizeof(gasStepping_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasStepping_hopehely, sizeof(gasStepping_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasStepping_hopehely_RGB}, 
+  {sizeof(gasSplit2_fade_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasSplit2_fade_hopehely, sizeof(gasSplit2_fade_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasSplit2_fade_hopehely_RGB}, 
+  {sizeof(gasSplit2_fade_ease_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasSplit2_fade_ease_hopehely, sizeof(gasSplit2_fade_ease_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasSplit2_fade_ease_hopehely_RGB}, 
+  // Last animation, don't change its location
+  {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB }
+};
+#endif
+
+#ifdef MEZI
 //! \brief Table of animations
 CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] = 
 {
@@ -855,7 +954,7 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
   {sizeof(gasSplit2)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasSplit2,           sizeof(gasSplit2RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),           gasSplit2RGB },
   //  {sizeof(gasSplit3fade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasSplit3fade,       sizeof(gasSplit3fadeRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),       gasSplit3fadeRGB },
   {sizeof(gasStepping)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasStepping,         sizeof(gasSteppingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasSteppingRGB },
-
+/*
   // NEW, TO BE TESTED
   {sizeof(gasStepping_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasStepping_hopehely, sizeof(gasStepping_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasStepping_hopehely_RGB}, 
   {sizeof(gasStepping_hoember)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasStepping_hoember, sizeof(gasStepping_hoember_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasStepping_hoember_RGB}, 
@@ -864,10 +963,11 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
   {sizeof(gasSplit2_fade_ease_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasSplit2_fade_ease_hopehely, sizeof(gasSplit2_fade_ease_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasSplit2_fade_ease_hopehely_RGB}, 
   {sizeof(gasSplit2_mezi)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasSplit2_mezi, sizeof(gasSplit2_mezi_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasSplit2_mezi_RGB}, 
   {sizeof(gasFlasherNoEyes_mezi)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasFlasherNoEyes_mezi, sizeof(gasFlasherNoEyes_mezi_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasFlasherNoEyes_mezi_RGB}, 
-  
+  */
   // Last animation, don't change its location
   {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB }
 };
+#endif
 
 
 /***************************************< Global variables >**************************************/

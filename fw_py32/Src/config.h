@@ -14,8 +14,8 @@
 /***************************************< Definitions >**************************************/
 // Uncomment only one!
 //#define KARIFA
-#define HOEMBER
-//#define HOPEHELY
+//#define HOEMBER
+#define HOPEHELY
 //#define MEZI
 
 
