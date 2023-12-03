@@ -42,18 +42,18 @@
   #define LED4            GPIOA,LL_GPIO_PIN_7  //!< Pin of LED4 common pin
   #define LED5            GPIOB,LL_GPIO_PIN_0  //!< Pin of LED5 common pin
 #endif
-/*
 #ifdef HOPEHELY
   // Pin definitions
   #define MPX1            GPIOA,LL_GPIO_PIN_6  //!< Pin of MPX1 multiplexer pin
   #define MPX2            GPIOA,LL_GPIO_PIN_5  //!< Pin of MPX2 multiplexer pin
   #define LED0            GPIOB,LL_GPIO_PIN_1  //!< Pin of LED0 common pin
-  #define LED1            GPIOA,LL_GPIO_PIN_4  //!< Pin of LED1 common pin
-  #define LED2            GPIOA,LL_GPIO_PIN_7  //!< Pin of LED2 common pin
-  #define LED3            GPIOB,LL_GPIO_PIN_2  //!< Pin of LED3 common pin
-  #define LED4            GPIOB,LL_GPIO_PIN_0  //!< Pin of LED4 common pin
-  #define LED5            GPIOA,LL_GPIO_PIN_2  //!< Pin of LED5 common pin
+  #define LED1            GPIOB,LL_GPIO_PIN_2  //!< Pin of LED1 common pin
+  #define LED2            GPIOB,LL_GPIO_PIN_0  //!< Pin of LED2 common pin
+  #define LED3            GPIOA,LL_GPIO_PIN_7  //!< Pin of LED3 common pin
+  #define LED4            GPIOA,LL_GPIO_PIN_2  //!< Pin of LED4 common pin
+  #define LED5            GPIOA,LL_GPIO_PIN_4  //!< Pin of LED5 common pin
 #endif
+/*
 #ifdef MEZI
   // Pin definitions
   #define MPX1            GPIOA,LL_GPIO_PIN_6  //!< Pin of MPX1 multiplexer pin
@@ -99,7 +99,7 @@ DATA BIT gbitSide;                      //!< Stores which side of the panel is a
 //-----------------------------------------------------------------------------
 void LED_Init( void )
 {
-  LL_GPIO_InitTypeDef TIM1CH1MapInit= {0};
+  LL_GPIO_InitTypeDef TIM1CH1MapInit = {0};
   U8 u8Index;
   
   // Init globals
@@ -108,6 +108,8 @@ void LED_Init( void )
   {
     gau8LEDBrightness[ u8Index ] = 0;
   }
+
+  gbitSide = 0u;
   
   // Enable clocks
   LL_IOP_GRP1_EnableClock( LL_IOP_GRP1_PERIPH_GPIOA );
