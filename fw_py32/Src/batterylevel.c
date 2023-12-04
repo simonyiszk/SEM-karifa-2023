@@ -237,15 +237,14 @@ void BatteryLevel_Show( void )
 #ifdef HOPEHELY  // HOPEHELY
   // We have 12 + 1 LED levels, so we divide this range to 13 levels
   // A floating-point based implementation would be: u8ChargeLevel = round( 13.0f*( f32BatteryVoltage - 2.0f )/0.8f );
-#warning "Calculate formula properly!"
-  // After simplification, the formula for charge level would be: u8ChargeLevel = round( ( 42649.6f / u16MeasuredLevel ) - 17.5f )
+  // After simplification, the formula for charge level would be: u8ChargeLevel = round( ( 79872.0f / u16MeasuredLevel ) - 32.5f )
   if( u16MeasuredLevel >= 2457u )  // If the voltage is below 2.0V
   {
     u8ChargeLevel = 0u;
   }
   else
   {
-    u8ChargeLevel = ( ( 170600u / u16MeasuredLevel ) - 70u )>>2u;
+    u8ChargeLevel = ( ( 159744u / u16MeasuredLevel ) - 65u )>>1u;
   }
   // Display the charge level on the LEDs
   for( u8Index = 0u; u8Index < LEDS_NUM; u8Index++ )
