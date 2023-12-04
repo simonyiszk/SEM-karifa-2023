@@ -100,13 +100,23 @@ void BatteryLevel_Show( void )
 
   // Startup animation
   // After it, all LED brightness will be set to maximum, to ensure a significant current draw during measurement
+#ifdef HOPEHELY
+  for( u8Index = 0u; u8Index < LEDS_NUM; u8Index++ )
+  {
+    gau8LEDBrightness[ u8Index ] = 15u;
+    Delay( 50u );
+  }
+#else
   for( u8Index = 0u; u8Index < LEDS_NUM/2u; u8Index++ )
   {
     gau8LEDBrightness[ u8Index ] = 15u;
     gau8LEDBrightness[ LEDS_NUM - u8Index - 1u ] = 15u;
     Delay( 100u );
   }
+#endif
   gau8RGBLEDs[ 0u ] = 15u;
+  gau8RGBLEDs[ 1u ] = 15u;
+  gau8RGBLEDs[ 2u ] = 15u;
   Delay( 100u );
   // Measure battery voltage
   LL_ADC_REG_StartConversion( ADC1 );  // Start (regular) conversion
@@ -157,6 +167,8 @@ void BatteryLevel_Show( void )
     gau8RGBLEDs[ 0u ] = 15u;  // Light up red LED
 #ifdef HOEMBER
     gau8RGBLEDs[ 1u ] = 15u;  // Light up green LED too
+#else
+    gau8RGBLEDs[ 1u ] = 0u;   // green stays dark
 #endif
     gau8RGBLEDs[ 2u ] = 0u;   // blue stays dark
   }
@@ -200,6 +212,8 @@ void BatteryLevel_Show( void )
   else
   {
     gau8RGBLEDs[ 0u ] = 0u;
+    gau8RGBLEDs[ 1u ] = 0u;
+    gau8RGBLEDs[ 2u ] = 0u;
   }
 #endif
 

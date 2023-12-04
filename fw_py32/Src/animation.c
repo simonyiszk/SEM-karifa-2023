@@ -94,12 +94,20 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasRetroVersion[ 8u ] =
   {133u, {15,  0, 15,  0,  0, 15, 15,  0,  0, 15,  0, 15}, LOAD, 0u },
   {133u, { 0,  0,  0, 15,  0,  0,  0,  0,  0, 15,  0,  0}, LOAD, 0u },
 };
-//! \brief Retro animation -- RGB LED
+//! \brief Retro animation (red) -- RGB LED
 CODE const S_ANIMATION_INSTRUCTION_RGB gasRetroVersionRGB[ 4u ] = 
 {
   {133u, {15,  0,  0}, LOAD, 0u },
   {665u, { 0,  0,  0}, LOAD, 0u },
   {133u, {15,  0,  0}, LOAD, 0u },
+  {133u, { 0,  0,  0}, LOAD, 0u },
+};
+//! \brief Retro animation (yellow) -- RGB LED
+CODE const S_ANIMATION_INSTRUCTION_RGB gasRetroVersionRGB_yellow[ 4u ] = 
+{
+  {133u, {15, 15,  0}, LOAD, 0u },
+  {665u, { 0,  0,  0}, LOAD, 0u },
+  {133u, {15, 15,  0}, LOAD, 0u },
   {133u, { 0,  0,  0}, LOAD, 0u },
 };
 
@@ -112,13 +120,21 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasSoftFlashing[ 4u ] =
   {125u, {15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}, LOAD,          0u }, 
   {125u, {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}, ADD | REPEAT, 14u },
 };
-//! \brief "Sine" wave flasher animation -- RGB LED
+//! \brief "Sine" wave flasher animation (red) -- RGB LED
 CODE const S_ANIMATION_INSTRUCTION_RGB gasSoftFlashingRGB[ 4u ] = 
 {
   {125u, { 0,  0,  0}, LOAD,          0u },
   {125u, { 1,  0,  0}, ADD | REPEAT, 14u },
   {125u, {15,  0,  0}, LOAD,          0u }, 
   {125u, {-1,  0,  0}, ADD | REPEAT, 14u },
+};
+//! \brief "Sine" wave flasher animation (blue) -- RGB LED
+CODE const S_ANIMATION_INSTRUCTION_RGB gasSoftFlashingRGB_hopehely[ 4u ] = 
+{
+  {125u, { 0,  0,  0}, LOAD,          0u },
+  {125u, { 0,  0,  1}, ADD | REPEAT, 14u },
+  {125u, { 0,  0, 15}, LOAD,          0u }, 
+  {125u, { 0,  0, -1}, ADD | REPEAT, 14u },
 };
 
 //--------------------------------------------------------
@@ -135,6 +151,13 @@ CODE const S_ANIMATION_INSTRUCTION_RGB gasFadeRingRGB[ 3u ] =
   { 40u, {15,  1,  0}, LOAD,          0u },
   { 40u, {-1,  0,  0}, ADD | REPEAT, 13u },
   { 40u, { 1,  0,  0}, ADD | REPEAT, 13u },
+};
+//! \brief "Fade ring" animation -- RGB LED
+CODE const S_ANIMATION_INSTRUCTION_RGB gasFadeRingRGB_hopehely[ 3u ] =
+{
+  { 40u, {15,  1, 15}, LOAD,          0u },
+  { 40u, {-1,  0, -1}, ADD | REPEAT, 13u },
+  { 40u, { 1,  0,  1}, ADD | REPEAT, 13u },
 };
 
 //--------------------------------------------------------
@@ -270,12 +293,20 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasPseudoRandomFade[ 15u ] =
   { 66u, { 0,  0,  0,  0,  1,  0,  0,  0,  0, -1,  0,  0}, ADD | REPEAT, 14u },
   { 66u, { 0,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
 };
-//! \brief Pseudo-random fade animation -- RGB LED
+//! \brief Pseudo-random fade animation (red) -- RGB LED
 CODE const S_ANIMATION_INSTRUCTION_RGB gasPseudoRandomFadeRGB[ 4u ] = 
 {
   { 9966u, { 0,  0,  0}, LOAD,  0u },
   {   66u, { 1,  0,  0}, ADD | REPEAT, 14u },
   {   66u, {-1,  0,  0}, ADD | REPEAT, 14u },
+  { 1980u, { 0,  0,  0}, LOAD,  0u },
+};
+//! \brief Pseudo-random fade animation (yellow) -- RGB LED
+CODE const S_ANIMATION_INSTRUCTION_RGB gasPseudoRandomFadeRGB_hopehely[ 4u ] = 
+{
+  { 9966u, { 0,  0,  0}, LOAD,  0u },
+  {   66u, { 1,  1,  0}, ADD | REPEAT, 14u },
+  {   66u, {-1, -1,  0}, ADD | REPEAT, 14u },
   { 1980u, { 0,  0,  0}, LOAD,  0u },
 };
 
@@ -410,6 +441,16 @@ CODE const S_ANIMATION_INSTRUCTION_RGB gasSparkleRGB[ 6u ] =
   { 250u, {15,  6,  2}, LOAD,         0u },
   { 250u, {15,  3,  1}, LOAD,         0u },
 };
+//! \brief Sparkle -- RGB LED
+CODE const S_ANIMATION_INSTRUCTION_RGB gasSparkleRGB_hopehely[ 6u ] = 
+{
+  { 500u, { 0,  0, 15}, LOAD,         0u },
+  { 250u, { 1,  3, 15}, LOAD,         0u },
+  { 250u, { 2,  6, 15}, LOAD,         0u },
+  { 500u, { 3, 10, 15}, LOAD,         0u },
+  { 250u, { 2,  6, 15}, LOAD,         0u },
+  { 250u, { 1,  3, 15}, LOAD,         0u },
+};
 
 //--------------------------------------------------------
 //! \brief Split2 -- normal LEDs
@@ -521,6 +562,33 @@ CODE const S_ANIMATION_INSTRUCTION_RGB gasRaceRGB[ 12u ] =
 };
 
 //--------------------------------------------------------
+//! \brief Race -- A trace is circulating and accelerating
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasRace_hopehely[ 6u ] = 
+{
+  {100u, { 5, 10, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,             0u },
+  {100u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, RSHIFT | REPEAT, 10u },
+  { 70u, { 5, 10, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,             0u },
+  { 70u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, RSHIFT | REPEAT, 10u },
+  { 40u, { 5, 10, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,             0u },
+  { 40u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, RSHIFT | REPEAT, 10u },
+};
+//! \brief Race -- RGB
+CODE const S_ANIMATION_INSTRUCTION_RGB gasRaceRGB_hopehely[ 9u ] = 
+{ 
+  {90u, { 0,  0,  0}, LOAD,            0u },
+  {37u, { 1,  0,  0}, ADD | REPEAT,   14u },
+  {37u, {-1,  0,  0}, ADD | REPEAT,   14u },
+
+  {30u, { 0,  0,  0}, LOAD,            0u },
+  {27u, { 0,  1,  0}, ADD | REPEAT,   14u },
+  {27u, { 0, -1,  0}, ADD | REPEAT,   14u },
+
+  {30u, { 0,  0,  0}, LOAD,            0u },
+  {15u, { 0,  0,  1}, ADD | REPEAT,   14u },
+  {15u, { 0,  0, -1}, ADD | REPEAT,   14u },
+};
+
+//--------------------------------------------------------
 //! \brief Ying-yang
 CODE const S_ANIMATION_INSTRUCTION_NORMAL gasYingYang[ 2u ] = 
 {
@@ -560,6 +628,30 @@ CODE const S_ANIMATION_INSTRUCTION_RGB gasIceRGB[ 2u ] =
 };
 
 //--------------------------------------------------------
+//! \brief Ice
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasIce_hopehely[ 10u ] = 
+{
+  {300u, { 0,  0,  0,  0,  0,  0, 15,  0,  0,  0,  0,  0}, LOAD, 0u },
+  {300u, { 0,  0,  0,  0,  0, 15, 10, 15,  0,  0,  0,  0}, LOAD, 0u },
+  {300u, { 0,  0,  0,  0, 15, 10,  5, 10, 15,  0,  0,  0}, LOAD, 0u },
+  {300u, { 0,  0,  0, 15, 10,  5,  0,  5, 10, 15,  0,  0}, LOAD, 0u },
+  {300u, { 0,  0, 15, 10,  5,  0,  0,  0,  5, 10, 15,  0}, LOAD, 0u },
+  {300u, { 0, 15, 10,  5,  0,  0,  0,  0,  0,  5, 10, 15}, LOAD, 0u },
+  {300u, {15, 10,  5,  0,  0,  0,  0,  0,  0,  0,  5, 10}, LOAD, 0u },
+  {300u, {10,  5,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5}, LOAD, 0u },
+  {300u, { 5,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD, 0u },
+  {300u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD, 0u },
+};
+//! \brief Ice RGB
+CODE const S_ANIMATION_INSTRUCTION_RGB gasIceRGB_hopehely[ 4u ] = 
+{
+  { 105u, { 0, 15, 15}, LOAD,          0u },
+  {  93u, { 0, -1,  0}, ADD | REPEAT, 14u },
+  { 105u, { 0,  0, 15}, LOAD,          0u },
+  {  93u, { 0,  1,  0}, ADD | REPEAT, 14u },
+};
+
+//--------------------------------------------------------
 //! \brief All blackness, reached right before going to power down mode -- normal LEDs
 CODE const S_ANIMATION_INSTRUCTION_NORMAL gasBlackness[ 1u ] =
 {
@@ -572,46 +664,35 @@ CODE const S_ANIMATION_INSTRUCTION_RGB gasBlacknessRGB[ 1u ] =
 };
 
 //--------------------------------------------------------
-//! \brief One led going around for "hopehely" at 996ms per cycle
-CODE const S_ANIMATION_INSTRUCTION_NORMAL gasStepping_hopehely[ 2u ] = 
-{
-  {83u, { 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
-  {83u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, RSHIFT | REPEAT, 11u },
-  // {83u, {  0, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
-  // {83u, {  0,  0, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
-  // {83u, {  0,  0,  0, 15,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
-  // {83u, {  0,  0,  0,  0, 15,  0,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
-  // {83u, {  0,  0,  0,  0,  0, 15,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
-  // {83u, {  0,  0,  0,  0,  0,  0, 15,  0,  0,  0,  0,  0}, LOAD,  0u },
-  // {83u, {  0,  0,  0,  0,  0,  0,  0, 15,  0,  0,  0,  0}, LOAD,  0u },
-  // {83u, {  0,  0,  0,  0,  0,  0,  0,  0, 15,  0,  0,  0}, LOAD,  0u },
-  // {83u, {  0,  0,  0,  0,  0,  0,  0,  0,  0, 15,  0,  0}, LOAD,  0u },
-  // {83u, {  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15,  0}, LOAD,  0u },
-  // {83u, {  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15}, LOAD,  0u },
+//! \brief Shooting star anticlockwise animation -- normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasShootingStar_hopehely[ 2u ] = 
+{ 
+  {100u, { 5, 10, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,             0u },
+  {100u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, RSHIFT | REPEAT, 10u },
 };
 //! \brief 20 step Rainbow, 1000ms per cycle
-CODE const S_ANIMATION_INSTRUCTION_RGB gasStepping_hopehely_RGB[ 20u ] = 
+CODE const S_ANIMATION_INSTRUCTION_RGB gasShootingStar_hopehely_RGB[ 20u ] = 
 {
- { 50u, {15, 0, 0}, LOAD, 0u },
- { 50u, {15, 5, 0}, LOAD, 0u },
- { 50u, {15, 9, 0}, LOAD, 0u },
- { 50u, {15, 13, 0}, LOAD, 0u },
- { 50u, {12, 15, 0}, LOAD, 0u },
- { 50u, {8, 15, 0}, LOAD, 0u },
- { 50u, {3, 15, 0}, LOAD, 0u },
- { 50u, {0, 15, 1}, LOAD, 0u },
- { 50u, {0, 15, 6}, LOAD, 0u },
- { 50u, {0, 15, 11}, LOAD, 0u },
- { 50u, {0, 15, 15}, LOAD, 0u },
- { 50u, {0, 10, 15}, LOAD, 0u },
- { 50u, {0, 6, 15}, LOAD, 0u },
- { 50u, {0, 1, 15}, LOAD, 0u },
- { 50u, {3, 0, 15}, LOAD, 0u },
- { 50u, {8, 0, 15}, LOAD, 0u },
- { 50u, {12, 0, 15}, LOAD, 0u },
- { 50u, {15, 0, 14}, LOAD, 0u },
- { 50u, {15, 0, 9}, LOAD, 0u },
- { 50u, {15, 0, 5}, LOAD, 0u }
+ { 50u, {15,  0,  0}, LOAD, 0u },
+ { 50u, {15,  5,  0}, LOAD, 0u },
+ { 50u, {15,  9,  0}, LOAD, 0u },
+ { 50u, {15, 13,  0}, LOAD, 0u },
+ { 50u, {12, 15,  0}, LOAD, 0u },
+ { 50u, { 8, 15,  0}, LOAD, 0u },
+ { 50u, { 3, 15,  0}, LOAD, 0u },
+ { 50u, { 0, 15,  1}, LOAD, 0u },
+ { 50u, { 0, 15,  6}, LOAD, 0u },
+ { 50u, { 0, 15, 11}, LOAD, 0u },
+ { 50u, { 0, 15, 15}, LOAD, 0u },
+ { 50u, { 0, 10, 15}, LOAD, 0u },
+ { 50u, { 0,  6, 15}, LOAD, 0u },
+ { 50u, { 0,  1, 15}, LOAD, 0u },
+ { 50u, { 3,  0, 15}, LOAD, 0u },
+ { 50u, { 8,  0, 15}, LOAD, 0u },
+ { 50u, {12,  0, 15}, LOAD, 0u },
+ { 50u, {15,  0, 14}, LOAD, 0u },
+ { 50u, {15,  0,  9}, LOAD, 0u },
+ { 50u, {15,  0,  5}, LOAD, 0u }
   // USOURCE | REPEAT could be used here, but it would be complicated and a bit wrong due 12 steps
 };
 
@@ -681,32 +762,17 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasKITT_hopehely[ 12u ] =
   {100u, {  0, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15}, LOAD,  0u },
 };
 //! \brief constant orange
-CODE const S_ANIMATION_INSTRUCTION_RGB gasKITT_hopehely_RGB[ 2u ] = 
+CODE const S_ANIMATION_INSTRUCTION_RGB gasKITT_hopehely_RGB[ 4u ] = 
 {
-  { 1200u, {8,  7,  0}, LOAD, 0u },
-};
-
-//--------------------------------------------------------
-//! \brief Two leds going around on two sides in tandem bottom up - then from top to bottom for "Hopehely" at 700ms per cycle
-CODE const S_ANIMATION_INSTRUCTION_NORMAL gasKITT2_hopehely[ 11u ] = 
-{
-  //        0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11
-  {150u, { 15,  0,  0,  0,  0,  0, 15,  0,  0,  0,  0,  0}, LOAD,  0u },
-  {100u, {  0, 15,  0,  0,  0, 15,  0, 15,  0,  0,  0, 15}, LOAD,  0u },
-  {100u, {  0,  0, 15,  0, 15,  0,  0,  0, 15,  0, 15,  0}, LOAD,  0u },
-  {150u, {  0,  0,  0, 15,  0,  0,  0,  0,  0, 15,  0,  0}, LOAD,  0u },
-  {100u, {  0,  0, 15,  0, 15,  0,  0,  0, 15,  0, 15,  0}, LOAD,  0u },
-  {100u, {  0, 15,  0,  0,  0, 15,  0, 15,  0,  0,  0, 15}, LOAD,  0u },
-};
-//! \brief constant orange
-CODE const S_ANIMATION_INSTRUCTION_RGB gasKITT2_hopehely_RGB[ 2u ] = 
-{
-  { 700u, {8,  7,  0}, LOAD, 0u },
+  { 100u, {8, 8, 0}, LOAD, 0u },
+  { 500u, {0, 0, 0}, LOAD, 0u },
+  { 100u, {8, 8, 0}, LOAD, 0u },
+  { 500u, {0, 0, 0}, LOAD, 0u },
 };
 
 //--------------------------------------------------------
 //! \brief Inner and outer leds are fading in offset on "hopehely" at 2000ms per cycle
-CODE const S_ANIMATION_INSTRUCTION_NORMAL gasSplit2_fade_hopehely[ 11u ] = 
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasSplit2_fade_hopehely[ 10u ] = 
 {
   //        0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11
   {200u, { 15,  0, 15,  0, 15,  0, 15,  0, 15,  0, 15,  0}, LOAD,  0u },
@@ -721,24 +787,24 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasSplit2_fade_hopehely[ 11u ] =
   {200u, { 12,  3, 12,  3, 12,  3, 12,  3, 12,  3, 12,  3}, LOAD,  0u },
 };
 //! \brief 10 step red fade, 2000ms per cycle
-CODE const S_ANIMATION_INSTRUCTION_RGB gasSplit2_fade_hopehely_RGB[ 20u ] = 
+CODE const S_ANIMATION_INSTRUCTION_RGB gasSplit2_fade_hopehely_RGB[ 10u ] = 
 {
- {200u, { 15, 0, 0}, LOAD, 0u },
- {200u, { 12, 0, 0}, LOAD, 0u },
- {200u, {  9, 0, 0}, LOAD, 0u },
- {200u, {  6, 0, 0}, LOAD, 0u },
- {200u, {  3, 0, 0}, LOAD, 0u },
- {200u, {  0, 0, 0}, LOAD, 0u },
- {200u, {  3, 0, 0}, LOAD, 0u },
- {200u, {  6, 0, 0}, LOAD, 0u },
- {200u, {  9, 0, 0}, LOAD, 0u },
- {200u, { 12, 0, 0}, LOAD, 0u },
+ {200u, { 15, 15, 15}, LOAD, 0u },
+ {200u, { 12, 12, 15}, LOAD, 0u },
+ {200u, {  9,  9, 15}, LOAD, 0u },
+ {200u, {  6,  6, 15}, LOAD, 0u },
+ {200u, {  3,  3, 15}, LOAD, 0u },
+ {200u, {  0,  0, 15}, LOAD, 0u },
+ {200u, {  3,  3, 15}, LOAD, 0u },
+ {200u, {  6,  6, 15}, LOAD, 0u },
+ {200u, {  9,  9, 15}, LOAD, 0u },
+ {200u, { 12, 12, 15}, LOAD, 0u },
   // USOURCE | REPEAT could be used here, but it would be complicated and a bit wrong due 12 steps
 };
 
 //--------------------------------------------------------
 //! \brief Inner and outer leds are fading in offset on "hopehely" at 2000ms per cycle (easing variant)
-CODE const S_ANIMATION_INSTRUCTION_NORMAL gasSplit2_fade_ease_hopehely[ 11u ] = 
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasSplit2_fade_ease_hopehely[ 10u ] = 
 {
   // Alternative, with ease in-out.
   //        0, 1,  2, 3,  4, 5,  6, 7,  8, 9, 10, 11
@@ -754,21 +820,20 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasSplit2_fade_ease_hopehely[ 11u ] =
   {200u, { 13, 2, 13, 2, 13, 2, 13, 2, 13, 2, 13, 2}, LOAD, 0u },
 };
 //! \brief 10 step red fade (eased), 2000ms per cycle
-CODE const S_ANIMATION_INSTRUCTION_RGB gasSplit2_fade_ease_hopehely_RGB[ 20u ] = 
+CODE const S_ANIMATION_INSTRUCTION_RGB gasSplit2_fade_ease_hopehely_RGB[ 10u ] = 
 {
- {200u, { 15, 0, 0}, LOAD, 0u },
- {200u, { 13, 0, 0}, LOAD, 0u },
- {200u, { 10, 0, 0}, LOAD, 0u },
- {200u, {  5, 0, 0}, LOAD, 0u },
- {200u, {  2, 0, 0}, LOAD, 0u },
- {200u, {  0, 0, 0}, LOAD, 0u },
- {200u, {  2, 0, 0}, LOAD, 0u },
- {200u, {  5, 0, 0}, LOAD, 0u },
- {200u, { 10, 0, 0}, LOAD, 0u },
- {200u, { 13, 0, 0}, LOAD, 0u },
+ {200u, { 15, 15, 0}, LOAD, 0u },
+ {200u, { 13, 13, 0}, LOAD, 0u },
+ {200u, { 10, 10, 0}, LOAD, 0u },
+ {200u, {  5,  5, 0}, LOAD, 0u },
+ {200u, {  2,  2, 0}, LOAD, 0u },
+ {200u, {  0,  0, 0}, LOAD, 0u },
+ {200u, {  2,  2, 0}, LOAD, 0u },
+ {200u, {  5,  5, 0}, LOAD, 0u },
+ {200u, { 10, 10, 0}, LOAD, 0u },
+ {200u, { 13, 13, 0}, LOAD, 0u },
   // USOURCE | REPEAT could be used here, but it would be complicated and a bit wrong due 12 steps
 };
-
 
 //--------------------------------------------------------
 //! \brief Split2 -- normal LEDs for "mezi"
@@ -829,7 +894,7 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
 //! \brief Table of animations
 CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] = 
 {
-  {sizeof(gasRetroVersion)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasRetroVersion,     sizeof(gasRetroVersionRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasRetroVersionRGB },
+  {sizeof(gasRetroVersion)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasRetroVersion,     sizeof(gasRetroVersionRGB_yellow)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasRetroVersionRGB_yellow },
   {sizeof(gasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasSoftFlashing,     sizeof(gasSoftFlashingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasSoftFlashingRGB },
   //  {sizeof(gasShootingStar)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasShootingStar,     sizeof(gasShootingStarRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasShootingStarRGB },
   {sizeof(gasDisco)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),            gasDisco,            sizeof(gasDiscoRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),            gasDiscoRGB },
@@ -867,28 +932,23 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
 //! \brief Table of animations
 CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] = 
 {
-  {sizeof(gasRetroVersion)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasRetroVersion,     sizeof(gasRetroVersionRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasRetroVersionRGB },
-  {sizeof(gasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasSoftFlashing,     sizeof(gasSoftFlashingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasSoftFlashingRGB },
-  //  {sizeof(gasShootingStar)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasShootingStar,     sizeof(gasShootingStarRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasShootingStarRGB },
-  {sizeof(gasDisco)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),            gasDisco,            sizeof(gasDiscoRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),            gasDiscoRGB },
-  {sizeof(gasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),   gasGenericFlasher,   sizeof(gasGenericFlasherRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),   gasGenericFlasherRGB },
-
-  {sizeof(gasKITT_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),             gasKITT_hopehely,             sizeof(gasKITT_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),             gasKITT_hopehely_RGB },
-  {sizeof(gasKITT2_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),             gasKITT2_hopehely,             sizeof(gasKITT2_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),             gasKITT2_hopehely_RGB },
-  
-  {sizeof(gasFadeRing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasFadeRing,         sizeof(gasFadeRingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasFadeRingRGB },
-  {sizeof(gasYingYang)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasYingYang,         sizeof(gasYingYangRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasYingYangRGB },
-  {sizeof(gasPseudoRandomFade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasPseudoRandomFade, sizeof(gasPseudoRandomFadeRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasPseudoRandomFadeRGB },
-//  {sizeof(gasFadeout)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasFadeout,          sizeof(gasFadeoutRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasFadeoutRGB },
-  {sizeof(gasFlicker)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasFlicker,          sizeof(gasFlickerRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasFlickerRGB },
-  {sizeof(gasRace)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),             gasRace,             sizeof(gasRaceRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),             gasRaceRGB },
-  {sizeof(gasSparkle)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasSparkle,          sizeof(gasSparkleRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasSparkleRGB },
-  {sizeof(gasIce)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),              gasIce,              sizeof(gasIceRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),              gasIceRGB },
-  {sizeof(gasStepping)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasStepping,         sizeof(gasSteppingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasSteppingRGB },
-  // NEW, TO BE TESTED
-  {sizeof(gasStepping_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasStepping_hopehely, sizeof(gasStepping_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasStepping_hopehely_RGB}, 
-  {sizeof(gasSplit2_fade_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasSplit2_fade_hopehely, sizeof(gasSplit2_fade_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasSplit2_fade_hopehely_RGB}, 
+  {sizeof(gasRetroVersion)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasRetroVersion,     sizeof(gasRetroVersionRGB_yellow)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasRetroVersionRGB_yellow },
+  {sizeof(gasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasSoftFlashing,     sizeof(gasSoftFlashingRGB_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasSoftFlashingRGB_hopehely },
+  {sizeof(gasShootingStar_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),  gasShootingStar_hopehely,     sizeof(gasShootingStar_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasShootingStar_hopehely_RGB },
   {sizeof(gasSplit2_fade_ease_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasSplit2_fade_ease_hopehely, sizeof(gasSplit2_fade_ease_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasSplit2_fade_ease_hopehely_RGB}, 
+  {sizeof(gasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),   gasGenericFlasher,   sizeof(gasGenericFlasherRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),   gasGenericFlasherRGB },
+  {sizeof(gasKITT_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),    gasKITT_hopehely,    sizeof(gasKITT_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),   gasKITT_hopehely_RGB },
+  {sizeof(gasDisco)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),            gasDisco,            sizeof(gasDiscoRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),            gasDiscoRGB },
+  {sizeof(gasFadeRing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasFadeRing,         sizeof(gasFadeRingRGB_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasFadeRingRGB_hopehely },
+  {sizeof(gasYingYang)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasYingYang,         sizeof(gasYingYangRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasYingYangRGB },
+  {sizeof(gasPseudoRandomFade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasPseudoRandomFade, sizeof(gasPseudoRandomFadeRGB_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasPseudoRandomFadeRGB_hopehely },
+//  {sizeof(gasFadeout)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasFadeout,          sizeof(gasFadeoutRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasFadeoutRGB },
+//  {sizeof(gasFlicker)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasFlicker,          sizeof(gasFlickerRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasFlickerRGB },
+  {sizeof(gasRace_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),    gasRace_hopehely,             sizeof(gasRaceRGB_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasRaceRGB_hopehely },
+  {sizeof(gasSparkle)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasSparkle,          sizeof(gasSparkleRGB_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasSparkleRGB_hopehely },
+  {sizeof(gasIce_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasIce_hopehely,              sizeof(gasIceRGB_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasIceRGB_hopehely },
+  {sizeof(gasSplit2_fade_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasSplit2_fade_hopehely, sizeof(gasSplit2_fade_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasSplit2_fade_hopehely_RGB}, 
+  {sizeof(gasStepping)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasStepping,         sizeof(gasSteppingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasSteppingRGB },
   // Last animation, don't change its location
   {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB }
 };

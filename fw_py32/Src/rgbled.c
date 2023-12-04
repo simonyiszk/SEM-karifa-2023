@@ -20,7 +20,9 @@
 
 /***************************************< Definitions >**************************************/
 #define COLOR_LEVELS       (16u)  //!< Number of brightness levels per color
-#define PWM_BRIGHT         (36u)  //!< PWM duty cycle for bright color -- 3 us pulse
+#define PWM_BRIGHT_RED     (36u)  //!< PWM duty cycle for bright color -- 3 us pulse
+#define PWM_BRIGHT_GREEN   (18u)  //!< PWM duty cycle for bright color -- 1.5 us pulse
+#define PWM_BRIGHT_BLUE    (36u)  //!< PWM duty cycle for bright color -- 3 us pulse
 #define PWM_DARK            (0u)  //!< PWM duty cycle for darkness
 
 
@@ -114,7 +116,7 @@ void RGBLED_Interrupt( void )
   if( gau8RGBLEDs[ 0 ] > u8Cnt )
   {
     // Pulse for 1 usec
-    LL_TIM_OC_SetCompareCH1( TIM1, PWM_BRIGHT );
+    LL_TIM_OC_SetCompareCH1( TIM1, PWM_BRIGHT_RED );
   }
   else
   {
@@ -126,7 +128,7 @@ void RGBLED_Interrupt( void )
   if( gau8RGBLEDs[ 1 ] > u8Cnt )
   {
     // Pulse for 1 usec
-    LL_TIM_OC_SetCompareCH4( TIM1, PWM_BRIGHT );
+    LL_TIM_OC_SetCompareCH4( TIM1, PWM_BRIGHT_GREEN );
   }
   else
   {
@@ -138,7 +140,7 @@ void RGBLED_Interrupt( void )
   if( gau8RGBLEDs[ 2 ] > u8Cnt )
   {
     // Pulse for 1 usec
-    LL_TIM_OC_SetCompareCH3( TIM1, PWM_BRIGHT );
+    LL_TIM_OC_SetCompareCH3( TIM1, PWM_BRIGHT_BLUE );
   }
   else
   {

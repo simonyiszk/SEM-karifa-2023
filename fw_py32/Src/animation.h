@@ -12,11 +12,25 @@
 #define ANIMATION_H
 
 /***************************************< Includes >**************************************/
+#include "config.h"
 
 
 /***************************************< Definitions >**************************************/
-#define NUM_ANIMATIONS        (18u)  //!< Number of animations implemented (including blackness)
+#ifdef KARIFA
+  #define NUM_ANIMATIONS        (18u)  //!< Number of animations implemented (including blackness)
+#endif
 
+#ifdef HOEMBER
+  #define NUM_ANIMATIONS        (18u)  //!< Number of animations implemented (including blackness)
+#endif
+
+#ifdef HOPEHELY
+  #define NUM_ANIMATIONS        (16u)  //!< Number of animations implemented (including blackness)
+#endif
+
+#ifdef MEZI
+  #define NUM_ANIMATIONS        (18u)  //!< Number of animations implemented (including blackness)
+#endif
 
 /***************************************< Types >**************************************/
 

@@ -44,8 +44,8 @@
 #endif
 #ifdef HOPEHELY
   // Pin definitions
-  #define MPX1            GPIOA,LL_GPIO_PIN_6  //!< Pin of MPX1 multiplexer pin
-  #define MPX2            GPIOA,LL_GPIO_PIN_5  //!< Pin of MPX2 multiplexer pin
+  #define MPX1            GPIOA,LL_GPIO_PIN_5  //!< Pin of MPX1 multiplexer pin
+  #define MPX2            GPIOA,LL_GPIO_PIN_6  //!< Pin of MPX2 multiplexer pin
   #define LED0            GPIOB,LL_GPIO_PIN_1  //!< Pin of LED0 common pin
   #define LED1            GPIOB,LL_GPIO_PIN_2  //!< Pin of LED1 common pin
   #define LED2            GPIOB,LL_GPIO_PIN_0  //!< Pin of LED2 common pin
