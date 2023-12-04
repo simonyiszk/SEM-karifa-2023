@@ -29,7 +29,7 @@
 #endif
 
 #ifdef MEZI
-  #define NUM_ANIMATIONS        (18u)  //!< Number of animations implemented (including blackness)
+  #define NUM_ANIMATIONS        (11u)  //!< Number of animations implemented (including blackness)
 #endif
 
 /***************************************< Types >**************************************/

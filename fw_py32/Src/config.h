@@ -15,8 +15,8 @@
 // Uncomment only one!
 //#define KARIFA
 //#define HOEMBER
-#define HOPEHELY
-//#define MEZI
+//#define HOPEHELY
+#define MEZI
 
 
 #endif /* CONFIG_H */
