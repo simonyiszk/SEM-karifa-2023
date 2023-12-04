@@ -14,9 +14,9 @@
 /***************************************< Definitions >**************************************/
 // Uncomment only one!
 //#define KARIFA
-//#define HOEMBER
+#define HOEMBER
 //#define HOPEHELY
-#define MEZI
+//#define MEZI
 
 
 #endif /* CONFIG_H */

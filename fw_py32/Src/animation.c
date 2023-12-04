@@ -898,6 +898,7 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
   {sizeof(gasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasSoftFlashing,     sizeof(gasSoftFlashingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasSoftFlashingRGB },
   //  {sizeof(gasShootingStar)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasShootingStar,     sizeof(gasShootingStarRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasShootingStarRGB },
   {sizeof(gasDisco)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),            gasDisco,            sizeof(gasDiscoRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),            gasDiscoRGB },
+  {sizeof(gasStarLaunch)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasStarLaunch,       sizeof(gasStarLaunchRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),       gasStarLaunchRGB },
   {sizeof(gasCrissCross)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasCrissCross,       sizeof(gasCrissCrossRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),       gasCrissCrossRGB },
   {sizeof(gasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),   gasGenericFlasher,   sizeof(gasGenericFlasherRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),   gasGenericFlasherRGB },
   {sizeof(gasKITT)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),             gasKITT,             sizeof(gasKITTRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),             gasKITTRGB },
