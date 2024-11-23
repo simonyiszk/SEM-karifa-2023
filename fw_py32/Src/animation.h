@@ -32,6 +32,15 @@
   #define NUM_ANIMATIONS        (11u)  //!< Number of animations implemented (including blackness)
 #endif
 
+#ifdef AJANDEKCSOMAG
+  #define NUM_ANIMATIONS        (11u)  //!< Number of animations implemented (including blackness)
+#endif
+
+#ifdef RUDOLF
+  #define NUM_ANIMATIONS        (18u)  //!< Number of animations implemented (including blackness)
+#endif
+
+
 /***************************************< Types >**************************************/
 
 

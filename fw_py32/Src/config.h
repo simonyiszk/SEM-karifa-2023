@@ -14,9 +14,14 @@
 /***************************************< Definitions >**************************************/
 // Uncomment only one!
 //#define KARIFA
-#define HOEMBER
+//#define HOEMBER
 //#define HOPEHELY
 //#define MEZI
+//#define AJANDEKCSOMAG
+#define RUDOLF
+
+// Uncomment only for defective units
+#define LEDS_REVERSED   //!< The LEDs are populated in reverse
 
 
 #endif /* CONFIG_H */

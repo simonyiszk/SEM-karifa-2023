@@ -1,5 +1,5 @@
 /*! *******************************************************************************************************
-* Copyright (c) 2021-2023 Hekk_Elek
+* Copyright (c) 2021-2024 Hekk_Elek
 *
 * \file led.c
 *
@@ -20,59 +20,120 @@
 /***************************************< Definitions >**************************************/
 #define PWM_LEVELS      (16u)  //!< PWM levels implemented: [0; PWM_LEVELS)
 
-#ifdef KARIFA
-  // Pin definitions
-  #define MPX1            GPIOA,LL_GPIO_PIN_6  //!< Pin of MPX1 multiplexer pin
-  #define MPX2            GPIOA,LL_GPIO_PIN_5  //!< Pin of MPX2 multiplexer pin
-  #define LED0            GPIOB,LL_GPIO_PIN_1  //!< Pin of LED0 common pin
-  #define LED1            GPIOA,LL_GPIO_PIN_4  //!< Pin of LED1 common pin
-  #define LED2            GPIOA,LL_GPIO_PIN_7  //!< Pin of LED2 common pin
-  #define LED3            GPIOB,LL_GPIO_PIN_2  //!< Pin of LED3 common pin
-  #define LED4            GPIOB,LL_GPIO_PIN_0  //!< Pin of LED4 common pin
-  #define LED5            GPIOA,LL_GPIO_PIN_2  //!< Pin of LED5 common pin
-#endif
-#ifdef HOEMBER
-  // Pin definitions
-  #define MPX1            GPIOA,LL_GPIO_PIN_6  //!< Pin of MPX1 multiplexer pin
-  #define MPX2            GPIOA,LL_GPIO_PIN_5  //!< Pin of MPX2 multiplexer pin
-  #define LED0            GPIOB,LL_GPIO_PIN_1  //!< Pin of LED0 common pin
-  #define LED1            GPIOB,LL_GPIO_PIN_2  //!< Pin of LED1 common pin
-  #define LED2            GPIOA,LL_GPIO_PIN_2  //!< Pin of LED2 common pin
-  #define LED3            GPIOA,LL_GPIO_PIN_4  //!< Pin of LED3 common pin
-  #define LED4            GPIOA,LL_GPIO_PIN_7  //!< Pin of LED4 common pin
-  #define LED5            GPIOB,LL_GPIO_PIN_0  //!< Pin of LED5 common pin
-#endif
-#ifdef HOPEHELY
-  // Pin definitions
-  #define MPX1            GPIOA,LL_GPIO_PIN_5  //!< Pin of MPX1 multiplexer pin
-  #define MPX2            GPIOA,LL_GPIO_PIN_6  //!< Pin of MPX2 multiplexer pin
-  #define LED0            GPIOB,LL_GPIO_PIN_1  //!< Pin of LED0 common pin
-  #define LED1            GPIOB,LL_GPIO_PIN_2  //!< Pin of LED1 common pin
-  #define LED2            GPIOB,LL_GPIO_PIN_0  //!< Pin of LED2 common pin
-  #define LED3            GPIOA,LL_GPIO_PIN_7  //!< Pin of LED3 common pin
-  #define LED4            GPIOA,LL_GPIO_PIN_2  //!< Pin of LED4 common pin
-  #define LED5            GPIOA,LL_GPIO_PIN_4  //!< Pin of LED5 common pin
-#endif
-#ifdef MEZI
-  // Pin definitions
-  #define MPX1            GPIOA,LL_GPIO_PIN_5  //!< Pin of MPX1 multiplexer pin
-  #define MPX2            GPIOA,LL_GPIO_PIN_6  //!< Pin of MPX2 multiplexer pin
-  #define LED0            GPIOA,LL_GPIO_PIN_4  //!< Pin of LED0 common pin
-  #define LED1            GPIOB,LL_GPIO_PIN_2  //!< Pin of LED1 common pin
-  #define LED2            GPIOB,LL_GPIO_PIN_0  //!< Pin of LED2 common pin
-  #define LED3            GPIOB,LL_GPIO_PIN_1  //!< Pin of LED3 common pin
-  #define LED4            GPIOA,LL_GPIO_PIN_2  //!< Pin of LED4 common pin
-  #define LED5            GPIOA,LL_GPIO_PIN_7  //!< Pin of LED5 common pin
-#endif
-#ifndef MPX1
-  #error "Unknown hardware selected!"
-#endif
-
 
 /***************************************< Types >**************************************/
+//! \brief GPIO pin reference type
+typedef struct
+{
+  GPIO_TypeDef* psPort;         //!< Port descriptor pointer (e.g. GPIOA)
+  U32           u32Pin;         //!< Pin (e.g. LL_GPIO_PIN_0)
+} S_PIN;
+
+//! \brief LED descriptor type
+typedef struct
+{
+  S_PIN         sPin;           //!< GPIO pin of the LED
+  U8            u8Multiplexer;  //!< Multiplexer of the LED (1 or 2)
+} S_LED_DESCRIPTOR;
 
 
 /***************************************< Constants >**************************************/
+//! \brief Multiplexer pins
+static const S_PIN gcasMuxPins[ 2u ] =
+{
+  { GPIOA, LL_GPIO_PIN_6 },  // MPX1 pin (~right side)
+  { GPIOA, LL_GPIO_PIN_5 }   // MPX2 pin (~left side)
+};
+
+//! \brief LED-pins assignments
+//! \note  The index of the record is used for the animations too
+static const S_LED_DESCRIPTOR gcasLEDs[ LEDS_NUM ] =
+{
+#ifdef KARIFA
+  { { GPIOB, LL_GPIO_PIN_1 }, 2u },  // D12
+  { { GPIOA, LL_GPIO_PIN_4 }, 2u },  // D4
+  { { GPIOA, LL_GPIO_PIN_7 }, 2u },  // D6
+  { { GPIOB, LL_GPIO_PIN_2 }, 2u },  // D10
+  { { GPIOB, LL_GPIO_PIN_0 }, 2u },  // D8
+  { { GPIOA, LL_GPIO_PIN_2 }, 2u },  // D2
+  { { GPIOA, LL_GPIO_PIN_2 }, 1u },  // D3
+  { { GPIOB, LL_GPIO_PIN_0 }, 1u },  // D9
+  { { GPIOB, LL_GPIO_PIN_2 }, 1u },  // D11
+  { { GPIOA, LL_GPIO_PIN_7 }, 1u },  // D7
+  { { GPIOA, LL_GPIO_PIN_4 }, 1u },  // D5
+  { { GPIOB, LL_GPIO_PIN_1 }, 1u }   // D13
+#endif
+#ifdef HOEMBER
+  { { GPIOB, LL_GPIO_PIN_1 }, 2u },  // D12
+  { { GPIOB, LL_GPIO_PIN_2 }, 2u },  // D10
+  { { GPIOA, LL_GPIO_PIN_2 }, 2u },  // D2
+  { { GPIOA, LL_GPIO_PIN_4 }, 2u },  // D4
+  { { GPIOA, LL_GPIO_PIN_7 }, 2u },  // D6
+  { { GPIOB, LL_GPIO_PIN_0 }, 2u },  // D8
+  { { GPIOB, LL_GPIO_PIN_0 }, 1u },  // D9
+  { { GPIOA, LL_GPIO_PIN_7 }, 1u },  // D7
+  { { GPIOA, LL_GPIO_PIN_4 }, 1u },  // D5
+  { { GPIOA, LL_GPIO_PIN_2 }, 1u },  // D3
+  { { GPIOB, LL_GPIO_PIN_2 }, 1u },  // D11
+  { { GPIOB, LL_GPIO_PIN_1 }, 1u }   // D13
+#endif
+#ifdef HOPEHELY
+  { { GPIOB, LL_GPIO_PIN_1 }, 2u },  // D12
+  { { GPIOB, LL_GPIO_PIN_2 }, 2u },  // D10
+  { { GPIOB, LL_GPIO_PIN_0 }, 2u },  // D8
+  { { GPIOA, LL_GPIO_PIN_7 }, 2u },  // D6
+  { { GPIOA, LL_GPIO_PIN_2 }, 2u },  // D2
+  { { GPIOA, LL_GPIO_PIN_4 }, 2u },  // D4
+  { { GPIOA, LL_GPIO_PIN_4 }, 1u },  // D5
+  { { GPIOA, LL_GPIO_PIN_2 }, 1u },  // D3
+  { { GPIOA, LL_GPIO_PIN_7 }, 1u },  // D7
+  { { GPIOB, LL_GPIO_PIN_0 }, 1u },  // D9
+  { { GPIOB, LL_GPIO_PIN_2 }, 1u },  // D11
+  { { GPIOB, LL_GPIO_PIN_1 }, 1u }   // D13
+#endif
+#ifdef MEZI
+  { { GPIOA, LL_GPIO_PIN_4 }, 2u },  // D4
+  { { GPIOA, LL_GPIO_PIN_4 }, 1u },  // D5
+  { { GPIOB, LL_GPIO_PIN_2 }, 2u },  // D10
+  { { GPIOB, LL_GPIO_PIN_2 }, 1u },  // D11
+  { { GPIOB, LL_GPIO_PIN_0 }, 1u },  // D9
+  { { GPIOB, LL_GPIO_PIN_0 }, 2u },  // D8
+  { { GPIOB, LL_GPIO_PIN_1 }, 2u },  // D12
+  { { GPIOB, LL_GPIO_PIN_1 }, 1u },  // D13
+  { { GPIOA, LL_GPIO_PIN_2 }, 1u },  // D3
+  { { GPIOA, LL_GPIO_PIN_2 }, 2u },  // D2
+  { { GPIOA, LL_GPIO_PIN_7 }, 2u },  // D6
+  { { GPIOA, LL_GPIO_PIN_7 }, 1u }   // D7
+#endif
+#ifdef AJANDEKCSOMAG
+  { { GPIOA, LL_GPIO_PIN_4 }, 1u },  // D5
+  { { GPIOA, LL_GPIO_PIN_4 }, 2u },  // D4
+  { { GPIOA, LL_GPIO_PIN_2 }, 1u },  // D3
+  { { GPIOA, LL_GPIO_PIN_2 }, 2u },  // D2
+  { { GPIOA, LL_GPIO_PIN_7 }, 2u },  // D6
+  { { GPIOA, LL_GPIO_PIN_7 }, 1u },  // D7
+  { { GPIOB, LL_GPIO_PIN_0 }, 1u },  // D9
+  { { GPIOB, LL_GPIO_PIN_0 }, 2u },  // D8
+  { { GPIOB, LL_GPIO_PIN_2 }, 2u },  // D10
+  { { GPIOB, LL_GPIO_PIN_2 }, 1u },  // D11
+  { { GPIOB, LL_GPIO_PIN_1 }, 2u },  // D12
+  { { GPIOB, LL_GPIO_PIN_1 }, 1u }   // D13
+#endif
+#ifdef RUDOLF
+  { { GPIOB, LL_GPIO_PIN_1 }, 1u },  // D13
+  { { GPIOB, LL_GPIO_PIN_2 }, 1u },  // D11
+  { { GPIOB, LL_GPIO_PIN_0 }, 1u },  // D9
+  { { GPIOA, LL_GPIO_PIN_7 }, 1u },  // D7
+  { { GPIOA, LL_GPIO_PIN_4 }, 1u },  // D5
+  { { GPIOA, LL_GPIO_PIN_2 }, 1u },  // D3
+  { { GPIOA, LL_GPIO_PIN_2 }, 2u },  // D2
+  { { GPIOA, LL_GPIO_PIN_4 }, 2u },  // D4
+  { { GPIOA, LL_GPIO_PIN_7 }, 2u },  // D6
+  { { GPIOB, LL_GPIO_PIN_0 }, 2u },  // D8
+  { { GPIOB, LL_GPIO_PIN_2 }, 2u },  // D10
+  { { GPIOB, LL_GPIO_PIN_1 }, 2u },  // D12
+#endif
+};
 
 
 /***************************************< Global variables >**************************************/
@@ -117,7 +178,6 @@ void LED_Init( void )
   /* Default output states */
   LL_GPIO_WriteOutputPort( GPIOA, 0u );
   LL_GPIO_WriteOutputPort( GPIOB, 0u );
-  LL_GPIO_SetOutputPin( MPX1 );  // MPX1 starts as 1
   
   /* GPIOA */
   TIM1CH1MapInit.Pin        = LL_GPIO_PIN_2 | LL_GPIO_PIN_4 | LL_GPIO_PIN_5 | LL_GPIO_PIN_6 | LL_GPIO_PIN_7;
@@ -143,224 +203,60 @@ void LED_Init( void )
 //-----------------------------------------------------------------------------
 void LED_Interrupt( void )
 {
+  U8 u8LEDIdx;
+  
+  // Increment counter and toggle multiplexer lines
   gu8PWMCounter++;
   if( gu8PWMCounter == PWM_LEVELS )
   {
     gu8PWMCounter = 0;
     gbitSide ^= 1;
     // Set multiplexer pins
-    LL_GPIO_TogglePin( MPX1 );
-    LL_GPIO_TogglePin( MPX2 );
+#ifdef LEDS_REVERSED
+    if( !gbitSide )  // if left side
+#else  // normally populated LEDs
+    if( gbitSide )  // if left side
+#endif
+    {
+      LL_GPIO_SetOutputPin( gcasMuxPins[ 0u ].psPort, gcasMuxPins[ 0u ].u32Pin );    // MPX1
+      LL_GPIO_ResetOutputPin( gcasMuxPins[ 1u ].psPort, gcasMuxPins[ 1u ].u32Pin );  // MPX2
+    }
+    else  // right side
+    {
+      LL_GPIO_ResetOutputPin( gcasMuxPins[ 0u ].psPort, gcasMuxPins[ 0u ].u32Pin );  // MPX1
+      LL_GPIO_SetOutputPin( gcasMuxPins[ 1u ].psPort, gcasMuxPins[ 1u ].u32Pin );    // MPX2
+    }
   }
   
-  //NOTE: unfortunately SFRs cannot be put in an array, so this cannot be implented as a for cycle
-#ifndef MEZI
-  if( gbitSide )  // left side
+  // Iterate through all the LEDs and set them according to the PWM duty cycles
+  for( u8LEDIdx = 0u; u8LEDIdx < LEDS_NUM; u8LEDIdx++ )
   {
-    if( gau8LEDBrightness[ 0u ] > gu8PWMCounter )
+    // If the LED is on the current side
+    if( ( 1u + gbitSide ) == gcasLEDs[ u8LEDIdx ].u8Multiplexer )
     {
-      LL_GPIO_SetOutputPin( LED0 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED0 );
-    }
-    if( gau8LEDBrightness[ 1u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED1 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED1 );
-    }
-    if( gau8LEDBrightness[ 2u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED2 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED2 );
-    }
-    if( gau8LEDBrightness[ 3u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED3 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED3 );
-    }
-    if( gau8LEDBrightness[ 4u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED4 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED4 );
-    }
-    if( gau8LEDBrightness[ 5u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED5 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED5 );
-    }
-  }
-  else  // right side
-  {
-    if( gau8LEDBrightness[ 6u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED5 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED5 );
-    }
-    if( gau8LEDBrightness[ 7u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED4 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED4 );
-    }
-    if( gau8LEDBrightness[ 8u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED3 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED3 );
-    }
-    if( gau8LEDBrightness[ 9u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED2 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED2 );
-    }
-    if( gau8LEDBrightness[ 10u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED1 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED1 );
-    }
-    if( gau8LEDBrightness[ 11u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED0 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED0 );
-    }
-  }
-#else  // MEZI
-  if( gbitSide )  // left side
-  {
-    if( gau8LEDBrightness[ 0u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED0 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED0 );
-    }
-    if( gau8LEDBrightness[ 2u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED1 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED1 );
-    }
-    if( gau8LEDBrightness[ 5u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED2 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED2 );
-    }
-    if( gau8LEDBrightness[ 6u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED3 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED3 );
-    }
-    if( gau8LEDBrightness[ 9u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED4 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED4 );
-    }
-    if( gau8LEDBrightness[ 10u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED5 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED5 );
-    }
-  }
-  else  // right side
-  {
-    if( gau8LEDBrightness[ 1u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED0 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED0 );
-    }
-    if( gau8LEDBrightness[ 3u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED1 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED1 );
-    }
-    if( gau8LEDBrightness[ 4u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED2 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED2 );
-    }
-    if( gau8LEDBrightness[ 7u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED3 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED3 );
-    }
-    if( gau8LEDBrightness[ 8u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED4 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED4 );
-    }
-    if( gau8LEDBrightness[ 11u ] > gu8PWMCounter )
-    {
-      LL_GPIO_SetOutputPin( LED5 );
-    }
-    else
-    {
-      LL_GPIO_ResetOutputPin( LED5 );
-    }
-  }  
+#ifdef LEDS_REVERSED
+      // Set or reset pin according to PWM duty cycle
+      if( gau8LEDBrightness[ u8LEDIdx ] > gu8PWMCounter )
+      {
+        LL_GPIO_ResetOutputPin( gcasLEDs[ u8LEDIdx ].sPin.psPort, gcasLEDs[ u8LEDIdx ].sPin.u32Pin );
+      }
+      else
+      {
+        LL_GPIO_SetOutputPin( gcasLEDs[ u8LEDIdx ].sPin.psPort, gcasLEDs[ u8LEDIdx ].sPin.u32Pin );
+      }
+#else
+      // Set or reset pin according to PWM duty cycle
+      if( gau8LEDBrightness[ u8LEDIdx ] > gu8PWMCounter )
+      {
+        LL_GPIO_SetOutputPin( gcasLEDs[ u8LEDIdx ].sPin.psPort, gcasLEDs[ u8LEDIdx ].sPin.u32Pin );
+      }
+      else
+      {
+        LL_GPIO_ResetOutputPin( gcasLEDs[ u8LEDIdx ].sPin.psPort, gcasLEDs[ u8LEDIdx ].sPin.u32Pin );
+      }
 #endif
+    }
+  }
 }
 
 
