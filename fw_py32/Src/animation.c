@@ -159,6 +159,13 @@ CODE const S_ANIMATION_INSTRUCTION_RGB gasFadeRingRGB_hopehely[ 3u ] =
   { 40u, {-1,  0, -1}, ADD | REPEAT, 13u },
   { 40u, { 1,  0,  1}, ADD | REPEAT, 13u },
 };
+//! \brief "Fade ring" animation -- RGB LED
+CODE const S_ANIMATION_INSTRUCTION_RGB gasFadeRingRGB_rudolf[ 3u ] =
+{
+  { 40u, {0,   0,  0}, LOAD,          0u },
+  { 40u, {1,   0,  0}, ADD | REPEAT,  13u },
+  { 40u, {-1,  0,  0}, ADD | REPEAT,  13u }
+};
 
 //--------------------------------------------------------
 //! \brief Shooting star anticlockwise animation -- normal LEDs
@@ -199,6 +206,21 @@ CODE const S_ANIMATION_INSTRUCTION_RGB gasStarLaunchRGB[ 5u ] =
   { 200u, { 0, -1,  0}, ADD | REPEAT, 9u},
   { 200u, {-3, -1,  0}, ADD | REPEAT, 4u},
   { 200u, { 0,  0,  0}, LOAD,         0u},
+};
+
+//--------------------------------------------------------
+//! \brief Star launch animation for "Rudolf" -- normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasStarLaunch_rudolf[ 9u ] = 
+{
+  {400u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,              0u },
+  {200u, { 5,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,              0u },
+  {200u, { 5,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5}, USOURCE | REPEAT,  7u },
+  {200u, {15, 15, 15,  0,  0,  5,  0,  0,  0, 15, 15, 15}, LOAD,              0u },
+  {200u, { 0,  0,  0,  0,  0,  5,  5,  0,  0,  0,  0,  0}, DSOURCE | REPEAT, 10u },
+  {200u, {15, 15, 15, 15, 15, 15, 15, 15, 10, 15, 15, 15}, LOAD,              0u },
+  {200u, { 0,  0,  0, -5,  0,  0,  0,  0, -5,  0,  0,  0}, USOURCE | REPEAT,  7u },
+  {200u, {15, 15, 15,  0,  0,  0,  0,  0,  0, 10, 15, 15}, LOAD,              0u },
+  {200u, { 0,  0, -5,  0,  0,  0,  0,  0,  0, -5,  0,  0}, DSOURCE | REPEAT,  8u }
 };
 
 //--------------------------------------------------------
@@ -271,6 +293,28 @@ CODE const S_ANIMATION_INSTRUCTION_RGB gasDiscoRGB[ 6u ] =
   { 40u, { 0, 15,  0}, LOAD,         0u },
   { 40u, { 2,  1,  2}, DIV | REPEAT, 3u },
   {100u, { 0,  0,  0}, LOAD,         0u },
+};
+
+//--------------------------------------------------------
+//! \brief Disco animation for "Rudolf"-- normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasDisco_rudolf[ 6u ] = 
+{
+  {40u, {  0, 15,  0, 15, 15, 15, 15, 15, 15, 15,  0, 15}, LOAD,         0u },
+  {40u, {  1,  2,  1,  1,  2,  1,  2,  1,  2,  2,  1,  2}, DIV | REPEAT, 3u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {40u, { 15,  0, 15, 15, 15, 15, 15, 15, 15,  0, 15,  0}, LOAD,         0u },
+  {40u, {  2,  1,  2,  2,  1,  2,  1,  2,  1,  1,  2,  1}, DIV | REPEAT, 3u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u }
+};
+//! \brief Disco animation for "Rudolf" -- RGB LED
+CODE const S_ANIMATION_INSTRUCTION_RGB gasDiscoRGB_rudolf[ 6u ] = 
+{
+  { 40u, { 0,  0, 15}, LOAD,         0u },
+  { 40u, { 2,  1,  2}, DIV | REPEAT, 3u },
+  {100u, { 0,  0,  0}, LOAD,         0u },
+  { 40u, { 0, 15,  0}, LOAD,         0u },
+  { 40u, { 2,  2,  1}, DIV | REPEAT, 3u },
+  {100u, { 0,  0,  0}, LOAD,         0u }
 };
 
 //--------------------------------------------------------
@@ -882,6 +926,14 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasSplit2_ajandek[ 2u ] =
 };
 
 //--------------------------------------------------------
+//! \brief Split2 -- normal LEDs for "Rudolf"
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasSplit2_rudolf[ 2u ] = 
+{
+  {500u, {15,  0, 15,  0,   0,  0, 15,  15, 15,  0, 15,  0}, LOAD,  0u },
+  {500u, { 0, 15,  0, 15,  15, 15,  0,   0,  0, 15,  0, 15}, LOAD,  0u },
+};
+
+//--------------------------------------------------------
 //! \brief Generic flasher animation with dimmed eyes for "mezi"
 CODE const S_ANIMATION_INSTRUCTION_NORMAL gasFlasherNoEyes_mezi[ 2u ] = 
 {
@@ -892,6 +944,129 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasFlasherNoEyes_mezi[ 2u ] =
 CODE const S_ANIMATION_INSTRUCTION_RGB gasFlasherNoEyes_mezi_RGB[ 2u ] = 
 {
   { 1000u, {0,  0,  0}, LOAD, 0u },
+};
+
+//--------------------------------------------------------
+//! \brief RudolfIntro -- normal LEDs for "Rudolf"
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasRudolfIntro[ 5u ] = 
+{
+  {40u, {0,   0,  0,  0,   0,  0,  0,   0,  0,  0,  0,  0}, LOAD,  0u },
+  {40u, {0,   0,  0,  1,   1,  1,  1,   1,  1,  0,  0,  0}, ADD | REPEAT,  14u },
+  {40u, {1,   1,  1, -1,  -1, -1, -1,  -1, -1,  1,  1,  1}, ADD | REPEAT,  14u },
+  {40u, {-1, -1, -1,  0,   0,  0,  0,   0,  0, -1, -1, -1}, ADD | REPEAT,  14u },
+  {40u, {0,   0,  0,  0,   0,  0,  0,   0,  0,  0,  0,  0}, ADD | REPEAT,  14u } // wait for nose
+};
+//! \brief RudolfIntroRGB -- RGB LEDs for "Rudolf"
+CODE const S_ANIMATION_INSTRUCTION_RGB gasRudolfIntro_RGB[ 5u ] = 
+{
+  { 40u, { 0,  0,  0}, LOAD, 0u },
+  { 40u, { 0,  0,  0}, ADD | REPEAT, 14u }, // wait for antlers
+  { 40u, { 0,  0,  0}, ADD | REPEAT, 14u }, // wait for head  
+  { 40u,   { 1,  1,  1}, ADD | REPEAT, 14u },
+  { 40u,   {-1, -1, -1}, ADD | REPEAT, 14u }
+};
+
+//--------------------------------------------------------
+//! \brief KITT animation for "Rudolf" -- normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasKITT_rudolf[ 22u ] = 
+{
+  {200u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
+  {100u, { 5,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5}, LOAD,  0u },
+  {100u, {10,  5,  0,  0,  0,  0,  0,  0,  0,  0,  5, 10}, LOAD,  0u },
+  {100u, {15, 10,  5,  0,  0,  0,  0,  0,  0,  5, 10, 15}, LOAD,  0u },
+  {100u, {10, 15, 10,  0,  0,  5,  5,  0,  0, 10, 15, 10}, LOAD,  0u },
+  {100u, { 5, 10, 15,  0,  5, 10, 10,  5,  0, 15, 10,  5}, LOAD,  0u },
+  {100u, { 0,  5, 10,  5, 10, 15, 15, 10,  5, 10,  5,  0}, LOAD,  0u },
+  {100u, { 0,  0,  5, 10, 15, 10, 10, 15, 10,  5,  0,  0}, LOAD,  0u },
+  {100u, { 0,  0,  0, 15, 10,  5,  5, 10, 15,  0,  0,  0}, LOAD,  0u },
+  {100u, { 0,  0,  0, 10,  5,  0,  0,  5, 10,  0,  0,  0}, LOAD,  0u },
+  {100u, { 0,  0,  0,  5,  0,  0,  0,  0,  5,  0,  0,  0}, LOAD,  0u },
+  {100u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
+  {100u, { 0,  0,  0,  5,  0,  0,  0,  0,  5,  0,  0,  0}, LOAD,  0u },
+  {100u, { 0,  0,  0, 10,  5,  0,  0,  5, 10,  0,  0,  0}, LOAD,  0u },
+  {100u, { 0,  0,  0, 15, 10,  5,  5, 10, 15,  0,  0,  0}, LOAD,  0u },
+  {100u, { 0,  0,  5, 10, 15, 10, 10, 15, 10,  5,  0,  0}, LOAD,  0u },
+  {100u, { 0,  5, 10,  5, 10, 15, 15, 10,  5, 10,  5,  0}, LOAD,  0u },
+  {100u, { 5, 10, 15,  0,  5, 10, 10,  5,  0, 15, 10,  5}, LOAD,  0u },
+  {100u, {10, 15, 10,  0,  0,  5,  5,  0,  0, 10, 15, 10}, LOAD,  0u },
+  {100u, {15, 10,  5,  0,  0,  0,  0,  0,  0,  5, 10, 15}, LOAD,  0u },
+  {100u, {10,  5,  0,  0,  0,  0,  0,  0,  0,  0,  5, 10}, LOAD,  0u },
+  {100u, { 5,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5}, LOAD,  0u }
+  
+};
+
+//--------------------------------------------------------
+//! \brief GamerBlinkingRudolf -- normal LEDs for "Rudolf"
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasGamerBlinkingRudolf[ 8u ] = 
+{
+  {2240u, {15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}, LOAD,  0u },
+  {200u,  {15, 15, 15,  0,  0,  0,  0,  0,  0, 15, 15, 15}, LOAD,  0u },
+  {200u,  {15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}, LOAD,  0u },
+  {200u,  {15, 15, 15,  0,  0,  0,  0,  0,  0, 15, 15, 15}, LOAD,  0u },
+  {200u,  {15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}, LOAD,  0u },
+  {200u,  { 0,  0,  0, 15, 15, 15, 15, 15, 15,  0,  0,  0}, LOAD,  0u },
+  {200u,  {15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}, LOAD,  0u },
+  {200u,  { 0,  0,  0, 15, 15, 15, 15, 15, 15,  0,  0,  0}, LOAD,  0u }
+};
+//! \brief GamerBlinkingRudolfRGB -- RGB LEDs for "Rudolf"
+CODE const S_ANIMATION_INSTRUCTION_RGB gasGamerBlinkingRudolfRGB[ 7u ] = 
+{
+  { 40u, { 15, 0,  0}, LOAD, 0u }, // Red, then smooth transition between colours
+  { 40u, { 0,  1,  0}, ADD | REPEAT, 14u }, // Yellow
+  { 40u, { -1, 0,  0}, ADD | REPEAT, 14u }, // Green
+  { 40u, { 0,  0,  1}, ADD | REPEAT, 14u }, // Cyan
+  { 40u, { 0, -1,  0}, ADD | REPEAT, 14u }, // Blue
+  { 40u, { 1,  0,  0}, ADD | REPEAT, 14u }, // Magenta
+  { 40u, { 0,  0, -1}, ADD | REPEAT, 14u }  // Red
+};
+
+//--------------------------------------------------------
+//! \brief gasSnakeRudolf -- normal LEDs for "Rudolf" (YingYang animation replacement)
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasSnakeRudolf[ 14u ] = 
+{
+  {150u, { 0,  5, 10,  0,  0, 15,  0,  0,  0,  0,  0,  0}, LOAD,            0u },
+  {150u, { 0,  0,  5,  0,  0, 10, 15,  0,  0,  0,  0,  0}, LOAD,            0u },
+  {150u, { 0,  0,  0,  0,  0,  5, 10,  0, 15,  0,  0,  0}, LOAD,            0u },
+  {150u, { 0,  0,  0,  0,  0,  0,  5, 15, 10,  0,  0,  0}, LOAD,            0u },
+  {150u, { 0,  0,  0,  0, 15,  0,  0, 10,  5,  0,  0,  0}, LOAD,            0u },
+  {150u, { 0,  0,  0, 15, 10,  0,  0,  5,  0,  0,  0,  0}, LOAD,            0u },
+  {150u, { 0,  0,  0, 10,  5, 15,  0,  0,  0,  0,  0,  0}, LOAD,            0u },
+  {150u, { 0,  0,  0,  5,  0, 10, 15,  0,  0,  0,  0,  0}, LOAD,            0u },
+  {150u, { 0,  0,  0,  0,  0,  5, 10,  0,  0, 15,  0,  0}, LOAD,            0u },
+  {150u, { 0,  0,  0,  0,  0,  0,  5,  0,  0, 10, 15,  0}, LOAD,            0u },
+  {150u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  5, 10, 15}, LOAD,            0u },
+  {150u, {15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5, 10}, LOAD,            0u },
+  {150u, {10, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5}, LOAD,            0u },
+  {150u, { 5, 10, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,            0u }
+};
+//! \brief gasSnakeRudolfRGB
+CODE const S_ANIMATION_INSTRUCTION_RGB gasSnakeRudolfRGB[ 4u ] = 
+{
+  { 525u, {15,  0,  0}, LOAD,     0u },
+  { 525u, {15, 15, 15}, LOAD,     0u },
+  { 525u, { 0, 15,  0}, LOAD,     0u },
+  { 525u, {15,  0, 15}, LOAD,     0u }
+};
+
+//--------------------------------------------------------
+//! \brief IceRudolf -- normal LEDs for "Rudolf"
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasIceRudolf[ 7u ] = 
+{
+  {300u, { 0,  0,  0,  0,  0, 15, 15,  0,  0,  0,  0,  0}, LOAD, 0u },
+  {300u, { 0,  0, 15,  0, 15, 10, 10, 15,  0, 15,  0,  0}, LOAD, 0u },
+  {300u, { 0, 15, 10, 15, 10,  5,  5, 10, 15, 10, 15,  0}, LOAD, 0u },
+  {300u, {15, 10,  5, 10,  5,  0,  0,  5, 10,  5, 10, 15}, LOAD, 0u },
+  {300u, {10,  5,  0,  5,  0,  0,  0,  0,  5,  0,  5, 10}, LOAD, 0u },
+  {300u, { 5,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5}, LOAD, 0u },
+  {300u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD, 0u }
+};
+//! \brief IceRudolfRGB
+CODE const S_ANIMATION_INSTRUCTION_RGB gasIceRudolfRGB[ 4u ] = 
+{
+  { 150u, { 0, 15, 15}, LOAD,          0u },
+  {  60u, { 0, -1,  0}, ADD | REPEAT, 14u },
+  { 150u, { 0,  0, 15}, LOAD,          0u },
+  {  60u, { 0,  1,  0}, ADD | REPEAT, 14u },
 };
 
 // *******************************************************
@@ -1031,26 +1206,24 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
 //! \brief Table of animations
 CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] = 
 {
-  {sizeof(gasRetroVersion)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasRetroVersion,     sizeof(gasRetroVersionRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasRetroVersionRGB },
-  {sizeof(gasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasSoftFlashing,     sizeof(gasSoftFlashingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasSoftFlashingRGB },
-  //  {sizeof(gasShootingStar)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasShootingStar,     sizeof(gasShootingStarRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasShootingStarRGB },
-  {sizeof(gasDisco)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),            gasDisco,            sizeof(gasDiscoRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),            gasDiscoRGB },
-  {sizeof(gasStarLaunch)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasStarLaunch,       sizeof(gasStarLaunchRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),       gasStarLaunchRGB },
-  {sizeof(gasCrissCross)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasCrissCross,       sizeof(gasCrissCrossRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),       gasCrissCrossRGB },
-  {sizeof(gasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),   gasGenericFlasher,   sizeof(gasGenericFlasherRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),   gasGenericFlasherRGB },
-  {sizeof(gasKITT)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),             gasKITT,             sizeof(gasKITTRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),             gasKITTRGB },
-  {sizeof(gasPingpong)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasPingpong,         sizeof(gasPingpongRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasPingpongRGB },
-  {sizeof(gasFadeRing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasFadeRing,         sizeof(gasFadeRingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasFadeRingRGB },
-  {sizeof(gasYingYang)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasYingYang,         sizeof(gasYingYangRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasYingYangRGB },
-  {sizeof(gasPseudoRandomFade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasPseudoRandomFade, sizeof(gasPseudoRandomFadeRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasPseudoRandomFadeRGB },
-  //  {sizeof(gasFadeout)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasFadeout,          sizeof(gasFadeoutRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasFadeoutRGB },
-  {sizeof(gasFlicker)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasFlicker,          sizeof(gasFlickerRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasFlickerRGB },
-  {sizeof(gasRace)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),             gasRace,             sizeof(gasRaceRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),             gasRaceRGB },
-  {sizeof(gasSparkle)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasSparkle,          sizeof(gasSparkleRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasSparkleRGB },
-  {sizeof(gasIce)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),              gasIce,              sizeof(gasIceRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),              gasIceRGB },
-  {sizeof(gasSplit2)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasSplit2,           sizeof(gasSplit2RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),           gasSplit2RGB },
-  //  {sizeof(gasSplit3fade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasSplit3fade,       sizeof(gasSplit3fadeRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),       gasSplit3fadeRGB },
-  {sizeof(gasStepping)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasStepping,         sizeof(gasSteppingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasSteppingRGB },
+  {sizeof(gasRudolfIntro)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasRudolfIntro,        sizeof(gasRudolfIntro_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasRudolfIntro_RGB },
+  {sizeof(gasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasSoftFlashing,       sizeof(gasSoftFlashingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasSoftFlashingRGB },
+  {sizeof(gasFlicker)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),            gasFlicker,            sizeof(gasFlickerRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),              gasFlickerRGB },
+  {sizeof(gasStarLaunch_rudolf)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),  gasStarLaunch_rudolf,  sizeof(gasStarLaunchRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),           gasStarLaunchRGB },
+  {sizeof(gasDisco_rudolf)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasDisco_rudolf,       sizeof(gasDiscoRGB_rudolf)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasDiscoRGB_rudolf },
+  {sizeof(gasGamerBlinkingRudolf)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasGamerBlinkingRudolf,sizeof(gasGamerBlinkingRudolfRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasGamerBlinkingRudolfRGB },
+  {sizeof(gasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasGenericFlasher,     sizeof(gasGenericFlasherRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),       gasGenericFlasherRGB },
+  {sizeof(gasKITT_rudolf)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasKITT_rudolf,        sizeof(gasKITTRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),                 gasKITTRGB },
+  {sizeof(gasPingpong)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasPingpong,           sizeof(gasPingpongRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),             gasPingpongRGB },
+  {sizeof(gasFadeRing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasFadeRing,           sizeof(gasFadeRingRGB_rudolf)/sizeof(S_ANIMATION_INSTRUCTION_RGB),      gasFadeRingRGB_rudolf },
+  {sizeof(gasSnakeRudolf)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasSnakeRudolf,        sizeof(gasSnakeRudolfRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasSnakeRudolfRGB },
+  {sizeof(gasStepping)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasStepping,           sizeof(gasSteppingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),             gasSteppingRGB },
+  {sizeof(gasSparkle)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),            gasSparkle,            sizeof(gasSparkleRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),              gasSparkleRGB },
+  {sizeof(gasRace)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),               gasRace,               sizeof(gasRaceRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),                 gasRaceRGB },
+  {sizeof(gasPseudoRandomFade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),   gasPseudoRandomFade,   sizeof(gasPseudoRandomFadeRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),     gasPseudoRandomFadeRGB },
+  {sizeof(gasIceRudolf)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasIceRudolf,          sizeof(gasIceRudolfRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),            gasIceRudolfRGB }, 
+  {sizeof(gasSplit2_rudolf)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),      gasSplit2_rudolf,      sizeof(gasSplit2RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),               gasSplit2RGB },
+  
   // Last animation, don't change its location
   {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB }
 };

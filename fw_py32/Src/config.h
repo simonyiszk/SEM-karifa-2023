@@ -21,7 +21,7 @@
 #define RUDOLF
 
 // Uncomment only for defective units
-#define LEDS_REVERSED   //!< The LEDs are populated in reverse
+//#define LEDS_REVERSED   //!< The LEDs are populated in reverse
 
 
 #endif /* CONFIG_H */
