@@ -33,7 +33,7 @@
 #endif
 
 #ifdef AJANDEKCSOMAG
-  #define NUM_ANIMATIONS        (11u)  //!< Number of animations implemented (including blackness)
+  #define NUM_ANIMATIONS        (15u)  //!< Number of animations implemented (including blackness)
 #endif
 
 #ifdef RUDOLF

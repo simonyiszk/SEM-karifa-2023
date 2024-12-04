@@ -926,6 +926,86 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasSplit2_ajandek[ 2u ] =
 };
 
 //--------------------------------------------------------
+//! \brief OpenClose -- normal LEDs for "ajandekcsomag"
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasOpenClose_ajandek[14u] =
+{
+ //        0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11
+  {100u, {15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}, LOAD,  0u },
+  { 30u, {-1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1}, ADD | REPEAT, 14u },
+  { 30u, { 0, -1,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0, -1,  0,  0,  0,  0,  0,  0, -1,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  0,  0, -1,  0,  0, -1,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  0,  0,  0, -1, -1,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  0, -1,  0,  0,  0,  0, -1,  0,  0,  0}, ADD | REPEAT, 14u },
+  {100u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
+  { 30u, { 0,  0,  0,  1,  0,  0,  0,  0,  1,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  0,  0,  0,  1,  1,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  0,  0,  1,  0,  0,  1,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  1,  0,  0,  0,  0,  0,  0,  1,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0}, ADD | REPEAT, 14u },
+  { 30u, { 1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1}, ADD | REPEAT, 14u },
+};
+
+//--------------------------------------------------------
+//! \brief Masni -- normal LEDs for "ajandekcsomag"
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMasni[9u] =
+{
+ //        0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11
+  {100u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
+  { 30u, { 1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1}, ADD | REPEAT, 14u },
+  { 30u, {-1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  1, -1}, ADD | REPEAT, 14u },
+  { 30u, { 0, -1,  1,  0,  0,  0,  0,  0,  0,  1, -1,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0, -1,  1,  0,  0,  0,  0,  1, -1,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  0, -1,  1,  0,  0,  1, -1,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  0,  0, -1,  1,  1, -1,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  0,  1,  0, -1, -1,  0,  1,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  0, -1,  0,  0,  0,  0, -1,  0,  0,  0}, ADD | REPEAT, 14u },
+};
+
+//--------------------------------------------------------
+//! \brief AroundFill -- normal LEDs for "ajandekcsomag"
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasAroundFill_ajandek[14u] =
+{
+ //        0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11
+  {100u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
+  { 30u, { 0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1}, ADD | REPEAT, 14u },
+  { 30u, { 1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 30u, { 0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0}, ADD | REPEAT, 14u },
+  {200u, {15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}, LOAD,  0u },
+};
+
+//--------------------------------------------------------
+//! \brief Around -- normal LEDs for "ajandekcsomag"
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasAround_ajandek[15u] =
+{
+ //        0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11
+  { 25u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
+  {  5u, { 0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  {  5u, { 0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  {  5u, { 0,  0,  0, -1,  0,  0,  0,  1,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  {  5u, { 0,  0,  0,  0,  0,  0, -1,  0,  0,  1,  0,  0}, ADD | REPEAT, 14u },
+  {  5u, { 0,  0,  0,  0,  0,  0,  0, -1,  0,  0,  1,  0}, ADD | REPEAT, 14u },
+  {  5u, { 0,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  1}, ADD | REPEAT, 14u },
+  {  5u, { 1,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0}, ADD | REPEAT, 14u },
+  {  5u, { 0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1}, ADD | REPEAT, 14u },
+  {  5u, {-1,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  {  5u, { 0, -1,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  {  5u, { 0,  0, -1,  0,  0,  1,  0,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  {  5u, { 0,  0,  0,  0, -1,  0,  0,  0,  1,  0,  0,  0}, ADD | REPEAT, 14u },
+  {  5u, { 0,  0,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  {  5u, { 0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0,  0}, ADD | REPEAT, 14u },
+};
+
+//--------------------------------------------------------
 //! \brief Split2 -- normal LEDs for "Rudolf"
 CODE const S_ANIMATION_INSTRUCTION_NORMAL gasSplit2_rudolf[ 2u ] = 
 {
@@ -1187,18 +1267,22 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
 //! \brief Table of animations
 CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] = 
 {
-  {sizeof(gasRetroVersion)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasRetroVersion,     sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasSoftFlashing,     sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasDisco)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                  gasDisco,            sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasFadeRing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),               gasFadeRing,         sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasGenericFlasher,   sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasPseudoRandomFade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasPseudoRandomFade, sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasStepping_ajandek)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasStepping_ajandek, sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasSplit2_ajandek)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasSplit2_ajandek,   sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasSparkle)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                gasSparkle,          sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasYingYang)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),               gasYingYang,         sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
+  {sizeof(gasRetroVersion)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasRetroVersion,      sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
+  {sizeof(gasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasSoftFlashing,      sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
+  {sizeof(gasDisco)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                  gasDisco,             sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
+  {sizeof(gasFadeRing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),               gasFadeRing,          sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
+  {sizeof(gasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasGenericFlasher,    sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
+  {sizeof(gasPseudoRandomFade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasPseudoRandomFade,  sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
+  {sizeof(gasAroundFill_ajandek)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasAroundFill_ajandek,sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
+  {sizeof(gasStepping_ajandek)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasStepping_ajandek,  sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
+  {sizeof(gasSplit2_ajandek)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasSplit2_ajandek,    sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
+  {sizeof(gasSparkle)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                gasSparkle,           sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
+  {sizeof(gasOpenClose_ajandek)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),      gasOpenClose_ajandek, sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
+  {sizeof(gasYingYang)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),               gasYingYang,          sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
+  {sizeof(gasMasni)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                  gasMasni,             sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
+  {sizeof(gasAround_ajandek)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasAround_ajandek,    sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
   // Last animation, don't change its location
-  {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),              gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB }
+  {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),              gasBlackness,         sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB }
 };
 #endif
 
