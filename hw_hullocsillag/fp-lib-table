@@ -1,3 +1,4 @@
 (fp_lib_table
-  (lib (name "karifa")(type "KiCad")(uri "/home/david/Downloads/karifa.pretty")(options "")(descr ""))
+  (version 7)
+  (lib (name "hullocsillag")(type "KiCad")(uri "${KIPRJMOD}/hullocsillag.pretty")(options "")(descr ""))
 )
