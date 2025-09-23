@@ -46,11 +46,10 @@
       "pads",
       "zones",
       "drc_warnings",
-      "locked_item_shadows",
       "conflict_shadows",
       "shapes"
     ],
-    "visible_layers": "00000000_00000000_0ffcffff_fffffffb",
+    "visible_layers": "00000000_00000000_00000000_00000025",
     "zone_display_mode": 0
   },
   "git": {
