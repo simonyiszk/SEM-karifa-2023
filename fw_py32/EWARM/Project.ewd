@@ -44,7 +44,7 @@
                 </option>
                 <option>
                     <name>MemFile</name>
-                    <state></state>
+                    <state>$TOOLKIT_DIR$\config\debugger\Puya\PY32F003x4.ddf</state>
                 </option>
                 <option>
                     <name>RunToEnable</name>
@@ -112,7 +112,7 @@
                 </option>
                 <option>
                     <name>FlashLoadersV3</name>
-                    <state></state>
+                    <state>$TOOLKIT_DIR$/config/flashloader/Puya/FlashPY32F003x4.board</state>
                 </option>
                 <option>
                     <name>OCImagesSuppressCheck1</name>
@@ -365,7 +365,7 @@
                 <option>
                     <name>CMSISDAPJtagSpeedList</name>
                     <version>0</version>
-                    <state>13</state>
+                    <state>9</state>
                 </option>
                 <option>
                     <name>CMSISDAPBreakpointRadio</name>

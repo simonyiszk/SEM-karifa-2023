@@ -40,6 +40,10 @@
   #define NUM_ANIMATIONS        (18u)  //!< Number of animations implemented (including blackness)
 #endif
 
+#ifdef HULLOCSILLAG
+  #define NUM_ANIMATIONS        (12u)  //!< Number of animations implemented (including blackness)
+#endif
+
 
 /***************************************< Types >**************************************/
 

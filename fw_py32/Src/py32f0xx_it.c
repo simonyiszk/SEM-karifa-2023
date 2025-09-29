@@ -24,6 +24,7 @@
 #include "main.h"
 #include "py32f0xx_it.h"
 #include "types.h"
+#include "config.h"
 #include "util.h"
 #include "led.h"
 #include "rgbled.h"
@@ -110,8 +111,10 @@ void SysTick_Handler(void)
 void TIM1_BRK_UP_TRG_COM_IRQHandler( void )
 {
   Util_Interrupt();  // Housekeeping, e.g. ms delay timer
-  LED_Interrupt();  // Soft-PWM LED driver
+  LED_Interrupt();  // Multiplexed LED driver
+#ifdef RGB_DRIVER
   RGBLED_Interrupt();  // RGB LED driver
+#endif
   // End of interrupt
   LL_TIM_ClearFlag_UPDATE( TIM1 );
 }

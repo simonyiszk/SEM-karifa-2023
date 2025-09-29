@@ -16,6 +16,7 @@
 // Own includes
 #include "main.h"
 #include "types.h"
+#include "config.h"
 #include "util.h"
 #include "led.h"
 #include "rgbled.h"
@@ -143,7 +144,9 @@ void main( void )
   // Initialize modules
   Util_Init();
   LED_Init();
+#ifdef RGB_DRIVER
   RGBLED_Init();
+#endif
   Animation_Init();
   Persist_Init();
   BatteryLevel_Init();

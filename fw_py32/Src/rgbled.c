@@ -1,5 +1,5 @@
 /*! *******************************************************************************************************
-* Copyright (c) 2022-2023 Hekk_Elek
+* Copyright (c) 2022-2025 Hekk_Elek
 *
 * \file rgbled.c
 *
@@ -10,11 +10,12 @@
 **********************************************************************************************************/
 
 /***************************************< Includes >**************************************/
-#include "main.h"
 #include <string.h>
-
-// Own includes
+#include "main.h"
 #include "types.h"
+#include "config.h"
+
+// Own include
 #include "rgbled.h"
 
 
@@ -36,6 +37,13 @@
 //! \brief Global array for RGB LED color values
 //! \note  Value set is between [0; COLOR_LEVELS)
 volatile U8 gau8RGBLEDs[ NUM_RGBLED_COLORS ];
+
+
+/***************************************< Configuration checks >**************************************/
+#ifdef RGB_DRIVER  // Everything will be implemented only when the driver is enabled
+#ifdef LED_SWITCHING_DRIVER
+  #error "Switching LED driver cannot be used with RGB LED driver!"
+#endif
 
 
 /***************************************< Static function definitions >**************************************/
@@ -155,4 +163,5 @@ void RGBLED_Interrupt( void )
 }
 
 
+#endif  // RGB_DRIVER
 /***************************************< End of file >**************************************/

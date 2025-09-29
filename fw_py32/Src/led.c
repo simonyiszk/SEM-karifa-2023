@@ -10,11 +10,19 @@
 **********************************************************************************************************/
 
 /***************************************< Includes >**************************************/
-// Own includes
 #include "main.h"
 #include "types.h"
 #include "config.h"
+
+// Own include
 #include "led.h"
+
+
+/***************************************< Configuration checks >**************************************/
+#ifdef LED_TRADITIONAL_DRIVER
+#ifdef LED_SWITCHING_DRIVER
+  #error "Switching LED driver cannot be used with traditional LED driver!"
+#endif
 
 
 /***************************************< Definitions >**************************************/
@@ -137,9 +145,9 @@ static const S_LED_DESCRIPTOR gcasLEDs[ LEDS_NUM ] =
 
 
 /***************************************< Global variables >**************************************/
-DATA U8 gau8LEDBrightness[ LEDS_NUM ];  //!< Array for storing individual brightness levels
-DATA U8 gu8PWMCounter;                  //!< Counter for the base of soft-PWM
-DATA BIT gbitSide;                      //!< Stores which side of the panel is active
+         U8 gau8LEDBrightness[ LEDS_NUM ];  //!< Array for storing individual brightness levels
+static   U8 gu8PWMCounter;                  //!< Counter for the base of soft-PWM
+static  BIT gbitSide;                       //!< Stores which side of the panel is active
 
 
 /***************************************< Static function definitions >**************************************/
@@ -260,4 +268,5 @@ void LED_Interrupt( void )
 }
 
 
+#endif  // LED_TRADITIONAL_DRIVER
 /***************************************< End of file >**************************************/

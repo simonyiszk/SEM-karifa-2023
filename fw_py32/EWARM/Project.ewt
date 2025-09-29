@@ -1517,6 +1517,9 @@
             <name>$PROJ_DIR$\..\Src\led.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\Src\led_switching.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\Src\main.c</name>
         </file>
         <file>

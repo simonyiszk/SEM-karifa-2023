@@ -1,9 +1,9 @@
 /*! *******************************************************************************************************
-* Copyright (c) 2021-2023 Hekk_Elek
+* Copyright (c) 2021-2025 Hekk_Elek
 *
 * \file led.h
 *
-* \brief Soft-PWM LED driver
+* \brief Multiplexed LED driver
 *
 * \author Hekk_Elek
 *
@@ -25,7 +25,7 @@
 
 
 /***************************************< Global variables >**************************************/
-extern DATA U8 gau8LEDBrightness[ LEDS_NUM ];
+extern U8 gau8LEDBrightness[ LEDS_NUM ];
 
 
 /***************************************< Public functions >**************************************/

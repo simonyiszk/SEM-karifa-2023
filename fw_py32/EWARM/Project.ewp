@@ -82,7 +82,7 @@
                 </option>
                 <option>
                     <name>GEndianModeBE</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>OGBufferedTerminalOutput</name>
@@ -99,7 +99,7 @@
                 <option>
                     <name>GBECoreSlave</name>
                     <version>33</version>
-                    <state>0</state>
+                    <state>35</state>
                 </option>
                 <option>
                     <name>OGUseCmsis</name>
@@ -1144,6 +1144,9 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Src\led.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Src\led_switching.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Src\main.c</name>
