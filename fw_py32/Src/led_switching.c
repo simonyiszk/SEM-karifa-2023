@@ -31,7 +31,7 @@
 /***************************************< Definitions >**************************************/
 #define PWM_CHANNELS        (2u)  //!< Number of PWM channels/multiplexers used
 #define COLOR_LEVELS       (16u)  //!< Number of brightness levels per color
-#define PWM_BRIGHT         (36u)  //!< PWM duty cycle for bright color -- 3 us pulse
+#define PWM_BRIGHT         (72u)  //!< PWM duty cycle for bright color -- 3 us pulse
 #define PWM_DARK            (0u)  //!< PWM duty cycle for darkness
 
 
@@ -56,19 +56,35 @@ typedef struct
 //! \note  The index of the record is used for the animations too
 static const S_LED_DESCRIPTOR gcasLEDs[ LEDS_NUM ] =
 {
-#warning "Make a version for actual hardware!"
-  { { GPIOA, LL_GPIO_PIN_7 }, 0u },  // D7
-  { { GPIOA, LL_GPIO_PIN_2 }, 0u },  // D3
-  { { GPIOA, LL_GPIO_PIN_4 }, 0u },  // D5
-  { { GPIOB, LL_GPIO_PIN_1 }, 0u },  // D13
-  { { GPIOB, LL_GPIO_PIN_2 }, 0u },  // D11
-  { { GPIOB, LL_GPIO_PIN_0 }, 0u },  // D9
-  { { GPIOA, LL_GPIO_PIN_2 }, 1u },  // D2
-  { { GPIOA, LL_GPIO_PIN_4 }, 1u },  // D4
-  { { GPIOA, LL_GPIO_PIN_7 }, 1u },  // D6
-  { { GPIOB, LL_GPIO_PIN_0 }, 1u },  // D8
-  { { GPIOB, LL_GPIO_PIN_2 }, 1u },  // D10
-  { { GPIOB, LL_GPIO_PIN_1 }, 1u },  // D12
+#ifdef HULLOCSILLAG
+#warning "Recomment for real hardware!"
+  /*
+  { { GPIOA, LL_GPIO_PIN_7 }, 0u },  // D1
+  { { GPIOA, LL_GPIO_PIN_2 }, 0u },  // D2
+  { { GPIOA, LL_GPIO_PIN_4 }, 0u },  // D3
+  { { GPIOB, LL_GPIO_PIN_1 }, 0u },  // D4
+  { { GPIOB, LL_GPIO_PIN_2 }, 0u },  // D5
+  { { GPIOB, LL_GPIO_PIN_0 }, 0u },  // D6
+  { { GPIOB, LL_GPIO_PIN_0 }, 1u },  // D12
+  { { GPIOB, LL_GPIO_PIN_2 }, 1u },  // D11
+  { { GPIOB, LL_GPIO_PIN_1 }, 1u },  // D10
+  { { GPIOA, LL_GPIO_PIN_4 }, 1u },  // D9
+  { { GPIOA, LL_GPIO_PIN_2 }, 1u },  // D8
+  { { GPIOA, LL_GPIO_PIN_7 }, 1u },  // D7
+*/
+  { { GPIOA, LL_GPIO_PIN_7 }, 0u },  // D1
+  { { GPIOA, LL_GPIO_PIN_2 }, 0u },  // D2
+  { { GPIOA, LL_GPIO_PIN_4 }, 0u },  // D3
+  { { GPIOA, LL_GPIO_PIN_5 }, 0u },  // D4
+  { { GPIOA, LL_GPIO_PIN_6 }, 0u },  // D5
+  { { GPIOA, LL_GPIO_PIN_12}, 0u },  // D6
+  { { GPIOA, LL_GPIO_PIN_12}, 1u },  // D12
+  { { GPIOA, LL_GPIO_PIN_6 }, 1u },  // D11
+  { { GPIOA, LL_GPIO_PIN_5 }, 1u },  // D10
+  { { GPIOA, LL_GPIO_PIN_4 }, 1u },  // D9
+  { { GPIOA, LL_GPIO_PIN_2 }, 1u },  // D8
+  { { GPIOA, LL_GPIO_PIN_7 }, 1u },  // D7
+#endif
 };
 
 //! \brief Look-up table for PWM duty cycle as the function of number of active LEDs
@@ -127,17 +143,28 @@ void LED_Init( void )
   LL_GPIO_WriteOutputPort( GPIOB, 0u );
   
   /* GPIOA */
-  TIM1CH1MapInit.Pin        = LL_GPIO_PIN_2 | LL_GPIO_PIN_4 | LL_GPIO_PIN_5 | LL_GPIO_PIN_6 | LL_GPIO_PIN_7;
   TIM1CH1MapInit.Mode       = LL_GPIO_MODE_OUTPUT;
   TIM1CH1MapInit.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
   TIM1CH1MapInit.Speed      = LL_GPIO_SPEED_FREQ_VERY_HIGH;
+  TIM1CH1MapInit.Pin        = 0u;
+  for( u8Index = 0u; u8Index < LEDS_NUM; u8Index++ )
+  {
+    if( GPIOA == gcasLEDs[ u8Index ].sPin.psPort )
+    {
+      TIM1CH1MapInit.Pin |= gcasLEDs[ u8Index ].sPin.u32Pin;
+    }
+  }
   LL_GPIO_Init( GPIOA, &TIM1CH1MapInit );
-
+  
   /* GPIOB */
-  TIM1CH1MapInit.Pin        = LL_GPIO_PIN_0 | LL_GPIO_PIN_1 | LL_GPIO_PIN_2;
-  TIM1CH1MapInit.Mode       = LL_GPIO_MODE_OUTPUT;
-  TIM1CH1MapInit.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-  TIM1CH1MapInit.Speed      = LL_GPIO_SPEED_FREQ_VERY_HIGH;
+  TIM1CH1MapInit.Pin        = 0u;
+  for( u8Index = 0u; u8Index < LEDS_NUM; u8Index++ )
+  {
+    if( GPIOB == gcasLEDs[ u8Index ].sPin.psPort )
+    {
+      TIM1CH1MapInit.Pin |= gcasLEDs[ u8Index ].sPin.u32Pin;
+    }
+  }
   LL_GPIO_Init( GPIOB, &TIM1CH1MapInit );
 
   // Enable clocks
@@ -159,18 +186,21 @@ void LED_Init( void )
   // Set CH1
   TIM_OC_Initstruct.CompareValue  = PWM_DARK;
   LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH1, &TIM_OC_Initstruct );
+  LL_TIM_OC_EnablePreload( TIM1, LL_TIM_CHANNEL_CH1 );
   // Set CH3
   TIM_OC_Initstruct.CompareValue  = PWM_DARK;
   LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH3, &TIM_OC_Initstruct );
+  LL_TIM_OC_EnablePreload( TIM1, LL_TIM_CHANNEL_CH3 );
   // Set CH4
   TIM_OC_Initstruct.CompareValue  = PWM_DARK;
   LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH4, &TIM_OC_Initstruct );
+  LL_TIM_OC_EnablePreload( TIM1, LL_TIM_CHANNEL_CH4 );
   
   // Initialize TIM1 base
   TIM1CountInit.ClockDivision       = LL_TIM_CLOCKDIVISION_DIV1;
   TIM1CountInit.CounterMode         = LL_TIM_COUNTERMODE_UP;
-  TIM1CountInit.Prescaler           = 1;
-  TIM1CountInit.Autoreload          = 1200u - 1u;  // Period: 100 usec / 10 kHz @ 24 MHz system clock
+  TIM1CountInit.Prescaler           = 0;
+  TIM1CountInit.Autoreload          = 2400u - 1u;  // Period: 100 usec / 10 kHz @ 24 MHz system clock
   TIM1CountInit.RepetitionCounter   = 0;
   LL_TIM_Init( TIM1, &TIM1CountInit );
 
@@ -195,24 +225,6 @@ void LED_Interrupt( void )
   U8 u8NumLEDsActive = 0u;
   U8 u8LEDIdx;
   
-  // Iterate through all the LEDs and set them according to the brightness
-  for( u8LEDIdx = 0u; u8LEDIdx < LEDS_NUM; u8LEDIdx++ )
-  {
-    // If the LED is on the current multiplexer channel
-    if( gcasLEDs[ u8LEDIdx ].u8Multiplexer == u8MultiplexerIdx )
-    {
-      // Set or reset pin according to brightness counter
-      if( gau8LEDBrightness[ u8LEDIdx ] > u8BrightnessCounter )
-      {
-        LL_GPIO_SetOutputPin( gcasLEDs[ u8LEDIdx ].sPin.psPort, gcasLEDs[ u8LEDIdx ].sPin.u32Pin );
-      }
-      else
-      {
-        LL_GPIO_ResetOutputPin( gcasLEDs[ u8LEDIdx ].sPin.psPort, gcasLEDs[ u8LEDIdx ].sPin.u32Pin );
-      }
-    }
-  }
-  
   // Increment counter and multiplexer index
   u8BrightnessCounter++;
   if( u8BrightnessCounter == COLOR_LEVELS )
@@ -225,18 +237,22 @@ void LED_Interrupt( void )
     }
   }
   
-  // Iterate through all the LEDs and calculate how many LEDs will be active next cycle
-//  for( u8LEDIdx = 0u; u8LEDIdx < LEDS_NUM; u8LEDIdx++ )
-  for( u8LEDIdx = 0u; u8LEDIdx < 3u; u8LEDIdx++ )
+  // Iterate through all the LEDs and calculate how many LEDs will be active this cycle
+  for( u8LEDIdx = 0u; u8LEDIdx < LEDS_NUM; u8LEDIdx++ )
   {
-    // If the LED is on the next multiplexer channel
+    // If the LED is on the current multiplexer channel
     if( gcasLEDs[ u8LEDIdx ].u8Multiplexer == u8MultiplexerIdx )
     {
-      // If the LED should be active
+      // Set or reset pin according to brightness counter
       if( gau8LEDBrightness[ u8LEDIdx ] > u8BrightnessCounter )
       {
+        LL_GPIO_SetOutputPin( gcasLEDs[ u8LEDIdx ].sPin.psPort, gcasLEDs[ u8LEDIdx ].sPin.u32Pin );
         // Increase current
         u8NumLEDsActive++;
+      }
+      else
+      {
+        LL_GPIO_ResetOutputPin( gcasLEDs[ u8LEDIdx ].sPin.psPort, gcasLEDs[ u8LEDIdx ].sPin.u32Pin );
       }
     }
   }
@@ -259,6 +275,7 @@ void LED_Interrupt( void )
     LL_TIM_OC_SetCompareCH4( TIM1, PWM_DARK );
   }
 }
+
 
 #endif  // LED_SWITCHING_DRIVER
 /***************************************< End of file >**************************************/
