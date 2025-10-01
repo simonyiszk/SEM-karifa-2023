@@ -2443,6 +2443,12 @@
 		(uuid "14b08142-48b6-4186-9ca1-c6dbea0d56a5")
 	)
 	(junction
+		(at 132.08 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2bf241e4-f335-4a24-b198-f4a5062b7b09")
+	)
+	(junction
 		(at 234.95 104.14)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2459,6 +2465,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4a21163f-3afc-4f5c-917c-1928b3138d87")
+	)
+	(junction
+		(at 132.08 114.3)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "54c8d24d-da76-452c-88df-ccaa43632705")
 	)
 	(junction
 		(at 254 88.9)
@@ -2483,6 +2495,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8afb3181-66f6-47e1-ab52-7b056b12b06c")
+	)
+	(junction
+		(at 132.08 72.39)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "956dec0d-6743-42f9-8220-95b465d4deec")
 	)
 	(junction
 		(at 139.7 114.3)
@@ -2513,6 +2531,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d466fe56-375d-4c05-8ee1-42f31c4fd94a")
+	)
+	(junction
+		(at 132.08 104.14)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d68aa46e-2054-4038-bf78-05d7848995ef")
 	)
 	(junction
 		(at 148.59 72.39)
@@ -2645,6 +2669,16 @@
 			(type default)
 		)
 		(uuid "0d4003f7-b829-4121-afd9-b6d67f4f5f21")
+	)
+	(wire
+		(pts
+			(xy 132.08 81.28) (xy 132.08 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0f99dec6-2d45-4787-b2b5-85f3d2e75f67")
 	)
 	(wire
 		(pts
@@ -2788,16 +2822,6 @@
 	)
 	(wire
 		(pts
-			(xy 133.35 114.3) (xy 139.7 114.3)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4044c53b-b780-44f1-bc23-654e1176890a")
-	)
-	(wire
-		(pts
 			(xy 234.95 76.2) (xy 234.95 72.39)
 		)
 		(stroke
@@ -2938,6 +2962,16 @@
 	)
 	(wire
 		(pts
+			(xy 132.08 72.39) (xy 132.08 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7117bc58-0672-4c31-8a73-d7fa49b022fe")
+	)
+	(wire
+		(pts
 			(xy 139.7 114.3) (xy 148.59 114.3)
 		)
 		(stroke
@@ -2945,6 +2979,16 @@
 			(type default)
 		)
 		(uuid "71e34283-54db-421d-9fc0-b2b59ed7f51f")
+	)
+	(wire
+		(pts
+			(xy 132.08 82.55) (xy 139.7 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "73186956-0055-4fc7-8359-840021740857")
 	)
 	(wire
 		(pts
@@ -2965,6 +3009,16 @@
 			(type default)
 		)
 		(uuid "7be0db03-bd25-43d5-8ebb-64bb6664bd27")
+	)
+	(wire
+		(pts
+			(xy 124.46 114.3) (xy 132.08 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "80f1f09a-f952-41b0-bea5-d6efefcf65c3")
 	)
 	(wire
 		(pts
@@ -3035,6 +3089,16 @@
 			(type default)
 		)
 		(uuid "91c66e57-435f-4aa0-a6b5-285e15cdeb09")
+	)
+	(wire
+		(pts
+			(xy 132.08 113.03) (xy 132.08 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9297e9b6-5ddc-48a2-88e8-7e3103606559")
 	)
 	(wire
 		(pts
@@ -3258,6 +3322,16 @@
 	)
 	(wire
 		(pts
+			(xy 132.08 104.14) (xy 132.08 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e2991312-2397-413f-b945-4892cce1dba0")
+	)
+	(wire
+		(pts
 			(xy 196.85 101.6) (xy 196.85 104.14)
 		)
 		(stroke
@@ -3275,6 +3349,16 @@
 			(type default)
 		)
 		(uuid "e65e07ac-6ca3-409b-ba16-9df7ff4c0cd4")
+	)
+	(wire
+		(pts
+			(xy 132.08 114.3) (xy 139.7 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eb108626-ad22-4ec6-b463-2b7a947079c7")
 	)
 	(wire
 		(pts
@@ -3328,7 +3412,7 @@
 	)
 	(wire
 		(pts
-			(xy 133.35 82.55) (xy 139.7 82.55)
+			(xy 124.46 82.55) (xy 132.08 82.55)
 		)
 		(stroke
 			(width 0)
@@ -3407,7 +3491,7 @@
 		(uuid "1e7123e6-7e23-418e-aa81-f3cc89fdbe5d")
 	)
 	(label "MPX2"
-		(at 133.35 114.3 0)
+		(at 124.46 114.3 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3507,7 +3591,7 @@
 		(uuid "50065d0d-989b-45c6-a931-d0f0d9f44b46")
 	)
 	(label "MPX1"
-		(at 133.35 82.55 0)
+		(at 124.46 82.55 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3941,7 +4025,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "kikit:Tab"
+		(property "Footprint" "PCM_kikit:Tab"
 			(at 101.6 130.81 0)
 			(effects
 				(font
@@ -4182,75 +4266,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:LED")
-		(at 158.75 80.01 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "31b04caa-c4c2-4173-b7a3-7bede720a3d8")
-		(property "Reference" "D1"
-			(at 161.925 77.1524 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "LED"
-			(at 161.925 79.6924 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
-			(at 158.75 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 158.75 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 158.75 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "ff25e27b-9ff1-4956-9af4-821a9ed85dde")
-		)
-		(pin "2"
-			(uuid "e30140bf-d6ee-4ba7-a502-3eadcccdf0ab")
-		)
-		(instances
-			(project ""
-				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-					(reference "D1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:VCC")
 		(at 132.08 71.12 0)
 		(unit 1)
@@ -4310,6 +4325,74 @@
 			(project "hullocsillag"
 				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
 					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 132.08 109.22 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "38336d20-32cf-4309-ab51-4a33b9b5bf38")
+		(property "Reference" "R9"
+			(at 133.35 108.458 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100k"
+			(at 133.35 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 130.302 109.22 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 132.08 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 132.08 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6c566bac-fd7e-4707-a93a-07f97270e00d")
+		)
+		(pin "2"
+			(uuid "f6da3aab-5486-498b-b3ae-dcdd49bbaacf")
+		)
+		(instances
+			(project "hullocsillag"
+				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
+					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -4379,74 +4462,6 @@
 			(project ""
 				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
 					(reference "D2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 208.28 88.9 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "3fd8744b-c002-40e4-852a-23770c31d205")
-		(property "Reference" "R5"
-			(at 208.28 91.694 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1k"
-			(at 205.74 91.694 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 208.28 87.122 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 208.28 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 208.28 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "e39c5047-f5e2-4d5b-a08c-a4dd5dc100bc")
-		)
-		(pin "2"
-			(uuid "67490307-c4c7-405d-bff6-a4c991bb9300")
-		)
-		(instances
-			(project ""
-				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-					(reference "R5")
 					(unit 1)
 				)
 			)
@@ -4585,6 +4600,75 @@
 			(project ""
 				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
 					(reference "D12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 215.9 97.79 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "49f15f3f-cd28-4422-8cb9-fcb636c1f01a")
+		(property "Reference" "D10"
+			(at 219.71 98.1074 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED"
+			(at 219.71 100.6474 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
+			(at 215.9 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 215.9 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 215.9 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2d433f42-d028-43a2-835d-a6962cadec3b")
+		)
+		(pin "2"
+			(uuid "3cecd1c8-3414-47e3-bbf6-694ac740f07c")
+		)
+		(instances
+			(project "hullocsillag"
+				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
+					(reference "D10")
 					(unit 1)
 				)
 			)
@@ -4756,7 +4840,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Inductor_SMD:L_1008_2520Metric"
+		(property "Footprint" "Inductor_SMD:L_Ferrocore_DLG-0403"
 			(at 148.59 109.22 0)
 			(effects
 				(font
@@ -5331,75 +5415,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:LED")
-		(at 215.9 97.79 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "8c972387-4935-4ace-8973-8f85e52aded7")
-		(property "Reference" "D10"
-			(at 219.71 98.1074 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "LED"
-			(at 219.71 100.6474 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
-			(at 215.9 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 215.9 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 215.9 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "5946d435-f718-4cbf-b7ae-f616314273c2")
-		)
-		(pin "2"
-			(uuid "990670d1-b050-41ce-a1bb-c9e2017d6490")
-		)
-		(instances
-			(project ""
-				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-					(reference "D10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
 		(at 74.93 49.53 0)
 		(unit 1)
@@ -5698,7 +5713,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Inductor_SMD:L_1008_2520Metric"
+		(property "Footprint" "Inductor_SMD:L_Ferrocore_DLG-0403"
 			(at 148.59 77.47 0)
 			(effects
 				(font
@@ -5802,6 +5817,74 @@
 			(project ""
 				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
 					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 208.28 88.9 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "aecdedb4-b9c7-4f66-9bb0-3e27f00f4794")
+		(property "Reference" "R5"
+			(at 208.28 91.694 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1k"
+			(at 205.74 91.694 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 208.28 87.122 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 208.28 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 208.28 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "dabf3a50-a189-4b12-b3ca-a15743dd9552")
+		)
+		(pin "2"
+			(uuid "432c2f10-2696-4b45-bec7-3f98a44d4330")
+		)
+		(instances
+			(project "hullocsillag"
+				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
+					(reference "R5")
 					(unit 1)
 				)
 			)
@@ -6041,7 +6124,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "kikit:Tab"
+		(property "Footprint" "PCM_kikit:Tab"
 			(at 71.12 130.81 0)
 			(effects
 				(font
@@ -6077,6 +6160,74 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 132.08 77.47 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c4071d9a-6dbc-42b3-bc08-575dac38cc2b")
+		(property "Reference" "R8"
+			(at 133.35 76.708 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100k"
+			(at 133.35 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 130.302 77.47 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 132.08 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 132.08 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6fff9280-4dab-4e98-9632-8d39779d203c")
+		)
+		(pin "2"
+			(uuid "bd6696cb-f5ea-41d7-8a2f-e10e4f4622d3")
+		)
+		(instances
+			(project "hullocsillag"
+				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
+					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "kikit:Tab")
 		(at 86.36 130.81 0)
 		(unit 1)
@@ -6104,7 +6255,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "kikit:Tab"
+		(property "Footprint" "PCM_kikit:Tab"
 			(at 86.36 130.81 0)
 			(effects
 				(font
@@ -6477,6 +6628,75 @@
 			(project "hullocsillag"
 				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
 					(reference "C1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 158.75 80.01 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e40a0b1a-da12-4fb3-ad06-243df54e365b")
+		(property "Reference" "D1"
+			(at 161.29 77.1524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 161.29 79.6924 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
+			(at 158.75 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 158.75 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 158.75 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7e7dae2b-0231-40e6-811c-6533e268ec4a")
+		)
+		(pin "2"
+			(uuid "a5f16f1b-4e43-4f30-8ba5-0a20adfe248f")
+		)
+		(instances
+			(project "hullocsillag"
+				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
+					(reference "D1")
 					(unit 1)
 				)
 			)
