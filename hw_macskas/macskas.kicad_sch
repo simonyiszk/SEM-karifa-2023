@@ -2834,16 +2834,6 @@
 	)
 	(wire
 		(pts
-			(xy 149.86 101.6) (xy 149.86 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "238fce11-2d4a-4211-8aed-cf1ccfb9acbc")
-	)
-	(wire
-		(pts
 			(xy 127 109.22) (xy 140.97 109.22)
 		)
 		(stroke
@@ -2901,16 +2891,6 @@
 			(type default)
 		)
 		(uuid "2c22c3b7-cbf0-45c2-a485-d676dbe92224")
-	)
-	(wire
-		(pts
-			(xy 140.97 109.22) (xy 140.97 116.84)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2c93365c-1851-4ecd-a9fb-a439bd609c2a")
 	)
 	(wire
 		(pts
@@ -3334,6 +3314,16 @@
 	)
 	(wire
 		(pts
+			(xy 140.97 109.22) (xy 149.86 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8d9123e6-4207-42e8-a465-0e138725ad65")
+	)
+	(wire
+		(pts
 			(xy 193.04 69.85) (xy 212.09 69.85)
 		)
 		(stroke
@@ -3731,6 +3721,16 @@
 			(type default)
 		)
 		(uuid "de2f9515-4f79-47cf-9d47-1e6612ad6131")
+	)
+	(wire
+		(pts
+			(xy 140.97 109.22) (xy 140.97 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e2917cd0-954d-433c-9898-28d1cc591b1c")
 	)
 	(wire
 		(pts
@@ -5228,7 +5228,7 @@
 	)
 	(symbol
 		(lib_id "Device:L")
-		(at 149.86 107.95 0)
+		(at 149.86 105.41 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5237,7 +5237,7 @@
 		(fields_autoplaced yes)
 		(uuid "3f616360-728e-42dc-8ff8-bc85e19138ce")
 		(property "Reference" "L3"
-			(at 151.13 106.6799 0)
+			(at 151.13 104.1399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5246,7 +5246,7 @@
 			)
 		)
 		(property "Value" "1mH"
-			(at 151.13 109.2199 0)
+			(at 151.13 106.6799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5255,7 +5255,7 @@
 			)
 		)
 		(property "Footprint" "Inductor_SMD:L_Ferrocore_DLG-0403"
-			(at 149.86 107.95 0)
+			(at 149.86 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5264,7 +5264,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 149.86 107.95 0)
+			(at 149.86 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5273,7 +5273,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 149.86 107.95 0)
+			(at 149.86 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6507,73 +6507,6 @@
 			(project "hopehely"
 				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
 					(reference "D8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 149.86 111.76 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "77602ea1-10a9-4347-b0f0-07092c67a272")
-		(property "Reference" "#PWR016"
-			(at 149.86 118.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 152.4 113.0299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 149.86 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 149.86 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 149.86 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "75c4dd47-c8c8-4263-8ab1-b590f90473b7")
-		)
-		(instances
-			(project "hopehely"
-				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-					(reference "#PWR016")
 					(unit 1)
 				)
 			)
