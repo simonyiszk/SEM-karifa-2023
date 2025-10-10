@@ -157,13 +157,13 @@
 	(net 27 "unconnected-(U1-PB6{slash}PF4-BOOT0-Pad5)")
 	(net 28 "unconnected-(U1-PA6-Pad6)")
 	(net 29 "unconnected-(U1-PA5-Pad7)")
-	(footprint "kikit:Tab"
+	(footprint "PCM_kikit:Tab"
 		(layer "F.Cu")
 		(uuid "05a64e7c-8998-4113-a758-631d92ce1857")
-		(at 186.188176 38.63035 -90)
+		(at 100 126.6 90)
 		(descr "A symbol representing annotation for tab placement")
 		(property "Reference" "T1"
-			(at 0 -2 90)
+			(at -0.25 -2 90)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "0d32fbdb-2a37-4863-af10-fc85c1c6174f")
@@ -175,7 +175,7 @@
 			)
 		)
 		(property "Value" "Tab"
-			(at -2.75 -1 90)
+			(at -3 -1 90)
 			(layer "Dwgs.User")
 			(uuid "a072347a-1cac-4ead-8c61-cfe38fd40342")
 			(effects
@@ -186,7 +186,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "fa0303a2-8170-4a1d-b965-37c7f0d6b147")
@@ -198,7 +198,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ff7bafca-28ca-464f-81d4-d4e2ccf1267c")
@@ -212,51 +212,51 @@
 		(path "/0b72e181-2db7-4b27-9232-922c0199bb96")
 		(sheetname "/")
 		(sheetfile "macskas.kicad_sch")
-		(attr exclude_from_pos_files exclude_from_bom)
+		(attr board_only exclude_from_pos_files exclude_from_bom allow_missing_courtyard)
 		(fp_line
-			(start 0.25 1)
-			(end 0.25 -1)
+			(start 0 0)
+			(end -1 -1)
 			(stroke
 				(width 0.3)
 				(type solid)
 			)
 			(layer "Dwgs.User")
-			(uuid "7308e13a-4809-4e8e-af65-9905819aa376")
+			(uuid "e983571c-7e38-4c18-bd1a-e50d6c4e649e")
 		)
 		(fp_line
-			(start 0.25 0)
-			(end -0.75 1)
+			(start 0 0)
+			(end -3 0)
 			(stroke
 				(width 0.3)
 				(type solid)
 			)
 			(layer "Dwgs.User")
-			(uuid "f58742f8-e57e-4646-a6f5-0463e0eceeb8")
+			(uuid "7052d629-cc51-48eb-a563-1606a06a6b97")
 		)
 		(fp_line
-			(start 0.25 0)
-			(end -2.75 0)
+			(start 0 0)
+			(end -1 1)
 			(stroke
 				(width 0.3)
 				(type solid)
 			)
 			(layer "Dwgs.User")
-			(uuid "91c69423-de51-44fe-bc70-fec455b50634")
+			(uuid "e054d400-391f-417b-8784-91861f37068c")
 		)
 		(fp_line
-			(start 0.25 0)
-			(end -0.75 -1)
+			(start 0 1)
+			(end 0 -1)
 			(stroke
 				(width 0.3)
 				(type solid)
 			)
 			(layer "Dwgs.User")
-			(uuid "539dec9e-2c45-4201-ab13-cbbbab8fc31b")
+			(uuid "7e229a10-47d2-4829-af7a-3d02be49eb1b")
 		)
-		(fp_text user "KIKIT: width: 2mm"
+		(fp_text user "KIKIT: width: 3mm"
 			(at -5.5 0 0)
 			(layer "Dwgs.User")
-			(uuid "75d5a810-84fd-42c4-a0b7-6b82d09662a2")
+			(uuid "75ffcd78-2bae-4842-8c50-697a40e5bc49")
 			(effects
 				(font
 					(size 1 1)
@@ -692,122 +692,13 @@
 			)
 		)
 	)
-	(footprint "kikit:Tab"
-		(layer "F.Cu")
-		(uuid "1642b051-57e8-4450-81d4-890308affe2b")
-		(at 146.688176 60.63035)
-		(descr "A symbol representing annotation for tab placement")
-		(property "Reference" "T6"
-			(at 0 -2 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "9b8d6c1d-6168-4461-9a00-8368e003eaf8")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Value" "Tab"
-			(at -2.75 -1 0)
-			(layer "Dwgs.User")
-			(uuid "994a85f4-cf7f-4171-b4af-34201677a81a")
-			(effects
-				(font
-					(size 1.2 1.2)
-					(thickness 0.2)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "8e107f29-fff4-4b34-9db8-188cee33b082")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "5f4a2abf-d23f-482f-85d8-9388b4674e43")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(path "/3cb3567e-bd9b-41d4-84e3-729a85e39587")
-		(sheetname "/")
-		(sheetfile "macskas.kicad_sch")
-		(attr exclude_from_pos_files exclude_from_bom)
-		(fp_line
-			(start 0.25 0)
-			(end -2.75 0)
-			(stroke
-				(width 0.3)
-				(type solid)
-			)
-			(layer "Dwgs.User")
-			(uuid "07b80fc0-3bd9-44b7-965b-2931950a49f2")
-		)
-		(fp_line
-			(start 0.25 0)
-			(end -0.75 -1)
-			(stroke
-				(width 0.3)
-				(type solid)
-			)
-			(layer "Dwgs.User")
-			(uuid "272f4c5a-e1bf-4ed0-8ba9-3e2c4a1a9e17")
-		)
-		(fp_line
-			(start 0.25 0)
-			(end -0.75 1)
-			(stroke
-				(width 0.3)
-				(type solid)
-			)
-			(layer "Dwgs.User")
-			(uuid "24cbdac4-6655-4e9f-b23a-f0d18a0290f2")
-		)
-		(fp_line
-			(start 0.25 1)
-			(end 0.25 -1)
-			(stroke
-				(width 0.3)
-				(type solid)
-			)
-			(layer "Dwgs.User")
-			(uuid "0c987b7e-1bf8-4a5f-966b-64311d390a8c")
-		)
-		(fp_text user "KIKIT: width: 2mm"
-			(at -5.5 0 90)
-			(layer "Dwgs.User")
-			(uuid "bb0dbf8d-0a6f-41eb-b348-8b5c7a69e7f7")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
-	(footprint "kikit:Tab"
+	(footprint "PCM_kikit:Tab"
 		(layer "F.Cu")
 		(uuid "179b931a-ee6e-4f42-a650-8fcc15be33cf")
-		(at 226.438176 80.13035 180)
+		(at 71.9 100)
 		(descr "A symbol representing annotation for tab placement")
 		(property "Reference" "T3"
-			(at 0 -2 0)
+			(at -0.25 -2 0)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "3582fa8b-f111-42bf-97c3-c59af28c0cfd")
@@ -819,7 +710,7 @@
 			)
 		)
 		(property "Value" "Tab"
-			(at -2.75 -1 0)
+			(at -3 -1 0)
 			(layer "Dwgs.User")
 			(uuid "8e9a0248-d7f9-4772-975f-ff56d79f22f2")
 			(effects
@@ -830,7 +721,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 180)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "4ef8216d-1834-4dc4-88a8-34a602bcec99")
@@ -842,7 +733,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 180)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ab9b6b8b-fbc1-4c5a-80fe-00eb46223a34")
@@ -856,51 +747,51 @@
 		(path "/3580d199-cae8-4adb-a6ed-71c88baa1d33")
 		(sheetname "/")
 		(sheetfile "macskas.kicad_sch")
-		(attr exclude_from_pos_files exclude_from_bom)
+		(attr board_only exclude_from_pos_files exclude_from_bom allow_missing_courtyard)
 		(fp_line
-			(start 0.25 1)
-			(end 0.25 -1)
+			(start 0 0)
+			(end -3 0)
 			(stroke
 				(width 0.3)
 				(type solid)
 			)
 			(layer "Dwgs.User")
-			(uuid "6427ad56-1b65-44a7-91c2-d5d8c1efa48d")
+			(uuid "fdbd72a5-7d49-4a36-ad7f-897b2a6828fe")
 		)
 		(fp_line
-			(start 0.25 0)
-			(end -0.75 1)
+			(start 0 0)
+			(end -1 -1)
 			(stroke
 				(width 0.3)
 				(type solid)
 			)
 			(layer "Dwgs.User")
-			(uuid "b3705bc1-ba6f-4b16-aa9e-0966ddce0310")
+			(uuid "003798bc-b0a3-41a5-b7f9-e7899fc4d17c")
 		)
 		(fp_line
-			(start 0.25 0)
-			(end -0.75 -1)
+			(start 0 0)
+			(end -1 1)
 			(stroke
 				(width 0.3)
 				(type solid)
 			)
 			(layer "Dwgs.User")
-			(uuid "0e95507a-b1b2-4573-8af3-7e37dbe9353f")
+			(uuid "430689bc-a265-4b1a-9f6a-363153c3b4c5")
 		)
 		(fp_line
-			(start 0.25 0)
-			(end -2.75 0)
+			(start 0 1)
+			(end 0 -1)
 			(stroke
 				(width 0.3)
 				(type solid)
 			)
 			(layer "Dwgs.User")
-			(uuid "0d8ab8e2-c65b-4efb-b519-f346b28ca524")
+			(uuid "3948092d-5c24-490f-888d-9708f405087f")
 		)
-		(fp_text user "KIKIT: width: 2mm"
+		(fp_text user "KIKIT: width: 3mm"
 			(at -5.5 0 90)
 			(layer "Dwgs.User")
-			(uuid "db837df2-be22-4693-a95d-c558a6be9aed")
+			(uuid "cf07d3ad-f6eb-4583-885c-7b2b7c5507b2")
 			(effects
 				(font
 					(size 1 1)
@@ -1754,115 +1645,6 @@
 			)
 		)
 	)
-	(footprint "kikit:Tab"
-		(layer "F.Cu")
-		(uuid "40e327ad-f018-4900-8ec9-ae3a37a0c122")
-		(at 186.188176 99.63035 90)
-		(descr "A symbol representing annotation for tab placement")
-		(property "Reference" "T4"
-			(at 0 -2 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "46ecda44-b62f-436d-9608-08fd1dca1edf")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Value" "Tab"
-			(at -2.75 -1 90)
-			(layer "Dwgs.User")
-			(uuid "0e503e80-8988-4d5e-ae8f-7cfb72fa9989")
-			(effects
-				(font
-					(size 1.2 1.2)
-					(thickness 0.2)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 90)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "be41dcbf-26ab-4c23-b50d-b8950fcedb65")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 90)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "fa614025-30a4-4d95-a57d-da8225174def")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(path "/9afb210d-51c7-46f7-bb83-a51ba3a5bfeb")
-		(sheetname "/")
-		(sheetfile "macskas.kicad_sch")
-		(attr exclude_from_pos_files exclude_from_bom)
-		(fp_line
-			(start 0.25 0)
-			(end -0.75 -1)
-			(stroke
-				(width 0.3)
-				(type solid)
-			)
-			(layer "Dwgs.User")
-			(uuid "688229d5-a076-40b9-b6e5-3b640bce29a7")
-		)
-		(fp_line
-			(start 0.25 0)
-			(end -2.75 0)
-			(stroke
-				(width 0.3)
-				(type solid)
-			)
-			(layer "Dwgs.User")
-			(uuid "11d69abc-c16e-45c7-bf9f-5f7646c87b9c")
-		)
-		(fp_line
-			(start 0.25 0)
-			(end -0.75 1)
-			(stroke
-				(width 0.3)
-				(type solid)
-			)
-			(layer "Dwgs.User")
-			(uuid "462d4208-acbb-4ae2-bbe8-748723e0e479")
-		)
-		(fp_line
-			(start 0.25 1)
-			(end 0.25 -1)
-			(stroke
-				(width 0.3)
-				(type solid)
-			)
-			(layer "Dwgs.User")
-			(uuid "2c22da90-a1ab-46ab-9b44-7d1bff106114")
-		)
-		(fp_text user "KIKIT: width: 2mm"
-			(at -5.5 0 0)
-			(layer "Dwgs.User")
-			(uuid "38e94661-6994-4540-b018-5bd41a1243ec")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "47926ac2-23a1-4b0f-a637-e322293cadfb")
@@ -2063,13 +1845,13 @@
 			)
 		)
 	)
-	(footprint "kikit:Tab"
+	(footprint "PCM_kikit:Tab"
 		(layer "F.Cu")
 		(uuid "5f80e33a-0414-454f-8e96-593e46430bf7")
-		(at 226.438176 63.13035 180)
+		(at 126.7 100 180)
 		(descr "A symbol representing annotation for tab placement")
 		(property "Reference" "T2"
-			(at 0 -2 0)
+			(at -0.25 -2 180)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "2e165aa7-69e7-4e39-96b1-d9a2608efca9")
@@ -2081,7 +1863,7 @@
 			)
 		)
 		(property "Value" "Tab"
-			(at -2.75 -1 0)
+			(at -3 -1 180)
 			(layer "Dwgs.User")
 			(uuid "45c6bdf5-46cf-40ef-a63c-bff2dc17f282")
 			(effects
@@ -2118,51 +1900,51 @@
 		(path "/49101445-f0a2-454b-969c-c0c40f8ad1d2")
 		(sheetname "/")
 		(sheetfile "macskas.kicad_sch")
-		(attr exclude_from_pos_files exclude_from_bom)
+		(attr board_only exclude_from_pos_files exclude_from_bom allow_missing_courtyard)
 		(fp_line
-			(start 0.25 1)
-			(end 0.25 -1)
+			(start 0 1)
+			(end 0 -1)
 			(stroke
 				(width 0.3)
 				(type solid)
 			)
 			(layer "Dwgs.User")
-			(uuid "fa41ab82-b64f-460c-92a8-ddb3559048b2")
+			(uuid "b5442e81-7cb8-499b-ac1b-44ccc74548ad")
 		)
 		(fp_line
-			(start 0.25 0)
-			(end -0.75 1)
+			(start 0 0)
+			(end -1 1)
 			(stroke
 				(width 0.3)
 				(type solid)
 			)
 			(layer "Dwgs.User")
-			(uuid "765d322b-aed5-4b10-abfe-c0c1a61481b6")
+			(uuid "e11260a1-fe59-439e-a23d-bb57355a5388")
 		)
 		(fp_line
-			(start 0.25 0)
-			(end -0.75 -1)
+			(start 0 0)
+			(end -1 -1)
 			(stroke
 				(width 0.3)
 				(type solid)
 			)
 			(layer "Dwgs.User")
-			(uuid "92b2f7c1-c08a-4db6-9aac-961a1b4cc1eb")
+			(uuid "c2527816-ada3-4ac8-a35a-6bab30f49afe")
 		)
 		(fp_line
-			(start 0.25 0)
-			(end -2.75 0)
+			(start 0 0)
+			(end -3 0)
 			(stroke
 				(width 0.3)
 				(type solid)
 			)
 			(layer "Dwgs.User")
-			(uuid "c0ebb92f-8e50-4dff-bd60-a95269dc1b09")
+			(uuid "2b6a7b21-1408-4c5f-8296-1eb6264668ca")
 		)
-		(fp_text user "KIKIT: width: 2mm"
-			(at -5.5 0 90)
+		(fp_text user "KIKIT: width: 3mm"
+			(at -5.5 0 270)
 			(layer "Dwgs.User")
-			(uuid "4bf46273-b97c-4c9b-b4b3-a172829f100c")
+			(uuid "8f0ae85d-3e8c-4d41-8871-42aa736ea48b")
 			(effects
 				(font
 					(size 1 1)
@@ -9770,115 +9552,6 @@
 			)
 		)
 	)
-	(footprint "kikit:Tab"
-		(layer "F.Cu")
-		(uuid "f9b31dd3-ca3e-488f-8058-41062d675cf8")
-		(at 145.688176 82.63035)
-		(descr "A symbol representing annotation for tab placement")
-		(property "Reference" "T5"
-			(at 0 -2 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "a217f508-5f6e-4695-acbf-947f854a9af3")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Value" "Tab"
-			(at -2.75 -1 0)
-			(layer "Dwgs.User")
-			(uuid "a2a67dbe-9a08-4753-b8c5-1242bad904c9")
-			(effects
-				(font
-					(size 1.2 1.2)
-					(thickness 0.2)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "beaf85ed-228b-4dfd-a6eb-0f2424eabf5b")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "68cf06f4-1cb6-4118-8609-73dce9015557")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(path "/f0f407f3-ee9f-4c46-87bd-334160807760")
-		(sheetname "/")
-		(sheetfile "macskas.kicad_sch")
-		(attr exclude_from_pos_files exclude_from_bom)
-		(fp_line
-			(start 0.25 0)
-			(end -2.75 0)
-			(stroke
-				(width 0.3)
-				(type solid)
-			)
-			(layer "Dwgs.User")
-			(uuid "4e7c443e-495a-4be7-b268-1fac3cadf06b")
-		)
-		(fp_line
-			(start 0.25 0)
-			(end -0.75 -1)
-			(stroke
-				(width 0.3)
-				(type solid)
-			)
-			(layer "Dwgs.User")
-			(uuid "10d81f13-ec61-48ee-96cf-6d657d125756")
-		)
-		(fp_line
-			(start 0.25 0)
-			(end -0.75 1)
-			(stroke
-				(width 0.3)
-				(type solid)
-			)
-			(layer "Dwgs.User")
-			(uuid "93b8642e-0ac4-46fa-a761-d64e72115f28")
-		)
-		(fp_line
-			(start 0.25 1)
-			(end 0.25 -1)
-			(stroke
-				(width 0.3)
-				(type solid)
-			)
-			(layer "Dwgs.User")
-			(uuid "39131f72-1cbc-49c5-b2eb-13c70758de01")
-		)
-		(fp_text user "KIKIT: width: 2mm"
-			(at -5.5 0 90)
-			(layer "Dwgs.User")
-			(uuid "77248872-2944-486f-b269-ff09a957932f")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
 	(footprint "LED_SMD:LED_0805_2012Metric"
 		(layer "F.Cu")
 		(uuid "fc657937-7de3-49b0-96a8-ee3ec09f8ff5")
@@ -10111,6 +9784,7 @@
 		(property "Reference" "BT1"
 			(at -4.5 -143.83 90)
 			(layer "B.SilkS")
+			(hide yes)
 			(uuid "76638f4d-2f9c-4c2e-bcc4-9feb5ad701dd")
 			(effects
 				(font

@@ -4431,7 +4431,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "kikit:Tab"
+		(property "Footprint" "PCM_kikit:Tab"
 			(at 25.4 185.42 0)
 			(effects
 				(font
@@ -5056,7 +5056,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "kikit:Tab"
+		(property "Footprint" "PCM_kikit:Tab"
 			(at 53.34 185.42 0)
 			(effects
 				(font
@@ -5087,70 +5087,6 @@
 			(project "macskas"
 				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
 					(reference "T3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "kikit:Tab")
-		(at 95.25 185.42 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3cb3567e-bd9b-41d4-84e3-729a85e39587")
-		(property "Reference" "T6"
-			(at 100.33 183.5149 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Tab"
-			(at 100.33 186.0549 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "kikit:Tab"
-			(at 95.25 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 95.25 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 95.25 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "macskas"
-				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-					(reference "T6")
 					(unit 1)
 				)
 			)
@@ -5602,7 +5538,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "kikit:Tab"
+		(property "Footprint" "PCM_kikit:Tab"
 			(at 39.37 185.42 0)
 			(effects
 				(font
@@ -7068,70 +7004,6 @@
 		)
 	)
 	(symbol
-		(lib_id "kikit:Tab")
-		(at 67.31 185.42 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9afb210d-51c7-46f7-bb83-a51ba3a5bfeb")
-		(property "Reference" "T4"
-			(at 72.39 183.5149 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Tab"
-			(at 72.39 186.0549 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "kikit:Tab"
-			(at 67.31 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 67.31 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 67.31 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "macskas"
-				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-					(reference "T4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 240.03 54.61 270)
 		(unit 1)
@@ -8234,70 +8106,6 @@
 			(project "hopehely"
 				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
 					(reference "D4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "kikit:Tab")
-		(at 81.28 185.42 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f0f407f3-ee9f-4c46-87bd-334160807760")
-		(property "Reference" "T5"
-			(at 86.36 183.5149 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Tab"
-			(at 86.36 186.0549 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "kikit:Tab"
-			(at 81.28 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 81.28 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 81.28 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "macskas"
-				(path "/30f28fd8-ef05-4208-b612-7ffefcdba2ba"
-					(reference "T5")
 					(unit 1)
 				)
 			)
