@@ -2826,7 +2826,7 @@
 	(footprint "NPTH"
 		(layer "F.Cu")
 		(uuid "6bb3cc41-e28a-421d-9f7f-739a69524f29")
-		(at 142.19 72.23)
+		(at 142.29 72.23)
 		(property "Reference" "REF**"
 			(at 0 0.5 0)
 			(layer "F.SilkS")
@@ -3213,7 +3213,7 @@
 			(layer "Dwgs.User")
 			(uuid "e588db04-0ba7-4b97-84ac-04725dd06f38")
 		)
-		(fp_text user "KIKIT: width: 10mm"
+		(fp_text user "KIKIT: width: 3mm"
 			(at -5.5 0 0)
 			(layer "Dwgs.User")
 			(uuid "a640fe13-b75a-483a-b2cc-124951b7438b")
@@ -3568,7 +3568,7 @@
 	(footprint "NPTH"
 		(layer "F.Cu")
 		(uuid "854561e3-c0ef-41d4-9842-a19f43a635e9")
-		(at 140.92 71.04)
+		(at 141.02 71.04)
 		(property "Reference" "REF**"
 			(at 0 0.5 0)
 			(layer "F.SilkS")
@@ -7180,7 +7180,7 @@
 	(footprint ""
 		(layer "F.Cu")
 		(uuid "bea86bd0-1603-42a3-bd0c-d80bf705bf25")
-		(at 142.91 72.81)
+		(at 143.01 72.81)
 		(property "Reference" ""
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -8112,7 +8112,7 @@
 	(footprint "NPTH"
 		(layer "F.Cu")
 		(uuid "cd24a1d0-117e-4921-b7c8-7ead23cbca06")
-		(at 141.59 71.61)
+		(at 141.69 71.61)
 		(property "Reference" "REF**"
 			(at 0 0.5 0)
 			(layer "F.SilkS")
