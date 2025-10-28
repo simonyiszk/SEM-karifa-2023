@@ -108,7 +108,7 @@ void BatteryLevel_Show( void )
     Delay( 100u );
   }
 #endif
-#ifdef HOPEHELY
+#if( defined( HOPEHELY ) || defined( MACSKAS ) )
   for( u8Index = 0u; u8Index < LEDS_NUM; u8Index++ )
   {
     gau8LEDBrightness[ u8Index ] = 15u;
@@ -295,7 +295,34 @@ void BatteryLevel_Show( void )
     }
   }
 #endif
-  
+
+#ifdef MACSKAS
+  // We have 18 LED levels, so we divide this range to 18 levels
+  // A floating-point based implementation would be: u8ChargeLevel = round( 18.0f*( f32BatteryVoltage - 2.0f )/0.8f );
+  // After simplification, the formula for charge level would be: u8ChargeLevel = round( (18.0f/0.8f)*( 4096.0f*1.2f/( (float)u16MeasuredLevel ) - 2.0f ) ); 
+  // Or in other words: u8ChargeLevel = round( ( 110592.0f / u16MeasuredLevel ) - 45.0f )
+  if( u16MeasuredLevel >= 2457u )  // If the voltage is below 2.0V
+  {
+    u8ChargeLevel = 0u;
+  }
+  else
+  {
+    u8ChargeLevel = ( 110592u / u16MeasuredLevel ) - 45u;
+  }
+  // Display the charge level on the LEDs
+  for( u8Index = 1u; u8Index < LEDS_NUM; u8Index++ )
+  {
+    if( u8ChargeLevel >= u8Index-1u )
+    {
+      gau8LEDBrightness[ u8Index ] = 15u;
+    }
+    else
+    {
+      gau8LEDBrightness[ u8Index ] = 0u;
+    }
+  }
+#endif
+    
   // Wait, so the user can read the battery charge level
   Delay( 2000u );
 }
