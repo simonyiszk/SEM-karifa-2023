@@ -1447,10 +1447,27 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasSoftFlashing[ 4u ] =
   {125u, {15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}, LOAD,          0u }, 
   {125u, {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}, ADD | REPEAT, 14u },
 };
+//--------------------------------------------------------
+//! \brief Ying-yang -- 18 normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasYingYang[ 2u ] = 
+{
+  {150u, { 0,  5, 10, 15,  0,  0,  0,  5, 10, 15,  0,  0,  0,  5, 10, 15,  0,  0}, LOAD,            0u },
+  {150u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, RSHIFT | REPEAT, 4u },
+};
+//--------------------------------------------------------
+//! \brief Race -- 18 normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasRace[ 2u ] = 
+{
+  {150u, {15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,            0u },
+  {150u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, RSHIFT | REPEAT, 16u},
+};
+
 //! \brief Table of animations
 CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] = 
 {
-  {sizeof(gasMacskasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),              gasMacskasSoftFlashing,            sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
+  {sizeof(gasMacskasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasMacskasSoftFlashing, sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
+  {sizeof(gasMacskasYingYang)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasMacskasYingYang, sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
+  {sizeof(gasMacskasRace)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                 gasMacskasRace, sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
   
   // Last animation, don't change its location
   {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB }
