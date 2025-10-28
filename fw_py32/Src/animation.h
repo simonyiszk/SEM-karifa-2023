@@ -45,7 +45,7 @@
 #endif
 
 #ifdef MACSKAS
-  #define NUM_ANIMATIONS        (12u)  //!< Number of animations implemented (including blackness)
+  #define NUM_ANIMATIONS        (2u)  //!< Number of animations implemented (including blackness)
 #endif
 
 

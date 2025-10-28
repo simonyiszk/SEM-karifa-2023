@@ -17,6 +17,7 @@
 #include "types.h"
 #include "util.h"
 #include "persist.h"
+#include "animation.h"
 
 
 /***************************************< Definitions >**************************************/
@@ -85,12 +86,13 @@ static BOOL SearchForLatestSave( S_PERSIST CODE** ppsNextEmpty )
   for( u16SaveIndex = 0u; u16SaveIndex < ( SAVE_SIZE / sizeof( S_PERSIST ) ); u16SaveIndex++ )
   {
     Flash_Read( (U32)psSave, (U8*)&sLocalCopy, sizeof( S_PERSIST ) );
-    if( sLocalCopy.u16CRC == Util_CRC16( (U8*)&sLocalCopy, sizeof( S_PERSIST ) - sizeof( U16 ) ) )
+    if( ( sLocalCopy.u16CRC == Util_CRC16( (U8*)&sLocalCopy, sizeof( S_PERSIST ) - sizeof( U16 ) ) )
+     && ( sLocalCopy.u8AnimationIndex < NUM_ANIMATIONS ) )  // basic validity test
     {
       memcpy( &gsPersistentData, &sLocalCopy, sizeof( S_PERSIST ) );
       bReturn = TRUE;
     }
-    else  // bad CRC
+    else  // bad CRC, or bad data
     {
       // Check if this block is empty
       bEmpty = IsSaveBlockEmpty( &sLocalCopy, psSave );

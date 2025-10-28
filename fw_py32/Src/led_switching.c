@@ -30,7 +30,9 @@
 
 /***************************************< Definitions >**************************************/
 #define COLOR_LEVELS       (16u)  //!< Number of brightness levels per color
-#define PWM_BRIGHT         (72u)  //!< PWM duty cycle for bright color -- 3 us pulse
+#define PWM_BRIGHT_1       (72u)  //!< PWM duty cycle for bright color -- 1st channel
+#define PWM_BRIGHT_2       (72u)  //!< PWM duty cycle for bright color -- 2nd channel
+#define PWM_BRIGHT_3       (2*72u)  //!< PWM duty cycle for bright color -- 3rd channel
 #define PWM_DARK            (0u)  //!< PWM duty cycle for darkness
 
 
@@ -108,15 +110,35 @@ static const S_LED_DESCRIPTOR gcasLEDs[ LEDS_NUM ] =
 
 //! \brief Look-up table for PWM duty cycle as the function of number of active LEDs
 //! \note  Inductor current increases quadratically over time, while the number of active LEDs increases current linearly.
-static const U16 gcau16PWMDutycycle[ 1u + LEDS_NUM/PWM_CHANNELS ] =
+static const U16 gcau16PWMDutycycle[ PWM_CHANNELS ][ 1u + LEDS_NUM/PWM_CHANNELS ] =
 {
-  PWM_DARK,                      // 0 LED active
-  PWM_BRIGHT,                    // 1 LED active
-  (U16)(PWM_BRIGHT*1.4142+0.5),  // 2 LEDs active
-  (U16)(PWM_BRIGHT*1.7321+0.5),  // 3 LEDs active
-  (U16)(PWM_BRIGHT*2.0000+0.5),  // 4 LEDs active
-  (U16)(PWM_BRIGHT*2.2361+0.5),  // 5 LEDs active
-  (U16)(PWM_BRIGHT*2.4495+0.5)   // 6 LEDs active
+  {  // First channel
+    PWM_DARK,                        // 0 LED active
+    PWM_BRIGHT_1,                    // 1 LED active
+    (U16)(PWM_BRIGHT_1*1.4142+0.5),  // 2 LEDs active
+    (U16)(PWM_BRIGHT_1*1.7321+0.5),  // 3 LEDs active
+    (U16)(PWM_BRIGHT_1*2.0000+0.5),  // 4 LEDs active
+    (U16)(PWM_BRIGHT_1*2.2361+0.5),  // 5 LEDs active
+    (U16)(PWM_BRIGHT_1*2.4495+0.5)   // 6 LEDs active
+  },
+  {  // Second channel
+    PWM_DARK,                        // 0 LED active
+    PWM_BRIGHT_2,                    // 1 LED active
+    (U16)(PWM_BRIGHT_2*1.4142+0.5),  // 2 LEDs active
+    (U16)(PWM_BRIGHT_2*1.7321+0.5),  // 3 LEDs active
+    (U16)(PWM_BRIGHT_2*2.0000+0.5),  // 4 LEDs active
+    (U16)(PWM_BRIGHT_2*2.2361+0.5),  // 5 LEDs active
+    (U16)(PWM_BRIGHT_2*2.4495+0.5)   // 6 LEDs active
+  },
+  {  // Third channel
+    PWM_DARK,                        // 0 LED active
+    PWM_BRIGHT_3,                    // 1 LED active
+    (U16)(PWM_BRIGHT_3*1.4142+0.5),  // 2 LEDs active
+    (U16)(PWM_BRIGHT_3*1.7321+0.5),  // 3 LEDs active
+    (U16)(PWM_BRIGHT_3*2.0000+0.5),  // 4 LEDs active
+    (U16)(PWM_BRIGHT_3*2.2361+0.5),  // 5 LEDs active
+    (U16)(PWM_BRIGHT_3*2.4495+0.5)   // 6 LEDs active
+  },
 };
 
 
@@ -279,7 +301,7 @@ void LED_Interrupt( void )
   // Set PWM duty cycles
   if( 0u == u8MultiplexerIdx )
   {
-    LL_TIM_OC_SetCompareCH3( TIM1, gcau16PWMDutycycle[ u8NumLEDsActive ] );
+    LL_TIM_OC_SetCompareCH3( TIM1, gcau16PWMDutycycle[ u8MultiplexerIdx ][ u8NumLEDsActive ] );
   }
   else
   {
@@ -287,7 +309,7 @@ void LED_Interrupt( void )
   }
   if( 1u == u8MultiplexerIdx )
   {
-    LL_TIM_OC_SetCompareCH4( TIM1, gcau16PWMDutycycle[ u8NumLEDsActive ] );
+    LL_TIM_OC_SetCompareCH4( TIM1, gcau16PWMDutycycle[ u8MultiplexerIdx ][ u8NumLEDsActive ] );
   }
   else
   {
@@ -295,7 +317,7 @@ void LED_Interrupt( void )
   }
   if( 2u == u8MultiplexerIdx )
   {
-    LL_TIM_OC_SetCompareCH1( TIM1, gcau16PWMDutycycle[ u8NumLEDsActive ] );
+    LL_TIM_OC_SetCompareCH1( TIM1, gcau16PWMDutycycle[ u8MultiplexerIdx ][ u8NumLEDsActive ] );
   }
   else
   {
