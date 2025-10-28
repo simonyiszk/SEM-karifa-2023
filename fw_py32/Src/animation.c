@@ -1437,6 +1437,26 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
 };
 #endif
 
+#ifdef MACSKAS
+//--------------------------------------------------------
+//! \brief "Sine" wave flasher animation -- 18 normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasSoftFlashing[ 4u ] = 
+{
+  {125u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,          0u },
+  {125u, { 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1}, ADD | REPEAT, 14u },
+  {125u, {15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}, LOAD,          0u }, 
+  {125u, {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}, ADD | REPEAT, 14u },
+};
+//! \brief Table of animations
+CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] = 
+{
+  {sizeof(gasMacskasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),              gasMacskasSoftFlashing,            sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
+  
+  // Last animation, don't change its location
+  {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB }
+};
+#endif
+
 
 /***************************************< Global variables >**************************************/
 IDATA U16 gu16NormalTimer;                    //!< Ms resolution timer for normal LED animation

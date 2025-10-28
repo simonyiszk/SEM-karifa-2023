@@ -29,7 +29,6 @@
 
 
 /***************************************< Definitions >**************************************/
-#define PWM_CHANNELS        (2u)  //!< Number of PWM channels/multiplexers used
 #define COLOR_LEVELS       (16u)  //!< Number of brightness levels per color
 #define PWM_BRIGHT         (72u)  //!< PWM duty cycle for bright color -- 3 us pulse
 #define PWM_DARK            (0u)  //!< PWM duty cycle for darkness
@@ -85,11 +84,31 @@ static const S_LED_DESCRIPTOR gcasLEDs[ LEDS_NUM ] =
   { { GPIOA, LL_GPIO_PIN_2 }, 1u },  // D8
   { { GPIOA, LL_GPIO_PIN_7 }, 1u },  // D7
 #endif
+#ifdef MACSKAS
+  { { GPIOA, LL_GPIO_PIN_2 }, 0u },  // D1
+  { { GPIOA, LL_GPIO_PIN_2 }, 1u },  // D7
+  { { GPIOA, LL_GPIO_PIN_2 }, 2u },  // D13
+  { { GPIOA, LL_GPIO_PIN_4 }, 0u },  // D2
+  { { GPIOA, LL_GPIO_PIN_4 }, 1u },  // D8
+  { { GPIOA, LL_GPIO_PIN_4 }, 2u },  // D14
+  { { GPIOA, LL_GPIO_PIN_7 }, 0u },  // D3
+  { { GPIOA, LL_GPIO_PIN_7 }, 1u },  // D9
+  { { GPIOA, LL_GPIO_PIN_7 }, 2u },  // D15
+  { { GPIOB, LL_GPIO_PIN_0 }, 0u },  // D4
+  { { GPIOB, LL_GPIO_PIN_0 }, 1u },  // D10
+  { { GPIOB, LL_GPIO_PIN_0 }, 2u },  // D16
+  { { GPIOB, LL_GPIO_PIN_2 }, 0u },  // D5
+  { { GPIOB, LL_GPIO_PIN_2 }, 1u },  // D11
+  { { GPIOB, LL_GPIO_PIN_2 }, 2u },  // D17
+  { { GPIOB, LL_GPIO_PIN_1 }, 0u },  // D6
+  { { GPIOB, LL_GPIO_PIN_1 }, 1u },  // D12
+  { { GPIOB, LL_GPIO_PIN_1 }, 2u },  // D18
+#endif
 };
 
 //! \brief Look-up table for PWM duty cycle as the function of number of active LEDs
 //! \note  Inductor current increases quadratically over time, while the number of active LEDs increases current linearly.
-static const U16 gcau16PWMDutycycle[] =
+static const U16 gcau16PWMDutycycle[ 1u + LEDS_NUM/PWM_CHANNELS ] =
 {
   PWM_DARK,                      // 0 LED active
   PWM_BRIGHT,                    // 1 LED active
@@ -273,6 +292,14 @@ void LED_Interrupt( void )
   else
   {
     LL_TIM_OC_SetCompareCH4( TIM1, PWM_DARK );
+  }
+  if( 2u == u8MultiplexerIdx )
+  {
+    LL_TIM_OC_SetCompareCH1( TIM1, gcau16PWMDutycycle[ u8NumLEDsActive ] );
+  }
+  else
+  {
+    LL_TIM_OC_SetCompareCH1( TIM1, PWM_DARK );
   }
 }
 
