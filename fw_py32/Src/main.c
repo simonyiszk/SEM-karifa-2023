@@ -27,9 +27,9 @@
 
 /***************************************< Definitions >**************************************/
 #define BUTTON_PIN            LL_GPIO_IsInputPinSet(GPIOB,LL_GPIO_PIN_3)  //!< Button for selecting animation and turning it off and on
-#define BUTTON_DEBOUNCE_MS                                         (10u)  //!< Time for button debouncing in ms
+#define BUTTON_DEBOUNCE_MS                                         (50u)  //!< Time for button debouncing in ms
 #define BUTTON_LONGPRESS_MS                                      (2000u)  //!< Time for long button press in ms
-#define BUTTON_FASTCLICKS_MS                                      (200u)  //!< Time between two button pushes so it will be registered as fast clicks
+#define BUTTON_FASTCLICKS_MS                                      (300u)  //!< Time between two button pushes so it will be registered as fast clicks
 
 
 /***************************************< Types >**************************************/
@@ -49,8 +49,8 @@ static enum
   BUTTON_RELEASING   //!< The button just got released and it's currently bouncing
 } geButtonState;
 
-static U16  gu32ButtonPressTimer;          //!< Timer for the button debouncing state machine
-static U16  gu32ButtonFastClicksTimer;     //!< Timer for the fast clicks detector
+static U32  gu32ButtonPressTimer;          //!< Timer for the button debouncing state machine
+static U32  gu32ButtonFastClicksTimer;     //!< Timer for the fast clicks detector
 static BOOL gbButtonFastClicksTimerValid;  //!< Timer for the fast clicks detector is running or not
 
 
