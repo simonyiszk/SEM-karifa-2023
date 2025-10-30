@@ -26,7 +26,10 @@
 
 
 /***************************************< Definitions >**************************************/
-#define BUTTON_PIN     LL_GPIO_IsInputPinSet(GPIOB,LL_GPIO_PIN_3)  //!< Button for selecting animation and turning it off and on
+#define BUTTON_PIN            LL_GPIO_IsInputPinSet(GPIOB,LL_GPIO_PIN_3)  //!< Button for selecting animation and turning it off and on
+#define BUTTON_DEBOUNCE_MS                                         (10u)  //!< Time for button debouncing in ms
+#define BUTTON_LONGPRESS_MS                                      (2000u)  //!< Time for long button press in ms
+#define BUTTON_FASTCLICKS_MS                                      (200u)  //!< Time between two button pushes so it will be registered as fast clicks
 
 
 /***************************************< Types >**************************************/
@@ -46,7 +49,9 @@ static enum
   BUTTON_RELEASING   //!< The button just got released and it's currently bouncing
 } geButtonState;
 
-static U16 gu16ButtonPressTimer;  //!< Timer for the button debouncing state machine
+static U16  gu16ButtonPressTimer;          //!< Timer for the button debouncing state machine
+static U16  gu16ButtonFastClicksTimer;     //!< Timer for the fast clicks detector
+static BOOL gbButtonFastClicksTimerValid;  //!< Timer for the fast clicks detector is running or not
 
 
 /***************************************< Static function definitions >**************************************/
@@ -135,7 +140,6 @@ void main( void )
 {
   U32  u32UptimeCounter = 0u;
   U16  u16LastCall = 0u;
-  U8   u8CurrentAnimation = 0u;
   BOOL bPressedLong = FALSE;
 
   // Initialize system clock
@@ -159,7 +163,8 @@ void main( void )
   // Init global variables in this module
   geButtonState = BUTTON_UNPRESSED;
   gu16ButtonPressTimer = 0u;
-  u8CurrentAnimation = gsPersistentData.u8AnimationIndex;
+  gu16ButtonFastClicksTimer = 0u;
+  gbButtonFastClicksTimerValid = FALSE;
   
   // Start TIM1 update interrupts
   LL_TIM_EnableIT_UPDATE( TIM1 );
@@ -203,7 +208,7 @@ void main( void )
         {
           if( 0 == BUTTON_PIN )  // if the button is still pressed
           {
-            gu16ButtonPressTimer = Util_GetTimerMs() + 2000u;  // 2 sec long press
+            gu16ButtonPressTimer = Util_GetTimerMs() + BUTTON_LONGPRESS_MS;  // long press
             geButtonState = BUTTON_PRESSED;
           }
           else  // not pressed anymore
@@ -216,16 +221,25 @@ void main( void )
       case BUTTON_PRESSED:    // The button got debounced
         if( 1 == BUTTON_PIN )  // just got released
         {
-          gu16ButtonPressTimer = Util_GetTimerMs() + 50u;  // 50 ms debounce time
+          gu16ButtonPressTimer = Util_GetTimerMs() + BUTTON_DEBOUNCE_MS;  // debounce time
           geButtonState = BUTTON_RELEASING;
-          // Actions for short button press
-          u8CurrentAnimation++;
-          if( u8CurrentAnimation >= NUM_ANIMATIONS-1u )
+          // Check if this is a fast click, or not
+          if( ( TRUE == gbButtonFastClicksTimerValid )
+           && ( Util_GetTimerMs() - gu16ButtonFastClicksTimer < BUTTON_FASTCLICKS_MS ) )
           {
-            u8CurrentAnimation = 0u;
+            // Fast click
+            Animation_SetLoop( TRUE );
           }
-          Animation_Set( u8CurrentAnimation );
-          // Save it
+          else
+          {
+            // Actions for normal short button press
+            Animation_SetLoop( FALSE );
+            Animation_NextAnimation();
+          }
+          // Start/restart fast click timer
+          gu16ButtonFastClicksTimer = Util_GetTimerMs();
+          gbButtonFastClicksTimerValid = TRUE;
+          // Save animation state
           Persist_Save();
         }
         else if( Util_GetTimerMs() == gu16ButtonPressTimer )  // the long press timer has just went off
@@ -233,8 +247,7 @@ void main( void )
           geButtonState = BUTTON_LONGPRESS;
           // Actions for long button press
           // Signal that it will be shut down by setting a completely black animation
-          u8CurrentAnimation = NUM_ANIMATIONS-1u;
-          Animation_Set( u8CurrentAnimation );
+          Animation_SetDarkness();
           bPressedLong = TRUE;
         }
         break;
@@ -242,7 +255,7 @@ void main( void )
       case BUTTON_LONGPRESS:  // The button has been pressed for long
         if( 1 == BUTTON_PIN )  // just got released
         {
-          gu16ButtonPressTimer = Util_GetTimerMs() + 50u;  // 50 ms debounce time
+          gu16ButtonPressTimer = Util_GetTimerMs() + BUTTON_DEBOUNCE_MS;  // debounce time
           geButtonState = BUTTON_RELEASING;
         }
         break;
@@ -252,7 +265,7 @@ void main( void )
         {
           if( 1 == BUTTON_PIN )  // if the button is released
           {
-            gu16ButtonPressTimer = Util_GetTimerMs() + 2000u;  // 2 sec long press
+            gu16ButtonPressTimer = Util_GetTimerMs() + BUTTON_LONGPRESS_MS;  // long press
             geButtonState = BUTTON_UNPRESSED;
             
             if( TRUE == bPressedLong )
@@ -263,7 +276,7 @@ void main( void )
           }
           else  // still pushed
           {
-            gu16ButtonPressTimer = Util_GetTimerMs() + 50u;  // 50 ms debounce time
+            gu16ButtonPressTimer = Util_GetTimerMs() + BUTTON_DEBOUNCE_MS;  // debounce time
           }
         }
         break;
@@ -271,8 +284,18 @@ void main( void )
       default:  // BUTTON_UNPRESSED -- The button is not pressed
         if( 0 == BUTTON_PIN )  // if the button has just got pressed
         {
-          gu16ButtonPressTimer = Util_GetTimerMs() + 50u;  // 50 ms debounce time
+          gu16ButtonPressTimer = Util_GetTimerMs() + BUTTON_DEBOUNCE_MS;  // debounce time
           geButtonState = BUTTON_BOUNCING;
+        }
+        // Check if the fast click detector is running
+        if( TRUE == gbButtonFastClicksTimerValid )
+        {          
+          // If button was pushed too long ago
+          if( Util_GetTimerMs() - gu16ButtonFastClicksTimer > 2000u )
+          {
+            // Disable timer
+            gbButtonFastClicksTimerValid = FALSE;
+          }
         }
         break;
     }

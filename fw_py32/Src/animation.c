@@ -34,7 +34,8 @@ the following format:
 
 
 /***************************************< Definitions >**************************************/
-#define RIGHT_LEDS_START    (6u)  //!< Index of the first LED on the right side of the board
+#define LOOP_PROGRAM_CHANGE_MS     (5000u)  //!< Time (ms) between automatic program changes. Should be less than 65535.
+#define RIGHT_LEDS_START              (6u)  //!< Index of the first LED on the right side of the board
 
 
 /***************************************< Types >**************************************/
@@ -799,15 +800,18 @@ CODE const S_ANIMATION_INSTRUCTION_RGB gasIceRGB_hopehely[ 4u ] =
 };
 
 //--------------------------------------------------------
-//! \brief All blackness, reached right before going to power down mode -- normal LEDs
-CODE const S_ANIMATION_INSTRUCTION_NORMAL gasBlackness[ 1u ] =
+//! \brief Animation signaling that we entered loop mode -- normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasLoopModeAnimation[ 2u ] = 
 {
-  {0xFFFFu, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD, 0u },
+  { 50u, {15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}, LOAD, 0u }, 
+  { 50u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD, 0u },
 };
-//! \brief All blackness, reached right before going to power down mode -- RGB LED
-CODE const S_ANIMATION_INSTRUCTION_RGB gasBlacknessRGB[ 1u ] =
+
+//! \brief Animation signaling that we entered loop mode -- RGB LED
+CODE const S_ANIMATION_INSTRUCTION_RGB gasLoopModeAnimationRGB[ 2u ] =
 {
-  {0xFFFFu, { 0,  0,  0}, LOAD, 0u },
+  { 50u, {15, 15, 15}, LOAD, 0u },
+  { 50u, { 0,  0,  0}, LOAD, 0u },
 };
 
 //--------------------------------------------------------
@@ -1278,7 +1282,7 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
   //  {sizeof(gasSplit3fade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasSplit3fade,       sizeof(gasSplit3fadeRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),       gasSplit3fadeRGB },
   {sizeof(gasStepping)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasStepping,         sizeof(gasSteppingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasSteppingRGB },
   // Last animation, don't change its location
-  {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB }
+  {sizeof(gasLoopModeAnimation)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasLoopModeAnimation, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasLoopModeAnimationRGB }
 };
 #endif
 
@@ -1317,7 +1321,7 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
   {sizeof(gasFlasherNoEyes_mezi)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasFlasherNoEyes_mezi, sizeof(gasFlasherNoEyes_mezi_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasFlasherNoEyes_mezi_RGB}, 
   */
   // Last animation, don't change its location
-  {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB }
+  {sizeof(gasLoopModeAnimation)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasLoopModeAnimation, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasLoopModeAnimationRGB }
 };
 #endif
 
@@ -1343,7 +1347,7 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
   {sizeof(gasSplit2_fade_hopehely)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),gasSplit2_fade_hopehely, sizeof(gasSplit2_fade_hopehely_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasSplit2_fade_hopehely_RGB}, 
   {sizeof(gasStepping)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasStepping,         sizeof(gasSteppingRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),         gasSteppingRGB },
   // Last animation, don't change its location
-  {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB }
+  {sizeof(gasLoopModeAnimation)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasLoopModeAnimation, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasLoopModeAnimationRGB }
 };
 #endif
 
@@ -1362,7 +1366,7 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
   {sizeof(gasSparkle)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),             gasSparkle,          sizeof(gasSparkleRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),          gasSparkleRGB },
   {sizeof(gasFlasherNoEyes_mezi)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),  gasFlasherNoEyes_mezi, sizeof(gasFlasherNoEyes_mezi_RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasFlasherNoEyes_mezi_RGB}, 
   // Last animation, don't change its location
-  {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB }
+  {sizeof(gasLoopModeAnimation)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasLoopModeAnimation, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasLoopModeAnimationRGB }
 };
 #endif
 
@@ -1370,22 +1374,22 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
 //! \brief Table of animations
 CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] = 
 {
-  {sizeof(gasRetroVersion)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasRetroVersion,      sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasSoftFlashing,      sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasDisco)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                  gasDisco,             sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasFadeRing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),               gasFadeRing,          sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasGenericFlasher,    sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasPseudoRandomFade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasPseudoRandomFade,  sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasAroundFill_ajandek)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasAroundFill_ajandek,sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasStepping_ajandek)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasStepping_ajandek,  sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasSplit2_ajandek)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasSplit2_ajandek,    sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasSparkle)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                gasSparkle,           sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasOpenClose_ajandek)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),      gasOpenClose_ajandek, sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasYingYang)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),               gasYingYang,          sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasMasni)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                  gasMasni,             sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
-  {sizeof(gasAround_ajandek)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasAround_ajandek,    sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB },
+  {sizeof(gasRetroVersion)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasRetroVersion,      sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasLoopModeAnimationRGB },
+  {sizeof(gasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasSoftFlashing,      sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasLoopModeAnimationRGB },
+  {sizeof(gasDisco)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                  gasDisco,             sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasLoopModeAnimationRGB },
+  {sizeof(gasFadeRing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),               gasFadeRing,          sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasLoopModeAnimationRGB },
+  {sizeof(gasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasGenericFlasher,    sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasLoopModeAnimationRGB },
+  {sizeof(gasPseudoRandomFade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasPseudoRandomFade,  sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasLoopModeAnimationRGB },
+  {sizeof(gasAroundFill_ajandek)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasAroundFill_ajandek,sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasLoopModeAnimationRGB },
+  {sizeof(gasStepping_ajandek)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasStepping_ajandek,  sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasLoopModeAnimationRGB },
+  {sizeof(gasSplit2_ajandek)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasSplit2_ajandek,    sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasLoopModeAnimationRGB },
+  {sizeof(gasSparkle)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                gasSparkle,           sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasLoopModeAnimationRGB },
+  {sizeof(gasOpenClose_ajandek)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),      gasOpenClose_ajandek, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasLoopModeAnimationRGB },
+  {sizeof(gasYingYang)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),               gasYingYang,          sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasLoopModeAnimationRGB },
+  {sizeof(gasMasni)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                  gasMasni,             sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasLoopModeAnimationRGB },
+  {sizeof(gasAround_ajandek)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasAround_ajandek,    sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasLoopModeAnimationRGB },
   // Last animation, don't change its location
-  {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),              gasBlackness,         sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB }
+  {sizeof(gasLoopModeAnimation)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasLoopModeAnimation, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasLoopModeAnimationRGB }
 };
 #endif
 
@@ -1412,7 +1416,7 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
   {sizeof(gasSplit2_rudolf)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),      gasSplit2_rudolf,      sizeof(gasSplit2RGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),               gasSplit2RGB },
   
   // Last animation, don't change its location
-  {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),        gasBlacknessRGB }
+  {sizeof(gasLoopModeAnimation)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasLoopModeAnimation, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasLoopModeAnimationRGB }
 };
 #endif
 
@@ -1420,20 +1424,20 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
 //! \brief Table of animations
 CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] = 
 {
-  {sizeof(gasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),              gasSoftFlashing,            sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
-  {sizeof(gasShootingStarClockwise)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasShootingStarClockwise,   sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
-  {sizeof(gasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),            gasGenericFlasher,          sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
-  {sizeof(gasKITT_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasKITT_Hullocsillag,       sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
-  {sizeof(gasDisco)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                     gasDisco,                   sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
-  {sizeof(gasFadeRing_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasFadeRing_Hullocsillag,   sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
-  {sizeof(gasPseudoRandomFade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasPseudoRandomFade,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
-  {sizeof(gasCrissCross_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),   gasCrissCross_Hullocsillag, sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
-  {sizeof(gasPingpong_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasPingpong_Hullocsillag,   sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
-  {sizeof(gasIce_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasIce_Hullocsillag,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
-  {sizeof(gasYingYang_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasYingYang_Hullocsillag,   sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
+  {sizeof(gasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),              gasSoftFlashing,            sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasShootingStarClockwise)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasShootingStarClockwise,   sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),            gasGenericFlasher,          sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasKITT_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasKITT_Hullocsillag,       sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasDisco)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                     gasDisco,                   sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasFadeRing_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasFadeRing_Hullocsillag,   sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasPseudoRandomFade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasPseudoRandomFade,        sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasCrissCross_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),   gasCrissCross_Hullocsillag, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasPingpong_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasPingpong_Hullocsillag,   sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasIce_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasIce_Hullocsillag,        sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasYingYang_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasYingYang_Hullocsillag,   sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
   
   // Last animation, don't change its location
-  {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB }
+  {sizeof(gasLoopModeAnimation)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasLoopModeAnimation, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasLoopModeAnimationRGB }
 };
 #endif
 
@@ -1461,29 +1465,37 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasRace[ 2u ] =
   {150u, {15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,            0u },
   {150u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, RSHIFT | REPEAT, 16u},
 };
+//--------------------------------------------------------
+//! \brief Animation signaling that we entered loop mode -- 18 normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasLoopModeAnimation[ 2u ] = 
+{
+  { 50u, {15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}, LOAD, 0u }, 
+  { 50u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD, 0u },
+};
 
 //! \brief Table of animations
 CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] = 
 {
-  {sizeof(gasMacskasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasMacskasSoftFlashing, sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
-  {sizeof(gasMacskasYingYang)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasMacskasYingYang, sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
-  {sizeof(gasMacskasRace)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                 gasMacskasRace, sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB },
+  {sizeof(gasMacskasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasMacskasSoftFlashing, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasMacskasYingYang)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasMacskasYingYang, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasMacskasRace)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                 gasMacskasRace, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
   
   // Last animation, don't change its location
-  {sizeof(gasBlackness)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),        gasBlackness,        sizeof(gasBlacknessRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasBlacknessRGB }
+  {sizeof(gasMacskasLoopModeAnimation)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasMacskasLoopModeAnimation, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB }
 };
 #endif
 
 
-/***************************************< Global variables >**************************************/
-IDATA U16 gu16NormalTimer;                    //!< Ms resolution timer for normal LED animation
-IDATA U16 gu16RGBTimer;                       //!< Ms resolution timer for the RGB LED animation
-IDATA U16 gu16LastCall;                       //!< The last time the main cycle was called
-// Local variables
-static IDATA U8 u8LastState = 0xFFu;          //!< Previously executed instruction index for normal LEDs
-static IDATA U8 u8RepetitionCounter = 0u;     //!< Instruction repetition counter for normal LEDs
-static IDATA U8 u8LastStateRGB = 0xFFu;       //!< Previously executed instruction index for RGB LED
-static IDATA U8 u8RepetitionCounterRGB = 0u;  //!< Instruction repetition counter for RGB LED
+/***************************************< Global/Local variables >**************************************/
+static BOOL gbAnimationEngineActive;         //!< Animations are on, or darkness
+static U16  gu16NormalTimer;                 //!< Ms resolution timer for normal LED animation
+static U16  gu16RGBTimer;                    //!< Ms resolution timer for the RGB LED animation
+static U16  gu16LastCall;                    //!< The last time the main cycle was called
+static U8   u8LastState = 0xFFu;             //!< Previously executed instruction index for normal LEDs
+static U8   u8RepetitionCounter = 0u;        //!< Instruction repetition counter for normal LEDs
+static U8   u8LastStateRGB = 0xFFu;          //!< Previously executed instruction index for RGB LED
+static U8   u8RepetitionCounterRGB = 0u;     //!< Instruction repetition counter for RGB LED
+static U16  u16LoopTimer;                    //!< Ms resolution timer for automatic animation program change
 
 
 /***************************************< Static function definitions >**************************************/
@@ -1525,6 +1537,7 @@ static I8 SaturateBrightness( U8* pu8BrightnessVariable )
 //-----------------------------------------------------------------------------
 void Animation_Init( void )
 {
+  gbAnimationEngineActive = TRUE;
   gu16NormalTimer = 0u;
   gu16RGBTimer = 0u;
   gu16LastCall = Util_GetTimerMs();
@@ -1547,8 +1560,9 @@ void Animation_Cycle( void )
   U8  u8Temp;
   I8  i8Change;
   
-  // Check if time has elapsed since last call
-  if( u16TimeNow != gu16LastCall )
+  // If animations are on, then check if time has elapsed since last call
+  if( ( TRUE == gbAnimationEngineActive )
+   && ( u16TimeNow != gu16LastCall ) )
   {
     // Increase the synchronized timer with the difference
     DISABLE_IT;
@@ -1924,7 +1938,21 @@ void Animation_Cycle( void )
           u8LastStateRGB = u8AnimationState;  // save that this operation is finished
         }
       }
-    }    
+    }
+    
+    // If we are looping through all animations
+    if( TRUE == gsPersistentData.bLoopAnimations )
+    {
+      // Increment loop change timer
+      u16LoopTimer += (u16TimeNow - gu16LastCall);
+      if( LOOP_PROGRAM_CHANGE_MS <= u16LoopTimer )
+      {
+        // Timer has expired, next animation
+        Animation_NextAnimation();          
+        u16LoopTimer = 0u;
+      }
+    }
+    
     // Store the timestamp
     gu16LastCall = u16TimeNow;
   }
@@ -1932,9 +1960,8 @@ void Animation_Cycle( void )
 
 //----------------------------------------------------------------------------
 //! \brief  Set the new animation
-//! \param  -
+//! \param  u8AnimationIndex: index of the new animation
 //! \return -
-//! \global -
 //! \note   Should be called from main cycle only!
 //-----------------------------------------------------------------------------
 void Animation_Set( U8 u8AnimationIndex )
@@ -1950,6 +1977,57 @@ void Animation_Set( U8 u8AnimationIndex )
     u8RepetitionCounter = 0u;
     u8LastStateRGB = 0xFFu;
     u8RepetitionCounterRGB = 0u;
+  }
+}
+
+//----------------------------------------------------------------------------
+//! \brief  Set to next animation
+//! \param  -
+//! \return -
+//! \note   Should be called from main cycle only!
+//-----------------------------------------------------------------------------
+void Animation_NextAnimation( void )
+{
+  if( gsPersistentData.u8AnimationIndex + 1u >= NUM_ANIMATIONS - 1u )
+  {
+    Animation_Set( 0u );
+  }
+  else
+  {
+    Animation_Set( gsPersistentData.u8AnimationIndex + 1 );
+  }
+}
+
+//----------------------------------------------------------------------------
+//! \brief  Turn off animations and set dark output
+//! \param  -
+//! \return -
+//! \note   Should be called from main cycle only!
+//-----------------------------------------------------------------------------
+void Animation_SetDarkness( void )
+{
+  gbAnimationEngineActive = FALSE;
+  (void)memset( gau8LEDBrightness, 0, sizeof( gau8LEDBrightness ) );
+  (void)memset( (U8*)gau8RGBLEDs, 0, sizeof( gau8RGBLEDs ) );
+}
+
+//----------------------------------------------------------------------------
+//! \brief  Enable/disable automatic animation program change
+//! \param  bSetLoop: TRUE to enable, FALSE to disable
+//! \return -
+//! \note   Should be called from main cycle only!
+//-----------------------------------------------------------------------------
+void Animation_SetLoop( BOOL bSetLoop )
+{
+  if( TRUE == bSetLoop )
+  {
+    u16LoopTimer = LOOP_PROGRAM_CHANGE_MS - 1000u;  // mode change animation is displayed for 1 sec only
+    gsPersistentData.bLoopAnimations = TRUE;
+    Animation_Set( NUM_ANIMATIONS - 1u );  // set animation indicating mode change
+  }
+  else
+  {
+    gsPersistentData.bLoopAnimations = FALSE;
   }
 }
 

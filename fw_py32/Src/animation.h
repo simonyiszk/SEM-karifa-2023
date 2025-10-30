@@ -62,6 +62,9 @@
 void Animation_Init( void );
 void Animation_Cycle( void );
 void Animation_Set( U8 u8AnimationIndex );
+void Animation_NextAnimation( void );
+void Animation_SetDarkness( void );
+void Animation_SetLoop( BOOL bSetLoop );
 
 
 #endif /* ANIMATION_H */

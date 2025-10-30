@@ -20,11 +20,12 @@
 
 /***************************************< Types >**************************************/
 //! \brief Structure for persistent data
+//! \note  Struct size should be a multiply of 4, so padding may be added!
 typedef PACKED struct
 {
-  U8  u8AnimationIndex;             //!< Index of the last played animation
-  U8  au8Padding[ 1u ];             //!< Padding so the struct size will be a multiply of 4
-  U16 u16CRC;                       //!< CRC for protecting structure against bit errors
+  U8   u8AnimationIndex;             //!< Index of the last played animation
+  BOOL bLoopAnimations;              //!< Automatically change animation program after some time, or not
+  U16  u16CRC;                       //!< CRC for protecting structure against bit errors
 } S_PERSIST;
 
 
