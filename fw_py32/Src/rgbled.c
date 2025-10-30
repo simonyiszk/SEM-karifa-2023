@@ -61,9 +61,8 @@ volatile U8 gau8RGBLEDs[ NUM_RGBLED_COLORS ];
 //-----------------------------------------------------------------------------
 void RGBLED_Init( void )
 {
-  LL_GPIO_InitTypeDef TIM1CH1MapInit= {0};
-  LL_TIM_OC_InitTypeDef TIM_OC_Initstruct ={0};
-  LL_TIM_InitTypeDef TIM1CountInit = {0};
+  LL_GPIO_InitTypeDef   sGPIOInit = {0};
+  LL_TIM_OC_InitTypeDef sTIM_OC_Initstruct ={0};
 
   // Initialize global variables
   memset( (U8*)gau8RGBLEDs, 0, NUM_RGBLED_COLORS );
@@ -74,39 +73,28 @@ void RGBLED_Init( void )
   
   // Initialize GPIO pins
   /* Initialize PA0/PA1/PA3 as TIM1_CH3/TIM1_CH4/TIM1_CH1, respectively */
-  TIM1CH1MapInit.Pin        = LL_GPIO_PIN_0 | LL_GPIO_PIN_1 | LL_GPIO_PIN_3;
-  TIM1CH1MapInit.Mode       = LL_GPIO_MODE_ALTERNATE;
-  TIM1CH1MapInit.Alternate  = LL_GPIO_AF_13;
-  LL_GPIO_Init( GPIOA, &TIM1CH1MapInit );
+  sGPIOInit.Pin        = LL_GPIO_PIN_0 | LL_GPIO_PIN_1 | LL_GPIO_PIN_3;
+  sGPIOInit.Mode       = LL_GPIO_MODE_ALTERNATE;
+  sGPIOInit.Alternate  = LL_GPIO_AF_13;
+  LL_GPIO_Init( GPIOA, &sGPIOInit );
 
   // Configure PWM channels
-  TIM_OC_Initstruct.OCMode        = LL_TIM_OCMODE_PWM1;
-  TIM_OC_Initstruct.OCState       = LL_TIM_OCSTATE_ENABLE;
-  TIM_OC_Initstruct.OCPolarity    = LL_TIM_OCPOLARITY_LOW;
-  TIM_OC_Initstruct.OCIdleState   = LL_TIM_OCIDLESTATE_HIGH;
+  sTIM_OC_Initstruct.OCMode        = LL_TIM_OCMODE_PWM1;
+  sTIM_OC_Initstruct.OCState       = LL_TIM_OCSTATE_ENABLE;
+  sTIM_OC_Initstruct.OCPolarity    = LL_TIM_OCPOLARITY_LOW;
+  sTIM_OC_Initstruct.OCIdleState   = LL_TIM_OCIDLESTATE_HIGH;
   // Set CH1
-  TIM_OC_Initstruct.CompareValue  = PWM_DARK;
-  LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH1, &TIM_OC_Initstruct );
+  sTIM_OC_Initstruct.CompareValue  = PWM_DARK;
+  LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH1, &sTIM_OC_Initstruct );
   // Set CH3
-  TIM_OC_Initstruct.CompareValue  = PWM_DARK;
-  LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH3, &TIM_OC_Initstruct );
+  sTIM_OC_Initstruct.CompareValue  = PWM_DARK;
+  LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH3, &sTIM_OC_Initstruct );
   // Set CH4
-  TIM_OC_Initstruct.CompareValue  = PWM_DARK;
-  LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH4, &TIM_OC_Initstruct );
+  sTIM_OC_Initstruct.CompareValue  = PWM_DARK;
+  LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH4, &sTIM_OC_Initstruct );
   
-  // Initialize TIM1 base
-  TIM1CountInit.ClockDivision       = LL_TIM_CLOCKDIVISION_DIV1;
-  TIM1CountInit.CounterMode         = LL_TIM_COUNTERMODE_UP;
-  TIM1CountInit.Prescaler           = 1;
-  TIM1CountInit.Autoreload          = 1200u - 1u;  // Period: 100 usec / 10 kHz @ 24 MHz system clock
-  TIM1CountInit.RepetitionCounter   = 0;
-  LL_TIM_Init( TIM1, &TIM1CountInit );
-
   // Enable output drive
   LL_TIM_EnableAllOutputs( TIM1 );
-
-  // Start counting
-  LL_TIM_EnableCounter( TIM1 );
 }
 
 //----------------------------------------------------------------------------

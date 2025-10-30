@@ -1,5 +1,5 @@
 /*! *******************************************************************************************************
-* Copyright (c) 2021-2024 Hekk_Elek
+* Copyright (c) 2021-2025 Hekk_Elek
 *
 * \file led.c
 *
@@ -166,7 +166,8 @@ static  BIT gbitSide;                       //!< Stores which side of the panel 
 //-----------------------------------------------------------------------------
 void LED_Init( void )
 {
-  LL_GPIO_InitTypeDef TIM1CH1MapInit = {0};
+  LL_GPIO_InitTypeDef sGPIOInit = {0};
+  LL_TIM_InitTypeDef  sTIM1CountInit = {0};
   U8 u8Index;
   
   // Init globals
@@ -181,6 +182,7 @@ void LED_Init( void )
   // Enable clocks
   LL_IOP_GRP1_EnableClock( LL_IOP_GRP1_PERIPH_GPIOA );
   LL_IOP_GRP1_EnableClock( LL_IOP_GRP1_PERIPH_GPIOB );
+  LL_APB1_GRP2_EnableClock( LL_APB1_GRP2_PERIPH_TIM1 );
   
   // Initialize GPIO pins
   /* Default output states */
@@ -188,18 +190,29 @@ void LED_Init( void )
   LL_GPIO_WriteOutputPort( GPIOB, 0u );
   
   /* GPIOA */
-  TIM1CH1MapInit.Pin        = LL_GPIO_PIN_2 | LL_GPIO_PIN_4 | LL_GPIO_PIN_5 | LL_GPIO_PIN_6 | LL_GPIO_PIN_7;
-  TIM1CH1MapInit.Mode       = LL_GPIO_MODE_OUTPUT;
-  TIM1CH1MapInit.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-  TIM1CH1MapInit.Speed      = LL_GPIO_SPEED_FREQ_VERY_HIGH;
-  LL_GPIO_Init( GPIOA, &TIM1CH1MapInit );
+  sGPIOInit.Pin        = LL_GPIO_PIN_2 | LL_GPIO_PIN_4 | LL_GPIO_PIN_5 | LL_GPIO_PIN_6 | LL_GPIO_PIN_7;
+  sGPIOInit.Mode       = LL_GPIO_MODE_OUTPUT;
+  sGPIOInit.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+  sGPIOInit.Speed      = LL_GPIO_SPEED_FREQ_VERY_HIGH;
+  LL_GPIO_Init( GPIOA, &sGPIOInit );
 
   /* GPIOB */
-  TIM1CH1MapInit.Pin        = LL_GPIO_PIN_0 | LL_GPIO_PIN_1 | LL_GPIO_PIN_2;
-  TIM1CH1MapInit.Mode       = LL_GPIO_MODE_OUTPUT;
-  TIM1CH1MapInit.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-  TIM1CH1MapInit.Speed      = LL_GPIO_SPEED_FREQ_VERY_HIGH;
-  LL_GPIO_Init( GPIOB, &TIM1CH1MapInit );
+  sGPIOInit.Pin        = LL_GPIO_PIN_0 | LL_GPIO_PIN_1 | LL_GPIO_PIN_2;
+  sGPIOInit.Mode       = LL_GPIO_MODE_OUTPUT;
+  sGPIOInit.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+  sGPIOInit.Speed      = LL_GPIO_SPEED_FREQ_VERY_HIGH;
+  LL_GPIO_Init( GPIOB, &sGPIOInit );
+  
+  // Initialize TIM1 base -- we will use this as the timebase for software timers
+  sTIM1CountInit.ClockDivision       = LL_TIM_CLOCKDIVISION_DIV1;
+  sTIM1CountInit.CounterMode         = LL_TIM_COUNTERMODE_UP;
+  sTIM1CountInit.Prescaler           = 1;
+  sTIM1CountInit.Autoreload          = 1200u - 1u;  // Period: 100 usec / 10 kHz @ 24 MHz system clock
+  sTIM1CountInit.RepetitionCounter   = 0;
+  LL_TIM_Init( TIM1, &sTIM1CountInit );
+
+  // Start counting
+  LL_TIM_EnableCounter( TIM1 );  
 }
 
 //----------------------------------------------------------------------------

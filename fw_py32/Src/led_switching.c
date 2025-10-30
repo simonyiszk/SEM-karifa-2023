@@ -167,9 +167,9 @@ U8 gau8LEDBrightness[ LEDS_NUM ];  //!< Array for storing individual brightness 
 //-----------------------------------------------------------------------------
 void LED_Init( void )
 {
-  LL_TIM_OC_InitTypeDef TIM_OC_Initstruct ={0};
-  LL_TIM_InitTypeDef TIM1CountInit = {0};
-  LL_GPIO_InitTypeDef TIM1CH1MapInit = {0};
+  LL_TIM_OC_InitTypeDef sTIM_OC_Initstruct ={0};
+  LL_TIM_InitTypeDef    sTIM1CountInit = {0};
+  LL_GPIO_InitTypeDef   sGPIOInit = {0};
   U8 u8Index;
   
   // Init globals
@@ -189,66 +189,66 @@ void LED_Init( void )
   LL_GPIO_WriteOutputPort( GPIOB, 0u );
   
   /* GPIOA */
-  TIM1CH1MapInit.Mode       = LL_GPIO_MODE_OUTPUT;
-  TIM1CH1MapInit.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-  TIM1CH1MapInit.Speed      = LL_GPIO_SPEED_FREQ_VERY_HIGH;
-  TIM1CH1MapInit.Pin        = 0u;
+  sGPIOInit.Mode       = LL_GPIO_MODE_OUTPUT;
+  sGPIOInit.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+  sGPIOInit.Speed      = LL_GPIO_SPEED_FREQ_VERY_HIGH;
+  sGPIOInit.Pin        = 0u;
   for( u8Index = 0u; u8Index < LEDS_NUM; u8Index++ )
   {
     if( GPIOA == gcasLEDs[ u8Index ].sPin.psPort )
     {
-      TIM1CH1MapInit.Pin |= gcasLEDs[ u8Index ].sPin.u32Pin;
+      sGPIOInit.Pin |= gcasLEDs[ u8Index ].sPin.u32Pin;
     }
   }
-  LL_GPIO_Init( GPIOA, &TIM1CH1MapInit );
+  LL_GPIO_Init( GPIOA, &sGPIOInit );
   
   /* GPIOB */
-  TIM1CH1MapInit.Pin        = 0u;
+  sGPIOInit.Pin = 0u;
   for( u8Index = 0u; u8Index < LEDS_NUM; u8Index++ )
   {
     if( GPIOB == gcasLEDs[ u8Index ].sPin.psPort )
     {
-      TIM1CH1MapInit.Pin |= gcasLEDs[ u8Index ].sPin.u32Pin;
+      sGPIOInit.Pin |= gcasLEDs[ u8Index ].sPin.u32Pin;
     }
   }
-  LL_GPIO_Init( GPIOB, &TIM1CH1MapInit );
+  LL_GPIO_Init( GPIOB, &sGPIOInit );
 
   // Enable clocks
   LL_APB1_GRP2_EnableClock( LL_APB1_GRP2_PERIPH_TIM1 );
   LL_IOP_GRP1_EnableClock( LL_IOP_GRP1_PERIPH_GPIOA );
   
-  // Initialize GPIO pins
+  // Initialize GPIO pins of timer outputs
   /* Initialize PA0/PA1/PA3 as TIM1_CH3/TIM1_CH4/TIM1_CH1, respectively */
-  TIM1CH1MapInit.Pin        = LL_GPIO_PIN_0 | LL_GPIO_PIN_1 | LL_GPIO_PIN_3;
-  TIM1CH1MapInit.Mode       = LL_GPIO_MODE_ALTERNATE;
-  TIM1CH1MapInit.Alternate  = LL_GPIO_AF_13;
-  LL_GPIO_Init( GPIOA, &TIM1CH1MapInit );
+  sGPIOInit.Pin        = LL_GPIO_PIN_0 | LL_GPIO_PIN_1 | LL_GPIO_PIN_3;
+  sGPIOInit.Mode       = LL_GPIO_MODE_ALTERNATE;
+  sGPIOInit.Alternate  = LL_GPIO_AF_13;
+  LL_GPIO_Init( GPIOA, &sGPIOInit );
 
   // Configure PWM channels
-  TIM_OC_Initstruct.OCMode        = LL_TIM_OCMODE_PWM1;
-  TIM_OC_Initstruct.OCState       = LL_TIM_OCSTATE_ENABLE;
-  TIM_OC_Initstruct.OCPolarity    = LL_TIM_OCPOLARITY_LOW;
-  TIM_OC_Initstruct.OCIdleState   = LL_TIM_OCIDLESTATE_HIGH;
+  sTIM_OC_Initstruct.OCMode        = LL_TIM_OCMODE_PWM1;
+  sTIM_OC_Initstruct.OCState       = LL_TIM_OCSTATE_ENABLE;
+  sTIM_OC_Initstruct.OCPolarity    = LL_TIM_OCPOLARITY_LOW;
+  sTIM_OC_Initstruct.OCIdleState   = LL_TIM_OCIDLESTATE_HIGH;
   // Set CH1
-  TIM_OC_Initstruct.CompareValue  = PWM_DARK;
-  LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH1, &TIM_OC_Initstruct );
+  sTIM_OC_Initstruct.CompareValue  = PWM_DARK;
+  LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH1, &sTIM_OC_Initstruct );
   LL_TIM_OC_EnablePreload( TIM1, LL_TIM_CHANNEL_CH1 );
   // Set CH3
-  TIM_OC_Initstruct.CompareValue  = PWM_DARK;
-  LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH3, &TIM_OC_Initstruct );
+  sTIM_OC_Initstruct.CompareValue  = PWM_DARK;
+  LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH3, &sTIM_OC_Initstruct );
   LL_TIM_OC_EnablePreload( TIM1, LL_TIM_CHANNEL_CH3 );
   // Set CH4
-  TIM_OC_Initstruct.CompareValue  = PWM_DARK;
-  LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH4, &TIM_OC_Initstruct );
+  sTIM_OC_Initstruct.CompareValue  = PWM_DARK;
+  LL_TIM_OC_Init( TIM1, LL_TIM_CHANNEL_CH4, &sTIM_OC_Initstruct );
   LL_TIM_OC_EnablePreload( TIM1, LL_TIM_CHANNEL_CH4 );
   
-  // Initialize TIM1 base
-  TIM1CountInit.ClockDivision       = LL_TIM_CLOCKDIVISION_DIV1;
-  TIM1CountInit.CounterMode         = LL_TIM_COUNTERMODE_UP;
-  TIM1CountInit.Prescaler           = 0;
-  TIM1CountInit.Autoreload          = 2400u - 1u;  // Period: 100 usec / 10 kHz @ 24 MHz system clock
-  TIM1CountInit.RepetitionCounter   = 0;
-  LL_TIM_Init( TIM1, &TIM1CountInit );
+  // Initialize TIM1 base -- we will use this as the timebase for software timers
+  sTIM1CountInit.ClockDivision       = LL_TIM_CLOCKDIVISION_DIV1;
+  sTIM1CountInit.CounterMode         = LL_TIM_COUNTERMODE_UP;
+  sTIM1CountInit.Prescaler           = 0;
+  sTIM1CountInit.Autoreload          = 2400u - 1u;  // Period: 100 usec / 10 kHz @ 24 MHz system clock
+  sTIM1CountInit.RepetitionCounter   = 0;
+  LL_TIM_Init( TIM1, &sTIM1CountInit );
 
   // Enable output drive
   LL_TIM_EnableAllOutputs( TIM1 );
