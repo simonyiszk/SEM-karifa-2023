@@ -1,5 +1,5 @@
 /*! *******************************************************************************************************
-* Copyright (c) 2021-2023 Hekk_Elek
+* Copyright (c) 2021-2025 Hekk_Elek
 *
 * \file persist.h
 *
@@ -33,7 +33,7 @@ typedef PACKED struct
 
 
 /***************************************< Global variables >**************************************/
-extern DATA S_PERSIST gsPersistentData;
+extern S_PERSIST gsPersistentData;
 
 
 /***************************************< Public functions >**************************************/

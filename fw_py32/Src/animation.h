@@ -1,9 +1,9 @@
 /*! *******************************************************************************************************
-* Copyright (c) 2021-2023 Hekk_Elek
+* Copyright (c) 2021-2025 Hekk_Elek
 *
 * \file animation.h
 *
-* \brief Implementation of LED animations
+* \brief Implementation of LED animation engine and the animations themselves
 *
 * \author Hekk_Elek
 *

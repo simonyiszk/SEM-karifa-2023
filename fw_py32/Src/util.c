@@ -1,5 +1,5 @@
 /*! *******************************************************************************************************
-* Copyright (c) 2021-2023 Hekk_Elek
+* Copyright (c) 2021-2025 Hekk_Elek
 *
 * \file util.c
 *
@@ -8,10 +8,6 @@
 * \author Hekk_Elek
 *
 **********************************************************************************************************/
-/*
-TODOs in this module:
--- CRC calculation may need optimization in assembly, as it is a computation-extensive function.
-*/
 
 
 /***************************************< Includes >**************************************/
@@ -30,7 +26,7 @@ TODOs in this module:
 
 /***************************************< Constants >**************************************/
 //! \brief Table for calculating CRC-16F/3
-CODE const U16 gcau16CRC16F3Table[] =
+static const U16 gcau16CRC16F3Table[] =
 {
   0x0000u, 0x1B2Bu, 0x3656u, 0x2D7Du, 0x6CACu, 0x7787u, 0x5AFAu, 0x41D1u,
   0xD958u, 0xC273u, 0xEF0Eu, 0xF425u, 0xB5F4u, 0xAEDFu, 0x83A2u, 0x9889u,
@@ -68,9 +64,11 @@ CODE const U16 gcau16CRC16F3Table[] =
 
 
 /***************************************< Global variables >**************************************/
-//! \brief Globally accessible timer with millisecond resolution. IDATA for fast access.
-DATA U16 gu16TimerMS;
-DATA U8  gu8Prescaler;  //!< Prescaler for the global timer. IDATA for fast access.
+//! \brief Globally accessible timer with millisecond resolution.
+static U32 gu32TimerMS;
+
+//! \brief Prescaler for the global timer.
+static U8  gu8Prescaler;
 
 
 /***************************************< Static function definitions >**************************************/
@@ -81,40 +79,9 @@ DATA U8  gu8Prescaler;  //!< Prescaler for the global timer. IDATA for fast acce
 
 /***************************************< Public functions >**************************************/
 //----------------------------------------------------------------------------
-//! \brief  Puts the unique ID of the MCU to a specific array
-//! \param  *pu8Dest: UID will be written here (7 bytes!)
-//! \return -
-//! \global -
-//! \note   Make sure pu8Dest points to an array of at least 7 bytes!
-//-----------------------------------------------------------------------------
-void Util_Get_UID( U8* pu8Dest )
-{
-  char CODE* pu8Src;
-  U8  u8Idx;
-  
-  pu8Src = Util_Get_UID_ptr();
-  for( u8Idx = 0u; u8Idx < UID_LENGTH; u8Idx++ )
-  {
-    pu8Dest[ u8Idx ] = pu8Src[ u8Idx ];
-  }
-}
-
-//----------------------------------------------------------------------------
-//! \brief  Returns the pointer to the UID array
-//! \param  -
-//! \return char CODE* pointer
-//! \global -
-//-----------------------------------------------------------------------------
-char CODE* Util_Get_UID_ptr( void )
-{
-  return (char CODE *)0x1FF9;  // STC8G1K08
-}
-
-//----------------------------------------------------------------------------
 //! \brief  Increase timer value
 //! \param  -
 //! \return -
-//! \global Global timer (ms)
 //! \note   Runs in interrupt routine
 //-----------------------------------------------------------------------------
 void Util_Interrupt( void )
@@ -122,7 +89,7 @@ void Util_Interrupt( void )
   gu8Prescaler++;
   if( gu8Prescaler >= 10u )
   {
-    gu16TimerMS++;
+    gu32TimerMS++;
     gu8Prescaler = 0u;
   }
 }
@@ -131,31 +98,29 @@ void Util_Interrupt( void )
 //! \brief  Initialize global variables
 //! \param  -
 //! \return -
-//! \global Global timer (ms)
 //! \note   Called at initialization only!
 //-----------------------------------------------------------------------------
 void Util_Init( void )
 {
   gu8Prescaler = 0u;
-  gu16TimerMS = 0u;
+  gu32TimerMS = 0u;
 }
 
 //----------------------------------------------------------------------------
 //! \brief  Get global timer (ms)
 //! \param  -
 //! \return Timer value
-//! \global Global timer (ms)
 //! \note   Should be called from main program only!
 //-----------------------------------------------------------------------------
-U16 Util_GetTimerMs( void )
+U32 Util_GetTimerMs( void )
 {
-  U16 u16Ret;
+  U32 u32Ret;
   
   DISABLE_IT;
-  u16Ret = gu16TimerMS;
+  u32Ret = gu32TimerMS;
   ENABLE_IT;
   
-  return u16Ret;
+  return u32Ret;
 }
 
 //----------------------------------------------------------------------------
@@ -163,9 +128,8 @@ U16 Util_GetTimerMs( void )
 //! \param  *pu8Buffer: given buffer
 //! \param  u8Length: length of the buffer
 //! \return CRC16 value
-//! \global -
 //-----------------------------------------------------------------------------
-U16 Util_CRC16( U8* pu8Buffer, U8 u8Length ) REENTRANT
+U16 Util_CRC16( U8* pu8Buffer, U8 u8Length )
 {
   U16 u16Crc;
   U8  u8Idx;

@@ -1,5 +1,5 @@
 /*! *******************************************************************************************************
-* Copyright (c) 2022-2023 Hekk_Elek
+* Copyright (c) 2022-2025 Hekk_Elek
 *
 * \file batterylevel.c
 *
@@ -33,20 +33,20 @@
 
 
 /***************************************< Static function definitions >**************************************/
-void Delay( U16 u16DelayMs );
+void Delay( U32 u32DelayMs );
 
 
 /***************************************< Private functions >**************************************/
 //----------------------------------------------------------------------------
 //! \brief  Waits for the given number of milliseconds
-//! \param  u16DelayMs: wait time
+//! \param  u32DelayMs: wait time
 //! \return -
 //! \global -
 //! \note   Should be called from init block
 //-----------------------------------------------------------------------------
-void Delay( U16 u16DelayMs )
+void Delay( U32 u32DelayMs )
 {
-  U16 u16DelayEnd = Util_GetTimerMs() + u16DelayMs;
+  U16 u16DelayEnd = Util_GetTimerMs() + u32DelayMs;
   while( Util_GetTimerMs() < u16DelayEnd );
 }
 

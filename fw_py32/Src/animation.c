@@ -1,9 +1,9 @@
 /*! *******************************************************************************************************
-* Copyright (c) 2021-2023 Hekk_Elek
+* Copyright (c) 2021-2025 Hekk_Elek
 *
 * \file animation.c
 *
-* \brief Implementation of LED animations
+* \brief Implementation of LED animation engine and the animations themselves
 *
 * \author Hekk_Elek
 *
@@ -34,7 +34,7 @@ the following format:
 
 
 /***************************************< Definitions >**************************************/
-#define LOOP_PROGRAM_CHANGE_MS     (5000u)  //!< Time (ms) between automatic program changes. Should be less than 65535.
+#define LOOP_PROGRAM_CHANGE_MS    (60000u)  //!< Time (ms) between automatic program changes
 #define RIGHT_LEDS_START              (6u)  //!< Index of the first LED on the right side of the board
 
 
@@ -76,9 +76,9 @@ typedef struct
 typedef struct
 {
   U8                                         u8AnimationLengthNormal;  //!< How many instructions this animation has for the normal LEDs
-  const S_ANIMATION_INSTRUCTION_NORMAL CODE* psInstructionsNormal;     //!< Pointer to the instructions themselves -- normal LEDs
+  const S_ANIMATION_INSTRUCTION_NORMAL*      psInstructionsNormal;     //!< Pointer to the instructions themselves -- normal LEDs
   U8                                         u8AnimationLengthRGB;     //!< How many instructions this animation has for the RGB LED
-  const S_ANIMATION_INSTRUCTION_RGB CODE*    psInstructionsRGB;        //!< Pointer to the instructions themselves -- RGB LED
+  const S_ANIMATION_INSTRUCTION_RGB*         psInstructionsRGB;        //!< Pointer to the instructions themselves -- RGB LED
 } S_ANIMATION;
 
 
@@ -1488,14 +1488,14 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
 
 /***************************************< Global/Local variables >**************************************/
 static BOOL gbAnimationEngineActive;         //!< Animations are on, or darkness
-static U16  gu16NormalTimer;                 //!< Ms resolution timer for normal LED animation
-static U16  gu16RGBTimer;                    //!< Ms resolution timer for the RGB LED animation
-static U16  gu16LastCall;                    //!< The last time the main cycle was called
+static U32  gu32NormalTimer;                 //!< Ms resolution timer for normal LED animation
+static U32  gu32RGBTimer;                    //!< Ms resolution timer for the RGB LED animation
+static U32  gu32LastCall;                    //!< The last time the main cycle was called
 static U8   u8LastState = 0xFFu;             //!< Previously executed instruction index for normal LEDs
 static U8   u8RepetitionCounter = 0u;        //!< Instruction repetition counter for normal LEDs
 static U8   u8LastStateRGB = 0xFFu;          //!< Previously executed instruction index for RGB LED
 static U8   u8RepetitionCounterRGB = 0u;     //!< Instruction repetition counter for RGB LED
-static U16  u16LoopTimer;                    //!< Ms resolution timer for automatic animation program change
+static U32  u32LoopTimer;                    //!< Ms resolution timer for automatic animation program change
 
 
 /***************************************< Static function definitions >**************************************/
@@ -1538,9 +1538,13 @@ static I8 SaturateBrightness( U8* pu8BrightnessVariable )
 void Animation_Init( void )
 {
   gbAnimationEngineActive = TRUE;
-  gu16NormalTimer = 0u;
-  gu16RGBTimer = 0u;
-  gu16LastCall = Util_GetTimerMs();
+  gu32NormalTimer = 0u;
+  gu32RGBTimer = 0u;
+  gu32LastCall = Util_GetTimerMs();
+  if( TRUE == gsPersistentData.bLoopAnimations )
+  {
+    u32LoopTimer = LOOP_PROGRAM_CHANGE_MS - 1000u;  // mode change animation is displayed for 1 sec only
+  }
 }
 
 //----------------------------------------------------------------------------
@@ -1553,8 +1557,8 @@ void Animation_Init( void )
 void Animation_Cycle( void )
 {
   U8  u8AnimationState;
-  U16 u16StateTimer = 0u;
-  U16 u16TimeNow = Util_GetTimerMs();
+  U32 u32StateTimer = 0u;
+  U32 u32TimeNow = Util_GetTimerMs();
   U8  u8Index, u8InnerIndex;
   U8  u8OpCode;
   U8  u8Temp;
@@ -1562,12 +1566,12 @@ void Animation_Cycle( void )
   
   // If animations are on, then check if time has elapsed since last call
   if( ( TRUE == gbAnimationEngineActive )
-   && ( u16TimeNow != gu16LastCall ) )
+   && ( u32TimeNow != gu32LastCall ) )
   {
     // Increase the synchronized timer with the difference
     DISABLE_IT;
-    gu16NormalTimer += ( u16TimeNow - gu16LastCall );
-    gu16RGBTimer += ( u16TimeNow - gu16LastCall );
+    gu32NormalTimer += ( u32TimeNow - gu32LastCall );
+    gu32RGBTimer += ( u32TimeNow - gu32LastCall );
     ENABLE_IT;
 
     // Make sure not to overindex arrays
@@ -1580,8 +1584,8 @@ void Animation_Cycle( void )
     // Calculate the state of the animation
     for( u8AnimationState = 0u; u8AnimationState < gasAnimations[ gsPersistentData.u8AnimationIndex ].u8AnimationLengthNormal; u8AnimationState++ )
     {
-      u16StateTimer += gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].u16TimingMs;
-      if( u16StateTimer > gu16NormalTimer )
+      u32StateTimer += gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].u16TimingMs;
+      if( u32StateTimer > gu32NormalTimer )
       {
         break;
       }
@@ -1591,8 +1595,8 @@ void Animation_Cycle( void )
       // restart animation
       u8AnimationState = 0u;
       DISABLE_IT;
-      gu16NormalTimer = 0u;
-      gu16RGBTimer = 0u;
+      gu32NormalTimer = 0u;
+      gu32RGBTimer = 0u;
       ENABLE_IT;
     }
     if( u8LastState != u8AnimationState )  // next instruction
@@ -1801,7 +1805,7 @@ void Animation_Cycle( void )
           {
             u8RepetitionCounter = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].u8AnimationOperand;
             // Step back in time
-            gu16NormalTimer -= gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].u16TimingMs;
+            gu32NormalTimer -= gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].u16TimingMs;
           }
           else  // We're already repeating...
           {
@@ -1809,7 +1813,7 @@ void Animation_Cycle( void )
             if( 0u != u8RepetitionCounter )
             {
               // Step back in time
-              gu16NormalTimer -= gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].u16TimingMs;
+              gu32NormalTimer -= gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsNormal[ u8AnimationState ].u16TimingMs;
             }
             else  // No more repeating
             {
@@ -1826,11 +1830,11 @@ void Animation_Cycle( void )
     
     // --------------------------------------< For the RGB LED
     // Calculate the state of the animation
-    u16StateTimer = 0u;
+    u32StateTimer = 0u;
     for( u8AnimationState = 0u; u8AnimationState < gasAnimations[ gsPersistentData.u8AnimationIndex ].u8AnimationLengthRGB; u8AnimationState++ )
     {
-      u16StateTimer += gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsRGB[ u8AnimationState ].u16TimingMs;
-      if( u16StateTimer > gu16RGBTimer )
+      u32StateTimer += gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsRGB[ u8AnimationState ].u16TimingMs;
+      if( u32StateTimer > gu32RGBTimer )
       {
         break;
       }
@@ -1917,7 +1921,7 @@ void Animation_Cycle( void )
           {
             u8RepetitionCounterRGB = gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsRGB[ u8AnimationState ].u8AnimationOperand;
             // Step back in time
-            gu16RGBTimer -= gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsRGB[ u8AnimationState ].u16TimingMs;
+            gu32RGBTimer -= gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsRGB[ u8AnimationState ].u16TimingMs;
           }
           else  // We're already repeating...
           {
@@ -1925,7 +1929,7 @@ void Animation_Cycle( void )
             if( 0u != u8RepetitionCounterRGB )
             {
               // Step back in time
-              gu16RGBTimer -= gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsRGB[ u8AnimationState ].u16TimingMs;
+              gu32RGBTimer -= gasAnimations[ gsPersistentData.u8AnimationIndex ].psInstructionsRGB[ u8AnimationState ].u16TimingMs;
             }
             else  // No more repeating
             {
@@ -1943,18 +1947,22 @@ void Animation_Cycle( void )
     // If we are looping through all animations
     if( TRUE == gsPersistentData.bLoopAnimations )
     {
-      // Increment loop change timer
-      u16LoopTimer += (u16TimeNow - gu16LastCall);
-      if( LOOP_PROGRAM_CHANGE_MS <= u16LoopTimer )
+      // Check if the timer would expire
+      if( LOOP_PROGRAM_CHANGE_MS <= u32LoopTimer + (u32TimeNow - gu32LastCall) )
       {
         // Timer has expired, next animation
         Animation_NextAnimation();          
-        u16LoopTimer = 0u;
+        u32LoopTimer = 0u;
+      }
+      else
+      {
+        // Increment loop change timer
+        u32LoopTimer += (u32TimeNow - gu32LastCall);
       }
     }
     
     // Store the timestamp
-    gu16LastCall = u16TimeNow;
+    gu32LastCall = u32TimeNow;
   }
 }
 
@@ -1970,8 +1978,8 @@ void Animation_Set( U8 u8AnimationIndex )
   {
     gsPersistentData.u8AnimationIndex = u8AnimationIndex;
     DISABLE_IT;
-    gu16NormalTimer = 0u;
-    gu16RGBTimer = 0u;
+    gu32NormalTimer = 0u;
+    gu32RGBTimer = 0u;
     ENABLE_IT;
     u8LastState = 0xFFu;
     u8RepetitionCounter = 0u;
@@ -2021,7 +2029,7 @@ void Animation_SetLoop( BOOL bSetLoop )
 {
   if( TRUE == bSetLoop )
   {
-    u16LoopTimer = LOOP_PROGRAM_CHANGE_MS - 1000u;  // mode change animation is displayed for 1 sec only
+    u32LoopTimer = LOOP_PROGRAM_CHANGE_MS - 1000u;  // mode change animation is displayed for 1 sec only
     gsPersistentData.bLoopAnimations = TRUE;
     Animation_Set( NUM_ANIMATIONS - 1u );  // set animation indicating mode change
   }

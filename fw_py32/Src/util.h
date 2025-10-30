@@ -1,5 +1,5 @@
 /*! *******************************************************************************************************
-* Copyright (c) 2021-2023 Hekk_Elek
+* Copyright (c) 2021-2025 Hekk_Elek
 *
 * \file util.h
 *
@@ -33,16 +33,13 @@
 
 
 /***************************************< Global variables >**************************************/
-extern DATA U16 gu16TimerMS;
 
 
 /***************************************< Public functions >**************************************/
-char CODE* Util_Get_UID_ptr( void );
-void Util_Get_UID( U8* pu8Dest );
 void Util_Interrupt( void );
 void Util_Init( void );
-U16 Util_GetTimerMs( void );
-U16 Util_CRC16( U8* pu8Buffer, U8 u8Length ) REENTRANT;
+U32 Util_GetTimerMs( void );
+U16 Util_CRC16( U8* pu8Buffer, U8 u8Length );
 
 
 #endif /* UTIL_H */
