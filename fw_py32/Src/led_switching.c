@@ -30,9 +30,9 @@
 
 /***************************************< Definitions >**************************************/
 #define COLOR_LEVELS       (16u)  //!< Number of brightness levels per color
-#define PWM_BRIGHT_1       (72u)  //!< PWM duty cycle for bright color -- 1st channel
-#define PWM_BRIGHT_2       (72u)  //!< PWM duty cycle for bright color -- 2nd channel
-#define PWM_BRIGHT_3       (2*72u)  //!< PWM duty cycle for bright color -- 3rd channel
+#define PWM_BRIGHT_1      (140u)  //!< PWM duty cycle for bright color -- 1st channel
+#define PWM_BRIGHT_2      (140u)  //!< PWM duty cycle for bright color -- 2nd channel
+#define PWM_BRIGHT_3    (2*140u)  //!< PWM duty cycle for bright color -- 3rd channel
 #define PWM_DARK            (0u)  //!< PWM duty cycle for darkness
 
 

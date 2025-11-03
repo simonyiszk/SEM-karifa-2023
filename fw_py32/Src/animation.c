@@ -34,8 +34,8 @@ the following format:
 
 
 /***************************************< Definitions >**************************************/
-#define LOOP_PROGRAM_CHANGE_MS    (60000u)  //!< Time (ms) between automatic program changes
-#define RIGHT_LEDS_START              (6u)  //!< Index of the first LED on the right side of the board
+#define LOOP_PROGRAM_CHANGE_MS         (60000u)  //!< Time (ms) between automatic program changes
+#define RIGHT_LEDS_START          (LEDS_NUM/2u)  //!< Index of the first LED on the right side of the board
 
 
 /***************************************< Types >**************************************/
@@ -1460,10 +1460,194 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasYingYang[ 2u ] =
 };
 //--------------------------------------------------------
 //! \brief Race -- 18 normal LEDs
-CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasRace[ 2u ] = 
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasRace[ 12u ] = 
 {
-  {150u, {15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,            0u },
-  {150u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, RSHIFT | REPEAT, 16u},
+  {150u, {15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0}, LOAD,            0u },
+  {150u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, RSHIFT | REPEAT, 7u },
+  {113u, {15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0}, LOAD,            0u },
+  {113u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, RSHIFT | REPEAT, 4u },
+  { 75u, {15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0}, LOAD,            0u },
+  { 75u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, RSHIFT | REPEAT, 4u },
+  { 38u, {15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0}, LOAD,            0u },
+  { 38u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, RSHIFT | REPEAT, 7u },
+  { 75u, {15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0}, LOAD,            0u },
+  { 75u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, RSHIFT | REPEAT, 4u },
+  {113u, {15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0}, LOAD,            0u },
+  {113u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, RSHIFT | REPEAT, 4u },
+};
+//--------------------------------------------------------
+//! \brief "Fade ring" animation -- 18 normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasFadeRing[ 3u ] =
+{
+  { 40u, {15,  1, 15,  1, 15,  1,  1, 15,  1, 15,  1, 15, 15,  1, 15, 15,  1, 15}, LOAD,          0u },
+  { 40u, {-1,  1, -1,  1, -1,  1,  1, -1,  1, -1,  1, -1, -1,  1, -1, -1,  1, -1}, ADD | REPEAT, 13u },
+  { 40u, { 1, -1,  1, -1,  1, -1, -1,  1, -1,  1, -1,  1,  1, -1,  1,  1, -1,  1}, ADD | REPEAT, 13u },
+};
+//--------------------------------------------------------
+//! \brief Star launch animation -- 18 normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasStarLaunch[] = 
+{
+  {400u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,              0u },
+  { 40u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  0,  0,  0,  0,  0,  0,  0}, ADD | REPEAT,     13u },
+  { 40u, { 0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  1,  0,  0,  0,  0,  0,  0}, ADD | REPEAT,     13u },
+  { 40u, { 0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0}, ADD | REPEAT,     13u },
+  { 40u, { 0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0}, ADD | REPEAT,     13u },
+  { 40u, { 0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0}, ADD | REPEAT,     13u },
+  { 40u, { 0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0}, ADD | REPEAT,     13u },
+  { 40u, { 0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0}, ADD | REPEAT,     13u },
+  { 40u, { 0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1}, ADD | REPEAT,     13u },
+  { 40u, { 1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, ADD | REPEAT,     13u },
+  { 40u, { 0,  0,  0,  0,  0,  0,  0,  0,  0, -1, -1,  0,  0,  0,  0,  0,  0,  0}, ADD | REPEAT,     13u },
+  { 40u, { 0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0, -1,  0,  0,  0,  0,  0,  0}, ADD | REPEAT,     13u },
+  { 40u, { 0,  0,  0,  0,  0,  0,  0, -1,  0,  0,  0,  0, -1,  0,  0,  0,  0,  0}, ADD | REPEAT,     13u },
+  { 40u, { 0,  0,  0,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0, -1,  0,  0,  0,  0}, ADD | REPEAT,     13u },
+  { 40u, { 0,  0,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0,  0}, ADD | REPEAT,     13u },
+  { 40u, { 0,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0}, ADD | REPEAT,     13u },
+  { 40u, { 0,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0}, ADD | REPEAT,     13u },
+  { 40u, { 0,  0, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1}, ADD | REPEAT,     13u },
+  { 40u, {-1, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, ADD | REPEAT,     13u },
+};
+//--------------------------------------------------------
+//! \brief Generic flasher animation -- 18 normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasGenericFlasher[ 2u ] = 
+{
+  {500u, {15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}, LOAD, 0u }, 
+  {500u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD, 0u },
+};
+//--------------------------------------------------------
+//! \brief Disco animation -- 18 normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasDisco[ 6u ] = 
+{
+  {40u, { 15, 15, 15,  0,  0,  0, 15, 15, 15,  0,  0,  0, 15, 15, 15,  0,  0,  0}, LOAD,         0u },
+  {40u, {  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2}, DIV | REPEAT, 3u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {40u, {  0,  0,  0, 15, 15, 15,  0,  0,  0, 15, 15, 15,  0,  0,  0, 15, 15, 15}, LOAD,         0u },
+  {40u, {  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2}, DIV | REPEAT, 3u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+};
+//--------------------------------------------------------
+//! \brief CrissCross -- 18 normal LEDs only
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasCrissCross[ 16u ] = 
+{
+        //0    1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17
+  {350u, {15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
+  {350u, { 0,  0, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15}, LOAD,  0u },
+  {350u, { 0,  0,  0, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15,  0}, LOAD,  0u },
+  {350u, { 0,  0,  0,  0, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15,  0,  0}, LOAD,  0u },
+  {350u, { 0,  0,  0,  0,  0, 15,  0,  0,  0,  0,  0,  0,  0,  0, 15,  0,  0,  0}, LOAD,  0u },
+  {350u, { 0,  0,  0,  0,  0,  0, 15,  0,  0,  0,  0,  0,  0, 15,  0,  0,  0,  0}, LOAD,  0u },
+  {350u, { 0,  0,  0,  0,  0,  0,  0, 15,  0,  0,  0,  0, 15,  0,  0,  0,  0,  0}, LOAD,  0u },
+  {350u, { 0,  0,  0,  0,  0,  0,  0,  0, 15,  0,  0, 15,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
+  {350u, { 0,  0,  0,  0,  0,  0,  0,  0,  0, 15, 15,  0,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
+  {350u, { 0,  0,  0,  0,  0,  0,  0,  0, 15,  0,  0, 15,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
+  {350u, { 0,  0,  0,  0,  0,  0,  0, 15,  0,  0,  0,  0, 15,  0,  0,  0,  0,  0}, LOAD,  0u },
+  {350u, { 0,  0,  0,  0,  0,  0, 15,  0,  0,  0,  0,  0,  0, 15,  0,  0,  0,  0}, LOAD,  0u },
+  {350u, { 0,  0,  0,  0,  0, 15,  0,  0,  0,  0,  0,  0,  0,  0, 15,  0,  0,  0}, LOAD,  0u },
+  {350u, { 0,  0,  0,  0, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15,  0,  0}, LOAD,  0u },
+  {350u, { 0,  0,  0, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15,  0}, LOAD,  0u },
+  {350u, { 0,  0, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15}, LOAD,  0u },
+};
+//--------------------------------------------------------
+//! \brief Sparkle -- 18 normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasSparkle[ 18u ] = 
+{
+  {200u, { 4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4, 15,  4,  4,  4,  4,  4}, LOAD,  0u },
+  {200u, { 4,  4,  4,  4, 15,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4}, LOAD,  0u },
+  {200u, { 4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4, 15,  4,  4}, LOAD,  0u },
+  {200u, { 4,  4,  4,  4,  4,  4,  4,  4, 15,  4,  4,  4,  4,  4,  4,  4,  4,  4}, LOAD,  0u },
+  {200u, { 4, 15,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4}, LOAD,  0u },
+  {200u, { 4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4, 15,  4,  4,  4,  4}, LOAD,  0u },
+  {200u, { 4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4, 15,  4}, LOAD,  0u },
+  {200u, { 4,  4,  4,  4,  4,  4, 15,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4}, LOAD,  0u },
+  {200u, { 4,  4,  4,  4,  4,  4,  4,  4,  4,  4, 15,  4,  4,  4,  4,  4,  4,  4}, LOAD,  0u },
+  {200u, { 4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4, 15}, LOAD,  0u },
+  {200u, { 4,  4, 15,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4}, LOAD,  0u },
+  {200u, { 4,  4,  4,  4,  4,  4,  4, 15,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4}, LOAD,  0u },
+  {200u, {15,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4}, LOAD,  0u },
+  {200u, { 4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4, 15,  4,  4,  4,  4,  4,  4}, LOAD,  0u },
+  {200u, { 4,  4,  4, 15,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4}, LOAD,  0u },
+  {200u, { 4,  4,  4,  4,  4,  4,  4,  4,  4, 15,  4,  4,  4,  4,  4,  4,  4,  4}, LOAD,  0u },
+  {200u, { 4,  4,  4,  4,  4, 15,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4}, LOAD,  0u },
+  {200u, { 4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4, 15,  4,  4,  4}, LOAD,  0u },
+};
+//--------------------------------------------------------
+//! \brief Around clockwise -- 18 normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasAround[ 2u ] = 
+{
+  {56u, {15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,             0u },
+  {56u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, RSHIFT | REPEAT, 16u },
+};
+//--------------------------------------------------------
+//! \brief Flag colors -- 18 normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasFlagColors[ 9u ] = 
+{
+  {40u, { 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0}, LOAD,         0u },
+  {40u, {  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2}, DIV | REPEAT, 3u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {40u, {  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0}, LOAD,         0u },
+  {40u, {  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2}, DIV | REPEAT, 3u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {40u, {  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15,  0,  0, 15}, LOAD,         0u },
+  {40u, {  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2}, DIV | REPEAT, 3u },
+  {400u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+};
+//--------------------------------------------------------
+//! \brief Flag colors simple -- 18 normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasFlagAnticlockwise[ 6u ] = 
+{
+  {200u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15, 15, 15}, LOAD,         0u },
+  {200u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15, 15, 15,  0,  0,  0}, LOAD,         0u },
+  {200u,{  0,  0,  0,  0,  0,  0,  0,  0,  0, 15, 15, 15,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {200u,{  0,  0,  0,  0,  0,  0, 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {200u,{  0,  0,  0, 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {200u,{ 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+};
+//--------------------------------------------------------
+//! \brief Flashing Flag -- 18 normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasFlashingFlag[] = 
+{
+  {100u,{ 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{ 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{ 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{ 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15, 15, 15,  0,  0,  0}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15, 15, 15,  0,  0,  0}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15, 15, 15,  0,  0,  0}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15, 15, 15,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0, 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0, 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0, 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0, 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0, 15, 15, 15,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0, 15, 15, 15,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0, 15, 15, 15,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0, 15, 15, 15,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15, 15, 15}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15, 15, 15}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15, 15, 15}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15, 15, 15}, LOAD,         0u },
+  {100u,{  0,  0,  0,  0,  0,  0, 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0,  0,  0,  0, 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0,  0,  0,  0, 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  { 40u,{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
+  {100u,{  0,  0,  0,  0,  0,  0, 15, 15, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LOAD,         0u },
 };
 //--------------------------------------------------------
 //! \brief Animation signaling that we entered loop mode -- 18 normal LEDs
@@ -1476,9 +1660,19 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasLoopModeAnimation[ 2u ] =
 //! \brief Table of animations
 CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] = 
 {
-  {sizeof(gasMacskasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasMacskasSoftFlashing, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
-  {sizeof(gasMacskasYingYang)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasMacskasYingYang, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
-  {sizeof(gasMacskasRace)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                 gasMacskasRace, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasMacskasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasMacskasSoftFlashing, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasMacskasAround)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                       gasMacskasAround, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasMacskasFadeRing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                   gasMacskasFadeRing, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasMacskasRace)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                           gasMacskasRace, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasMacskasStarLaunch)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),               gasMacskasStarLaunch, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasMacskasDisco)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                         gasMacskasDisco, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasMacskasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),       gasMacskasGenericFlasher, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasMacskasFlagAnticlockwise)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasMacskasFlagAnticlockwise, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasMacskasSparkle)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                     gasMacskasSparkle, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasMacskasFlagColors)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),               gasMacskasFlagColors, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasMacskasCrissCross)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),               gasMacskasCrissCross, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasMacskasFlashingFlag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),           gasMacskasFlashingFlag, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasMacskasYingYang)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                   gasMacskasYingYang, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
   
   // Last animation, don't change its location
   {sizeof(gasMacskasLoopModeAnimation)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasMacskasLoopModeAnimation, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB }
@@ -1569,10 +1763,8 @@ void Animation_Cycle( void )
    && ( u32TimeNow != gu32LastCall ) )
   {
     // Increase the synchronized timer with the difference
-    DISABLE_IT;
     gu32NormalTimer += ( u32TimeNow - gu32LastCall );
     gu32RGBTimer += ( u32TimeNow - gu32LastCall );
-    ENABLE_IT;
 
     // Make sure not to overindex arrays
     if( gsPersistentData.u8AnimationIndex >= NUM_ANIMATIONS )
@@ -1594,10 +1786,8 @@ void Animation_Cycle( void )
     {
       // restart animation
       u8AnimationState = 0u;
-      DISABLE_IT;
       gu32NormalTimer = 0u;
       gu32RGBTimer = 0u;
-      ENABLE_IT;
     }
     if( u8LastState != u8AnimationState )  // next instruction
     {
