@@ -87,29 +87,29 @@ static const S_LED_DESCRIPTOR gcasLEDs[ LEDS_NUM ] =
   { { GPIOA, LL_GPIO_PIN_7 }, 1u },  // D7
 #endif
 #ifdef MACSKAS
-  { { GPIOA, LL_GPIO_PIN_2 }, 1u },  // D7
-  { { GPIOA, LL_GPIO_PIN_2 }, 0u },  // D1
-  { { GPIOA, LL_GPIO_PIN_2 }, 2u },  // D13
-  
-  { { GPIOA, LL_GPIO_PIN_4 }, 1u },  // D8
-  { { GPIOA, LL_GPIO_PIN_4 }, 0u },  // D2
   { { GPIOA, LL_GPIO_PIN_4 }, 2u },  // D14
+  { { GPIOA, LL_GPIO_PIN_4 }, 0u },  // D2
+  { { GPIOA, LL_GPIO_PIN_4 }, 1u },  // D8
+
+  { { GPIOA, LL_GPIO_PIN_2 }, 2u },  // D13
+  { { GPIOA, LL_GPIO_PIN_2 }, 0u },  // D1
+  { { GPIOA, LL_GPIO_PIN_2 }, 1u },  // D7
   
-  { { GPIOA, LL_GPIO_PIN_7 }, 1u },  // D9
-  { { GPIOA, LL_GPIO_PIN_7 }, 0u },  // D3
-  { { GPIOA, LL_GPIO_PIN_7 }, 2u },  // D15
-  
-  { { GPIOB, LL_GPIO_PIN_0 }, 1u },  // D10
-  { { GPIOB, LL_GPIO_PIN_0 }, 0u },  // D4
-  { { GPIOB, LL_GPIO_PIN_0 }, 2u },  // D16
-  
-  { { GPIOB, LL_GPIO_PIN_2 }, 1u },  // D11
-  { { GPIOB, LL_GPIO_PIN_2 }, 0u },  // D5
-  { { GPIOB, LL_GPIO_PIN_2 }, 2u },  // D17
-  
-  { { GPIOB, LL_GPIO_PIN_1 }, 1u },  // D12
-  { { GPIOB, LL_GPIO_PIN_1 }, 0u },  // D6
   { { GPIOB, LL_GPIO_PIN_1 }, 2u },  // D18
+  { { GPIOB, LL_GPIO_PIN_1 }, 0u },  // D6
+  { { GPIOB, LL_GPIO_PIN_1 }, 1u },  // D12
+
+  { { GPIOB, LL_GPIO_PIN_2 }, 2u },  // D17
+  { { GPIOB, LL_GPIO_PIN_2 }, 0u },  // D5
+  { { GPIOB, LL_GPIO_PIN_2 }, 1u },  // D11
+
+  { { GPIOB, LL_GPIO_PIN_0 }, 2u },  // D16
+  { { GPIOB, LL_GPIO_PIN_0 }, 0u },  // D4
+  { { GPIOB, LL_GPIO_PIN_0 }, 1u },  // D10
+  
+  { { GPIOA, LL_GPIO_PIN_7 }, 2u },  // D15
+  { { GPIOA, LL_GPIO_PIN_7 }, 0u },  // D3
+  { { GPIOA, LL_GPIO_PIN_7 }, 1u },  // D9
 #endif
 };
 
@@ -266,10 +266,20 @@ void LED_Init( void )
 //-----------------------------------------------------------------------------
 void LED_Interrupt( void )
 {
-  static U8 u8MultiplexerIdx = 0u;     //!< Stores which PWM channel is active
-  static U8 u8BrightnessCounter = 0u;  //!< Counts between 0 and COLOR_LEVELS
+  static U8  u8MultiplexerIdx = 0u;     //!< Stores which PWM channel is active
+  static U8  u8BrightnessCounter = 0u;  //!< Counts between 0 and COLOR_LEVELS
+  static U32 u32SetPortA = 0u;
+  static U32 u32SetPortB = 0u;
+  static U32 u32ResetPortA = 0u;
+  static U32 u32ResetPortB = 0u;
   U8 u8NumLEDsActive = 0u;
   U8 u8LEDIdx;
+  
+  // Set LED pins during the inductor charging stage
+  LL_GPIO_SetOutputPin( GPIOA, u32SetPortA );
+  LL_GPIO_SetOutputPin( GPIOB, u32SetPortB );
+  LL_GPIO_ResetOutputPin( GPIOA, u32ResetPortA );
+  LL_GPIO_ResetOutputPin( GPIOB, u32ResetPortB );
   
   // Increment counter and multiplexer index
   u8BrightnessCounter++;
@@ -284,6 +294,8 @@ void LED_Interrupt( void )
   }
   
   // Iterate through all the LEDs and calculate how many LEDs will be active this cycle
+  u32SetPortA = 0u; u32ResetPortA = 0u;
+  u32SetPortB = 0u; u32ResetPortB = 0u;
   for( u8LEDIdx = 0u; u8LEDIdx < LEDS_NUM; u8LEDIdx++ )
   {
     // If the LED is on the current multiplexer channel
@@ -292,13 +304,27 @@ void LED_Interrupt( void )
       // Set or reset pin according to brightness counter
       if( gau8LEDBrightness[ u8LEDIdx ] > u8BrightnessCounter )
       {
-        LL_GPIO_SetOutputPin( gcasLEDs[ u8LEDIdx ].sPin.psPort, gcasLEDs[ u8LEDIdx ].sPin.u32Pin );
+        if( GPIOA == gcasLEDs[ u8LEDIdx ].sPin.psPort )
+        {
+          u32SetPortA |= gcasLEDs[ u8LEDIdx ].sPin.u32Pin;
+        }
+        else
+        {
+          u32SetPortB |= gcasLEDs[ u8LEDIdx ].sPin.u32Pin;
+        }
         // Increase current
         u8NumLEDsActive++;
       }
       else
       {
-        LL_GPIO_ResetOutputPin( gcasLEDs[ u8LEDIdx ].sPin.psPort, gcasLEDs[ u8LEDIdx ].sPin.u32Pin );
+        if( GPIOA == gcasLEDs[ u8LEDIdx ].sPin.psPort )
+        {
+          u32ResetPortA |= gcasLEDs[ u8LEDIdx ].sPin.u32Pin;
+        }
+        else
+        {
+          u32ResetPortB |= gcasLEDs[ u8LEDIdx ].sPin.u32Pin;
+        }
       }
     }
   }

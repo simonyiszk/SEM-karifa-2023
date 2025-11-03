@@ -1455,8 +1455,8 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasSoftFlashing[ 4u ] =
 //! \brief Ying-yang clockwise -- 18 normal LEDs
 CODE const S_ANIMATION_INSTRUCTION_NORMAL gasMacskasYingYang[ 2u ] = 
 {
-  {150u, { 0,  0,  0, 15, 10,  5,  0,  0,  0, 15, 10,  5,  0,  0,  0, 15, 10,  5}, LOAD,            0u },
-  {150u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, LSHIFT | REPEAT, 4u },
+  {150u, { 0,  0,  0,  5, 10, 15,  0,  0,  0,  5, 10, 15,  0,  0,  0,  5, 10, 15}, LOAD,            0u },
+  {150u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}, RSHIFT | REPEAT, 4u },
 };
 //--------------------------------------------------------
 //! \brief Race -- 18 normal LEDs
