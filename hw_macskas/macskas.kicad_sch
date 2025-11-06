@@ -4123,21 +4123,21 @@
 		(fields_autoplaced yes)
 		(uuid "00c7590e-5d0c-4c69-953e-ef6deef320db")
 		(property "Reference" "D11"
-			(at 247.65 66.3576 90)
+			(at 254 63.8174 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Value" "LED"
-			(at 247.65 63.8176 90)
+		(property "Value" "White"
+			(at 254 66.3574 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
@@ -4618,7 +4618,7 @@
 		(fields_autoplaced yes)
 		(uuid "10137475-c4a3-4943-ab2c-22766523a588")
 		(property "Reference" "D3"
-			(at 215.265 42.8624 90)
+			(at 214.63 42.8624 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4626,8 +4626,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED"
-			(at 215.265 45.4024 90)
+		(property "Value" "Green"
+			(at 214.63 45.4024 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4763,21 +4763,21 @@
 		(fields_autoplaced yes)
 		(uuid "2291d9ea-fced-4ee4-8ce0-e05098c1fbc4")
 		(property "Reference" "D18"
-			(at 266.7 98.1076 90)
+			(at 273.05 95.5674 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Value" "LED"
-			(at 266.7 95.5676 90)
+		(property "Value" "Red"
+			(at 273.05 98.1074 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
@@ -4903,7 +4903,7 @@
 		(fields_autoplaced yes)
 		(uuid "31b04caa-c4c2-4173-b7a3-7bede720a3d8")
 		(property "Reference" "D1"
-			(at 177.165 42.8624 90)
+			(at 176.53 42.8624 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4911,8 +4911,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED"
-			(at 177.165 45.4024 90)
+		(property "Value" "Green"
+			(at 176.53 45.4024 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5103,7 +5103,7 @@
 		(fields_autoplaced yes)
 		(uuid "3f3995c0-8b8d-478e-a810-f27f488ba1a0")
 		(property "Reference" "D2"
-			(at 196.215 42.8624 90)
+			(at 195.58 42.8624 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5111,8 +5111,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED"
-			(at 196.215 45.4024 90)
+		(property "Value" "Green"
+			(at 195.58 45.4024 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5311,21 +5311,21 @@
 		(fields_autoplaced yes)
 		(uuid "464a1f35-32ce-4c4c-94c0-2753d2ea5086")
 		(property "Reference" "D14"
-			(at 190.5 98.1076 90)
+			(at 196.85 95.5674 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Value" "LED"
-			(at 190.5 95.5676 90)
+		(property "Value" "Red"
+			(at 196.85 98.1074 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
@@ -5381,21 +5381,21 @@
 		(fields_autoplaced yes)
 		(uuid "474cf1b1-2e89-4d96-a1a5-612612a369b7")
 		(property "Reference" "D16"
-			(at 228.6 98.1076 90)
+			(at 234.95 95.5674 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Value" "LED"
-			(at 228.6 95.5676 90)
+		(property "Value" "Red"
+			(at 234.95 98.1074 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
@@ -5585,21 +5585,21 @@
 		(fields_autoplaced yes)
 		(uuid "49ce1114-75d9-4d06-bc23-557d26986b02")
 		(property "Reference" "D12"
-			(at 266.7 66.3576 90)
+			(at 273.05 63.8174 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Value" "LED"
-			(at 266.7 63.8176 90)
+		(property "Value" "White"
+			(at 273.05 66.3574 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
@@ -5721,7 +5721,7 @@
 		(fields_autoplaced yes)
 		(uuid "4acbe013-cbfb-443f-941a-48f8273d2399")
 		(property "Reference" "D5"
-			(at 253.365 42.8624 90)
+			(at 252.73 42.8624 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5729,8 +5729,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED"
-			(at 253.365 45.4024 90)
+		(property "Value" "Green"
+			(at 252.73 45.4024 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5791,7 +5791,7 @@
 		(fields_autoplaced yes)
 		(uuid "51976cc5-3cb5-4c3f-a563-a96b4344561f")
 		(property "Reference" "D6"
-			(at 272.415 42.8624 90)
+			(at 271.78 42.8624 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5799,8 +5799,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED"
-			(at 272.415 45.4024 90)
+		(property "Value" "Green"
+			(at 271.78 45.4024 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6389,21 +6389,21 @@
 		(fields_autoplaced yes)
 		(uuid "75829ef6-35f5-4591-9a90-ef2a08203efb")
 		(property "Reference" "D8"
-			(at 190.5 66.3576 90)
+			(at 196.85 63.8174 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Value" "LED"
-			(at 190.5 63.8176 90)
+		(property "Value" "White"
+			(at 196.85 66.3574 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
@@ -6529,21 +6529,21 @@
 		(fields_autoplaced yes)
 		(uuid "85ecac48-07ad-47d9-9892-0d6056c72591")
 		(property "Reference" "D15"
-			(at 209.55 98.1076 90)
+			(at 215.9 95.5674 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Value" "LED"
-			(at 209.55 95.5676 90)
+		(property "Value" "Red"
+			(at 215.9 98.1074 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
@@ -6742,21 +6742,21 @@
 		(fields_autoplaced yes)
 		(uuid "8c972387-4935-4ace-8973-8f85e52aded7")
 		(property "Reference" "D10"
-			(at 228.6 66.3576 90)
+			(at 234.95 63.8174 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Value" "LED"
-			(at 228.6 63.8176 90)
+		(property "Value" "White"
+			(at 234.95 66.3574 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
@@ -7284,21 +7284,21 @@
 		(fields_autoplaced yes)
 		(uuid "c58ff9f1-1b8f-449b-8548-2090b291dddc")
 		(property "Reference" "D9"
-			(at 209.55 66.3576 90)
+			(at 215.9 63.8174 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Value" "LED"
-			(at 209.55 63.8176 90)
+		(property "Value" "White"
+			(at 215.9 66.3574 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
@@ -7488,21 +7488,21 @@
 		(fields_autoplaced yes)
 		(uuid "ceee7a75-7578-4f9d-873c-c15bb4ea1f5c")
 		(property "Reference" "D7"
-			(at 171.45 66.3576 90)
+			(at 177.8 63.8174 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Value" "LED"
-			(at 171.45 63.8176 90)
+		(property "Value" "White"
+			(at 177.8 66.3574 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
@@ -7558,21 +7558,21 @@
 		(fields_autoplaced yes)
 		(uuid "d03f6526-9e17-4e02-ae11-bee9ccd3dbdb")
 		(property "Reference" "D17"
-			(at 247.65 98.1076 90)
+			(at 254 95.5674 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Value" "LED"
-			(at 247.65 95.5676 90)
+		(property "Value" "Red"
+			(at 254 98.1074 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
@@ -7982,21 +7982,21 @@
 		(fields_autoplaced yes)
 		(uuid "eded70b1-a33a-43b8-a205-cc549e2a6068")
 		(property "Reference" "D13"
-			(at 171.45 98.1076 90)
+			(at 177.8 95.5674 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Value" "LED"
-			(at 171.45 95.5676 90)
+		(property "Value" "Red"
+			(at 177.8 98.1074 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
@@ -8052,7 +8052,7 @@
 		(fields_autoplaced yes)
 		(uuid "f005885f-146c-4c1a-8516-859b85637b93")
 		(property "Reference" "D4"
-			(at 234.315 42.8624 90)
+			(at 233.68 42.8624 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8060,8 +8060,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED"
-			(at 234.315 45.4024 90)
+		(property "Value" "Green"
+			(at 233.68 45.4024 90)
 			(effects
 				(font
 					(size 1.27 1.27)
