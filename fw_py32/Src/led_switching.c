@@ -58,18 +58,18 @@ typedef struct
 static const S_LED_DESCRIPTOR gcasLEDs[ LEDS_NUM ] =
 {
 #ifdef HULLOCSILLAG
-  { { GPIOA, LL_GPIO_PIN_2 }, 0u },  // D2
-  { { GPIOA, LL_GPIO_PIN_4 }, 0u },  // D3
-  { { GPIOB, LL_GPIO_PIN_1 }, 0u },  // D4
-  { { GPIOB, LL_GPIO_PIN_2 }, 0u },  // D5
-  { { GPIOB, LL_GPIO_PIN_0 }, 0u },  // D6
-  { { GPIOB, LL_GPIO_PIN_0 }, 1u },  // D12
   { { GPIOB, LL_GPIO_PIN_2 }, 1u },  // D11
   { { GPIOB, LL_GPIO_PIN_1 }, 1u },  // D10
   { { GPIOA, LL_GPIO_PIN_4 }, 1u },  // D9
   { { GPIOA, LL_GPIO_PIN_2 }, 1u },  // D8
   { { GPIOA, LL_GPIO_PIN_7 }, 1u },  // D7
   { { GPIOA, LL_GPIO_PIN_7 }, 0u },  // D1
+  { { GPIOA, LL_GPIO_PIN_2 }, 0u },  // D2
+  { { GPIOA, LL_GPIO_PIN_4 }, 0u },  // D3
+  { { GPIOB, LL_GPIO_PIN_1 }, 0u },  // D4
+  { { GPIOB, LL_GPIO_PIN_2 }, 0u },  // D5
+  { { GPIOB, LL_GPIO_PIN_0 }, 0u },  // D6
+  { { GPIOB, LL_GPIO_PIN_0 }, 1u },  // D12
 #endif
 #ifdef MACSKAS
   { { GPIOA, LL_GPIO_PIN_4 }, 2u },  // D14
