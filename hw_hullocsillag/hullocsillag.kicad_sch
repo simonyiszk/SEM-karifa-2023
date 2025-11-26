@@ -3870,7 +3870,7 @@
 		(dnp no)
 		(uuid "03f6b0b5-cbc6-46c5-b1cf-fcd77c1b69b2")
 		(property "Reference" "R7"
-			(at 246.38 91.694 90)
+			(at 243.332 86.614 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3878,7 +3878,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "10"
 			(at 243.84 91.694 90)
 			(effects
 				(font
@@ -5086,7 +5086,7 @@
 		(dnp no)
 		(uuid "6762d2ab-fe5b-46a0-99ec-deb3f7ed731b")
 		(property "Reference" "R4"
-			(at 189.23 91.694 90)
+			(at 186.436 86.614 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5094,7 +5094,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "10"
 			(at 186.69 91.694 90)
 			(effects
 				(font
@@ -5219,7 +5219,7 @@
 		(dnp no)
 		(uuid "70dac947-732a-4255-8c65-63f127a79a75")
 		(property "Reference" "R2"
-			(at 151.13 91.694 90)
+			(at 148.336 86.868 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5227,7 +5227,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "10"
 			(at 148.59 91.694 90)
 			(effects
 				(font
@@ -5356,7 +5356,7 @@
 		(dnp no)
 		(uuid "8684f395-ed44-4e62-a331-4934ccb33f22")
 		(property "Reference" "R3"
-			(at 170.18 91.44 90)
+			(at 167.132 86.614 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5364,7 +5364,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "10"
 			(at 167.64 91.44 90)
 			(effects
 				(font
@@ -5764,7 +5764,7 @@
 		(dnp no)
 		(uuid "aea37966-b49d-4f44-9909-5973c34895e8")
 		(property "Reference" "R6"
-			(at 227.33 91.694 90)
+			(at 224.536 86.614 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5772,7 +5772,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "10"
 			(at 224.79 91.694 90)
 			(effects
 				(font
@@ -5832,7 +5832,7 @@
 		(dnp no)
 		(uuid "aecdedb4-b9c7-4f66-9bb0-3e27f00f4794")
 		(property "Reference" "R5"
-			(at 208.28 91.694 90)
+			(at 205.486 86.614 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5840,7 +5840,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "10"
 			(at 205.74 91.694 90)
 			(effects
 				(font

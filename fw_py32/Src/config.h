@@ -19,9 +19,9 @@
 //#define MEZI
 //#define AJANDEKCSOMAG
 //#define RUDOLF
-//#define HULLOCSILLAG
+#define HULLOCSILLAG
 //#define ANGYAL
-#define MACSKAS
+//#define MACSKAS
 
 // Uncomment only for defective units
 //#define LEDS_REVERSED   //!< The LEDs are populated in reverse
