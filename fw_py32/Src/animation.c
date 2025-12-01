@@ -288,6 +288,23 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasKITT_Hullocsillag[ 11u ] =
 };
 
 //--------------------------------------------------------
+//! \brief KITT animation -- normal LEDs only
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasKITT_Angyal[ 11u ] = 
+{
+  {100u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5}, LOAD,  0u },
+  {100u, { 0,  0,  0,  0,  0,  5,  0,  0,  0,  0,  0,  0}, LOAD,  0u },
+  {100u, { 0,  0,  0,  0,  5, 10,  5,  0,  0,  0,  0,  0}, LOAD,  0u },
+  {100u, { 0,  0,  0,  5, 10, 15, 10,  5,  0,  0,  0,  0}, LOAD,  0u },
+  {100u, { 0,  0,  5, 10, 15, 10, 15, 10,  5,  0,  0,  0}, LOAD,  0u },
+  {100u, { 0,  5, 10, 15, 10,  5, 10, 15, 10,  5,  0,  0}, LOAD,  0u },
+  {100u, { 5, 10, 15, 10,  5,  0,  5, 10, 15, 10,  5,  0}, LOAD,  0u },
+  {100u, {10, 15, 10,  5,  0,  0,  0,  5, 10, 15, 10,  5}, LOAD,  0u },
+  {100u, {15, 10,  5,  0,  0,  0,  0,  0,  5, 10, 15, 10}, LOAD,  0u },
+  {100u, {10,  5,  0,  0,  0,  0,  0,  0,  0,  5, 10, 15}, LOAD,  0u },
+  {100u, { 5,  0,  0,  0,  0,  0,  0,  0,  0,  0,  5, 10}, LOAD,  0u },
+};
+
+//--------------------------------------------------------
 //! \brief KITT animation -- normal LEDs
 CODE const S_ANIMATION_INSTRUCTION_NORMAL gasKITT[ 22u ] = 
 {
@@ -386,6 +403,25 @@ CODE const S_ANIMATION_INSTRUCTION_NORMAL gasPseudoRandomFade[ 15u ] =
   { 66u, { 0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0}, ADD | REPEAT, 14u },
   { 66u, { 0,  0,  0,  0,  1,  0,  0,  0,  0, -1,  0,  0}, ADD | REPEAT, 14u },
   { 66u, { 0,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+};
+//! \brief Pseudo-random fade inverted animation -- normal LEDs
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasPseudoRandomFadeInverted[ 15u ] = 
+{
+  { 66u, {15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}, LOAD,  0u },
+  { 66u, { 0,  0,  0,  0,  0,  0,  0, -1,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 66u, { 0,  0, -1,  0,  0,  0,  0,  1,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 66u, { 0,  0,  1,  0,  0,  0,  0,  0,  0,  0, -1,  0}, ADD | REPEAT, 14u },
+  { 66u, {-1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0}, ADD | REPEAT, 14u },
+  { 66u, { 1,  0,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 66u, { 0,  0,  0,  0,  0,  1,  0, -1,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 66u, { 0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0, -1}, ADD | REPEAT, 14u },
+  { 66u, { 0, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1}, ADD | REPEAT, 14u },
+  { 66u, { 0,  1,  0, -1,  0,  0,  0,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 66u, { 0,  0,  0,  1,  0,  0, -1,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
+  { 66u, { 0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },  //RGB lights up here
+  { 66u, { 0,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0}, ADD | REPEAT, 14u },
+  { 66u, { 0,  0,  0,  0, -1,  0,  0,  0,  0,  1,  0,  0}, ADD | REPEAT, 14u },
+  { 66u, { 0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0}, ADD | REPEAT, 14u },
 };
 //! \brief Pseudo-random fade animation (red) -- RGB LED
 CODE const S_ANIMATION_INSTRUCTION_RGB gasPseudoRandomFadeRGB[ 4u ] = 
@@ -735,19 +771,28 @@ CODE const S_ANIMATION_INSTRUCTION_RGB gasYingYangRGB[ 2u ] =
 
 //--------------------------------------------------------
 //! \brief Ice -- normal LEDs only
-CODE const S_ANIMATION_INSTRUCTION_NORMAL gasIce_Hullocsillag[ 10u ] = 
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasIce_Hullocsillag[ 6u ] = 
 {
         //0    1   2   3   4   5   6   7   8   9  10  11
-  {900u, { 0,  0,  0, 15,  15, 15, 15, 15,  0,  0,  0,  0}, LOAD,  0u },
-  {350u, { 0,  0,  0, 15,  15, 15, 15, 15, 15,  0,  0,  0}, LOAD,  0u },
-  {350u, { 0,  0,  0, 15,  15, 15, 15, 15,  9, 15,  0,  0}, LOAD,  0u },
-  {350u, { 0,  0,  0, 15,  15, 15, 15, 15,  1,  9, 15,  0}, LOAD,  0u },
-  {350u, { 0,  0,  0, 15,  15, 15, 15, 15,  0,  1,  9,  0}, LOAD,  0u },
-  {350u, { 0,  0, 15, 15,  15, 15, 15, 15,  0,  0,  1,  0}, LOAD,  0u },
-  {350u, { 0, 15,  9, 15,  15, 15, 15, 15,  0,  0,  0,  0}, LOAD,  0u },
-  {350u, {15,  9,  1, 15,  15, 15, 15, 15,  0,  0,  0,  0}, LOAD,  0u },
-  {350u, { 9,  1,  0, 15,  15, 15, 15, 15,  0,  0,  0,  0}, LOAD,  0u },
-  {350u, { 1,  0,  0, 15,  15, 15, 15, 15,  0,  0,  0,  0}, LOAD,  0u },
+  {200u, { 1,  0,  0, 15, 15, 15, 15, 15, 15,  0,  0,  0}, LOAD,  0u },
+  {200u, { 0,  0,  0, 11, 11, 11, 11, 11,  9, 15,  0,  0}, LOAD,  0u },
+  {200u, { 0,  0, 15,  7,  7,  7,  7,  7,  1,  9, 15,  0}, LOAD,  0u },
+  {200u, { 0, 15,  9,  3,  3,  3,  3,  3,  0,  1,  9,  0}, LOAD,  0u },
+  {200u, {15,  9,  1,  7,  7,  7,  7,  7,  0,  0,  1,  0}, LOAD,  0u },
+  {200u, { 9,  1,  0, 11, 11, 11, 11, 11,  0,  0,  0,  0}, LOAD,  0u },
+};
+
+//--------------------------------------------------------
+//! \brief Ice -- normal LEDs only
+CODE const S_ANIMATION_INSTRUCTION_NORMAL gasIce_Angyal[ 6u ] = 
+{
+        //0    1   2   3   4   5   6   7   8   9  10  11
+  {200u, {15,  0,  0,  0, 15, 15, 15,  0,  0,  0, 15, 15}, LOAD,  0u },
+  {200u, {11,  0,  0, 15, 11, 11, 11, 15,  0,  0, 11, 11}, LOAD,  0u },
+  {200u, { 7,  0, 15,  9,  7,  7,  7,  9, 15,  0,  7,  7}, LOAD,  0u },
+  {200u, { 3, 15,  9,  1,  3,  3,  3,  1,  9, 15,  3,  3}, LOAD,  0u },
+  {200u, { 7,  9,  1,  0,  7,  7,  7,  0,  1,  9,  7,  7}, LOAD,  0u },
+  {200u, {11,  1,  0,  0, 11, 11, 11,  0,  0,  1, 11, 11}, LOAD,  0u },
 };
 
 //--------------------------------------------------------
@@ -1428,12 +1473,35 @@ CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] =
   {sizeof(gasShootingStarClockwise)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasShootingStarClockwise,   sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
   {sizeof(gasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),            gasGenericFlasher,          sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
   {sizeof(gasKITT_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),         gasKITT_Hullocsillag,       sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasPseudoRandomFadeInverted)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),  gasPseudoRandomFadeInverted,sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
   {sizeof(gasDisco)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                     gasDisco,                   sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
   {sizeof(gasFadeRing_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasFadeRing_Hullocsillag,   sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
   {sizeof(gasPseudoRandomFade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasPseudoRandomFade,        sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
   {sizeof(gasCrissCross_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),   gasCrissCross_Hullocsillag, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
   {sizeof(gasPingpong_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasPingpong_Hullocsillag,   sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
   {sizeof(gasIce_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasIce_Hullocsillag,        sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasYingYang_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasYingYang_Hullocsillag,   sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  
+  // Last animation, don't change its location
+  {sizeof(gasLoopModeAnimation)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL), gasLoopModeAnimation, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB), gasLoopModeAnimationRGB }
+};
+#endif
+
+#ifdef ANGYAL
+//! \brief Table of animations
+CODE const S_ANIMATION gasAnimations[ NUM_ANIMATIONS ] = 
+{
+  {sizeof(gasSoftFlashing)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),              gasSoftFlashing,            sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasShootingStarClockwise)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasShootingStarClockwise,   sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasGenericFlasher)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),            gasGenericFlasher,          sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasKITT_Angyal)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),               gasKITT_Angyal,             sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasPseudoRandomFadeInverted)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),  gasPseudoRandomFadeInverted,sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasDisco)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                     gasDisco,                   sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasFadeRing_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasFadeRing_Hullocsillag,   sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasPseudoRandomFade)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),          gasPseudoRandomFade,        sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasCrissCross_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),   gasCrissCross_Hullocsillag, sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasPingpong_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasPingpong_Hullocsillag,   sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
+  {sizeof(gasIce_Angyal)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),                gasIce_Angyal,              sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
   {sizeof(gasYingYang_Hullocsillag)/sizeof(S_ANIMATION_INSTRUCTION_NORMAL),     gasYingYang_Hullocsillag,   sizeof(gasLoopModeAnimationRGB)/sizeof(S_ANIMATION_INSTRUCTION_RGB),  gasLoopModeAnimationRGB },
   
   // Last animation, don't change its location

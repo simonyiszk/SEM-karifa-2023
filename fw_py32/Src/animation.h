@@ -41,7 +41,11 @@
 #endif
 
 #ifdef HULLOCSILLAG
-  #define NUM_ANIMATIONS        (12u)  //!< Number of animations implemented (including blackness)
+  #define NUM_ANIMATIONS        (13u)  //!< Number of animations implemented (including blackness)
+#endif
+
+#ifdef ANGYAL
+  #define NUM_ANIMATIONS        (13u)  //!< Number of animations implemented (including blackness)
 #endif
 
 #ifdef MACSKAS
