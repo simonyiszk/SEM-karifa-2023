@@ -19,16 +19,17 @@
 //#define MEZI
 //#define AJANDEKCSOMAG
 //#define RUDOLF
-#define HULLOCSILLAG
+//#define HULLOCSILLAG
 //#define ANGYAL
 //#define MACSKAS
+#define SIMONYI
 
 // Uncomment only for defective units
 //#define LEDS_REVERSED   //!< The LEDs are populated in reverse
 
 
 /***************************************< Definitions -- drivers >**************************************/
-#if( defined(HULLOCSILLAG) || defined(ANGYAL) || defined(MACSKAS) )
+#if( defined(HULLOCSILLAG) || defined(ANGYAL) || defined(MACSKAS) || defined(SIMONYI) )
   #define LED_SWITCHING_DRIVER
 #else
   #define LED_TRADITIONAL_DRIVER
@@ -38,7 +39,7 @@
   #define RGB_DRIVER
 #endif
 
-#if( defined(MACSKAS) )
+#if( defined(MACSKAS) || defined(SIMONYI) )
   #define LEDS_NUM      (18u)  //!< Number of _normal_ LEDs
   #define PWM_CHANNELS  (3u)   //!< Number of PWM channels/multiplexers used
 #else

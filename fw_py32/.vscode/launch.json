@@ -1,0 +1,42 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug",
+            "type": "cortex-debug",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "runToEntryPoint": "main",
+            "executable": "Build/app.elf",
+            "servertype": "pyocd",
+            "interface": "swd",
+            "device": "PY32F002Ax5", 
+            "targetId": "PY32F002Ax5", 
+            "svdFile": "Misc/SVD/py32f002axx.svd",
+            "showDevDebugOutput":"raw",
+        },
+        {
+            "name": "Upload & Debug",
+            "type": "cortex-debug",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "runToEntryPoint": "main",
+            "executable": "Build/app.elf",
+            "servertype": "pyocd",
+            "interface": "swd",
+            "device": "PY32F002Ax5", 
+            "targetId": "PY32F002Ax5", 
+            "svdFile": "Misc/SVD/py32f002axx.svd",
+            "preLaunchTask": "upload",
+            "showDevDebugOutput":"raw",
+        },
+        {
+            "type": "node-terminal",
+            "name": "Upload only",
+            "preLaunchTask": "upload",
+        }
+    ]
+}

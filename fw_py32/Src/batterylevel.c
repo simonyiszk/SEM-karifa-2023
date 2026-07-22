@@ -108,7 +108,7 @@ void BatteryLevel_Show( void )
     Delay( 100u );
   }
 #endif
-#if( defined( HOPEHELY ) || defined( MACSKAS ) )
+#if( defined( HOPEHELY ) || defined( MACSKAS ) || defined( SIMONYI ) )
   for( u8Index = 0u; u8Index < LEDS_NUM; u8Index++ )
   {
     gau8LEDBrightness[ u8Index ] = 15u;
@@ -336,7 +336,7 @@ void BatteryLevel_Show( void )
   gau8LEDBrightness[ LEDS_NUM - 1u ] = 15u;
 #endif
 
-#ifdef MACSKAS
+#if( defined(MACSKAS) || defined(SIMONYI) )
   // We have 18 LED levels, so we divide this range to 18 levels
   // A floating-point based implementation would be: u8ChargeLevel = round( 18.0f*( f32BatteryVoltage - 2.0f )/0.8f );
   // After simplification, the formula for charge level would be: u8ChargeLevel = round( (18.0f/0.8f)*( 4096.0f*1.2f/( (float)u16MeasuredLevel ) - 2.0f ) ); 
