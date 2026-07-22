@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "command": "workbench.action.debug.start",
+      "arguments": [""],
+      "text": "Debug $(debug-alt)",
+      "tooltip": "Start debugging with current configuration",
+      "alignment": "left",
+      "priority": 3
+    },
+    {
+      "command": "workbench.action.tasks.runTask",
+      "arguments": ["upload"],
+      "text": "Upload $(fold-down)",
+      "tooltip": "Upload firmware",
+      "alignment": "left",
+      "priority": 4
+    },
+    {
+      "command": "workbench.action.tasks.runTask",
+      "arguments": ["build"],
+      "text": "Build $(gear)",
+      "tooltip": "Build and process all files",
+      "alignment": "left",
+      "priority": 5
+    }
+  ]
+}

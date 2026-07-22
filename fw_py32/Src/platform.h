@@ -14,7 +14,7 @@
 /***************************************< Includes >**************************************/
 
 /***************************************< Definitions >**************************************/
-#ifdef __IAR_SYSTEMS_ICC__
+#if defined(__IAR_SYSTEMS_ICC__)
 // Include intrinsic functions
 #include <intrinsics.h>
 
@@ -43,6 +43,36 @@
 //FIXME: for some reason it doesn't want to throw an error if the expression is false
 #define STATIC_ASSERT(expr) typedef char static_assertion[(expr)?1:-1]
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+#elif defined (__GNUC__) // ARM GCC
+
+#include <stdint.h>
+
+// No operation intrinsic macro
+#define NOP() __asm volatile("nop")
+
+// Storage classifiers
+#define DATA
+#define IDATA
+#define XDATA
+#define CODE
+#define REENTRANT
+
+// Bit definition
+#define BIT uint8_t
+
+// Interrupt definition
+#define IT_PRE
+#define ITVECTOR0
+#define ITVECTOR1
+#define ITVECTOR10
+
+// Packed structure
+#define PACKED
+
+// Compile-time size assertion
+#define STATIC_ASSERT(expr) _Static_assert((expr), #expr)
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 #else  // Keil C51

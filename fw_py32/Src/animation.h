@@ -52,6 +52,9 @@
   #define NUM_ANIMATIONS        (14u)  //!< Number of animations implemented (including blackness)
 #endif
 
+#ifdef SIMONYI
+  #define NUM_ANIMATIONS        (9u)  //!< Number of animations implemented (including blackness)
+#endif
 
 /***************************************< Types >**************************************/
 
