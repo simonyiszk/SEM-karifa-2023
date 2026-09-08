@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "karifa")(type "KiCad")(uri "${KIPRJMOD}/karifa.pretty")(options "")(descr ""))
+  (lib (name "rudolf-face")(type "KiCad")(uri "${KIPRJMOD}/rudolf-face")(options "")(descr ""))
+)

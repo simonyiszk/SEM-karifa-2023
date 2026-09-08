@@ -1,0 +1,4 @@
+Kivágás helyett csak silkscreen
+elemet jobban elrejteni
+
+"a kondik az elem két végpontja közé kellenek, a harmadik pedig minél közelebb az IC-hez"

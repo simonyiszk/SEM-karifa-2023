@@ -1,0 +1,32 @@
+{
+    "layout": {
+        "hspace": "3mm",
+        "vspace": "3mm",
+        "hbackbone": "5mm",
+        "rows": "3",
+        "cols": "2"
+    },
+    "source": {
+        "tolerance": "20mm"
+    },
+    "tabs": {
+        "type": "annotation"
+    },
+    "cuts": {
+        "type": "vcuts",
+        "cutcurves": "True",
+        "layer": "User.1"
+    },
+    "framing": {
+        "type": "frame"
+    },
+    "debug": {
+        "drawPartitionLines": "True",
+        "drawBackboneLines": "True",
+        "drawboxes": "True",
+        "trace": "True",
+        "drawtabfail": "True",
+        "deterministic": "True",
+        "drawTabFillet": "True"
+    }
+}
