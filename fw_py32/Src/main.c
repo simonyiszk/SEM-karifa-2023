@@ -16,6 +16,7 @@
 // Own includes
 #include "main.h"
 #include "types.h"
+#include "config.h"
 #include "util.h"
 #include "led.h"
 #include "rgbled.h"
@@ -25,7 +26,10 @@
 
 
 /***************************************< Definitions >**************************************/
-#define BUTTON_PIN     LL_GPIO_IsInputPinSet(GPIOB,LL_GPIO_PIN_3)  //!< Button for selecting animation and turning it off and on
+#define BUTTON_PIN            LL_GPIO_IsInputPinSet(GPIOB,LL_GPIO_PIN_3)  //!< Button for selecting animation and turning it off and on
+#define BUTTON_DEBOUNCE_MS                                         (50u)  //!< Time for button debouncing in ms
+#define BUTTON_LONGPRESS_MS                                      (2000u)  //!< Time for long button press in ms
+#define BUTTON_FASTCLICKS_MS                                      (300u)  //!< Time between two button pushes so it will be registered as fast clicks
 
 
 /***************************************< Types >**************************************/
@@ -45,7 +49,9 @@ static enum
   BUTTON_RELEASING   //!< The button just got released and it's currently bouncing
 } geButtonState;
 
-static U16 gu16ButtonPressTimer;  //!< Timer for the button debouncing state machine
+static U32  gu32ButtonPressTimer;          //!< Timer for the button debouncing state machine
+static U32  gu32ButtonFastClicksTimer;     //!< Timer for the fast clicks detector
+static BOOL gbButtonFastClicksTimerValid;  //!< Timer for the fast clicks detector is running or not
 
 
 /***************************************< Static function definitions >**************************************/
@@ -133,19 +139,19 @@ static void PowerDown( void )
 void main( void )
 {
   U32  u32UptimeCounter = 0u;
-  U16  u16LastCall = 0u;
-  U8   u8CurrentAnimation = 0u;
+  U32  u32LastCall = 0u;
   BOOL bPressedLong = FALSE;
 
   // Initialize system clock
   APP_SystemClockConfig();
   
   // Initialize modules
+  Persist_Init();  // should be the first to init
   Util_Init();
   LED_Init();
+#ifdef RGB_DRIVER
   RGBLED_Init();
-  Animation_Init();
-  Persist_Init();
+#endif
   BatteryLevel_Init();
 
   // Pushbutton @ PB3 --> input with pullup
@@ -155,8 +161,9 @@ void main( void )
   
   // Init global variables in this module
   geButtonState = BUTTON_UNPRESSED;
-  gu16ButtonPressTimer = 0u;
-  u8CurrentAnimation = gsPersistentData.u8AnimationIndex;
+  gu32ButtonPressTimer = 0u;
+  gu32ButtonFastClicksTimer = 0u;
+  gbButtonFastClicksTimerValid = FALSE;
   
   // Start TIM1 update interrupts
   LL_TIM_EnableIT_UPDATE( TIM1 );
@@ -166,26 +173,22 @@ void main( void )
   // This is necessary, to avoid changing animation on power on
   while( 0 == BUTTON_PIN )
   {
-    gu16ButtonPressTimer = Util_GetTimerMs() + 100u;  // 100 ms wait
-    while( gu16ButtonPressTimer > Util_GetTimerMs() );
+    gu32ButtonPressTimer = Util_GetTimerMs() + 100u;  // 100 ms wait
+    while( gu32ButtonPressTimer > Util_GetTimerMs() );
   }
 
   // Measure and show battery level
   BatteryLevel_Show();
-    
+
+  // Animation engine should be initialized after the battery level display
+  Animation_Init();
+
   // Main loop
   while( TRUE )
   {
     // Increment uptime counter
-    if( Util_GetTimerMs() < u16LastCall )
-    {
-      u32UptimeCounter += (U32)( 65535u - u16LastCall + Util_GetTimerMs() + 1u );
-    }
-    else
-    {
-      u32UptimeCounter += (U32)( Util_GetTimerMs() - u16LastCall );
-    }
-    u16LastCall = Util_GetTimerMs();
+    u32UptimeCounter += (U32)( Util_GetTimerMs() - u32LastCall );
+    u32LastCall = Util_GetTimerMs();
     if( u32UptimeCounter >= 18000000u )  // turn off after 5 hours = 5*60*60*1000 msec
     {
       // Go to power-down sleep
@@ -196,11 +199,11 @@ void main( void )
     switch( geButtonState )
     {
       case BUTTON_BOUNCING:   // The button just got pressed and it's currently bouncing
-        if( Util_GetTimerMs() == gu16ButtonPressTimer )  // the debounce timer has just went off
+        if( Util_GetTimerMs() >= gu32ButtonPressTimer )  // the debounce timer has just went off
         {
           if( 0 == BUTTON_PIN )  // if the button is still pressed
           {
-            gu16ButtonPressTimer = Util_GetTimerMs() + 2000u;  // 2 sec long press
+            gu32ButtonPressTimer = Util_GetTimerMs() + BUTTON_LONGPRESS_MS;  // long press
             geButtonState = BUTTON_PRESSED;
           }
           else  // not pressed anymore
@@ -213,25 +216,33 @@ void main( void )
       case BUTTON_PRESSED:    // The button got debounced
         if( 1 == BUTTON_PIN )  // just got released
         {
-          gu16ButtonPressTimer = Util_GetTimerMs() + 50u;  // 50 ms debounce time
+          gu32ButtonPressTimer = Util_GetTimerMs() + BUTTON_DEBOUNCE_MS;  // debounce time
           geButtonState = BUTTON_RELEASING;
-          // Actions for short button press
-          u8CurrentAnimation++;
-          if( u8CurrentAnimation >= NUM_ANIMATIONS-1u )
+          // Check if this is a fast click, or not
+          if( ( TRUE == gbButtonFastClicksTimerValid )
+           && ( Util_GetTimerMs() - gu32ButtonFastClicksTimer < BUTTON_FASTCLICKS_MS ) )
           {
-            u8CurrentAnimation = 0u;
+            // Fast click
+            Animation_SetLoop( TRUE );
           }
-          Animation_Set( u8CurrentAnimation );
-          // Save it
+          else
+          {
+            // Actions for normal short button press
+            Animation_SetLoop( FALSE );
+            Animation_NextAnimation();
+          }
+          // Start/restart fast click timer
+          gu32ButtonFastClicksTimer = Util_GetTimerMs();
+          gbButtonFastClicksTimerValid = TRUE;
+          // Save animation state
           Persist_Save();
         }
-        else if( Util_GetTimerMs() == gu16ButtonPressTimer )  // the long press timer has just went off
+        else if( Util_GetTimerMs() >= gu32ButtonPressTimer )  // the long press timer has just went off
         {
           geButtonState = BUTTON_LONGPRESS;
           // Actions for long button press
           // Signal that it will be shut down by setting a completely black animation
-          u8CurrentAnimation = NUM_ANIMATIONS-1u;
-          Animation_Set( u8CurrentAnimation );
+          Animation_SetDarkness();
           bPressedLong = TRUE;
         }
         break;
@@ -239,17 +250,17 @@ void main( void )
       case BUTTON_LONGPRESS:  // The button has been pressed for long
         if( 1 == BUTTON_PIN )  // just got released
         {
-          gu16ButtonPressTimer = Util_GetTimerMs() + 50u;  // 50 ms debounce time
+          gu32ButtonPressTimer = Util_GetTimerMs() + BUTTON_DEBOUNCE_MS;  // debounce time
           geButtonState = BUTTON_RELEASING;
         }
         break;
       
       case BUTTON_RELEASING:  // The button just got released and it's currently bouncing
-        if( Util_GetTimerMs() == gu16ButtonPressTimer )  // the debounce timer has just went off
+        if( Util_GetTimerMs() >= gu32ButtonPressTimer )  // the debounce timer has just went off
         {
           if( 1 == BUTTON_PIN )  // if the button is released
           {
-            gu16ButtonPressTimer = Util_GetTimerMs() + 2000u;  // 2 sec long press
+            gu32ButtonPressTimer = Util_GetTimerMs() + BUTTON_LONGPRESS_MS;  // long press
             geButtonState = BUTTON_UNPRESSED;
             
             if( TRUE == bPressedLong )
@@ -260,7 +271,7 @@ void main( void )
           }
           else  // still pushed
           {
-            gu16ButtonPressTimer = Util_GetTimerMs() + 50u;  // 50 ms debounce time
+            gu32ButtonPressTimer = Util_GetTimerMs() + BUTTON_DEBOUNCE_MS;  // debounce time
           }
         }
         break;
@@ -268,8 +279,18 @@ void main( void )
       default:  // BUTTON_UNPRESSED -- The button is not pressed
         if( 0 == BUTTON_PIN )  // if the button has just got pressed
         {
-          gu16ButtonPressTimer = Util_GetTimerMs() + 50u;  // 50 ms debounce time
+          gu32ButtonPressTimer = Util_GetTimerMs() + BUTTON_DEBOUNCE_MS;  // debounce time
           geButtonState = BUTTON_BOUNCING;
+        }
+        // Check if the fast click detector is running
+        if( TRUE == gbButtonFastClicksTimerValid )
+        {          
+          // If button was pushed too long ago
+          if( Util_GetTimerMs() - gu32ButtonFastClicksTimer > 2000u )
+          {
+            // Disable timer
+            gbButtonFastClicksTimerValid = FALSE;
+          }
         }
         break;
     }

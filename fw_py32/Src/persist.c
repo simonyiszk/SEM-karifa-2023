@@ -1,5 +1,5 @@
 /*! *******************************************************************************************************
-* Copyright (c) 2021-2023 Hekk_Elek
+* Copyright (c) 2021-2025 Hekk_Elek
 *
 * \file persist.h
 *
@@ -17,6 +17,7 @@
 #include "types.h"
 #include "util.h"
 #include "persist.h"
+#include "animation.h"
 
 
 /***************************************< Definitions >**************************************/
@@ -31,13 +32,13 @@
 
 
 /***************************************< Global variables >**************************************/
-S_PERSIST       gsPersistentData;  //!< Globally accessible persistent data structure
-S_PERSIST CODE* gpsNextSaveSlot;   //!< Address of the next persistent save slot
+S_PERSIST  gsPersistentData;  //!< Globally accessible persistent data structure
+S_PERSIST* gpsNextSaveSlot;   //!< Address of the next persistent save slot
 
 
 /***************************************< Static function definitions >**************************************/
-static BOOL IsSaveBlockEmpty( S_PERSIST* psLocalCopy, S_PERSIST CODE* psSaveBlock );
-static BOOL SearchForLatestSave( S_PERSIST CODE** ppsNextEmpty );
+static BOOL IsSaveBlockEmpty( S_PERSIST* psLocalCopy, S_PERSIST* psSaveBlock );
+static BOOL SearchForLatestSave( S_PERSIST** ppsNextEmpty );
 static void Flash_Write( U32 u32Address, U8* pu8Data, U8 u8DataLength );
 static void Flash_EraseSector( U32 u32Address );
 static void Flash_Read( U32 u32Address, U8* pu8Data, U8 u8DataLength );
@@ -51,7 +52,7 @@ static void Flash_Read( U32 u32Address, U8* pu8Data, U8 u8DataLength );
 //! \return TRUE if the block is empty; FALSE if not
 //! \global -
 //-----------------------------------------------------------------------------
-static BOOL IsSaveBlockEmpty( S_PERSIST* psTemp, S_PERSIST CODE* psSaveBlock )
+static BOOL IsSaveBlockEmpty( S_PERSIST* psTemp, S_PERSIST* psSaveBlock )
 {
   BOOL bEmpty = TRUE;
   U8  u8ByteIndex;
@@ -74,23 +75,24 @@ static BOOL IsSaveBlockEmpty( S_PERSIST* psTemp, S_PERSIST CODE* psSaveBlock )
 //! \global gsPersistentData
 //! \note   Takes some time, should only be called in init block.
 //-----------------------------------------------------------------------------
-static BOOL SearchForLatestSave( S_PERSIST CODE** ppsNextEmpty )
+static BOOL SearchForLatestSave( S_PERSIST** ppsNextEmpty )
 {
   BOOL bEmpty = FALSE;
   U16 u16SaveIndex;
   BOOL bReturn = FALSE;
-  S_PERSIST CODE* psSave = (S_PERSIST CODE*)SAVE_BASEADDRESS;
+  S_PERSIST* psSave = (S_PERSIST*)SAVE_BASEADDRESS;
   S_PERSIST  sLocalCopy;
   
   for( u16SaveIndex = 0u; u16SaveIndex < ( SAVE_SIZE / sizeof( S_PERSIST ) ); u16SaveIndex++ )
   {
     Flash_Read( (U32)psSave, (U8*)&sLocalCopy, sizeof( S_PERSIST ) );
-    if( sLocalCopy.u16CRC == Util_CRC16( (U8*)&sLocalCopy, sizeof( S_PERSIST ) - sizeof( U16 ) ) )
+    if( ( sLocalCopy.u16CRC == Util_CRC16( (U8*)&sLocalCopy, sizeof( S_PERSIST ) - sizeof( U16 ) ) )
+     && ( sLocalCopy.u8AnimationIndex < NUM_ANIMATIONS ) )  // basic validity test
     {
       memcpy( &gsPersistentData, &sLocalCopy, sizeof( S_PERSIST ) );
       bReturn = TRUE;
     }
-    else  // bad CRC
+    else  // bad CRC, or bad data
     {
       // Check if this block is empty
       bEmpty = IsSaveBlockEmpty( &sLocalCopy, psSave );
@@ -109,7 +111,7 @@ static BOOL SearchForLatestSave( S_PERSIST CODE** ppsNextEmpty )
     // If the persistent data was correct
     if( TRUE == bReturn )
     {
-      gpsNextSaveSlot = (S_PERSIST CODE*)SAVE_BASEADDRESS;
+      gpsNextSaveSlot = (S_PERSIST*)SAVE_BASEADDRESS;
       Persist_Save();
     }
   }
@@ -249,7 +251,7 @@ void Persist_Init( void )
   else  // Default values
   {
     memset( &gsPersistentData, 0, sizeof( S_PERSIST ) );
-    gpsNextSaveSlot = (S_PERSIST CODE*)SAVE_BASEADDRESS;
+    gpsNextSaveSlot = (S_PERSIST*)SAVE_BASEADDRESS;
   }
 }
 

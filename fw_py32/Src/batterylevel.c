@@ -1,5 +1,5 @@
 /*! *******************************************************************************************************
-* Copyright (c) 2022-2023 Hekk_Elek
+* Copyright (c) 2022-2025 Hekk_Elek
 *
 * \file batterylevel.c
 *
@@ -33,20 +33,20 @@
 
 
 /***************************************< Static function definitions >**************************************/
-void Delay( U16 u16DelayMs );
+void Delay( U32 u32DelayMs );
 
 
 /***************************************< Private functions >**************************************/
 //----------------------------------------------------------------------------
 //! \brief  Waits for the given number of milliseconds
-//! \param  u16DelayMs: wait time
+//! \param  u32DelayMs: wait time
 //! \return -
 //! \global -
 //! \note   Should be called from init block
 //-----------------------------------------------------------------------------
-void Delay( U16 u16DelayMs )
+void Delay( U32 u32DelayMs )
 {
-  U16 u16DelayEnd = Util_GetTimerMs() + u16DelayMs;
+  U16 u16DelayEnd = Util_GetTimerMs() + u32DelayMs;
   while( Util_GetTimerMs() < u16DelayEnd );
 }
 
@@ -100,7 +100,7 @@ void BatteryLevel_Show( void )
 
   // Startup animation
   // After it, all LED brightness will be set to maximum, to ensure a significant current draw during measurement
-#if defined( KARIFA ) || defined( RUDOLF )
+#if( defined( KARIFA ) || defined( HOEMBER ) || defined( AJANDEKCSOMAG ) || defined( RUDOLF ) || defined( HULLOCSILLAG ) )
   for( u8Index = 0u; u8Index < LEDS_NUM/2u; u8Index++ )
   {
     gau8LEDBrightness[ u8Index ] = 15u;
@@ -108,15 +108,7 @@ void BatteryLevel_Show( void )
     Delay( 100u );
   }
 #endif
-#ifdef HOEMBER
-  for( u8Index = 0u; u8Index < LEDS_NUM/2u; u8Index++ )
-  {
-    gau8LEDBrightness[ u8Index ] = 15u;
-    gau8LEDBrightness[ LEDS_NUM - u8Index - 1u ] = 15u;
-    Delay( 100u );
-  }
-#endif
-#ifdef HOPEHELY
+#if( defined( HOPEHELY ) || defined( MACSKAS ) || defined( SIMONYI ) )
   for( u8Index = 0u; u8Index < LEDS_NUM; u8Index++ )
   {
     gau8LEDBrightness[ u8Index ] = 15u;
@@ -131,11 +123,13 @@ void BatteryLevel_Show( void )
     Delay( 100u );
   }
 #endif
-#ifdef AJANDEKCSOMAG
+#if( defined( ANGYAL ) )
+  gau8LEDBrightness[ LEDS_NUM - 1u ] = 15u;
+  Delay( 100u );
   for( u8Index = 0u; u8Index < LEDS_NUM/2u; u8Index++ )
   {
     gau8LEDBrightness[ u8Index ] = 15u;
-    gau8LEDBrightness[ LEDS_NUM - u8Index - 1u ] = 15u;
+    gau8LEDBrightness[ LEDS_NUM - u8Index - 2u ] = 15u;
     Delay( 100u );
   }
 #endif
@@ -160,7 +154,8 @@ void BatteryLevel_Show( void )
   // Charge level formula:
   // As CR2032 batteries quickly drop to 2.8V under load, we assume that 2.8V means full charge
   // And since at 2.0V our LEDs can be barely seen, at 2.0V we assume that our battery is completely depleted
-#if defined( KARIFA ) || defined( RUDOLF )
+  
+#if( defined( KARIFA ) || defined( HOEMBER ) || defined( RUDOLF ) )
   // We have 6 + 1 LED levels, so we divide this range to 7 levels
   // A floating-point based implementation would be: u8ChargeLevel = round( 7.0f*( f32BatteryVoltage - 2.0f )/0.8f );
   // After simplification, the formula for charge level would be: u8ChargeLevel = round( ( 42649.6f / u16MeasuredLevel ) - 17.5f )
@@ -189,50 +184,15 @@ void BatteryLevel_Show( void )
   }
   if( u8ChargeLevel > LEDS_NUM/2u )
   {
-    gau8RGBLEDs[ 0u ] = 15u;  // Light up red LED
-    gau8RGBLEDs[ 1u ] = 0u;   // green stays dark
-    gau8RGBLEDs[ 2u ] = 0u;   // blue stays dark
-  }
-  else
-  {
-    gau8RGBLEDs[ 0u ] = 0u;
-    gau8RGBLEDs[ 1u ] = 0u;
-    gau8RGBLEDs[ 2u ] = 0u;
-  }
-#endif
-
 #ifdef HOEMBER
-  // We have 6 + 1 LED levels, so we divide this range to 7 levels
-  // A floating-point based implementation would be: u8ChargeLevel = round( 7.0f*( f32BatteryVoltage - 2.0f )/0.8f );
-  // After simplification, the formula for charge level would be: u8ChargeLevel = round( ( 42649.6f / u16MeasuredLevel ) - 17.5f )
-  if( u16MeasuredLevel >= 2457u )  // If the voltage is below 2.0V
-  {
-    u8ChargeLevel = 0u;
-  }
-  else
-  {
-    // 
-    u8ChargeLevel = ( ( 170600u / u16MeasuredLevel ) - 70u )>>2u;
-  }
-  // Display the charge level on the LEDs
-  for( u8Index = 0u; u8Index < LEDS_NUM/2u; u8Index++ )
-  {
-    if( u8ChargeLevel >= u8Index )
-    {
-      gau8LEDBrightness[ u8Index ] = 15u;
-      gau8LEDBrightness[ LEDS_NUM - u8Index - 1u ] = 15u;
-    }
-    else
-    {
-      gau8LEDBrightness[ u8Index ] = 0u;
-      gau8LEDBrightness[ LEDS_NUM - u8Index - 1u ] = 0u;
-    }
-  }
-  if( u8ChargeLevel > LEDS_NUM/2u )
-  {
     gau8RGBLEDs[ 0u ] = 15u;  // Light up red LED
     gau8RGBLEDs[ 1u ] = 15u;  // Light up green LED too
     gau8RGBLEDs[ 2u ] = 0u;   // blue stays dark
+#else
+    gau8RGBLEDs[ 0u ] = 15u;  // Light up red LED
+    gau8RGBLEDs[ 1u ] = 0u;   // green stays dark
+    gau8RGBLEDs[ 2u ] = 0u;   // blue stays dark
+#endif
   }
   else
   {
@@ -317,8 +277,8 @@ void BatteryLevel_Show( void )
     gau8LEDBrightness[ 1u ] = 0u;
   }
 #endif
-  
-#ifdef AJANDEKCSOMAG
+
+#if( defined(AJANDEKCSOMAG) || defined(HULLOCSILLAG) )
   // We have 6 LED levels, so we divide this range to 6 levels
   // A floating-point based implementation would be: u8ChargeLevel = round( 6.0f*( f32BatteryVoltage - 2.0f )/0.8f );
   // After simplification, the formula for charge level would be: u8ChargeLevel = round( ( 36864.0f / u16MeasuredLevel ) - 15.0f )
@@ -345,7 +305,64 @@ void BatteryLevel_Show( void )
     }
   }
 #endif
-  
+
+#if( defined( ANGYAL ) )
+  // We have 7 LED levels, so we divide this range to 7 levels
+  // A floating-point based implementation would be: u8ChargeLevel = round( 7.0f*( f32BatteryVoltage - 2.0f )/0.8f );
+  // After simplification, the formula for charge level would be: u8ChargeLevel = round( ( 42649.6f / u16MeasuredLevel ) - 17.5f )
+  if( u16MeasuredLevel >= 2457u )  // If the voltage is below 2.0V
+  {
+    u8ChargeLevel = 0u;
+  }
+  else
+  {
+    // 
+    u8ChargeLevel = ( ( 170600u / u16MeasuredLevel ) - 70u )>>2u;
+  }
+  // Display the charge level on the LEDs
+  for( u8Index = 0u; u8Index < LEDS_NUM/2u; u8Index++ )
+  {
+    if( u8ChargeLevel > u8Index )
+    {
+      gau8LEDBrightness[ u8Index ] = 15u;
+      gau8LEDBrightness[ LEDS_NUM - u8Index - 2u ] = 15u;
+    }
+    else
+    {
+      gau8LEDBrightness[ u8Index ] = 0u;
+      gau8LEDBrightness[ LEDS_NUM - u8Index - 2u ] = 0u;
+    }
+  }
+  gau8LEDBrightness[ LEDS_NUM - 1u ] = 15u;
+#endif
+
+#if( defined(MACSKAS) || defined(SIMONYI) )
+  // We have 18 LED levels, so we divide this range to 18 levels
+  // A floating-point based implementation would be: u8ChargeLevel = round( 18.0f*( f32BatteryVoltage - 2.0f )/0.8f );
+  // After simplification, the formula for charge level would be: u8ChargeLevel = round( (18.0f/0.8f)*( 4096.0f*1.2f/( (float)u16MeasuredLevel ) - 2.0f ) ); 
+  // Or in other words: u8ChargeLevel = round( ( 110592.0f / u16MeasuredLevel ) - 45.0f )
+  if( u16MeasuredLevel >= 2457u )  // If the voltage is below 2.0V
+  {
+    u8ChargeLevel = 0u;
+  }
+  else
+  {
+    u8ChargeLevel = ( 110592u / u16MeasuredLevel ) - 45u;
+  }
+  // Display the charge level on the LEDs
+  for( u8Index = 1u; u8Index < LEDS_NUM; u8Index++ )
+  {
+    if( u8ChargeLevel >= u8Index-1u )
+    {
+      gau8LEDBrightness[ u8Index ] = 15u;
+    }
+    else
+    {
+      gau8LEDBrightness[ u8Index ] = 0u;
+    }
+  }
+#endif
+    
   // Wait, so the user can read the battery charge level
   Delay( 2000u );
 }

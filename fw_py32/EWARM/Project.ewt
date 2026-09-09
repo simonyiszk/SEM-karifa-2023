@@ -9,9 +9,9 @@
         <debug>1</debug>
         <settings>
             <name>C-STAT</name>
-            <archiveVersion>518</archiveVersion>
+            <archiveVersion>521</archiveVersion>
             <data>
-                <version>518</version>
+                <version>521</version>
                 <cstatargs>
                     <useExtraArgs>0</useExtraArgs>
                     <extraArgs></extraArgs>
@@ -25,7 +25,7 @@
                     <outputDir>karifa/C-STAT</outputDir>
                 </cstatargs>
                 <cstat_settings>
-                    <cstat_version>2.6.0</cstat_version>
+                    <cstat_version>2.9.0</cstat_version>
                     <checks_tree>
                         <package enabled="true" name="STDCHECKS">
                             <group enabled="true" name="ARR">
@@ -194,7 +194,6 @@
                                 <check enabled="true" name="MEM-free-no-use" />
                                 <check enabled="true" name="MEM-free-op" />
                                 <check enabled="true" name="MEM-free-struct-field" />
-                                <check enabled="true" name="MEM-free-variable-alias" />
                                 <check enabled="true" name="MEM-free-variable" />
                                 <check enabled="true" name="MEM-leak-alias" />
                                 <check enabled="false" name="MEM-leak" />
@@ -257,6 +256,7 @@
                                 <check enabled="false" name="RED-no-effect" />
                                 <check enabled="true" name="RED-self-assign" />
                                 <check enabled="true" name="RED-unused-assign" />
+                                <check enabled="false" name="RED-unused-enum-val" />
                                 <check enabled="false" name="RED-unused-param" />
                                 <check enabled="false" name="RED-unused-return-val" />
                                 <check enabled="false" name="RED-unused-val" />
@@ -279,7 +279,6 @@
                                 <check enabled="false" name="SPC-uninit-arr-all" />
                                 <check enabled="true" name="SPC-uninit-struct-field-heap" />
                                 <check enabled="false" name="SPC-uninit-struct-field" />
-                                <check enabled="true" name="SPC-uninit-struct" />
                                 <check enabled="true" name="SPC-uninit-var-all" />
                                 <check enabled="true" name="SPC-uninit-var-some" />
                                 <check enabled="false" name="SPC-volatile-reads" />
@@ -290,6 +289,7 @@
                             </group>
                             <group enabled="true" name="SWITCH">
                                 <check enabled="true" name="SWITCH-fall-through" />
+                                <check enabled="false" name="SWITCH-missing-enum-val" />
                             </group>
                             <group enabled="true" name="THROW">
                                 <check enabled="false" name="THROW-empty" />
@@ -375,7 +375,6 @@
                                 <check enabled="true" name="CERT-EXP33-C_c" />
                                 <check enabled="true" name="CERT-EXP33-C_d" />
                                 <check enabled="true" name="CERT-EXP33-C_e" />
-                                <check enabled="true" name="CERT-EXP33-C_f" />
                                 <check enabled="true" name="CERT-EXP34-C_a" />
                                 <check enabled="true" name="CERT-EXP34-C_b" />
                                 <check enabled="true" name="CERT-EXP34-C_c" />
@@ -485,7 +484,6 @@
                                 <check enabled="true" name="CERT-MSC40-C_b" />
                                 <check enabled="true" name="CERT-MSC40-C_c" />
                                 <check enabled="true" name="CERT-MSC40-C_d" />
-                                <check enabled="false" name="CERT-MSC40-C_e" />
                                 <check enabled="true" name="CERT-MSC41-C_a" />
                                 <check enabled="true" name="CERT-MSC41-C_b" />
                                 <check enabled="true" name="CERT-MSC41-C_c" />
@@ -595,6 +593,9 @@
                                 <check enabled="true" name="MISRAC2004-2.3" />
                                 <check enabled="false" name="MISRAC2004-2.4" />
                             </group>
+                            <group enabled="true" name="MISRAC2004-4">
+                                <check enabled="true" name="MISRAC2004-4.1" />
+                            </group>
                             <group enabled="true" name="MISRAC2004-5">
                                 <check enabled="true" name="MISRAC2004-5.1" />
                                 <check enabled="true" name="MISRAC2004-5.2" />
@@ -624,6 +625,7 @@
                                 <check enabled="true" name="MISRAC2004-8.7" />
                                 <check enabled="true" name="MISRAC2004-8.8_a" />
                                 <check enabled="true" name="MISRAC2004-8.8_b" />
+                                <check enabled="true" name="MISRAC2004-8.9" />
                                 <check enabled="true" name="MISRAC2004-8.10" />
                                 <check enabled="true" name="MISRAC2004-8.12" />
                             </group>
@@ -844,8 +846,7 @@
                                 <check enabled="true" name="MISRAC2012-Rule-1.3_t" />
                                 <check enabled="true" name="MISRAC2012-Rule-1.3_u" />
                                 <check enabled="true" name="MISRAC2012-Rule-1.3_v" />
-                                <check enabled="true" name="MISRAC2012-Rule-1.4_a" />
-                                <check enabled="true" name="MISRAC2012-Rule-1.4_b" />
+                                <check enabled="true" name="MISRAC2012-Rule-1.4" />
                                 <check enabled="false" name="MISRAC2012-Rule-1.5_a" />
                                 <check enabled="true" name="MISRAC2012-Rule-1.5_b" />
                                 <check enabled="true" name="MISRAC2012-Rule-1.5_c" />
@@ -865,10 +866,16 @@
                                 <check enabled="false" name="MISRAC2012-Rule-2.5" />
                                 <check enabled="false" name="MISRAC2012-Rule-2.6" />
                                 <check enabled="false" name="MISRAC2012-Rule-2.7" />
+                                <check enabled="false" name="MISRAC2012-Rule-2.8_a" />
+                                <check enabled="false" name="MISRAC2012-Rule-2.8_b" />
+                                <check enabled="false" name="MISRAC2012-Rule-2.8_c" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-3">
                                 <check enabled="true" name="MISRAC2012-Rule-3.1" />
                                 <check enabled="true" name="MISRAC2012-Rule-3.2" />
+                            </group>
+                            <group enabled="true" name="MISRAC2012-Rule-4">
+                                <check enabled="true" name="MISRAC2012-Rule-4.1" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-5">
                                 <check enabled="true" name="MISRAC2012-Rule-5.1" />
@@ -897,6 +904,7 @@
                                 <check enabled="true" name="MISRAC2012-Rule-7.4_a" />
                                 <check enabled="true" name="MISRAC2012-Rule-7.4_b" />
                                 <check enabled="true" name="MISRAC2012-Rule-7.5" />
+                                <check enabled="true" name="MISRAC2012-Rule-7.6" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-8">
                                 <check enabled="true" name="MISRAC2012-Rule-8.1" />
@@ -906,6 +914,7 @@
                                 <check enabled="true" name="MISRAC2012-Rule-8.4" />
                                 <check enabled="true" name="MISRAC2012-Rule-8.5_a" />
                                 <check enabled="true" name="MISRAC2012-Rule-8.5_b" />
+                                <check enabled="true" name="MISRAC2012-Rule-8.6" />
                                 <check enabled="false" name="MISRAC2012-Rule-8.7" />
                                 <check enabled="false" name="MISRAC2012-Rule-8.9_a" />
                                 <check enabled="false" name="MISRAC2012-Rule-8.9_b" />
@@ -921,15 +930,15 @@
                             <group enabled="true" name="MISRAC2012-Rule-9">
                                 <check enabled="true" name="MISRAC2012-Rule-9.1_a" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.1_b" />
-                                <check enabled="true" name="MISRAC2012-Rule-9.1_c" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.1_d" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.1_e" />
-                                <check enabled="true" name="MISRAC2012-Rule-9.1_f" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.2" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.3" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.4" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.5_a" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.5_b" />
+                                <check enabled="true" name="MISRAC2012-Rule-9.6" />
+                                <check enabled="true" name="MISRAC2012-Rule-9.7" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-10">
                                 <check enabled="true" name="MISRAC2012-Rule-10.1_R2" />
@@ -959,6 +968,7 @@
                                 <check enabled="true" name="MISRAC2012-Rule-11.7" />
                                 <check enabled="true" name="MISRAC2012-Rule-11.8" />
                                 <check enabled="true" name="MISRAC2012-Rule-11.9" />
+                                <check enabled="true" name="MISRAC2012-Rule-11.10" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-12">
                                 <check enabled="false" name="MISRAC2012-Rule-12.1" />
@@ -966,6 +976,7 @@
                                 <check enabled="false" name="MISRAC2012-Rule-12.3" />
                                 <check enabled="false" name="MISRAC2012-Rule-12.4" />
                                 <check enabled="true" name="MISRAC2012-Rule-12.5" />
+                                <check enabled="true" name="MISRAC2012-Rule-12.6" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-13">
                                 <check enabled="true" name="MISRAC2012-Rule-13.1" />
@@ -1043,6 +1054,7 @@
                                 <check enabled="true" name="MISRAC2012-Rule-18.7" />
                                 <check enabled="true" name="MISRAC2012-Rule-18.8" />
                                 <check enabled="true" name="MISRAC2012-Rule-18.9" />
+                                <check enabled="true" name="MISRAC2012-Rule-18.10" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-19">
                                 <check enabled="true" name="MISRAC2012-Rule-19.1" />
@@ -1093,6 +1105,7 @@
                                 <check enabled="false" name="MISRAC2012-Rule-21.22" />
                                 <check enabled="false" name="MISRAC2012-Rule-21.23" />
                                 <check enabled="false" name="MISRAC2012-Rule-21.24" />
+                                <check enabled="true" name="MISRAC2012-Rule-21.25" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-22">
                                 <check enabled="true" name="MISRAC2012-Rule-22.1_a" />
@@ -1136,6 +1149,10 @@
                                 <check enabled="false" name="MISRAC++2008-0-1-8" />
                                 <check enabled="true" name="MISRAC++2008-0-1-9" />
                                 <check enabled="true" name="MISRAC++2008-0-1-11" />
+                                <check enabled="true" name="MISRAC++2008-0-1-12" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-0.2">
+                                <check enabled="false" name="MISRAC++2008-0-1-5" />
                             </group>
                             <group enabled="true" name="MISRAC++2008-0-2">
                                 <check enabled="true" name="MISRAC++2008-0-2-1" />
@@ -1157,14 +1174,26 @@
                                 <check enabled="true" name="MISRAC++2008-2-10-6" />
                             </group>
                             <group enabled="true" name="MISRAC++2008-2-13">
+                                <check enabled="true" name="MISRAC++2008-2-13-1" />
                                 <check enabled="true" name="MISRAC++2008-2-13-2" />
                                 <check enabled="true" name="MISRAC++2008-2-13-3" />
                                 <check enabled="true" name="MISRAC++2008-2-13-4_a" />
                                 <check enabled="true" name="MISRAC++2008-2-13-4_b" />
+                                <check enabled="true" name="MISRAC++2008-2-13-5" />
                             </group>
                             <group enabled="true" name="MISRAC++2008-3-1">
-                                <check enabled="true" name="MISRAC++2008-3-1-1" />
+                                <check enabled="true" name="MISRAC++2008-3-1-1_a" />
+                                <check enabled="true" name="MISRAC++2008-3-1-1_b" />
+                                <check enabled="true" name="MISRAC++2008-3-1-2" />
                                 <check enabled="true" name="MISRAC++2008-3-1-3" />
+                                <check enabled="true" name="MISRAC++2008-3-3-1" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2008-3-2">
+                                <check enabled="true" name="MISRAC++2008-3-2-1" />
+                                <check enabled="true" name="MISRAC++2008-3-2-2" />
+                                <check enabled="true" name="MISRAC++2008-3-2-3_a" />
+                                <check enabled="true" name="MISRAC++2008-3-2-3_b" />
+                                <check enabled="true" name="MISRAC++2008-3-2-4" />
                             </group>
                             <group enabled="true" name="MISRAC++2008-3-9">
                                 <check enabled="false" name="MISRAC++2008-3-9-2" />
@@ -1205,6 +1234,7 @@
                                 <check enabled="true" name="MISRAC++2008-5-0-21" />
                             </group>
                             <group enabled="true" name="MISRAC++2008-5-2">
+                                <check enabled="true" name="MISRAC++2008-5-2-2" />
                                 <check enabled="true" name="MISRAC++2008-5-2-4" />
                                 <check enabled="true" name="MISRAC++2008-5-2-5" />
                                 <check enabled="true" name="MISRAC++2008-5-2-6" />
@@ -1213,6 +1243,7 @@
                                 <check enabled="false" name="MISRAC++2008-5-2-10" />
                                 <check enabled="true" name="MISRAC++2008-5-2-11_a" />
                                 <check enabled="true" name="MISRAC++2008-5-2-11_b" />
+                                <check enabled="true" name="MISRAC++2008-5-2-12" />
                             </group>
                             <group enabled="true" name="MISRAC++2008-5-3">
                                 <check enabled="true" name="MISRAC++2008-5-3-1" />
@@ -1274,6 +1305,10 @@
                             </group>
                             <group enabled="true" name="MISRAC++2008-7-2">
                                 <check enabled="true" name="MISRAC++2008-7-2-1" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2008-7-3">
+                                <check enabled="true" name="MISRAC++2008-7-3-1" />
+                                <check enabled="true" name="MISRAC++2008-7-3-2" />
                             </group>
                             <group enabled="true" name="MISRAC++2008-7-4">
                                 <check enabled="true" name="MISRAC++2008-7-4-3" />
@@ -1337,6 +1372,7 @@
                                 <check enabled="true" name="MISRAC++2008-15-5-1" />
                             </group>
                             <group enabled="true" name="MISRAC++2008-16-0">
+                                <check enabled="false" name="MISRAC++2008-16-0-1" />
                                 <check enabled="true" name="MISRAC++2008-16-0-3" />
                                 <check enabled="true" name="MISRAC++2008-16-0-4" />
                             </group>
@@ -1376,6 +1412,222 @@
                             </group>
                             <group enabled="true" name="MISRAC++2008-27-0">
                                 <check enabled="true" name="MISRAC++2008-27-0-1" />
+                            </group>
+                        </package>
+                        <package enabled="false" name="MISRAC++2023">
+                            <group enabled="true" name="MISRAC++2023-0.0">
+                                <check enabled="true" name="MISRAC++2023-0.0.1" />
+                                <check enabled="false" name="MISRAC++2023-0.0.2_a" />
+                                <check enabled="false" name="MISRAC++2023-0.0.2_b" />
+                                <check enabled="false" name="MISRAC++2023-0.0.2_c" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-0.1">
+                                <check enabled="false" name="MISRAC++2023-0.1.1_a" />
+                                <check enabled="false" name="MISRAC++2023-0.1.1_b" />
+                                <check enabled="true" name="MISRAC++2023-0.1.2" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-0.2">
+                                <check enabled="false" name="MISRAC++2023-0.2.1" />
+                                <check enabled="true" name="MISRAC++2023-0.2.2_a" />
+                                <check enabled="true" name="MISRAC++2023-0.2.2_b" />
+                                <check enabled="false" name="MISRAC++2023-0.2.3" />
+                                <check enabled="false" name="MISRAC++2023-0.2.4" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-4.1">
+                                <check enabled="false" name="MISRAC++2023-4.1.2_a" />
+                                <check enabled="false" name="MISRAC++2023-4.1.2_b" />
+                                <check enabled="false" name="MISRAC++2023-4.1.2_c" />
+                                <check enabled="false" name="MISRAC++2023-4.1.2_d" />
+                                <check enabled="false" name="MISRAC++2023-4.1.2_e" />
+                                <check enabled="false" name="MISRAC++2023-4.1.2_f" />
+                                <check enabled="false" name="MISRAC++2023-4.1.2_g" />
+                                <check enabled="false" name="MISRAC++2023-4.1.2_h" />
+                                <check enabled="false" name="MISRAC++2023-4.1.2_i" />
+                                <check enabled="false" name="MISRAC++2023-4.1.2_j" />
+                                <check enabled="false" name="MISRAC++2023-4.1.2_k" />
+                                <check enabled="false" name="MISRAC++2023-4.1.2_l" />
+                                <check enabled="false" name="MISRAC++2023-4.1.2_m" />
+                                <check enabled="false" name="MISRAC++2023-4.1.2_n" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-5.7">
+                                <check enabled="true" name="MISRAC++2023-5.7.1" />
+                                <check enabled="false" name="MISRAC++2023-5.7.2_a" />
+                                <check enabled="true" name="MISRAC++2023-5.7.2_b" />
+                                <check enabled="true" name="MISRAC++2023-5.7.3" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-5.10">
+                                <check enabled="true" name="MISRAC++2023-5.10.1" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-5.13">
+                                <check enabled="true" name="MISRAC++2023-5.13.1" />
+                                <check enabled="true" name="MISRAC++2023-5.13.2" />
+                                <check enabled="true" name="MISRAC++2023-5.13.3" />
+                                <check enabled="true" name="MISRAC++2023-5.13.4" />
+                                <check enabled="true" name="MISRAC++2023-5.13.5" />
+                                <check enabled="true" name="MISRAC++2023-5.13.6" />
+                                <check enabled="true" name="MISRAC++2023-5.13.7" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-6.0">
+                                <check enabled="true" name="MISRAC++2023-6.0.1_a" />
+                                <check enabled="true" name="MISRAC++2023-6.0.1_b" />
+                                <check enabled="false" name="MISRAC++2023-6.0.2" />
+                                <check enabled="false" name="MISRAC++2023-6.0.3" />
+                                <check enabled="true" name="MISRAC++2023-6.0.4" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-6.2">
+                                <check enabled="true" name="MISRAC++2023-6.2.1" />
+                                <check enabled="true" name="MISRAC++2023-6.2.3_a" />
+                                <check enabled="true" name="MISRAC++2023-6.2.3_b" />
+                                <check enabled="true" name="MISRAC++2023-6.2.4_a" />
+                                <check enabled="true" name="MISRAC++2023-6.2.4_b" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-6.4">
+                                <check enabled="true" name="MISRAC++2023-6.4.1" />
+                                <check enabled="true" name="MISRAC++2023-6.4.2" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-6.5">
+                                <check enabled="false" name="MISRAC++2023-6.5.1" />
+                                <check enabled="false" name="MISRAC++2023-6.5.2" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-6.7">
+                                <check enabled="true" name="MISRAC++2023-6.7.1" />
+                                <check enabled="true" name="MISRAC++2023-6.7.2" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-6.8">
+                                <check enabled="true" name="MISRAC++2023-6.8.2_a" />
+                                <check enabled="true" name="MISRAC++2023-6.8.2_b" />
+                                <check enabled="true" name="MISRAC++2023-6.8.3_a" />
+                                <check enabled="true" name="MISRAC++2023-6.8.3_b" />
+                                <check enabled="true" name="MISRAC++2023-6.8.3_c" />
+                                <check enabled="true" name="MISRAC++2023-6.8.3_d" />
+                                <check enabled="false" name="MISRAC++2023-6.8.4" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-6.9">
+                                <check enabled="true" name="MISRAC++2023-6.9.1" />
+                                <check enabled="false" name="MISRAC++2023-6.9.2" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-7.0">
+                                <check enabled="true" name="MISRAC++2023-7.0.1" />
+                                <check enabled="true" name="MISRAC++2023-7.0.2" />
+                                <check enabled="true" name="MISRAC++2023-7.0.3" />
+                                <check enabled="true" name="MISRAC++2023-7.0.4" />
+                                <check enabled="true" name="MISRAC++2023-7.0.5" />
+                                <check enabled="true" name="MISRAC++2023-7.0.6_a" />
+                                <check enabled="true" name="MISRAC++2023-7.0.6_b" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-7.11">
+                                <check enabled="true" name="MISRAC++2023-7.11.1" />
+                                <check enabled="true" name="MISRAC++2023-7.11.2" />
+                                <check enabled="true" name="MISRAC++2023-7.11.3" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-8.0">
+                                <check enabled="false" name="MISRAC++2023-8.0.1" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-8.1">
+                                <check enabled="true" name="MISRAC++2023-8.1.1" />
+                                <check enabled="false" name="MISRAC++2023-8.1.2" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-8.2">
+                                <check enabled="true" name="MISRAC++2023-8.2.1" />
+                                <check enabled="true" name="MISRAC++2023-8.2.2" />
+                                <check enabled="true" name="MISRAC++2023-8.2.3" />
+                                <check enabled="true" name="MISRAC++2023-8.2.4" />
+                                <check enabled="true" name="MISRAC++2023-8.2.5" />
+                                <check enabled="false" name="MISRAC++2023-8.2.7" />
+                                <check enabled="true" name="MISRAC++2023-8.2.10_a" />
+                                <check enabled="true" name="MISRAC++2023-8.2.10_b" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-8.3">
+                                <check enabled="false" name="MISRAC++2023-8.3.1" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-8.14">
+                                <check enabled="false" name="MISRAC++2023-8.14.1" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-8.18">
+                                <check enabled="true" name="MISRAC++2023-8.18.1" />
+                                <check enabled="false" name="MISRAC++2023-8.18.2" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-8.19">
+                                <check enabled="false" name="MISRAC++2023-8.19.1" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-8.20">
+                                <check enabled="false" name="MISRAC++2023-8.20.1" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-9.4">
+                                <check enabled="true" name="MISRAC++2023-9.4.1" />
+                                <check enabled="true" name="MISRAC++2023-9.4.2_a" />
+                                <check enabled="true" name="MISRAC++2023-9.4.2_b" />
+                                <check enabled="true" name="MISRAC++2023-9.4.2_c" />
+                                <check enabled="true" name="MISRAC++2023-9.4.2_d" />
+                                <check enabled="true" name="MISRAC++2023-9.4.2_e" />
+                                <check enabled="true" name="MISRAC++2023-9.4.2_f" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-9.6">
+                                <check enabled="false" name="MISRAC++2023-9.6.1" />
+                                <check enabled="true" name="MISRAC++2023-9.6.2" />
+                                <check enabled="true" name="MISRAC++2023-9.6.3" />
+                                <check enabled="true" name="MISRAC++2023-9.6.5" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-10.1">
+                                <check enabled="false" name="MISRAC++2023-10.1.1" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-11.3">
+                                <check enabled="false" name="MISRAC++2023-11.3.2" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-11.6">
+                                <check enabled="true" name="MISRAC++2023-11.6.2" />
+                                <check enabled="true" name="MISRAC++2023-11.6.3" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-12.2">
+                                <check enabled="true" name="MISRAC++2023-12.2.3" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-12.3">
+                                <check enabled="true" name="MISRAC++2023-12.3.1" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-15.1">
+                                <check enabled="true" name="MISRAC++2023-15.1.1_a" />
+                                <check enabled="true" name="MISRAC++2023-15.1.1_b" />
+                                <check enabled="true" name="MISRAC++2023-15.1.3" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-16.5">
+                                <check enabled="true" name="MISRAC++2023-16.5.1" />
+                                <check enabled="true" name="MISRAC++2023-16.5.2" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-18.1">
+                                <check enabled="true" name="MISRAC++2023-18.1.1" />
+                                <check enabled="true" name="MISRAC++2023-18.1.2" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-18.3">
+                                <check enabled="false" name="MISRAC++2023-18.3.1" />
+                                <check enabled="true" name="MISRAC++2023-18.3.2" />
+                                <check enabled="true" name="MISRAC++2023-18.3.3" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-19.0">
+                                <check enabled="true" name="MISRAC++2023-19.0.2" />
+                                <check enabled="false" name="MISRAC++2023-19.0.3" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-19.2">
+                                <check enabled="true" name="MISRAC++2023-19.2.1" />
+                                <check enabled="true" name="MISRAC++2023-19.2.3" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-19.3">
+                                <check enabled="false" name="MISRAC++2023-19.3.1" />
+                                <check enabled="true" name="MISRAC++2023-19.3.4" />
+                                <check enabled="true" name="MISRAC++2023-19.3.5_a" />
+                                <check enabled="true" name="MISRAC++2023-19.3.5_b" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-21.2">
+                                <check enabled="true" name="MISRAC++2023-21.2.1" />
+                                <check enabled="true" name="MISRAC++2023-21.2.4" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-21.6">
+                                <check enabled="false" name="MISRAC++2023-21.6.1_a" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-21.10">
+                                <check enabled="true" name="MISRAC++2023-21.10.3" />
+                            </group>
+                            <group enabled="true" name="MISRAC++2023-30.0">
+                                <check enabled="true" name="MISRAC++2023-30.0.1" />
                             </group>
                         </package>
                     </checks_tree>
@@ -1515,6 +1767,9 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Src\led.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Src\led_switching.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Src\main.c</name>

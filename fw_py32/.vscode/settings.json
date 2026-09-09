@@ -1,0 +1,11 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "C_Cpp.default.cStandard": "c23",
+    "files.associations": {
+        "py32f0xx_hal.h": "c",
+        "py32f0xx_bsp_printf.h": "c",
+        "ee24.h": "c"
+    },
+    "cortex-debug.variableUseNaturalFormat": false,
+    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
+}
