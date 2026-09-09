@@ -56,6 +56,10 @@
   #define NUM_ANIMATIONS        (9u)  //!< Number of animations implemented (including blackness)
 #endif
 
+#ifdef SKULL
+  #define NUM_ANIMATIONS        (13u)  //!< Number of animations implemented (including blackness)
+#endif
+
 #ifdef PUMPKIN
   #define NUM_ANIMATIONS        (9u)  //!< Number of animations implemented (including blackness)
 #endif

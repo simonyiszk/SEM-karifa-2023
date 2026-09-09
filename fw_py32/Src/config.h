@@ -21,9 +21,10 @@
 //#define RUDOLF
 //#define HULLOCSILLAG
 //#define ANGYAL
-//#define MACSKAS
+#define MACSKAS
 //#define SIMONYI
-#define PUMPKIN
+//#define SKULL
+//#define PUMPKIN
 
 // Uncomment only for defective units
 //#define LEDS_REVERSED   //!< The LEDs are populated in reverse

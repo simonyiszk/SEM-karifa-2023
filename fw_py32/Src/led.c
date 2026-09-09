@@ -141,6 +141,20 @@ static const S_LED_DESCRIPTOR gcasLEDs[ LEDS_NUM ] =
   { { GPIOB, LL_GPIO_PIN_2 }, 2u },  // D10
   { { GPIOB, LL_GPIO_PIN_1 }, 2u },  // D12
 #endif
+#ifdef SKULL
+  { { GPIOB, LL_GPIO_PIN_1 }, 1u },  // D13
+  { { GPIOB, LL_GPIO_PIN_1 }, 2u },  // D12
+  { { GPIOB, LL_GPIO_PIN_2 }, 2u },  // D10
+  { { GPIOB, LL_GPIO_PIN_2 }, 1u },  // D11
+  { { GPIOB, LL_GPIO_PIN_0 }, 1u },  // D9
+  { { GPIOB, LL_GPIO_PIN_0 }, 2u },  // D8
+  { { GPIOA, LL_GPIO_PIN_7 }, 2u },  // D6
+  { { GPIOA, LL_GPIO_PIN_7 }, 1u },  // D7
+  { { GPIOA, LL_GPIO_PIN_4 }, 1u },  // D5
+  { { GPIOA, LL_GPIO_PIN_4 }, 2u },  // D4
+  { { GPIOA, LL_GPIO_PIN_2 }, 1u },  // D3
+  { { GPIOA, LL_GPIO_PIN_2 }, 2u },  // D2
+#endif
 };
 
 
