@@ -21,9 +21,9 @@
 //#define RUDOLF
 //#define HULLOCSILLAG
 //#define ANGYAL
-#define MACSKAS
+//#define MACSKAS
 //#define SIMONYI
-//#define SKULL
+#define SKULL
 //#define PUMPKIN
 
 // Uncomment only for defective units

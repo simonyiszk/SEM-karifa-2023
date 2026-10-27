@@ -134,27 +134,28 @@ static const S_LED_DESCRIPTOR gcasLEDs[ LEDS_NUM ] =
   {{GPIOB, LL_GPIO_PIN_1}, 0u}, // D12
 #endif
 #ifdef PUMPKIN
-  {{GPIOA, LL_GPIO_PIN_7}, 2u}, // D15
-  {{GPIOB, LL_GPIO_PIN_0}, 2u}, // D16
-  {{GPIOA, LL_GPIO_PIN_4}, 2u}, // D14
-
-  {{GPIOB, LL_GPIO_PIN_1}, 1u}, // D6
-  {{GPIOA, LL_GPIO_PIN_2}, 0u}, // D7
-  {{GPIOA, LL_GPIO_PIN_4}, 0u}, // D8
-  {{GPIOA, LL_GPIO_PIN_7}, 0u}, // D9
-  {{GPIOB, LL_GPIO_PIN_0}, 0u}, // D10
-  {{GPIOB, LL_GPIO_PIN_2}, 0u}, // D11
-
   {{GPIOA, LL_GPIO_PIN_2}, 2u}, // D13
+  {{GPIOA, LL_GPIO_PIN_4}, 2u}, // D14
+  {{GPIOA, LL_GPIO_PIN_7}, 2u}, // D15
+  
+  {{GPIOB, LL_GPIO_PIN_0}, 2u}, // D16
   {{GPIOB, LL_GPIO_PIN_2}, 2u}, // D17
   {{GPIOB, LL_GPIO_PIN_1}, 2u}, // D18
 
-  {{GPIOB, LL_GPIO_PIN_2}, 1u}, // D5
-  {{GPIOB, LL_GPIO_PIN_0}, 1u}, // D4
-  {{GPIOA, LL_GPIO_PIN_7}, 1u}, // D3
-  {{GPIOA, LL_GPIO_PIN_4}, 1u}, // D2
+  {{GPIOA, LL_GPIO_PIN_7}, 0u}, // D9
+  {{GPIOB, LL_GPIO_PIN_0}, 0u}, // D10
+  
+  {{GPIOA, LL_GPIO_PIN_2}, 0u}, // D7
   {{GPIOA, LL_GPIO_PIN_2}, 1u}, // D1
+  {{GPIOA, LL_GPIO_PIN_4}, 0u}, // D8
+  {{GPIOA, LL_GPIO_PIN_4}, 1u}, // D2
+  {{GPIOA, LL_GPIO_PIN_7}, 1u}, // D3
+  {{GPIOB, LL_GPIO_PIN_0}, 1u}, // D4
+  {{GPIOB, LL_GPIO_PIN_2}, 0u}, // D11
+  {{GPIOB, LL_GPIO_PIN_2}, 1u}, // D5
   {{GPIOB, LL_GPIO_PIN_1}, 0u}, // D12
+  {{GPIOB, LL_GPIO_PIN_1}, 1u}, // D6
+
 #endif
 };
 

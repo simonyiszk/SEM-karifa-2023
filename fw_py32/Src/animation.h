@@ -61,7 +61,7 @@
 #endif
 
 #ifdef PUMPKIN
-  #define NUM_ANIMATIONS        (9u)  //!< Number of animations implemented (including blackness)
+  #define NUM_ANIMATIONS        (12u)  //!< Number of animations implemented (including blackness)
 #endif
 
 /***************************************< Types >**************************************/
