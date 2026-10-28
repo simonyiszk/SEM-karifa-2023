@@ -23,8 +23,8 @@
 //#define ANGYAL
 //#define MACSKAS
 //#define SIMONYI
-#define SKULL
-//#define PUMPKIN
+//#define SKULL
+#define PUMPKIN
 
 // Uncomment only for defective units
 //#define LEDS_REVERSED   //!< The LEDs are populated in reverse
@@ -37,7 +37,7 @@
   #define LED_TRADITIONAL_DRIVER
 #endif
 
-#if( defined(KARIFA) || defined(HOEMBER) || defined(HOPEHELY) || defined(RUDOLF) )
+#if( defined(KARIFA) || defined(HOEMBER) || defined(HOPEHELY) || defined(RUDOLF) || defined(SKULL) )
   #define RGB_DRIVER
 #endif
 

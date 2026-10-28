@@ -108,7 +108,7 @@ void BatteryLevel_Show( void )
     Delay( 100u );
   }
 #endif
-#if( defined( HOPEHELY ) || defined( MACSKAS ) || defined( SIMONYI ) || defined( SKULL ) || defined( PUMPKIN ) )
+#if( defined( HOPEHELY ) || defined( MACSKAS ) || defined( SIMONYI ) || defined( PUMPKIN ) )
   for( u8Index = 0u; u8Index < LEDS_NUM; u8Index++ )
   {
     gau8LEDBrightness[ u8Index ] = 15u;
@@ -130,6 +130,14 @@ void BatteryLevel_Show( void )
   {
     gau8LEDBrightness[ u8Index ] = 15u;
     gau8LEDBrightness[ LEDS_NUM - u8Index - 2u ] = 15u;
+    Delay( 100u );
+  }
+#endif
+#ifdef SKULL
+  for( u8Index = 0u; u8Index < LEDS_NUM/2u; u8Index++ )
+  {
+    gau8LEDBrightness[ u8Index * 2u ] = 15u;
+    gau8LEDBrightness[ u8Index * 2u + 1u ] = 15u;
     Delay( 100u );
   }
 #endif
@@ -355,15 +363,12 @@ void BatteryLevel_Show( void )
     if( u8ChargeLevel > u8Index )
     {
       gau8LEDBrightness[ u8Index ] = 15u;
-      gau8LEDBrightness[ LEDS_NUM - u8Index - 2u ] = 15u;
     }
     else
     {
       gau8LEDBrightness[ u8Index ] = 0u;
-      gau8LEDBrightness[ LEDS_NUM - u8Index - 2u ] = 0u;
     }
   }
-  gau8LEDBrightness[ LEDS_NUM - 1u ] = 15u;
 #endif
 
 #if( defined(MACSKAS) || defined(SIMONYI) || defined( PUMPKIN ) )
